@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="178px" height="16px" viewBox="0 0 178 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Gelato" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="rental-platform" transform="translate(-59.000000, -45.000000)">
+            <g id="Group-14" transform="translate(58.000000, 29.000000)">
+                <g id="Group" transform="translate(0.000000, 12.000000)">
+                    <text id="KAVHOLM" font-family="Futura-Bold, Futura" font-size="18.5806452" font-weight="bold" letter-spacing="0.0314441679" fill="#303030">
+                        <tspan x="0" y="19">KAVHOLM</tspan>
+                    </text>
+                    <text id="HOMES" font-family="Futura-Medium, Futura" font-size="18" font-weight="400" fill="#939393">
+                        <tspan x="112" y="19">HOMES</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

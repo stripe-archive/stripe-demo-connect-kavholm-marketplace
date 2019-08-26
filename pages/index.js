@@ -1,15 +1,21 @@
 import React from 'react';
 import Link from 'next/link';
+import Modal from '../components/modal';
 import Head from '../components/head';
 import Nav from '../components/nav';
 
 class Home extends React.Component {
+  state = {isShowingModal: false};
+  handleButtonClick = () =>
+    this.setState({isShowingModal: !this.state.isShowingModal});
+
   render() {
+    const {isShowingModal} = this.state;
     return (
       <div>
         <Head title="Home" />
         <Nav />
-
+        <Modal isShown={isShowingModal} toggleModal={this.handleButtonClick} />
         <div className="content">
           <div className="pane-images">
             <img src="/static/place images.png" />
@@ -54,7 +60,7 @@ class Home extends React.Component {
                 Total <span className="lineItemPrice">$1,308</span>
               </li>
             </ul>
-            <button>Book now</button>
+            <button onClick={this.handleButtonClick}>Book now</button>
             <div className="host">
               <img src="/static/host.png" width="36" />
               <p>
@@ -91,7 +97,7 @@ class Home extends React.Component {
             font-weight: bold;
             text-decoration: underline;
           }
-          button {
+          :global(button) {
             background-color: #0055ff;
             color: white;
             width: 100%;
@@ -101,7 +107,7 @@ class Home extends React.Component {
             border-radius: 4px;
           }
 
-          button:hover {
+          :global(button:hover) {
             background-color: #0242c3;
             cursor: pointer;
           }

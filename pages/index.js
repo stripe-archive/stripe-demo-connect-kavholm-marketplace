@@ -8,14 +8,19 @@ class Home extends React.Component {
   state = {isShowingModal: false};
   handleButtonClick = () =>
     this.setState({isShowingModal: !this.state.isShowingModal});
-
+  openVerifyFlow = () =>
+    window.open('https://gelato.corp.stripe.com/start/?token=LYDxssvZX217');
   render() {
     const {isShowingModal} = this.state;
     return (
       <div>
         <Head title="Home" />
         <Nav />
-        <Modal isShown={isShowingModal} toggleModal={this.handleButtonClick} />
+        <Modal
+          isShown={isShowingModal}
+          toggleModal={this.handleButtonClick}
+          openVerifyFlow={this.openVerifyFlow}
+        />
         <div className="content">
           <div className="pane-images">
             <img src="/static/place images.png" />
@@ -105,6 +110,7 @@ class Home extends React.Component {
             font-weight: 500;
             font-size: 17px;
             border-radius: 4px;
+            border: 0;
           }
 
           :global(button:hover) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-export default ({isShown, toggleModal}) => {
+export default ({isShown, toggleModal, openVerifyFlow}) => {
   return (
     <Modal
       isOpen={isShown}
@@ -19,6 +19,7 @@ export default ({isShown, toggleModal}) => {
           textAlign: 'center',
           paddingTop: '70px',
           paddingBottom: '45px',
+          boxShadow: '0px 18px 36px rgba(0,0,0,0.15)',
         },
       }}
     >
@@ -29,7 +30,7 @@ export default ({isShown, toggleModal}) => {
           Your host requires a verified government-issued ID to complete the
           booking. This will take only a minute.
         </p>
-        <button>Verify your identity</button>
+        <button onClick={openVerifyFlow}>Verify your identity</button>
         <p className="footer">
           You’ll be redirected to Stripe to complete the verification process.
         </p>

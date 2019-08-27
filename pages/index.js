@@ -5,13 +5,18 @@ import Head from '../components/head';
 import Nav from '../components/nav';
 
 class Home extends React.Component {
-  state = {isShowingModal: false};
+  state = {isShowingModal: false, isCompleted: false};
   handleButtonClick = () =>
-    this.setState({isShowingModal: !this.state.isShowingModal});
-  openVerifyFlow = () =>
+    this.setState({
+      isCompleted: false,
+      isShowingModal: !this.state.isShowingModal,
+    });
+  openVerifyFlow = () => {
     window.open('https://gelato.corp.stripe.com/start/?token=LYDxssvZX217');
+    window.setTimeout(() => this.setState({isCompleted: true}), 1000);
+  };
   render() {
-    const {isShowingModal} = this.state;
+    const {isShowingModal, isCompleted} = this.state;
     return (
       <div>
         <Head title="Home" />
@@ -20,6 +25,7 @@ class Home extends React.Component {
           isShown={isShowingModal}
           toggleModal={this.handleButtonClick}
           openVerifyFlow={this.openVerifyFlow}
+          isCompleted={isCompleted}
         />
         <div className="content">
           <div className="pane-images">

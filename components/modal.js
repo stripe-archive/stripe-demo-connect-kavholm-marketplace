@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-export default ({isShown, toggleModal, openVerifyFlow}) => {
+export default ({isShown, toggleModal, openVerifyFlow, isCompleted}) => {
   return (
     <Modal
       isOpen={isShown}
@@ -20,20 +20,32 @@ export default ({isShown, toggleModal, openVerifyFlow}) => {
           paddingTop: '70px',
           paddingBottom: '45px',
           boxShadow: '0px 18px 36px rgba(0,0,0,0.15)',
+          borderRadius: '16px',
         },
       }}
     >
       <div className="content">
-        <img src="/static/person.svg" />
-        <h1>To continue booking, we’ll need to verify your ID.</h1>
-        <p className="info">
-          Your host requires a verified government-issued ID to complete the
-          booking. This will take only a minute.
-        </p>
-        <button onClick={openVerifyFlow}>Verify your identity</button>
-        <p className="footer">
-          You’ll be redirected to Stripe to complete the verification process.
-        </p>
+        {!isCompleted && (
+          <>
+            <img src="/static/person.svg" />
+            <h1>To continue booking, we’ll need to verify your ID.</h1>
+            <p className="info">
+              Your host requires a verified government-issued ID to complete the
+              booking. This will take only a minute.
+            </p>
+            <button onClick={openVerifyFlow}>Verify your identity</button>
+            <p className="footer">
+              You’ll be redirected to Stripe to complete the verification
+              process.
+            </p>
+          </>
+        )}
+        {isCompleted && (
+          <>
+            <img src="/static/confirmed.svg" />
+            <h1>Your booking has been confirmed.</h1>
+          </>
+        )}
       </div>
       <style jsx>{`
         img {

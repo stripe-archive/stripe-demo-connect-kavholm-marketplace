@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Modal from '../components/modal';
 import Head from '../components/head';
 import Nav from '../components/nav';
+import {withAuthSync} from '../utils/auth';
 
 class Home extends React.Component {
   state = {isShowingModal: false, isCompleted: false};
@@ -20,7 +21,7 @@ class Home extends React.Component {
     return (
       <div>
         <Head title="Home" />
-        <Nav />
+        <Nav isAuthenticated={this.props.isAuthenticated} />
         <Modal
           isShown={isShowingModal}
           toggleModal={this.handleButtonClick}
@@ -205,4 +206,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default withAuthSync(Home);

@@ -18,14 +18,11 @@ export default async (req, res) => {
 
     try {
       let accountLink = await stripe.accountLinks.create({
-        stripe_account: stripeUserId,
-        type: 'custom_account_update',
+        account: stripeUserId,
         failure_url: 'http://localhost:3000/faliure',
         success_url: 'http://localhost:3000/success',
+        type: 'custom_account_update',
       });
-
-      console.log('accountLink', accountLink);
-
       return res.status(200).json(accountLink);
     } catch (err) {
       console.log('accountLink.err', err);

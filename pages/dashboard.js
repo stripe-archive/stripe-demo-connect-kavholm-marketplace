@@ -31,6 +31,28 @@ async function getProfile(token, context) {
   }
 }
 
+async function getStripeAccountLink(token, context) {
+  console.log('Dashboard.getStripeAccountLink');
+
+  try {
+    const apiUrl = getHost(context.req) + '/api/payouts/link';
+    const response = await fetch(apiUrl, {
+      credentials: 'include',
+      headers: {
+        Authorization: JSON.stringify({token}),
+      },
+    });
+
+    if (response.ok) {
+      return await response.json();
+    } else {
+      console.log('Dashboard.getStripeAccountLink.error', response);
+    }
+  } catch (error) {
+    console.log('dashboard.getStripeAccountLink.error', error);
+  }
+}
+
 class Dashboard extends React.Component {
   static async getInitialProps(context) {
     const {token} = nextCookie(context);
@@ -40,22 +62,49 @@ class Dashboard extends React.Component {
     }
 
     let userProfile = await getProfile(token, context);
+    let stripeAccountLink = await getStripeAccountLink(token, context);
 
-    return userProfile;
+    return {
+      profile: userProfile,
+      stripeAccountLink: stripeAccountLink,
+    };
   }
 
   render() {
     return (
-      <Layout>
-        <div className="dashboard">
+      <Layout isAuthenticated={this.props.isAuthenticated}>
+        <div className="dashboard ">
           <h2>Dashboard</h2>
-          <p>Welcome, {this.props.email}</p>
+
+          <div className="row">
+            <div className="col-8">
+              <p>Welcome, {this.props.profile.email}</p>
+            </div>
+
+            <div className="col-4 text-right">
+              <a href="" className="btn btn-primary">
+                See payouts on Stripe
+              </a>
+            </div>
+          </div>
 
           <h5>Profile details:</h5>
-          <pre>
-            <code>{JSON.stringify(this.props, null, 2)}</code>
+          <pre className="profile-details bg-light">
+            <code>{JSON.stringify(this.props.profile, null, 2)}</code>
+          </pre>
+
+          <h5>AccountLink details:</h5>
+          <pre className="profile-details bg-light">
+            <code>{JSON.stringify(this.props.stripeAccountLink, null, 2)}</code>
           </pre>
         </div>
+        <style jsx>{`
+          .profile-details {
+            padding: 20px;
+            overflow: auto;
+            max-height: 700px;
+          }
+        `}</style>
       </Layout>
     );
   }

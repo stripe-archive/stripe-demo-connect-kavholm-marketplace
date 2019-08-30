@@ -1,6 +1,4 @@
 import React from 'react';
-import Head from '../components/head';
-import Nav from '../components/nav';
 import Router from 'next/router';
 
 import nextCookie from 'next-cookies';
@@ -8,6 +6,8 @@ import fetch from 'isomorphic-unfetch';
 import {withAuthSync} from '../utils/auth';
 import getHost from '../utils/get-host';
 import {redirect} from '../utils/redirect';
+
+import Layout from '../components/layout';
 
 async function getProfile(token, context) {
   console.log('Dashboard.getProfile');
@@ -46,10 +46,8 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div>
-        <Head title="Login" />
-        <Nav isAuthenticated={this.props.isAuthenticated} />
-        <div>
+      <Layout>
+        <div className="dashboard">
           <h2>Dashboard</h2>
           <p>Welcome, {this.props.email}</p>
 
@@ -58,7 +56,7 @@ class Dashboard extends React.Component {
             <code>{JSON.stringify(this.props, null, 2)}</code>
           </pre>
         </div>
-      </div>
+      </Layout>
     );
   }
 }

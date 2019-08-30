@@ -8,7 +8,7 @@ class Signup extends React.Component {
     let signUpLink = '/api/signup/stripe';
 
     return (
-      <Layout width="full">
+      <Layout width="full" isAuthenticated={this.props.isAuthenticated}>
         <div className="content">
           <div className="row">
             <div className="col-12">

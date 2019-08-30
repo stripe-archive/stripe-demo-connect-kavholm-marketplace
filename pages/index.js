@@ -19,16 +19,14 @@ class Home extends React.Component {
   render() {
     const {isShowingModal, isCompleted} = this.state;
     return (
-      <Layout width="full">
+      <Layout width="full" isAuthenticated={this.props.isAuthenticated}>
         <div className="home">
           <div className="splash-image">
             <div className="popover">
               <h1>Book unique places to stay and things to do.</h1>
 
-              <Link>
-                <a href="/listing" className="btn btn-primary">
-                  Show listings
-                </a>
+              <Link href="/listing">
+                <a className="btn btn-primary">Show listings</a>
               </Link>
             </div>
           </div>

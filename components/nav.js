@@ -33,9 +33,9 @@ class Nav extends React.Component {
 
     if (this.props.isAuthenticated) {
       userArea = (
-        <li class="nav-item dropdown">
+        <li className="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle"
+            className="nav-link dropdown-toggle"
             href="#"
             id="navbarDropdown"
             role="button"
@@ -45,8 +45,11 @@ class Nav extends React.Component {
           >
             <img src="/static/avatar.png" height="42" />
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#" onClick={this.handleLogout}>
+          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <Link href="/dashboard">
+              <a className="dropdown-item">Dashboard</a>
+            </Link>
+            <a className="dropdown-item" href="#" onClick={this.handleLogout}>
               Logout
             </a>
           </div>

@@ -30,6 +30,7 @@ class Nav extends React.Component {
 
   render() {
     let userArea;
+    let bookingArea;
 
     if (this.props.isAuthenticated) {
       userArea = (
@@ -49,9 +50,32 @@ class Nav extends React.Component {
             <Link href="/dashboard">
               <a className="dropdown-item">Dashboard</a>
             </Link>
+            <Link href="/profile/stripe">
+              <a className="dropdown-item">Connect Stripe</a>
+            </Link>
             <a className="dropdown-item" href="#" onClick={this.handleLogout}>
               Logout
             </a>
+          </div>
+        </li>
+      );
+      bookingArea = (
+        <li className="nav-item">
+          <div className="inputs">
+            <div className="fake-input">
+              <img src="/static/search.svg" />
+              <span className="city">Paris</span>
+            </div>
+
+            <div className="fake-input">
+              <img src="/static/cal.svg" />
+              <span>Aug 18 – 25</span>
+            </div>
+
+            <div className="fake-input">
+              <img src="/static/people.svg" />
+              <span>3 guests</span>
+            </div>
           </div>
         </li>
       );
@@ -69,29 +93,14 @@ class Nav extends React.Component {
       <div className="container">
         <nav className="navbar navbar-fixed navbar-expand-lg navbar-light">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
+            <li className="navitem">
               <Link href="/">
                 <a className="navbar-brand">
                   <img className="logo" src="/static/logo.svg" />
                 </a>
               </Link>
-              <div className="inputs">
-                <div className="fake-input">
-                  <img src="/static/search.svg" />
-                  <span className="city">Paris</span>
-                </div>
-
-                <div className="fake-input">
-                  <img src="/static/cal.svg" />
-                  <span>Aug 18 – 25</span>
-                </div>
-
-                <div className="fake-input">
-                  <img src="/static/people.svg" />
-                  <span>3 guests</span>
-                </div>
-              </div>
             </li>
+            {bookingArea}
           </ul>
 
           <ul className="navbar-nav flex-row">{userArea}</ul>
@@ -140,14 +149,6 @@ class Nav extends React.Component {
               padding-right: 42px;
             }
 
-            :global(body) {
-              font-family: -apple-system, BlinkMacSystemFont, Avenir Next,
-                Avenir, Helvetica, sans-serif;
-              margin: auto;
-            }
-            nav {
-              text-align: center;
-            }
             ul {
               display: flex;
               align-items: center;
@@ -157,11 +158,6 @@ class Nav extends React.Component {
 
             li {
               display: flex;
-            }
-            a {
-              color: #067df7;
-              text-decoration: none;
-              font-size: 13px;
             }
           `}</style>
         </nav>

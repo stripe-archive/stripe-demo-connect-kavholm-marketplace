@@ -25,6 +25,8 @@ class Home extends React.Component {
             <div className="popover">
               <h1>Book unique places to stay and things to do.</h1>
 
+              <img src="/static/booking_form.png" className="booking-form" />
+
               <Link href="/listing">
                 <a className="btn btn-primary">Show listings</a>
               </Link>
@@ -61,6 +63,11 @@ class Home extends React.Component {
 
             width: 500px;
             max-width: 500px;
+          }
+
+          .booking-form {
+            width: 100%;
+            margin: 20px 0;
           }
         `}</style>
       </Layout>

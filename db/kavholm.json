@@ -1,67 +1,10 @@
 {
   "users": [
     {
-      "userId": "EO_KR-GCj",
+      "userId": "Igj-hMfQp",
       "fullName": "Kenneth Auchenberg",
       "email": "kenneth@auchenberg.dk",
-      "password": "$2b$10$M2oHl3MpyWdMkiYMryPiGevPoDRikKkx2eYZ7ProFnM.XTm7j5Dru"
-    },
-    {
-      "userId": "bag7SbGgY",
-      "fullName": "Kenneth Auchenberg",
-      "email": "kenneth@auchenberg.dk",
-      "password": "$2b$10$hH3oT1Gh1ibkf1SlWLygA.hqwdkGEPs3QoDG.OsT5/lxqQ8sstdZ2"
-    },
-    {
-      "userId": "S7FxyDQBy",
-      "fullName": "Kenneth Auchenberg",
-      "email": "kenneth@auchenberg.dk",
-      "password": "$2b$10$0XXho9ta9WPO/6fQgbQi2.L82FBJttJnnq/uoM7s23Wxq1z/B5fFe"
-    },
-    {
-      "userId": "je7CSFnNC",
-      "fullName": "Kenneth Auchenberg",
-      "email": "kenneth@auchenberg.dk",
-      "password": "$2b$10$eSKD2I.WMwZ.AUEBFP9rhO4PJQcz/OKpjNeYQgxnfld.uGWo3g.0W"
-    },
-    {
-      "userId": "5w2u1nNR5O",
-      "fullName": "Kenneth Auchenberg",
-      "email": "kenneth@auchenberg.dk",
-      "password": "$2b$10$IdzEX1qlTEyFoqHPJC3PyuZ1kxhz3UD9yywR2BNhCIgXIINpgImpa"
-    },
-    {
-      "userId": "0DN5aT8JO",
-      "fullName": "Kenneth Auchenberg",
-      "email": "kenneth@auchenberg.dk",
-      "password": "$2b$10$GxIttbIkn6m0vILU/6NUbOITG7EgLcvGB1IwllS2p19/oIXBC/U3G"
-    },
-    {
-      "userId": "T-vaxnzJx",
-      "fullName": "Kenneth Auchenberg",
-      "email": "kenneth@auchenberg.dk",
-      "password": "$2b$10$n8T6W01wYwroeJ4j/.LgTeCUQriVsnpjnur2rmp1BZMXDMsK4DjU2",
-      "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400"
-    },
-    {
-      "userId": "_f_Q9s8P6",
-      "fullName": "Kenneth Auchenberg",
-      "email": "kenneth@auchenberg.dk",
-      "password": "$2b$10$jZGtINjTREvhDM.1tDx7y.xglAFrlil9whiB2gxtEse0t.uKUf3VW",
-      "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400"
-    },
-    {
-      "userId": "8l88Dsl6P",
-      "fullName": "Kenneth Auchenberg",
-      "email": "kenneth@auchenberg.dk",
-      "password": "$2b$10$HWEgyFFGl5beuPYN329vHOuTtzwzmWHdDnVryrIDj.lsyk6Yq4kei",
-      "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400"
-    },
-    {
-      "userId": "iLBnW2hzG",
-      "fullName": "Kenneth Auchenberg",
-      "email": "kenneth@auchenberg.dk",
-      "password": "$2b$10$dRSz.71HyNIc2Y/.9G60SutW6V/r6yurkpfy8F6Y1wuugTsRf5Ec2"
+      "password": "$2b$10$7lkRkQfWiiBX8t7B9HGffuuNUd7wE8PipGCq3Bqh4lFbqNfvc9Ynu"
     }
   ]
 }

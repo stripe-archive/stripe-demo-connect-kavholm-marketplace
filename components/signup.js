@@ -38,7 +38,7 @@ class SignupForm extends Component {
       const response = await fetch(url, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({fullname, email, password}),
+        body: JSON.stringify(this.state),
       });
       if (response.ok) {
         const {token} = await response.json();

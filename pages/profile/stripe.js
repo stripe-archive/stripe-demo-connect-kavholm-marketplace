@@ -4,6 +4,43 @@ import Layout from '../../components/layout';
 import {withAuthSync} from '../../utils/auth';
 
 class ProfileStripe extends React.Component {
+  constructor() {
+    super();
+    this.handleConnect = this.handleConnect.bind(this);
+  }
+
+  async getRedirectInfo() {
+    try {
+      const token = this.props.token;
+      const apiUrl = '/api/stripe/connect';
+      const response = await fetch(apiUrl, {
+        credentials: 'include',
+        headers: {
+          Authorization: JSON.stringify({token}),
+        },
+      });
+
+      if (response.ok) {
+        return await response.json();
+      } else {
+        console.log('ProfileStripe.getRedirectInfo.error', response);
+        return Promise.reject();
+      }
+    } catch (error) {
+      console.log('ProfileStripe.getRedirectInfo.error', error);
+      return Promise.reject();
+    }
+  }
+
+  async handleConnect() {
+    console.log('ProfileStripe.handleConnect');
+    let response = await this.getRedirectInfo();
+    let url = response.location;
+    if (url) {
+      window.location.href = url;
+    }
+  }
+
   render() {
     let signUpLink = '/api/stripe/connect';
 
@@ -21,7 +58,11 @@ class ProfileStripe extends React.Component {
                     bank account.
                   </p>
 
-                  <a className="btn btn-primary text-center" href={signUpLink}>
+                  <a
+                    className="btn btn-primary text-center"
+                    onClick={this.handleConnect}
+                    href="#"
+                  >
                     Set up payments
                   </a>
 

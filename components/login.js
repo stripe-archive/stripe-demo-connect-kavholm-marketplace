@@ -7,43 +7,54 @@ class Login extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {username: '', error: ''};
+    this.state = {
+      email: 'kenneth@auchenberg.dk',
+      password: 'test',
+      error: '',
+    };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({username: event.target.value});
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
+
+    this.setState({
+      [name]: value,
+    });
   }
 
   async handleSubmit(event) {
     event.preventDefault();
-    const username = this.state.username;
     const url = `/api/login/token`;
-
-    console.log('url', url);
+    const {username, password} = this.state;
 
     try {
       const response = await fetch(url, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({username}),
+        body: JSON.stringify(this.state),
       });
       if (response.ok) {
         const {token} = await response.json();
         handleLogin(token);
       } else {
         console.log('Login failed.');
-        let error = new Error(response.statusText);
-        error.response = response;
-        return Promise.reject(error);
+        this.setState({
+          error: response.statusText,
+        });
       }
     } catch (error) {
       console.error(
         'You have an error in your code or there are Network issues.',
         error,
       );
-      throw new Error(error);
+      this.setState({
+        error: response.statusText,
+      });
     }
   }
 
@@ -52,13 +63,22 @@ class Login extends Component {
       <>
         <div className="login">
           <form onSubmit={this.handleSubmit}>
-            <label htmlFor="username">Username</label>
+            <label htmlFor="email">Email</label>
 
             <input
-              type="text"
-              id="username"
-              name="username"
-              value={this.state.username}
+              type="email"
+              id="email"
+              name="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+            <label htmlFor="password">Password</label>
+
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={this.state.password}
               onChange={this.handleChange}
             />
 

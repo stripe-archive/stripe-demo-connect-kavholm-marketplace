@@ -43,11 +43,18 @@ class NavProfile extends React.Component {
       );
     } else {
       items = (
-        <li className="nav-item">
-          <Link href="/signup">
-            <a className="btn btn-primary">Get started</a>
-          </Link>
-        </li>
+        <>
+          <li className="nav-item">
+            <Link href="/login">
+              <a className="btn">Login</a>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link href="/host">
+              <a className="btn btn-primary">Host a home</a>
+            </Link>
+          </li>
+        </>
       );
     }
 

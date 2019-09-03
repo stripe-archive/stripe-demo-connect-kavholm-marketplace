@@ -1,32 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
-import {logout, auth} from '../utils/auth';
+import {auth} from '../utils/auth';
 import NavProfile from './navProfile';
 
 class Nav extends React.Component {
   constructor(props) {
     super(props);
-
-    this.syncLogout = this.syncLogout.bind(this);
-  }
-
-  handleLogout() {
-    logout();
-  }
-
-  componentDidMount() {
-    window.addEventListener('storage', this.syncLogout);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('storage', this.syncLogout);
-    window.localStorage.removeItem('logout');
-  }
-
-  syncLogout(event) {
-    if (event.key === 'logout') {
-      console.log('logged out from storage!');
-    }
   }
 
   render() {

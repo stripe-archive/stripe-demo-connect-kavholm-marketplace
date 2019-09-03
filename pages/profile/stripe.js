@@ -5,7 +5,7 @@ import {withAuthSync} from '../../utils/auth';
 
 class ProfileStripe extends React.Component {
   render() {
-    let signUpLink = '/api/signup/stripe';
+    let signUpLink = '/api/stripe/connect';
 
     return (
       <Layout width="full" isAuthenticated={this.props.isAuthenticated}>
@@ -21,10 +21,7 @@ class ProfileStripe extends React.Component {
                     bank account.
                   </p>
 
-                  <a
-                    className="btn btn-primary text-center"
-                    href="/api/signup/stripe"
-                  >
+                  <a className="btn btn-primary text-center" href={signUpLink}>
                     Set up payments
                   </a>
 

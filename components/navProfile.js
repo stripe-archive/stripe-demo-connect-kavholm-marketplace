@@ -7,6 +7,10 @@ class NavProfile extends React.Component {
     super(props);
   }
 
+  handleLogout() {
+    logout();
+  }
+
   render() {
     let items;
 

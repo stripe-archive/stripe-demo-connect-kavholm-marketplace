@@ -71,13 +71,17 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    let avatarUrl = this.props.profile
+      ? this.props.profile.avatar
+      : '/static/avatar.png';
+
     return (
       <Layout isAuthenticated={this.props.isAuthenticated}>
         <div className="dashboard ">
           <div className="row">
             <div className="col-12">
               <div className="media user-details">
-                <img src="/static/avatar.png" height="66" className="mr-3" />
+                <img src={avatarUrl} height="66" className="mr-3" />
                 <div className="media-body">
                   <div className="user-details-body align-middle">
                     <h5 className="mt-0">{this.props.profile.email}</h5>

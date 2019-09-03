@@ -1,4 +1,3 @@
-var level = require('level');
 var path = require('path');
 
 const low = require('lowdb');

@@ -4,7 +4,7 @@ import Nav from '../components/nav';
 
 const Layout = (props) => (
   <>
-    <Head title="Home" />
+    <Head title={props.title || 'Home'} />
     <Nav isAuthenticated={props.isAuthenticated} />
     <div
       className={
@@ -24,6 +24,7 @@ const Layout = (props) => (
         color: #484848 !important;
         font-size: 16px;
       }
+
       .app {
         overflow: hidden;
       }

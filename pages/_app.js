@@ -25,17 +25,19 @@ export default class KavholmApp extends App {
   }
 
   static async getInitialProps(appContext) {
-    let appProps = await App.getInitialProps(appContext);
+    console.log('KavholmApp.getInitialProps');
+
     let {token, isAuthenticated} = await this.getAuthenticationState(
       appContext,
     );
 
     API.setToken(token);
     API.setContext(appContext.ctx);
+
     let userProfile = await API.makeRequest('get', '/api/profile');
+    let appProps = await App.getInitialProps(appContext);
 
     let props = {...appProps, token, isAuthenticated, userProfile};
-    console.log('KavholmApp.getInitialProps', props);
 
     return props;
   }

@@ -46,28 +46,16 @@
   ],
   "listings": [
     {
-      "id": "19",
-      "title": "Namibia",
-      "source": "https://unsplash.com/photos/CCIsZRL8X5U",
-      "image": "https://images.unsplash.com/photo-1516357355532-5a2aea76364b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2702&q=80"
-    },
-    {
-      "id": "20",
-      "title": "Wells, United Kingdom",
-      "source": "https://unsplash.com/photos/9xGLJirTbm4",
-      "image": "https://images.unsplash.com/photo-1508404906507-3b00f6f629cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1533&q=80"
+      "id": "10",
+      "title": "West Los Angeles, Los Angeles, United States",
+      "source": "https://unsplash.com/photos/AutCiGUz8D4",
+      "image": "https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80"
     },
     {
       "id": "21",
       "title": "Peninsula, United States",
       "source": "https://unsplash.com/photos/6DqRIISLZMQ",
       "image": "https://images.unsplash.com/photo-1505081598304-3bee85f930d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2702&q=80"
-    },
-    {
-      "id": "10",
-      "title": "West Los Angeles, Los Angeles, United States",
-      "source": "https://unsplash.com/photos/AutCiGUz8D4",
-      "image": "https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80"
     },
     {
       "id": "26",
@@ -82,34 +70,10 @@
       "image": "https://images.unsplash.com/photo-1537304119-36263d2db05b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1575&q=80"
     },
     {
-      "id": "3",
-      "title": "",
-      "source": "https://unsplash.com/photos/L5SL8nSUkyk",
-      "image": "https://images.unsplash.com/photo-1564441421064-a1f9bd0d21c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjExMDk0fQ&auto=format&fit=crop&w=1534&q=80"
-    },
-    {
-      "id": "4",
-      "title": "",
-      "source": "https://unsplash.com/photos/zCyeASX664I",
-      "image": "https://images.unsplash.com/photo-1566750859749-5aa92e0b4872?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1226&q=80"
-    },
-    {
       "id": "6",
       "title": "",
       "source": "https://unsplash.com/photos/leDo7IX1ycM",
       "image": "https://images.unsplash.com/photo-1549488497-256795402cc0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80"
-    },
-    {
-      "id": "8",
-      "title": "",
-      "source": "https://unsplash.com/photos/rtl8Os9mGA4",
-      "image": "https://images.unsplash.com/photo-1540551079-b1236c0cd8ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80"
-    },
-    {
-      "id": "9",
-      "title": "Los Angeles, United States",
-      "source": "https://unsplash.com/photos/82RA0IXM7LM",
-      "image": "https://images.unsplash.com/photo-1527121964781-9f0834203e11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80"
     },
     {
       "id": "12",
@@ -124,22 +88,10 @@
       "image": "https://images.unsplash.com/photo-1481277542470-605612bd2d61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2590&q=80"
     },
     {
-      "id": "16",
-      "title": "Leuven, Belgium",
-      "source": "https://unsplash.com/photos/Nk2-WXBSlZQ",
-      "image": "https://images.unsplash.com/photo-1529316738131-4d0e0761a38e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80"
-    },
-    {
       "id": "18",
       "title": "Spain",
       "source": "https://unsplash.com/photos/4ojhpgKpS68",
       "image": "https://images.unsplash.com/photo-1523217582562-09d0def993a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=2200&q=80"
-    },
-    {
-      "id": "22",
-      "title": "Seoul, South Korea",
-      "source": "https://unsplash.com/photos/Q5D4oYiZKAE",
-      "image": "https://images.unsplash.com/photo-1524190952534-79b1f7d6ad5c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2767&q=80"
     },
     {
       "id": "23",

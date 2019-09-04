@@ -3,8 +3,6 @@ import Link from 'next/link';
 import Modal from '../components/modal';
 import Layout from '../components/layout';
 
-import {withAuthSync} from '../utils/auth';
-
 class Home extends React.Component {
   state = {isShowingModal: false, isCompleted: false};
   handleButtonClick = () =>
@@ -17,9 +15,15 @@ class Home extends React.Component {
     window.setTimeout(() => this.setState({isCompleted: true}), 1000);
   };
   render() {
+    console.log('Home.props', this.props);
+
     const {isShowingModal, isCompleted} = this.state;
     return (
-      <Layout width="full" isAuthenticated={this.props.isAuthenticated}>
+      <Layout
+        width="full"
+        isAuthenticated={this.props.isAuthenticated}
+        userProfile={this.props.userProfile}
+      >
         <div className="home">
           <div className="splash-image">
             <div className="popover">
@@ -75,4 +79,4 @@ class Home extends React.Component {
   }
 }
 
-export default withAuthSync(Home);
+export default Home;

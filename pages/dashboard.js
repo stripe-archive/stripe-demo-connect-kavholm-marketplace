@@ -5,14 +5,9 @@ import {redirect} from '../utils/redirect';
 import Layout from '../components/layout';
 import API from '../helpers/api';
 
-async function getProfile(token) {
+async function getProfile() {
   console.log('Dashboard.getProfile');
-  return API.makeRequest(token, 'get', '/api/profile');
-}
-
-async function getStripeAccountLink(token, context) {
-  console.log('Dashboard.getStripeAccountLink');
-  return API.makeRequest('get', this.props.token, '/api/payouts/link');
+  return API.makeRequest('get', '/api/profile');
 }
 
 class Dashboard extends React.Component {
@@ -21,36 +16,28 @@ class Dashboard extends React.Component {
     console.log('props', props);
   }
 
-  // static async getInitialProps(context) {
-  //   let token = '';
+  static async getInitialProps(context) {
+    API.setContext(context);
 
-  //   console.log('Dashboard.context', context);
-  //   // if (!token) {
-  //   //   redirect('/login', context);
-  //   // }
+    // if (!token) {
+    //   redirect('/login', context);
+    // }
 
-  //   // let stripeAccountLink = await getStripeAccountLink(token, context);
-
-  //   return {
-  //     profile: userProfile,
-  //   };
-  // }
-
-  async componentWillMount() {
-    let token = this.props.token;
-    let userProfile = await getProfile(token);
-
-    this.setState({
+    let userProfile = await getProfile();
+    return {
       profile: userProfile,
-    });
+    };
   }
 
   render() {
-    let profile = this.state ? this.state.profile : {};
+    let profile = this.props ? this.props.profile : {};
     let avatarUrl = profile ? profile.avatar : '/static/avatar.png';
 
     return (
-      <Layout isAuthenticated={this.props.isAuthenticated}>
+      <Layout
+        isAuthenticated={this.props.isAuthenticated}
+        userProfile={this.props.userProfile}
+      >
         <div className="dashboard ">
           <div className="row">
             <div className="col-12">

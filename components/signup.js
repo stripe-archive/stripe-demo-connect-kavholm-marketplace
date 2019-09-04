@@ -33,12 +33,8 @@ class SignupForm extends Component {
     event.preventDefault();
 
     try {
-      let token = await API.makeRequest(
-        'post',
-        `/api/signup/local`,
-        this.state,
-      );
-      handleLogin(token);
+      let req = await API.makeRequest('post', `/api/signup/local`, this.state);
+      handleLogin(req.token);
     } catch (err) {
       console.log('Signup failed.', err);
     }

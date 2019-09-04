@@ -1,11 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
-import Modal from '../components/modal';
-import Head from '../components/head';
-import Nav from '../components/nav';
-import {withAuthSync} from '../utils/auth';
+import Modal from '../../components/modal';
+import Head from '../../components/head';
+import Nav from '../../components/nav';
 
-class Home extends React.Component {
+class Listing extends React.Component {
   state = {isShowingModal: false, isCompleted: false};
   handleButtonClick = () =>
     this.setState({
@@ -210,4 +209,4 @@ class Home extends React.Component {
   }
 }
 
-export default withAuthSync(Home);
+export default Listing;

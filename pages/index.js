@@ -18,7 +18,7 @@ class Home extends React.Component {
 
               <img src="/static/booking_form.png" className="booking-form" />
 
-              <Link href="/listing">
+              <Link href="/listings">
                 <a className="btn btn-primary">Show listings</a>
               </Link>
             </div>

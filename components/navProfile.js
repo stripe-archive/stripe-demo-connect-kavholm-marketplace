@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import {logout, auth} from '../utils/auth';
+import {logout} from '../utils/auth';
 
 class NavProfile extends React.Component {
   constructor(props) {

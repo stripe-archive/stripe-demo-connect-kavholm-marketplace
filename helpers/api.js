@@ -4,6 +4,8 @@ class Client {
   constructor() {
     this.token = '<fake>';
     this.context = null;
+    this.protocol = 'http:';
+    this.port = null;
   }
 
   setToken(token) {
@@ -18,7 +20,9 @@ class Client {
 
   detectContext() {
     if (process.browser) {
-      this.host = window.location.host;
+      this.host = window.location.hostname;
+      this.protocol = window.location.protocol;
+      this.port = window.location.port;
     } else {
       if (this.context && this.context.req) {
         this.host = this.context.req.headers.host;
@@ -61,8 +65,7 @@ class Client {
   }
 
   getBaseUrl() {
-    let protocol = 'http';
-    return `${protocol}://${this.host}`;
+    return `${this.protocol}//${this.host}${this.port ? ':' + this.port : ''}`;
   }
 }
 

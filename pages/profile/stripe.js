@@ -45,7 +45,11 @@ class ProfileStripe extends React.Component {
     let signUpLink = '/api/stripe/connect';
 
     return (
-      <Layout width="full" isAuthenticated={this.props.isAuthenticated}>
+      <Layout
+        width="full"
+        isAuthenticated={this.props.isAuthenticated}
+        userProfile={this.props.userProfile}
+      >
         <div className="content">
           <div className="container">
             <div className="row">

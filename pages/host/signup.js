@@ -10,6 +10,7 @@ class Signup extends React.Component {
       <Layout
         width="full"
         isAuthenticated={this.props.isAuthenticated}
+        userProfile={this.props.userProfile}
         title="Host signup"
       >
         <h1>Host signup</h1>

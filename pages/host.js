@@ -8,7 +8,11 @@ class Signup extends React.Component {
     let signUpLink = '/api/signup/stripe';
 
     return (
-      <Layout width="full" isAuthenticated={this.props.isAuthenticated}>
+      <Layout
+        width="full"
+        isAuthenticated={this.props.isAuthenticated}
+        userProfile={this.props.userProfile}
+      >
         <div className="content">
           <div className="row">
             <div className="col-12">

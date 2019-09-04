@@ -1,5 +1,4 @@
 import React from 'react';
-import getHost from '../utils/get-host';
 import {redirect} from '../utils/redirect';
 
 import Layout from '../components/layout';
@@ -13,20 +12,24 @@ async function getProfile() {
 class Dashboard extends React.Component {
   constructor(props) {
     super();
-    console.log('props', props);
   }
 
   static async getInitialProps(context) {
     API.setContext(context);
 
-    // if (!token) {
-    //   redirect('/login', context);
-    // }
+    console.log('Dashboard.getInitialProps');
 
     let userProfile = await getProfile();
     return {
       profile: userProfile,
     };
+  }
+
+  componentDidMount() {
+    // TODO: Move this to a server side check
+    if (!this.props.isAuthenticated) {
+      redirect('/login');
+    }
   }
 
   render() {
@@ -45,13 +48,8 @@ class Dashboard extends React.Component {
                 <img src={avatarUrl} height="66" className="mr-3" />
                 <div className="media-body">
                   <div className="user-details-body align-middle">
-                    <h5 className="mt-0">
-                      {this.props.token}
-                      {profile && profile.email}
-                    </h5>
-                    <p className="text-secondary">
-                      {profile && profile.country}
-                    </p>
+                    <h5 className="mt-0">{profile && profile.fullName}</h5>
+                    <p className="text-secondary">{profile && profile.email}</p>
                   </div>
                 </div>
               </div>

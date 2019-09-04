@@ -1,79 +1,53 @@
 import React from 'react';
-import Router from 'next/router';
-
-import nextCookie from 'next-cookies';
-import fetch from 'isomorphic-unfetch';
-import {withAuthSync} from '../utils/auth';
 import getHost from '../utils/get-host';
 import {redirect} from '../utils/redirect';
 
 import Layout from '../components/layout';
+import API from '../helpers/api';
 
-async function getProfile(token, context) {
+async function getProfile(token) {
   console.log('Dashboard.getProfile');
-
-  try {
-    const apiUrl = getHost(context.req) + '/api/profile';
-    const response = await fetch(apiUrl, {
-      credentials: 'include',
-      headers: {
-        Authorization: JSON.stringify({token}),
-      },
-    });
-
-    if (response.ok) {
-      return await response.json();
-    } else {
-      console.log('Dashboard.getProfile.error', response);
-    }
-  } catch (error) {
-    console.log('dashboard.getprofile.error', error);
-  }
+  return API.makeRequest(token, 'get', '/api/profile');
 }
 
 async function getStripeAccountLink(token, context) {
   console.log('Dashboard.getStripeAccountLink');
-
-  try {
-    const apiUrl = getHost(context.req) + '/api/payouts/link';
-    const response = await fetch(apiUrl, {
-      credentials: 'include',
-      headers: {
-        Authorization: JSON.stringify({token}),
-      },
-    });
-
-    if (response.ok) {
-      return await response.json();
-    } else {
-      console.log('Dashboard.getStripeAccountLink.error', response);
-    }
-  } catch (error) {
-    console.log('dashboard.getStripeAccountLink.error', error);
-  }
+  return API.makeRequest('get', this.props.token, '/api/payouts/link');
 }
 
 class Dashboard extends React.Component {
-  static async getInitialProps(context) {
-    const {token} = nextCookie(context);
+  constructor(props) {
+    super();
+    console.log('props', props);
+  }
 
-    if (!token) {
-      redirect('/login', context);
-    }
+  // static async getInitialProps(context) {
+  //   let token = '';
 
-    let userProfile = await getProfile(token, context);
-    let stripeAccountLink = await getStripeAccountLink(token, context);
+  //   console.log('Dashboard.context', context);
+  //   // if (!token) {
+  //   //   redirect('/login', context);
+  //   // }
 
-    return {
+  //   // let stripeAccountLink = await getStripeAccountLink(token, context);
+
+  //   return {
+  //     profile: userProfile,
+  //   };
+  // }
+
+  async componentWillMount() {
+    let token = this.props.token;
+    let userProfile = await getProfile(token);
+
+    this.setState({
       profile: userProfile,
-      stripeAccountLink: stripeAccountLink,
-    };
+    });
   }
 
   render() {
-    let avatarUrl = this.props.profile
-      ? this.props.profile.avatar
-      : '/static/avatar.png';
+    let profile = this.state ? this.state.profile : {};
+    let avatarUrl = profile ? profile.avatar : '/static/avatar.png';
 
     return (
       <Layout isAuthenticated={this.props.isAuthenticated}>
@@ -84,9 +58,12 @@ class Dashboard extends React.Component {
                 <img src={avatarUrl} height="66" className="mr-3" />
                 <div className="media-body">
                   <div className="user-details-body align-middle">
-                    <h5 className="mt-0">{this.props.profile.email}</h5>
+                    <h5 className="mt-0">
+                      {this.props.token}
+                      {profile && profile.email}
+                    </h5>
                     <p className="text-secondary">
-                      {this.props.profile.country}
+                      {profile && profile.country}
                     </p>
                   </div>
                 </div>
@@ -136,7 +113,7 @@ class Dashboard extends React.Component {
 
           <h5>Profile details:</h5>
           <pre className="profile-details bg-light">
-            <code>{JSON.stringify(this.props.profile, null, 2)}</code>
+            <code>{JSON.stringify(profile, null, 2)}</code>
           </pre>
 
           <h5>AccountLink details:</h5>
@@ -219,4 +196,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default withAuthSync(Dashboard);
+export default Dashboard;

@@ -8,6 +8,7 @@ const Layout = (props) => (
     <Nav
       isAuthenticated={props.isAuthenticated}
       userProfile={props.userProfile}
+      width={props.width}
     />
     <div
       className={

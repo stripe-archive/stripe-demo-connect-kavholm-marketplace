@@ -31,7 +31,10 @@ class NavProfile extends React.Component {
           >
             <img src={avatarUrl} height="42" className="avatar" />
           </a>
-          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div
+            className="dropdown-menu dropdown-menu-right"
+            aria-labelledby="navbarDropdown"
+          >
             <Link href="/dashboard">
               <a className="dropdown-item">Dashboard</a>
             </Link>

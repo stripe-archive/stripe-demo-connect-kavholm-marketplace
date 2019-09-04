@@ -40,7 +40,7 @@ class Home extends React.Component {
             object-fit: cover;
             vertical-align: bottom;
 
-            background: url(https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3153&q=80)
+            background: url(https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80)
               no-repeat;
             background-size: cover;
             background-position: center center;
@@ -49,7 +49,7 @@ class Home extends React.Component {
           .popover {
             position: absolute;
             top: 100px;
-            left: 100px;
+            left: 50px;
             padding: 40px;
 
             width: 500px;

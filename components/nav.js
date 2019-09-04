@@ -9,8 +9,13 @@ class Nav extends React.Component {
   }
 
   render() {
+    let className =
+      'app ' + this.props.width && this.props.width == 'full'
+        ? 'container-fluid nav-fullwidth'
+        : 'container';
+
     return (
-      <div className="container">
+      <div className={className}>
         <nav className="navbar navbar-fixed navbar-expand-lg navbar-light">
           <ul className="navbar-nav mr-auto">
             <li className="navitem">
@@ -28,9 +33,14 @@ class Nav extends React.Component {
           />
 
           <style jsx>{`
+            :global(.nav-fullwidth) {
+              padding-left: 50px;
+            }
+
             .navbar {
               margin: 30px 0;
               padding: 0;
+              height: 45px;
             }
 
             .navbar-brand {

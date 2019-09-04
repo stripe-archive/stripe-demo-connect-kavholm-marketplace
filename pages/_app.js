@@ -9,7 +9,7 @@ export default class KavholmApp extends App {
     user: null,
   };
 
-  static async getInitialProps(appContext) {
+  static async getAuthenticationState(appContext) {
     let token = '';
 
     if (appContext && appContext.ctx) {
@@ -17,20 +17,41 @@ export default class KavholmApp extends App {
     }
 
     const isAuthenticated = token !== undefined;
-    let appProps = await App.getInitialProps(appContext);
 
-    let props = {...appProps, token, isAuthenticated};
-    // console.log('KavholmApp.getInitialProps', props);
+    return {
+      token,
+      isAuthenticated,
+    };
+  }
+
+  static async getInitialProps(appContext) {
+    let appProps = await App.getInitialProps(appContext);
+    let {token, isAuthenticated} = await this.getAuthenticationState(
+      appContext,
+    );
+
+    API.setToken(token);
+    API.setContext(appContext.ctx);
+    let userProfile = await API.makeRequest('get', '/api/profile');
+
+    let props = {...appProps, token, isAuthenticated, userProfile};
+    console.log('KavholmApp.getInitialProps', props);
 
     return props;
   }
 
   render() {
-    const {Component, pageProps, token, isAuthenticated} = this.props;
+    const {
+      Component,
+      pageProps,
+      token,
+      isAuthenticated,
+      userProfile,
+    } = this.props;
 
     // console.log('KavholmApp.render', this.props);
 
-    let renderProps = {...pageProps, token, isAuthenticated};
+    let renderProps = {...pageProps, token, isAuthenticated, userProfile};
 
     return (
       <Container>

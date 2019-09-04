@@ -25,6 +25,10 @@ const Layout = (props) => (
         font-size: 16px;
       }
 
+      :global(.btn-primary) {
+        background: #0055ff;
+      }
+
       .app {
         overflow: hidden;
       }

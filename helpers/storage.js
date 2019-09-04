@@ -5,7 +5,7 @@ const FileSync = require('lowdb/adapters/FileSync');
 
 class Storage {
   constructor() {
-    this.path = path.resolve('db', 'kavholm.json');
+    this.path = path.resolve('./', 'db', 'kavholm.json');
 
     const adapter = new FileSync(this.path);
     this.db = low(adapter);

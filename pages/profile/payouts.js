@@ -10,13 +10,8 @@ class ProfilePayouts extends React.Component {
   }
 
   static async getInitialProps(context) {
-    API.setContext(context);
-    console.log('ProfilePayouts.getInitialProps');
-
-    let userProfile = await API.makeRequest('get', '/api/profile');
-
     return {
-      profile: userProfile,
+      profile: await API.makeRequest('get', '/api/profile'),
     };
   }
 

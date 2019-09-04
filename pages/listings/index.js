@@ -55,17 +55,12 @@ class Listings extends React.Component {
   }
 
   static async getInitialProps(context) {
-    API.setContext(context);
-
     return {
       listings: await API.makeRequest('get', '/api/listings'),
     };
   }
 
   render() {
-    let profile = this.props ? this.props.profile : {};
-    let avatarUrl = profile ? profile.avatar : '/static/avatar.png';
-
     return (
       <Layout
         isAuthenticated={this.props.isAuthenticated}

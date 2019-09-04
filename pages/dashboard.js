@@ -15,10 +15,6 @@ class Dashboard extends React.Component {
   }
 
   static async getInitialProps(context) {
-    API.setContext(context);
-
-    console.log('Dashboard.getInitialProps');
-
     let userProfile = await getProfile();
 
     // Redirect to /profile/payouts to setup payouts.

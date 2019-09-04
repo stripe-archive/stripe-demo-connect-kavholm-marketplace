@@ -10,7 +10,6 @@ class Profile extends React.Component {
   }
 
   static async getInitialProps(context) {
-    API.setContext(context);
     return {
       profile: await API.makeRequest('get', '/api/profile'),
     };

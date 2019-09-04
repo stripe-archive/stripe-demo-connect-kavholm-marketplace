@@ -20,6 +20,11 @@ class ProfilePayouts extends React.Component {
     };
   }
 
+  async handleDashboardLink() {
+    let req = await API.makeRequest('get', '/api/payouts/link');
+    window.open(req.url);
+  }
+
   render() {
     let hasPayoutSetup =
       this.props.profile.stripe != null &&
@@ -38,7 +43,13 @@ class ProfilePayouts extends React.Component {
             <div className="row">
               <div className="wrapper">
                 {hasPayoutSetup ? (
-                  'You already setup your Stripe account. Hurray!'
+                  <a
+                    href="#"
+                    className="btn btn-primary"
+                    onClick={this.handleDashboardLink}
+                  >
+                    Go to Stripe Dashboard
+                  </a>
                 ) : (
                   <PayoutSetup />
                 )}

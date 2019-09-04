@@ -9,8 +9,8 @@ class SignupForm extends Component {
     super(props);
 
     this.state = {
-      fullname: 'Kenneth Auchenberg',
-      email: 'kenneth@auchenberg.dk',
+      fullname: 'demoHost1',
+      email: 'auchenberg+demoHost1@stripe.com',
       password: 'test',
       error: '',
     };

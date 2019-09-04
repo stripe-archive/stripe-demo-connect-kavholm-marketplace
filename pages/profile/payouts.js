@@ -21,7 +21,11 @@ class ProfilePayouts extends React.Component {
   }
 
   render() {
-    let hasPayoutSetup = this.props.profile.stripe != null;
+    let hasPayoutSetup =
+      this.props.profile.stripe != null &&
+      this.props.profile.stripe.stripeUserId;
+
+    API.setToken(this.props.token);
 
     return (
       <Layout

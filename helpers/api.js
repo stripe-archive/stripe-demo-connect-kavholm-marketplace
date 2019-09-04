@@ -7,10 +7,12 @@ class Client {
   }
 
   setToken(token) {
+    console.log('APIclient.setToken');
     this.token = token;
   }
 
   setContext(context) {
+    console.log('APIclient.setContext');
     this.context = context;
   }
 

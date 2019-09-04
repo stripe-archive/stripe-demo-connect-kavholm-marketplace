@@ -6,9 +6,9 @@ function redirect(url, context) {
   if (typeof window !== 'undefined') {
     console.log('redirect.redirect.client');
     Router.push(url);
-  } else {
+  } else if (context) {
     console.log('redirect.redirect.server');
-    // context.res.writeHead(302, {Location: url}).end();
+    context.res.writeHead(302, {Location: url}).end();
   }
 }
 

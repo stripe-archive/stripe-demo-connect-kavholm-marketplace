@@ -4,7 +4,94 @@
       "userId": "Igj-hMfQp",
       "fullName": "Kenneth Auchenberg",
       "email": "kenneth@auchenberg.dk",
-      "password": "$2b$10$7lkRkQfWiiBX8t7B9HGffuuNUd7wE8PipGCq3Bqh4lFbqNfvc9Ynu"
+      "password": "$2b$10$7lkRkQfWiiBX8t7B9HGffuuNUd7wE8PipGCq3Bqh4lFbqNfvc9Ynu",
+      "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400",
+      "stripe": {
+        "stripeUserId": "acct_1FF37HDI58Lugws9"
+      }
+    },
+    {
+      "userId": "IYxzqecwL",
+      "fullName": "Kenneth Auchenberg",
+      "email": "kenneth@auchenberg.dk",
+      "password": "$2b$10$/RYsRovrfkS.YlpoRuIlMed.fqi4s.6//OuFwLlJUejwPJlN657ga"
+    },
+    {
+      "userId": "5vH_-491a",
+      "fullName": "Kenneth Auchenberg",
+      "email": "kenneth@auchenberg.dk",
+      "password": "$2b$10$iMMCCRIOLgdBPK1jouAgd.Pzy2DJugm0E8fYnRyVmwNkWZ4tUNgRy"
+    },
+    {
+      "userId": "ueReZujLl",
+      "fullName": "Kenneth Auchenberg",
+      "email": "kenneth@auchenberg.ie",
+      "password": "$2b$10$eDo/9E4Fm9uzLPqfpUVNsOVB8vgiR7qFwdIcX/mtY6.hG1uzLqs22"
+    },
+    {
+      "userId": "6BuJj5NWF",
+      "fullName": "Kenneth Auchenberg",
+      "email": "kenneth@auchenberg.dk",
+      "password": "$2b$10$TyU41LlxCTLyctElX3fjPe/8YYO63bH9irwad/xrY5LAL.qnkqCaa"
+    },
+    {
+      "userId": "3K3ppt8mj",
+      "fullName": "demoHost1",
+      "email": "auchenberg+demohost1@stripe.com",
+      "password": "$2b$10$3dAzmr0hh2dwe0thFPP.ZegArsXqFqTqscph2120UxzpZA0axKmkW",
+      "stripe": {
+        "stripeUserId": "acct_1FF3gtE28Dxr0eVV"
+      }
+    }
+  ],
+  "listings": [
+    {
+      "id": "1",
+      "title": "ES BEC D'AGUILA, MENORCA, SPAIN",
+      "source": "https://www.boutique-homes.com/vacation-rentals/europe/spain/es-bec-daguila-menorca-balearic-islands-spain/",
+      "image": "https://www.boutique-homes.com/wp-content/uploads/luxury_villa_menorca_002.jpg"
+    },
+    {
+      "id": "2",
+      "title": "CASA DI MONTI, PUGLIA, ITALY",
+      "source": "https://www.boutique-homes.com/vacation-rentals/europe/italy/casa-di-monti-puglia-italy/",
+      "image": "https://www.boutique-homes.com/wp-content/uploads/vacation-rentals/none/virtual/casa-di-monti-puglia-italy/holiday_home_italy_thum-460x308.jpg"
+    },
+    {
+      "id": "3",
+      "title": "VILLA KAPARI, MILOS, GREECE",
+      "source": "https://www.boutique-homes.com/vacation-rentals/europe/greece/villa-kapari-milos-greece/",
+      "image": "https://www.boutique-homes.com/wp-content/uploads/vacation-rentals/europe/greece/villa-kapari-milos-greece/villa_for_rent_greece_014.jpg"
+    },
+    {
+      "id": "4",
+      "title": "CASA EM AFIFE, AFIFE, PORTUGAL",
+      "source": "https://www.boutique-homes.com/vacation-rentals/europe/portugal/casa-em-afife-afife-portugal/",
+      "image": "https://www.boutique-homes.com/wp-content/uploads/vacation-rentals/europe/portugal/casa-em-afife-afife-portugal/holiday_rental_portugal_004.jpg"
+    },
+    {
+      "id": "5",
+      "title": "CASA EM AFIFE, AFIFE, PORTUGAL",
+      "source": "https://www.boutique-homes.com/vacation-rentals/europe/portugal/casa-em-afife-afife-portugal/",
+      "image": "https://www.boutique-homes.com/wp-content/uploads/vacation-rentals/europe/portugal/casa-em-afife-afife-portugal/holiday_rental_portugal_004.jpg"
+    },
+    {
+      "id": "6",
+      "title": "RHODES MONOCABIN RHODES, GREECE",
+      "source": "https://www.boutique-homes.com/vacation-rentals/europe/greece/rhodes-monocabin-rhodes-greece/",
+      "image": "https://www.boutique-homes.com/wp-content/uploads/vacation-rentals/none/virtual/monocabin-rhodes-greece/vacation_home_rental_rhodes_04.jpg"
+    },
+    {
+      "id": 7,
+      "title": "PORTEOUS' STUDIO, EDINBURGH, SCOTLAND",
+      "source": "https://www.boutique-homes.com/vacation-rentals/europe/united-kingdom/porteous-studio-edinburgh-scotland/",
+      "image": "https://www.boutique-homes.com/wp-content/uploads/vacation-rentals/none/virtual/monocabin-rhodes-greece/vacation_home_rental_rhodes_04.jpg"
+    },
+    {
+      "id": 8,
+      "title": "HILLSIDE DR. TOPANGA, CALIFORNIA",
+      "source": "https://www.boutique-homes.com/vacation-rentals/americas/united-states/hillside-drive-topanga-ca/",
+      "image": "https://www.boutique-homes.com/wp-content/uploads/vacation-rentals/americas/united-states/hillside-drive-topanga-ca/holiday_home_topanga_63.jpg"
     }
   ]
 }

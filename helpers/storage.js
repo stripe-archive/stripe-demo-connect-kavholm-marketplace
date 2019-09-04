@@ -11,7 +11,7 @@ class Storage {
     this.db = low(adapter);
 
     // Set some defaults (required if your JSON file is empty)
-    this.db.defaults({users: []}).write();
+    this.db.defaults({users: [], listings: []}).write();
 
     console.log('storage.path', this.path);
   }

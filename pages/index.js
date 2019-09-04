@@ -4,20 +4,7 @@ import Modal from '../components/modal';
 import Layout from '../components/layout';
 
 class Home extends React.Component {
-  state = {isShowingModal: false, isCompleted: false};
-  handleButtonClick = () =>
-    this.setState({
-      isCompleted: false,
-      isShowingModal: !this.state.isShowingModal,
-    });
-  openVerifyFlow = () => {
-    window.open('https://gelato.corp.stripe.com/start/?token=LYDxssvZX217');
-    window.setTimeout(() => this.setState({isCompleted: true}), 1000);
-  };
   render() {
-    console.log('Home.props', this.props);
-
-    const {isShowingModal, isCompleted} = this.state;
     return (
       <Layout
         width="full"

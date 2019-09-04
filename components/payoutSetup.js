@@ -1,4 +1,5 @@
 import {Component} from 'react';
+import API from '../helpers/api';
 
 class PayoutSetup extends Component {
   constructor(props) {
@@ -8,26 +9,7 @@ class PayoutSetup extends Component {
   }
 
   async getRedirectInfo() {
-    try {
-      const token = this.props.token;
-      const apiUrl = '/api/stripe/connect';
-      const response = await fetch(apiUrl, {
-        credentials: 'include',
-        headers: {
-          Authorization: JSON.stringify({token}),
-        },
-      });
-
-      if (response.ok) {
-        return await response.json();
-      } else {
-        console.log('ProfileStripe.getRedirectInfo.error', response);
-        return Promise.reject();
-      }
-    } catch (error) {
-      console.log('ProfileStripe.getRedirectInfo.error', error);
-      return Promise.reject();
-    }
+    return API.makeRequest('post', `/api/payouts/stripe`);
   }
 
   async handleConnect() {

@@ -2,6 +2,7 @@
 
 import {Component} from 'react';
 import {handleLogin} from '../utils/auth';
+import API from '../helpers/api';
 
 class SignupForm extends Component {
   constructor(props) {
@@ -30,33 +31,16 @@ class SignupForm extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    const {fullname, email, password} = this.state;
-
-    const url = `/api/signup/local`;
 
     try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(this.state),
-      });
-      if (response.ok) {
-        const {token} = await response.json();
-
-        console.log('SIGNUP token', token);
-        handleLogin(token);
-      } else {
-        console.log('Signup failed.');
-        let error = new Error(response.statusText);
-        error.response = response;
-        return Promise.reject(error);
-      }
-    } catch (error) {
-      console.error(
-        'You have an error in your code or there are Network issues.',
-        error,
+      let token = await API.makeRequest(
+        'post',
+        `/api/signup/local`,
+        this.state,
       );
-      throw new Error(error);
+      handleLogin(token);
+    } catch (err) {
+      console.log('Signup failed.', err);
     }
   }
 

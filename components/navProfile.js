@@ -13,6 +13,9 @@ class NavProfile extends React.Component {
 
   render() {
     let items;
+    let avatarUrl = this.props.userProfile
+      ? this.props.userProfile.avatar
+      : '/static/avatar.png';
 
     if (this.props.isAuthenticated) {
       items = (
@@ -26,7 +29,7 @@ class NavProfile extends React.Component {
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <img src="/static/avatar.png" height="42" />
+            <img src={avatarUrl} height="42" />
           </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
             <Link href="/dashboard">

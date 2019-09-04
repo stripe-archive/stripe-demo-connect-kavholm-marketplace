@@ -29,7 +29,7 @@ class NavProfile extends React.Component {
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <img src={avatarUrl} height="42" />
+            <img src={avatarUrl} height="42" className="avatar" />
           </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
             <Link href="/dashboard">
@@ -64,7 +64,16 @@ class NavProfile extends React.Component {
       );
     }
 
-    return <ul className="navbar-nav flex-row">{items}</ul>;
+    return (
+      <ul className="navbar-nav flex-row">
+        {items}
+        <style jsx>{`
+          :global(.avatar) {
+            border-radius: 44px;
+          }
+        `}</style>
+      </ul>
+    );
   }
 }
 export default NavProfile;

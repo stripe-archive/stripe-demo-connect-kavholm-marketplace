@@ -51,7 +51,7 @@ class Dashboard extends React.Component {
           <div className="row">
             <div className="col-12">
               <div className="media user-details">
-                <img src={avatarUrl} height="66" className="mr-3" />
+                <img src={avatarUrl} height="66" className="mr-3 avatar" />
                 <div className="media-body">
                   <div className="user-details-body align-middle">
                     <h5 className="mt-0">{profile && profile.fullName}</h5>
@@ -105,6 +105,10 @@ class Dashboard extends React.Component {
             padding: 20px;
             overflow: auto;
             max-height: 700px;
+          }
+
+          .user-details .avatar {
+            border-radius: 66px;
           }
 
           .user-details {

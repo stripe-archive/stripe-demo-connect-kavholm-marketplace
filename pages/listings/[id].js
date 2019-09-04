@@ -1,28 +1,36 @@
 import React from 'react';
-import Link from 'next/link';
 import Modal from '../../components/modal';
-import Head from '../../components/head';
-import Nav from '../../components/nav';
+import Link from 'next/link';
+
+import Layout from '../../components/layout';
+import API from '../../helpers/api';
 
 class Listing extends React.Component {
-  state = {isShowingModal: false, isCompleted: false};
-  handleButtonClick = () =>
+  state = {
+    isShowingModal: false,
+    isCompleted: false,
+  };
+
+  handleButtonClick = () => {
     this.setState({
       isCompleted: false,
       isShowingModal: !this.state.isShowingModal,
     });
+  };
+
   openVerifyFlow = () => {
     window.open('https://gelato.corp.stripe.com/start/?token=LYDxssvZX217');
     window.setTimeout(() => this.setState({isCompleted: true}), 1000);
   };
+
   render() {
     const {isShowingModal, isCompleted} = this.state;
     return (
-      <div>
-        <Head title="Home" />
-        <Nav isAuthenticated={this.props.isAuthenticated} />
-
-        <div className="container">
+      <Layout
+        isAuthenticated={this.props.isAuthenticated}
+        userProfile={this.props.userProfile}
+      >
+        <div className="listings">
           <Modal
             isShown={isShowingModal}
             toggleModal={this.handleButtonClick}
@@ -83,128 +91,129 @@ class Listing extends React.Component {
               </div>
             </div>
           </div>
+
+          <style jsx>{`
+            .image-footer {
+              padding-top: 12px;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              font-size: 14px;
+            }
+            .widgets {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: flex-end;
+              width: 50%;
+            }
+            .widgets div {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: flex-end;
+            }
+            .widgets img {
+              padding-right: 5px;
+            }
+            p:first-child {
+              font-weight: bold;
+              text-decoration: underline;
+            }
+            :global(button) {
+              background-color: #0055ff;
+              color: white;
+              width: 100%;
+              height: 44px;
+              font-weight: 500;
+              font-size: 17px;
+              border-radius: 4px;
+              border: 0;
+            }
+
+            :global(button:hover) {
+              background-color: #0242c3;
+              cursor: pointer;
+            }
+
+            .bookingInfo {
+              font-size: 17px;
+              color: #939393;
+              letter-spacing: 0.3px;
+            }
+            .priceInfo {
+              font-size: 14px;
+              letter-spacing: -0.15px;
+              margin-top: 30px;
+              margin-bottom: 30px;
+            }
+            .priceInfo .price {
+              font-size: 24px;
+              font-weight: 500;
+              color: #373737;
+            }
+            .priceInfo img {
+              padding-left: 30px;
+            }
+            .lineItems {
+              list-style-type: none;
+              padding: 0;
+              font-size: 14px;
+              color: #666666;
+              margin-top: 20px;
+              margin-bottom: 20px;
+            }
+            .lineItemsTotal {
+              color: #000000;
+              font-size: 17px;
+              font-weight: 500;
+            }
+
+            .lineItems li {
+              padding-top: 2px;
+              padding-bottom: 2px;
+              display: flex;
+              justify-content: space-between;
+            }
+            hr {
+              border: 0;
+              border-top: 1px solid #d6d6d6;
+            }
+            .host {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              margin-top: 15px;
+            }
+            .host img {
+              margin-right: 15px;
+            }
+            .host p {
+              font-size: 14px;
+              letter-spacing: -0.1px;
+              width: 240px;
+              color: #676767;
+            }
+            .content {
+              color: #676767;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+            }
+            h1 {
+              max-width: 300px;
+              color: #373737;
+              font-weight: 600;
+            }
+            .pane-images {
+              padding-right: 120px;
+            }
+            .pane-info {
+              width: 375px;
+            }
+          `}</style>
         </div>
-        <style jsx>{`
-          .image-footer {
-            padding-top: 12px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            font-size: 14px;
-          }
-          .widgets {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: flex-end;
-            width: 50%;
-          }
-          .widgets div {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: flex-end;
-          }
-          .widgets img {
-            padding-right: 5px;
-          }
-          p:first-child {
-            font-weight: bold;
-            text-decoration: underline;
-          }
-          :global(button) {
-            background-color: #0055ff;
-            color: white;
-            width: 100%;
-            height: 44px;
-            font-weight: 500;
-            font-size: 17px;
-            border-radius: 4px;
-            border: 0;
-          }
-
-          :global(button:hover) {
-            background-color: #0242c3;
-            cursor: pointer;
-          }
-
-          .bookingInfo {
-            font-size: 17px;
-            color: #939393;
-            letter-spacing: 0.3px;
-          }
-          .priceInfo {
-            font-size: 14px;
-            letter-spacing: -0.15px;
-            margin-top: 30px;
-            margin-bottom: 30px;
-          }
-          .priceInfo .price {
-            font-size: 24px;
-            font-weight: 500;
-            color: #373737;
-          }
-          .priceInfo img {
-            padding-left: 30px;
-          }
-          .lineItems {
-            list-style-type: none;
-            padding: 0;
-            font-size: 14px;
-            color: #666666;
-            margin-top: 20px;
-            margin-bottom: 20px;
-          }
-          .lineItemsTotal {
-            color: #000000;
-            font-size: 17px;
-            font-weight: 500;
-          }
-
-          .lineItems li {
-            padding-top: 2px;
-            padding-bottom: 2px;
-            display: flex;
-            justify-content: space-between;
-          }
-          hr {
-            border: 0;
-            border-top: 1px solid #d6d6d6;
-          }
-          .host {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin-top: 15px;
-          }
-          .host img {
-            margin-right: 15px;
-          }
-          .host p {
-            font-size: 14px;
-            letter-spacing: -0.1px;
-            width: 240px;
-            color: #676767;
-          }
-          .content {
-            color: #676767;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-          }
-          h1 {
-            max-width: 300px;
-            color: #373737;
-            font-weight: 600;
-          }
-          .pane-images {
-            padding-right: 120px;
-          }
-          .pane-info {
-            width: 375px;
-          }
-        `}</style>
-      </div>
+      </Layout>
     );
   }
 }

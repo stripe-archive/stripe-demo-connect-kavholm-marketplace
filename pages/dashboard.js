@@ -99,18 +99,6 @@ class Dashboard extends React.Component {
               </ul>
             </div>
           </div>
-
-          <hr className="bg-light" />
-
-          <h5>Profile details:</h5>
-          <pre className="profile-details bg-light">
-            <code>{JSON.stringify(profile, null, 2)}</code>
-          </pre>
-
-          <h5>AccountLink details:</h5>
-          <pre className="profile-details bg-light">
-            <code>{JSON.stringify(this.props.stripeAccountLink, null, 2)}</code>
-          </pre>
         </div>
         <style jsx>{`
           .profile-details {

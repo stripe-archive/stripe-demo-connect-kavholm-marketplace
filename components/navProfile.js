@@ -38,6 +38,9 @@ class NavProfile extends React.Component {
             <Link href="/profile/payouts">
               <a className="dropdown-item">Payouts</a>
             </Link>
+            <Link href="/profile">
+              <a className="dropdown-item">Profile</a>
+            </Link>
             <a className="dropdown-item" href="#" onClick={this.handleLogout}>
               Logout
             </a>

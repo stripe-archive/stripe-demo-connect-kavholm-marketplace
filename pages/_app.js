@@ -35,6 +35,11 @@ export default class KavholmApp extends App {
     API.setContext(appContext.ctx);
 
     let userProfile = await API.makeRequest('get', '/api/profile');
+
+    if (appContext.router) {
+      console.log(`${appContext.router.route}.getInitialProps`);
+    }
+
     let appProps = await App.getInitialProps(appContext);
 
     let props = {...appProps, token, isAuthenticated, userProfile};

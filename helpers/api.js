@@ -1,22 +1,43 @@
-import getHost from '../utils/get-host';
+import fetch from 'isomorphic-unfetch';
 
 class Client {
   constructor() {
-    this.token = '';
+    this.token = '<fake>';
+    this.context = null;
   }
 
-  async makeRequest(token, method, url, data) {
+  setToken(token) {
+    this.token = token;
+  }
+
+  setContext(context) {
+    this.context = context;
+  }
+
+  detectContext() {
+    if (process.browser) {
+      this.host = window.location.host;
+    } else {
+      if (this.context && this.context.req) {
+        this.host = this.context.req.headers.host;
+      }
+    }
+  }
+
+  async makeRequest(method, url, data) {
+    this.detectContext();
+
     let baseUrl = this.getBaseUrl();
     let requestUrl = baseUrl + url;
 
-    console.log('requestUrl', requestUrl);
-
+    console.log('APIclient.makeRequest.requestUrl', requestUrl);
     try {
       const response = await fetch(requestUrl, {
         credentials: 'include',
         headers: {
+          'Content-Type': 'application/json',
           Authorization: JSON.stringify({
-            token: token,
+            token: this.token,
           }),
         },
         method: method,
@@ -26,22 +47,19 @@ class Client {
       if (response.ok) {
         return await response.json();
       } else {
-        console.log('APIclient.makeRequest.error', response);
+        console.log(
+          'APIclient.makeRequest.response.notOkay',
+          response.statusText,
+        );
       }
-    } catch (error) {
-      console.log('APIclient.makeRequest.error', error);
+    } catch (err) {
+      console.log('APIclient.makeRequest.error', err);
     }
   }
 
-  getBaseUrl(req) {
-    console.log('process.browser', process.browser);
+  getBaseUrl() {
     let protocol = 'http';
-
-    return `${protocol}://${window.location.host}`;
-
-    // return process.browser
-    //   ?
-    //   : `${protocol}://${req.headers.host}`;
+    return `${protocol}://${this.host}`;
   }
 }
 

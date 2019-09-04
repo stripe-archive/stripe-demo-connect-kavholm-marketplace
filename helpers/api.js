@@ -27,6 +27,7 @@ class Client {
   async makeRequest(method, url, data) {
     this.detectContext();
 
+    let requestData = data || {};
     let baseUrl = this.getBaseUrl();
     let requestUrl = baseUrl + url;
 
@@ -35,13 +36,13 @@ class Client {
       const response = await fetch(requestUrl, {
         credentials: 'include',
         headers: {
-          'Content-Type': 'application/json',
+          'content-type': method == 'post' ? 'application/json' : '',
           Authorization: JSON.stringify({
             token: this.token,
           }),
         },
         method: method,
-        body: JSON.stringify(data),
+        body: method == 'post' ? JSON.stringify(requestData) : null,
       });
 
       if (response.ok) {

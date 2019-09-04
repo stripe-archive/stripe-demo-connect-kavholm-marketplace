@@ -5,7 +5,10 @@ import Nav from '../components/nav';
 const Layout = (props) => (
   <>
     <Head title={props.title || 'Home'} />
-    <Nav isAuthenticated={props.isAuthenticated} />
+    <Nav
+      isAuthenticated={props.isAuthenticated}
+      userProfile={props.userProfile}
+    />
     <div
       className={
         'app ' +

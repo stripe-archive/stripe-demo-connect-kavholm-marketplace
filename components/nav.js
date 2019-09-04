@@ -22,7 +22,10 @@ class Nav extends React.Component {
             </li>
           </ul>
 
-          <NavProfile isAuthenticated={this.props.isAuthenticated} />
+          <NavProfile
+            isAuthenticated={this.props.isAuthenticated}
+            userProfile={this.props.userProfile}
+          />
 
           <style jsx>{`
             .navbar {

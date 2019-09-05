@@ -23,7 +23,6 @@ class GcloudAdapter {
     // Creates a client
     this.storage = new Storage({
       projectId,
-      keyFilename,
     });
 
     this.bucket = this.storage.bucket(this.bucketName);
@@ -54,7 +53,6 @@ class GcloudAdapter {
 
   async write(data) {
     const contents = this.serialize(data);
-
     return this.file.save(contents, {
       // Support for HTTP requests made with `Accept-Encoding: gzip`
       gzip: true,

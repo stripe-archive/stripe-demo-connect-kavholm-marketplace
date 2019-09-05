@@ -1,5 +1,3 @@
-import {setupMaster} from 'cluster';
-
 var path = require('path');
 
 const low = require('lowdb');
@@ -8,21 +6,20 @@ const GcloudAdapter = require('./gcp_adaptor');
 
 class Storage {
   constructor() {
-    this.path = path.resolve('./', 'db', 'kavholm.json');
-    console.log('storage.path', this.path);
-
     this.setup();
   }
 
   async setup() {
     let adapter;
-    if (process.env.GAE_APPLICATION) {
-      adapter = new GcloudAdapter('kavholm.json', {
+    if (process.env.GOOGLE_CLOUD_PROJECT) {
+      let adapter = new GcloudAdapter('kavholm.json', {
         projectId: process.env.GOOGLE_CLOUD_PROJECT,
         keyFilename: 'kavholm.json',
-        bucketName: 'kavholm.appspot.com',
+        bucketName: 'kavholm',
       });
     } else {
+      console.log('storage.path', this.path);
+      this.path = path.resolve('./', 'db', 'kavholm.json');
       adapter = new FileSync(this.path);
     }
 

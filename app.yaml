@@ -1,0 +1,7 @@
+runtime: nodejs10
+
+# what follows will be optional in the future:
+service: kavholm-homes
+handlers:
+- url: /.*
+  script: auto

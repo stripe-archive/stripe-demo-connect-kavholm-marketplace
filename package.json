@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "gcp-build": "next build",
     "start": "next start -p $PORT"
   },
   "dependencies": {

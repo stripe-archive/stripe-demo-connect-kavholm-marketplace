@@ -118,5 +118,16 @@
       "source": "https://unsplash.com/photos/V7HWR5o9BeY",
       "image": "https://images.unsplash.com/photo-1539437829697-1b4ed5aebd19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80"
     }
+  ],
+  "bookings": [
+    {
+      "id": "1",
+      "listingId": "26",
+      "bookingUserId": "3K3ppt8mj",
+      "startDate": "09-05-2019",
+      "endDate": "09-05-2019",
+      "totalPrice": "1308",
+      "currency": "USD"
+    }
   ]
 }

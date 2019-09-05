@@ -12,7 +12,7 @@ class Storage {
   async setup() {
     let adapter;
     if (process.env.GOOGLE_CLOUD_PROJECT) {
-      let adapter = new GcloudAdapter('kavholm.json', {
+      adapter = new GcloudAdapter('kavholm.json', {
         projectId: process.env.GOOGLE_CLOUD_PROJECT,
         keyFilename: 'kavholm.json',
         bucketName: 'kavholm',

@@ -7,6 +7,7 @@
     "start": "next start -p $PORT"
   },
   "dependencies": {
+    "@google-cloud/storage": "^3.2.1",
     "babel-polyfill": "^6.26.0",
     "bcrypt": "^3.0.6",
     "gravatar": "^1.8.0",

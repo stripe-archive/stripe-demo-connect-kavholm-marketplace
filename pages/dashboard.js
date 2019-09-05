@@ -4,11 +4,6 @@ import {redirect} from '../utils/redirect';
 import Layout from '../components/layout';
 import API from '../helpers/api';
 
-async function getProfile() {
-  console.log('Dashboard.getProfile');
-  return API.makeRequest('get', '/api/profile');
-}
-
 function NewListingButton(props) {
   const target = React.createRef();
 
@@ -77,7 +72,7 @@ class Dashboard extends React.Component {
   }
 
   static async getInitialProps(context) {
-    let userProfile = await getProfile();
+    let userProfile = await API.makeRequest('get', '/api/profile');
 
     if (userProfile) {
       // Redirect to /profile/payouts to setup payouts.

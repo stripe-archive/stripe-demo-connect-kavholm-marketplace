@@ -7,11 +7,18 @@ class Storage {
   constructor() {
     this.path = path.resolve('./', 'db', 'kavholm.json');
 
+    let adapter;
+
     if (process.env.GAE_APPLICATION) {
-      this.path = 'gs://kavholm.appspot.com/kavholm.json';
+      adapter = new GcloudAdapter('db.json', {
+        projectId: process.env.GOOGLE_CLOUD_PROJECT,
+        keyFilename: 'kavholm.json',
+        bucketName: 'kavholm.appspot.com',
+      });
+    } else {
+      adapter = new FileSync(this.path);
     }
 
-    const adapter = new FileSync(this.path);
     this.db = low(adapter);
 
     // Set some defaults (required if your JSON file is empty)

@@ -7,6 +7,10 @@ class Storage {
   constructor() {
     this.path = path.resolve('./', 'db', 'kavholm.json');
 
+    if (process.env.GAE_APPLICATION) {
+      this.path = 'gs://kavholm.appspot.com/kavholm.json';
+    }
+
     const adapter = new FileSync(this.path);
     this.db = low(adapter);
 

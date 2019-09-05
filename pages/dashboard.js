@@ -3,85 +3,8 @@ import {redirect} from '../utils/redirect';
 
 import Layout from '../components/layout';
 import API from '../helpers/api';
-import Link from 'next/link';
-
-function ListingsList(props) {
-  const listings = props.listings;
-
-  if (listings.length < 4) {
-    while (listings.length < 4) {
-      listings.push({});
-    }
-  }
-
-  let listItems = [];
-
-  if (listings) {
-    listItems = listings.map((l) => (
-      <li className="listing-item" key={l.id}>
-        {l.id && (
-          <Link href={`/listings/` + l.id}>
-            <a>
-              <h3>{l.title}</h3>
-              {<img src={l.image} />}
-            </a>
-          </Link>
-        )}
-        <style jsx>{`
-          .listing-item {
-            height: 325px;
-            position: relative;
-
-            border: 0;
-            background: #f6f6f6;
-          }
-
-          .listing-item h3 {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            z-index: 2;
-
-            margin: 0;
-            padding: 0;
-
-            color: #fff;
-            font-size: 16px;
-            max-width: 50%;
-          }
-
-          .listing-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: bottom;
-            border: 0;
-            filter: brightness(0.8);
-          }
-        `}</style>
-      </li>
-    ));
-  }
-
-  return (
-    <ul className="listings-list">
-      {listItems}
-
-      <style jsx>{`
-        .listings-list {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          grid-gap: 30px;
-          grid-auto-rows: minmax(100px, auto);
-        }
-      `}</style>
-    </ul>
-  );
-}
+import ListingsBookingsList from '../components/bookingList';
+import DashboardListingsList from '../components/dashboardListingsList';
 
 function NewListingButton(props) {
   const target = React.createRef();
@@ -138,6 +61,7 @@ function NewListingButton(props) {
     </div>
   );
 }
+
 class Dashboard extends React.Component {
   constructor(props) {
     super();
@@ -146,6 +70,24 @@ class Dashboard extends React.Component {
   static async getInitialProps(context) {
     let userProfile = await API.makeRequest('get', '/api/profile');
     let userListings = await API.makeRequest('get', '/api/profile/listings');
+    let userBookings = [];
+
+    if (userListings.length) {
+      let listingBookings = await userListings.map(async (listing) => {
+        let bookings = await API.makeRequest(
+          'get',
+          `/api/bookings/listing?listingId=${listing.id}`,
+        );
+
+        return {
+          id: listing.id,
+          title: listing.title,
+          bookings: bookings,
+        };
+      });
+
+      userBookings = await Promise.all(listingBookings);
+    }
 
     if (userProfile) {
       // Redirect to /profile/payouts to setup payouts.
@@ -157,6 +99,7 @@ class Dashboard extends React.Component {
     return {
       profile: userProfile,
       userListings: userListings,
+      userBookings: userBookings,
     };
   }
 
@@ -207,17 +150,12 @@ class Dashboard extends React.Component {
                 </div>
               </div>
 
-              <ListingsList listings={this.props.userListings} />
+              <DashboardListingsList list={this.props.userListings} />
             </div>
 
             <div className="col-4">
-              <h4>Booking requests</h4>
-
-              <ul className="booking-list">
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
+              <h4>Recent bookings</h4>
+              <ListingsBookingsList list={this.props.userBookings} />
             </div>
           </div>
         </div>
@@ -256,20 +194,6 @@ class Dashboard extends React.Component {
           .dashboard h4 {
             font-size: 18px;
             margin-bottom: 30px;
-          }
-
-          .booking-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-          }
-
-          .booking-list li {
-            height: 30px;
-
-            border: 0;
-            margin-bottom: 30px;
-            background: #f6f6f6;
           }
         `}</style>
       </Layout>

@@ -1,7 +1,6 @@
 import fetch from 'isomorphic-unfetch';
 import config from '../../helpers/stripe';
 import storage from '../../helpers/storage';
-import gravatar from 'gravatar';
 
 import {validateToken} from '../../utils/authToken';
 const stripe = require('stripe')(config.stripe.secretKey);
@@ -24,9 +23,8 @@ export default async (req, res) => {
       let userAccount = storage
         .get('users')
         .find({userId: userId})
+        .pick('userId', 'avatar', 'fullName', 'email', 'stripe')
         .value();
-
-      userAccount.avatar = gravatar.url(userAccount.email, {s: '400'});
 
       return res.status(200).json(userAccount);
     } catch (err) {

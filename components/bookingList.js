@@ -83,17 +83,15 @@ function ListingsBookingsList(props) {
   if (list) {
     listItems = list.map((l) => (
       <div className="booking-list-sub" key={l.title}>
-        <h6>{l.title}</h6>
+        <h6 className="title">{l.title}</h6>
 
         <BookingsList list={l.bookings} />
 
         <style jsx>{`
-          .booking-list li {
-            height: 30px;
-
-            border: 0;
-            margin-bottom: 30px;
-            background: #f6f6f6;
+          .title {
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 20px;
           }
         `}</style>
       </div>

@@ -11,14 +11,21 @@ function BookingsList(props) {
 
   if (list) {
     listItems = list.map((i) => (
-      <li className="booking-list-item" key={i.id}>
-        <img src="" height="30" />
-        <div className="booking-date">
-          {i.startDate} - {i.endDate}
+      <li className="booking-list-item media" key={i.id}>
+        <img src={i.user.avatar} height="30" className="mr-3 avatar" />
+        <div className="media-body">
+          <div className="align-middle">
+            <p className="booking-date">
+              {i.startDate} - {i.endDate}
+            </p>
+            <p>
+              <strong>{i.user.fullName}</strong>
+            </p>
+          </div>
         </div>
-        <strong>Booking User Name</strong>
-        <div className="verified">✔ Verified</div>
-
+        <div className="align-middle">
+          <div className="verified">✔ Verified</div>
+        </div>
         <style jsx>{`
           .booking-list-item {
             padding: 10px;
@@ -29,8 +36,15 @@ function BookingsList(props) {
             border: 1px solid rgb(229, 229, 229);
           }
 
+          .booking-list-item p {
+            margin: 0;
+            line-height: 20px;
+          }
+
           .booking-list-item .booking-date {
             color: rgb(55, 55, 55);
+            opacity: 0.8;
+            font-size: 14px;
           }
 
           .booking-list-item .verified {
@@ -38,6 +52,8 @@ function BookingsList(props) {
             font-size: 14px;
             font-weight: 500;
             letter-spacing: -0.15px;
+
+            height: 100%;
           }
         `}</style>
       </li>

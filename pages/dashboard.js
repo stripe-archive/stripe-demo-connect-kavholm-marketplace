@@ -79,10 +79,24 @@ class Dashboard extends React.Component {
           `/api/bookings/listing?listingId=${listing.id}`,
         );
 
+        let bookingsDetailsReqs = await bookings.map(async (booking) => {
+          let user = await API.makeRequest(
+            'get',
+            `/api/users/userInfo?id=${booking.bookingUserId}`,
+          );
+
+          return {
+            ...booking,
+            user,
+          };
+        });
+
+        let bookingDetails = await Promise.all(bookingsDetailsReqs);
+
         return {
           id: listing.id,
           title: listing.title,
-          bookings: bookings,
+          bookings: bookingDetails,
         };
       });
 

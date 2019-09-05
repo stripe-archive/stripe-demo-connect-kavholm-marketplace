@@ -17,9 +17,11 @@ class Dashboard extends React.Component {
   static async getInitialProps(context) {
     let userProfile = await getProfile();
 
-    // Redirect to /profile/payouts to setup payouts.
-    if (!userProfile.stripe) {
-      redirect('/profile/payouts', context);
+    if (userProfile) {
+      // Redirect to /profile/payouts to setup payouts.
+      if (!userProfile.stripe) {
+        redirect('/profile/payouts', context);
+      }
     }
 
     return {

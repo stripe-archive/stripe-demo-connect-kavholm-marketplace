@@ -7,28 +7,34 @@ import API from '../../helpers/api';
 
 function ListingsList(props) {
   const listings = props.listings;
-  const listItems = listings.map((l) => (
-    <li className="listing-item" key={l.id}>
-      <Link href={`/listings/` + l.id}>
-        <a>{<img src={l.image} />}</a>
-      </Link>
-      <style jsx>{`
-        .listing-item {
-          height: 233px;
 
-          border: 0;
-          background: #f6f6f6;
-        }
+  let listItems = [];
 
-        .listing-item img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: bottom;
-        }
-      `}</style>
-    </li>
-  ));
+  if (listings) {
+    listItems = listings.map((l) => (
+      <li className="listing-item" key={l.id}>
+        <Link href={`/listings/` + l.id}>
+          <a>{<img src={l.image} />}</a>
+        </Link>
+        <style jsx>{`
+          .listing-item {
+            height: 233px;
+
+            border: 0;
+            background: #f6f6f6;
+          }
+
+          .listing-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: bottom;
+          }
+        `}</style>
+      </li>
+    ));
+  }
+
   return (
     <ul className="listings-list">
       {listItems}

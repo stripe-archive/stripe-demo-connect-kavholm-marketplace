@@ -2,6 +2,7 @@ var path = require('path');
 
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
+const GcloudAdapter = require('lowdb-google-cloud-storage-adapter');
 
 class Storage {
   constructor() {

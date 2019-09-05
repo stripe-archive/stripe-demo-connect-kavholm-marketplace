@@ -4,6 +4,7 @@
     "dev": "next",
     "build": "next build",
     "gcp-build": "next build",
+    "deploy": "gcloud app deploy --quiet",
     "start": "next start -p $PORT"
   },
   "dependencies": {

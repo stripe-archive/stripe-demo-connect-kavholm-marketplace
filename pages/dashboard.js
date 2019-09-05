@@ -206,7 +206,8 @@ class Dashboard extends React.Component {
           }
 
           .dashboard h4 {
-            font-size: 18px;
+            font-size: 24px;
+            font-weight: bold;
             margin-bottom: 30px;
           }
         `}</style>

@@ -18,7 +18,6 @@ class Storage {
         bucketName: 'kavholm',
       });
     } else {
-      console.log('storage.path', this.path);
       this.path = path.resolve('./', 'db', 'kavholm.json');
       adapter = new FileSync(this.path);
     }

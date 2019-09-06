@@ -26,6 +26,12 @@ class Client {
     } else {
       if (this.context && this.context.req) {
         this.host = this.context.req.headers.host;
+
+        if (this.context.req && this.context.req.connection) {
+          this.protocol = this.context.req.connection.encrypted
+            ? 'https:'
+            : 'http:';
+        }
       }
     }
   }

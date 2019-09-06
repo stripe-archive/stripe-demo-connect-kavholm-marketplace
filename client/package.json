@@ -1,7 +1,7 @@
 {
   "name": "create-next-example-app",
   "scripts": {
-    "dev": "next",
+    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 node server.js",
     "build": "next build",
     "gcp-build": "next build",
     "deploy": "gcloud app deploy --quiet",
@@ -11,6 +11,7 @@
     "@google-cloud/storage": "^3.2.1",
     "babel-polyfill": "^6.26.0",
     "bcrypt": "^3.0.6",
+    "express": "^4.17.1",
     "gravatar": "^1.8.0",
     "isomorphic-unfetch": "^3.0.0",
     "js-cookie": "^2.2.1",
@@ -26,6 +27,7 @@
     "react-modal": "^3.10.1",
     "react-stripe-elements": "^5.0.0",
     "shortid": "^2.2.14",
-    "stripe": "file:./packages/stripe-node"
+    "stripe": "file:./packages/stripe-node",
+    "devcert": "^1.0.0"
   }
 }

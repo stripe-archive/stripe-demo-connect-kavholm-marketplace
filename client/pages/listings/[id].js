@@ -5,15 +5,23 @@ import Layout from '../../components/layout';
 import API from '../../helpers/api';
 import dynamic from 'next/dynamic';
 
-const BookingModal = dynamic(() => import('../../components/bookingModal'), {
-  ssr: false,
-});
+import BookingModal from '../../components/bookingModal';
 
 class Listing extends React.Component {
-  state = {
-    isShowingModal: true,
-    isCompleted: true,
-  };
+  constructor() {
+    super();
+    this.state = {
+      isShowingModal: true,
+      isCompleted: true,
+    };
+  }
+
+  static async getInitialProps(context) {
+    let id = context.query.id;
+    return {
+      listing: await API.makeRequest('get', `/api/listing/${id}`),
+    };
+  }
 
   handleButtonClick = () => {
     this.setState({
@@ -28,6 +36,9 @@ class Listing extends React.Component {
   };
 
   render() {
+    console.log('Listing.render', this.props.token);
+    API.setToken(this.props.token); // TODO Find a way to automate this
+
     return (
       <Layout
         isAuthenticated={this.props.isAuthenticated}

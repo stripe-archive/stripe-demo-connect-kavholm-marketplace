@@ -1,7 +1,9 @@
 import storage from '../../../helpers/storage';
+import config from '../../../helpers/stripe';
 import {validateToken} from '../../../utils/authToken';
 import shortid from 'shortid';
-import {start} from 'repl';
+
+const stripe = require('stripe')(config.stripe.secretKey);
 
 export default async (req, res) => {
   if (!('authorization' in req.headers)) {
@@ -13,28 +15,40 @@ export default async (req, res) => {
 
   if (decodedToken) {
     let authenticatedUserId = decodedToken.userId;
-    let {listingId, totalAmount, currency, endDate, startDate} = req.body;
-
-    // Step 1: Create new booking
-    const bookingObject = {
-      id: shortid.generate(),
-      listingId: String(listingId),
-      bookingUserId: String(authenticatedUserId),
-      startDate: startDate,
-      endDate: endDate,
-      totalAmount: String(totalAmount),
-      currency: currency,
-    };
 
     try {
+      let {listingId, totalAmount, currency, endDate, startDate} = req.body;
+      // Step 1: Create new booking
+      const bookingObject = {
+        id: shortid.generate(),
+        listingId: String(listingId),
+        bookingUserId: String(authenticatedUserId),
+        startDate: startDate,
+        endDate: endDate,
+        totalAmount: String(totalAmount),
+        currency: currency,
+      };
+
       storage
         .get('bookings')
         .push(bookingObject)
         .write();
 
       // Step 2: Make Payment Request to Stripe
+      let payParams = {
+        payment_method_types: ['card'],
+        amount: totalAmount,
+        currency: currency,
+      };
 
-      return res.status(200).json(bookingObject);
+      const paymentIntent = await stripe.paymentIntents.create(payParams);
+
+      const reponse = {
+        ...bookingObject,
+        paymentRequestSecret: paymentIntent.client_secret,
+      };
+
+      return res.status(200).json(reponse);
     } catch (err) {
       return res.status(400).json(err);
     }

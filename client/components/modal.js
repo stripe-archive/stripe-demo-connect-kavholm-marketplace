@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
 import {CardElement, injectStripe} from 'react-stripe-elements';
-import PaymentRequestForm from '../components/PaymentRequestForm';
+// import PaymentRequestForm from '../components/PaymentRequestForm';
 import API from '../helpers/api';
+import {redirect} from '../utils/redirect';
 
 class BookingModal extends Component {
   constructor() {
@@ -115,8 +116,6 @@ class BookingModal extends Component {
               <h1>Pay now to finalize booking.</h1>
 
               <form onSubmit={this.handleSubmit}>
-                <PaymentRequestForm />
-
                 <p className="tip-text">or pay with card</p>
 
                 <div className="card-info">

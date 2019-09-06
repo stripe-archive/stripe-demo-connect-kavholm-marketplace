@@ -18,7 +18,7 @@ class Listing extends React.Component {
   static async getInitialProps(context) {
     let id = context.query.id;
     return {
-      listing: await API.makeRequest('get', `/api/listing/${id}`),
+      listing: await API.makeRequest('get', `/api/listings/${id}`),
     };
   }
 
@@ -80,7 +80,7 @@ class Listing extends React.Component {
               </div>
             </div>
             <div className="pane-info">
-              <h1>Two-Story Loft In Old Print Shop</h1>
+              <h1>{this.props.listing.title}</h1>
               <p className="bookingInfo">
                 3 guests · 1 bedroom · 1 bed · 2 baths
               </p>

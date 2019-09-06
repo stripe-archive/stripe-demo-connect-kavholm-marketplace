@@ -58,9 +58,11 @@ class Client {
           'APIclient.makeRequest.response.notOkay',
           response.statusText,
         );
+        throw new Error(response.statusText);
       }
     } catch (err) {
       console.log('APIclient.makeRequest.error', err);
+      // throw new Error(err);
     }
   }
 

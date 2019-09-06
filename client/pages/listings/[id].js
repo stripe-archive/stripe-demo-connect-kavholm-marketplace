@@ -36,13 +36,15 @@ class Listing extends React.Component {
   };
 
   async openVerifyFlow() {
-    let req = await API.makeRequest('post', '/api/verifications/link', {
-      baseUrl: window.location.href,
-    });
-
-    let url = req.url;
-    if (url) {
-      window.location.href = url;
+    try {
+      let req = await API.makeRequest('post', '/api/verifications/link', {
+        baseUrl: window.location.href,
+      });
+      if (req && req.url) {
+        window.location.href = req.url;
+      }
+    } catch (err) {
+      alert('Verification intent failed', err);
     }
   }
 

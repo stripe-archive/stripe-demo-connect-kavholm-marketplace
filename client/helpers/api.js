@@ -2,14 +2,14 @@ import fetch from 'isomorphic-unfetch';
 
 class Client {
   constructor() {
-    this.token = '<fake>';
+    this.token = '<empty>';
     this.context = null;
     this.protocol = 'http:';
     this.port = null;
   }
 
   setToken(token) {
-    console.log('APIclient.setToken');
+    console.log('APIclient.setToken', token);
     this.token = token;
   }
 
@@ -37,7 +37,7 @@ class Client {
     let baseUrl = this.getBaseUrl();
     let requestUrl = baseUrl + url;
 
-    console.log('APIclient.makeRequest.requestUrl', requestUrl);
+    console.log('APIclient.makeRequest.requestUrl', requestUrl, this.token);
     try {
       const response = await fetch(requestUrl, {
         credentials: 'include',

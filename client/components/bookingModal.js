@@ -11,10 +11,10 @@ class BookingModal extends Component {
   }
 
   componentDidMount() {
-    // Create Stripe instance in componentDidMount
     // (componentDidMount only fires in browser/DOM environment)
     this.setState({
-      stripe: window.Stripe('pk_test_nuvZwgc7ySc2JyhFMdirs5QS00pVixsTUL'), // TODO Grab this from config somehow.
+      stripe: window.Stripe('pk_test_nuvZwgc7ySc2JyhFMdirs5QS00pVixsTUL'),
+      // TODO Grab this from config somehow.
     });
   }
 

@@ -108,7 +108,15 @@ class Listing extends React.Component {
                   Total <span className="lineItemPrice">$1,308</span>
                 </li>
               </ul>
-              <button onClick={this.handleButtonClick}>Book now</button>
+              <button
+                className="btn btn-primary"
+                onClick={this.handleButtonClick}
+                disabled={!this.props.isAuthenticated}
+              >
+                {this.props.isAuthenticated
+                  ? 'Book now'
+                  : 'Please login before booking'}
+              </button>
               <div className="host">
                 <img src="/static/host.png" width="36" />
                 <p>

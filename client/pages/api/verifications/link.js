@@ -19,9 +19,11 @@ export default async (req, res) => {
   let authenticatedUserId = decodedToken.userId;
 
   try {
+    let baseUrl = req.body.baseUrl;
+    // TODO Don't send this url along but use a configuration instead.
     const verificationIntent = await stripe.verificationIntents.create({
-      return_url: 'http://kavholm.com/listings/6#success',
-      cancel_url: 'http://kavholm.com/listings/6#failure',
+      return_url: `${baseUrl}#success`,
+      cancel_url: `${baseUrl}#faliure`,
       requested_verifications: ['identity_document'],
     });
 

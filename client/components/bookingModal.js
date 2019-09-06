@@ -13,7 +13,7 @@ class BookingModal extends Component {
   componentDidMount() {
     // (componentDidMount only fires in browser/DOM environment)
     this.setState({
-      stripe: window.Stripe('pk_test_nuvZwgc7ySc2JyhFMdirs5QS00pVixsTUL'),
+      stripe: window.Stripe('pk_live_DoLLbRZ5CwP4ExwB2U1G4oBR006tPvhliP'),
       // TODO Grab this from config somehow.
     });
   }

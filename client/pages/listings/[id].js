@@ -36,8 +36,14 @@ class Listing extends React.Component {
   };
 
   async openVerifyFlow() {
-    let req = await API.makeRequest('get', '/api/verifications/link');
-    window.open(req.url);
+    let req = await API.makeRequest('post', '/api/verifications/link', {
+      baseUrl: window.location.href,
+    });
+
+    let url = req.url;
+    if (url) {
+      window.location.href = url;
+    }
   }
 
   render() {

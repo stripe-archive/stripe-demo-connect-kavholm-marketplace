@@ -1,3 +1,5 @@
+const config = require('./helpers/config');
+
 module.exports = {
   target: 'server',
   webpack: (config) => {
@@ -7,5 +9,14 @@ module.exports = {
     };
 
     return config;
+  },
+  serverRuntimeConfig: {},
+  publicRuntimeConfig: {
+    stripe: {
+      publicKey:
+        process.env.NODE_ENV === 'production'
+          ? config.stripe.live.publicKey
+          : config.stripe.test.publicKey,
+    },
   },
 };

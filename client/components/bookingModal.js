@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Modal from './modal';
 import {Elements, StripeProvider, injectStripe} from 'react-stripe-elements';
+import getConfig from 'next/config';
 
 class BookingModal extends Component {
   constructor() {
@@ -12,9 +13,9 @@ class BookingModal extends Component {
 
   componentDidMount() {
     // (componentDidMount only fires in browser/DOM environment)
+    let stripePublicKey = getConfig().publicRuntimeConfig.stripe.publicKey;
     this.setState({
-      stripe: window.Stripe('pk_live_DoLLbRZ5CwP4ExwB2U1G4oBR006tPvhliP'),
-      // TODO Grab this from config somehow.
+      stripe: window.Stripe(stripePublicKey),
     });
   }
 

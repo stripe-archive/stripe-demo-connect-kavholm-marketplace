@@ -1,8 +1,5 @@
-import config from '../../../helpers/config';
-
+import stripe from '../../../helpers/stripe';
 import {validateToken} from '../../../utils/authToken';
-
-const stripe = require('stripe')(process.env.STRIPE_API_KEY);
 
 export default async (req, res) => {
   if (!('authorization' in req.headers)) {
@@ -20,8 +17,8 @@ export default async (req, res) => {
   let authenticatedUserId = decodedToken.userId;
 
   try {
-    let baseUrl = req.body.baseUrl;
     // TODO Don't send this url along but use a configuration instead.
+    let baseUrl = req.body.baseUrl;
     const verificationIntent = await stripe.verificationIntents.create({
       return_url: `${baseUrl}#success`,
       cancel_url: `${baseUrl}#faliure`,

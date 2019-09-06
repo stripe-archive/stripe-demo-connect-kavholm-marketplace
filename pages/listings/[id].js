@@ -1,14 +1,18 @@
 import React from 'react';
-import Modal from '../../components/modal';
 import Link from 'next/link';
 
 import Layout from '../../components/layout';
 import API from '../../helpers/api';
+import dynamic from 'next/dynamic';
+
+const BookingModal = dynamic(() => import('../../components/bookingModal'), {
+  ssr: false,
+});
 
 class Listing extends React.Component {
   state = {
-    isShowingModal: false,
-    isCompleted: false,
+    isShowingModal: true,
+    isCompleted: true,
   };
 
   handleButtonClick = () => {
@@ -24,18 +28,17 @@ class Listing extends React.Component {
   };
 
   render() {
-    const {isShowingModal, isCompleted} = this.state;
     return (
       <Layout
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
       >
         <div className="listings">
-          <Modal
-            isShown={isShowingModal}
+          <BookingModal
+            isShown={this.state.isShowingModal}
             toggleModal={this.handleButtonClick}
             openVerifyFlow={this.openVerifyFlow}
-            isCompleted={isCompleted}
+            isCompleted={this.state.isCompleted}
           />
           <div className="content">
             <div className="pane-images">
@@ -91,7 +94,6 @@ class Listing extends React.Component {
               </div>
             </div>
           </div>
-
           <style jsx>{`
             .image-footer {
               padding-top: 12px;

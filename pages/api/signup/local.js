@@ -2,7 +2,6 @@ import bcrypt from 'bcrypt';
 import shortid from 'shortid';
 import storage from '../../../helpers/storage';
 import gravatar from 'gravatar';
-
 import {generateToken} from '../../../utils/authToken';
 
 export default async (req, res) => {

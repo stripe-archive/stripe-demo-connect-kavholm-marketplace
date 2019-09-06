@@ -1,0 +1,3 @@
+[submodule "client/packages/stripe-node"]
+	path = client/packages/stripe-node
+	url = git@git.corp.stripe.com:ylukem/stripe-node.git

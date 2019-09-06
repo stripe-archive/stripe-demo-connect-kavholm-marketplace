@@ -17,6 +17,7 @@ class BookingModal extends Component {
       totalAmount: '1308',
       startDate: '09-05-2019',
       endDate: '09-05-2019',
+      isProcessing: false,
     };
   }
   async handleSubmit(event) {
@@ -25,10 +26,11 @@ class BookingModal extends Component {
     let bookingData = this.state;
 
     try {
-      let req = await API.makeRequest('post', `/api/bookings/new`, bookingData);
+      this.setState({
+        isProcessing: true,
+      });
 
-      if (!req) {
-      }
+      let req = await API.makeRequest('post', `/api/bookings/new`, bookingData);
 
       let paymentRequestSecret = req.paymentRequestSecret;
       let bookingId = req.id;
@@ -116,15 +118,22 @@ class BookingModal extends Component {
               <h1>Pay now to finalize booking.</h1>
 
               <form onSubmit={this.handleSubmit}>
-                <p className="tip-text">or pay with card</p>
+                <br />
+                <br />
+                <strong>APPLE PAY BUTTON HERE</strong>
 
+                <p className="tip-text">or pay with card</p>
                 <div className="card-info">
                   <CardElement
                     style={{base: {fontSize: '18px', width: '100%'}}}
                   />
                 </div>
-                <button className="btn btn-primary" type="submit">
-                  Pay $1,308
+                <button
+                  className="btn btn-primary"
+                  type="submit"
+                  disabled={this.state.isProcessing}
+                >
+                  {this.state.isProcessing ? 'Processing…' : 'Pay $1,308'}
                 </button>
               </form>
             </div>

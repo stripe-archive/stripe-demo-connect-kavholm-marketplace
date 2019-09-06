@@ -25,7 +25,7 @@ class ProfilePayouts extends React.Component {
       this.props.profile.stripe != null &&
       this.props.profile.stripe.stripeUserId;
 
-    API.setToken(this.props.token);
+    API.setToken(this.props.token); // TODO Find a way to automate this
 
     return (
       <Layout

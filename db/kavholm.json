@@ -129,6 +129,41 @@
       "endDate": "09-05-2019",
       "totalAmount": "1308",
       "currency": "USD"
+    },
+    {
+      "id": "KzOqBncpn",
+      "listingId": "26",
+      "startDate": "09-05-2019",
+      "endDate": "09-05-2019",
+      "totalAmount": "1308",
+      "currency": "USD"
+    },
+    {
+      "id": "he90BTprh",
+      "listingId": "26",
+      "bookingUserId": "undefined",
+      "startDate": "09-05-2019",
+      "endDate": "09-05-2019",
+      "totalAmount": "1308",
+      "currency": "USD"
+    },
+    {
+      "id": "QdFXIxw54",
+      "listingId": "26",
+      "bookingUserId": "undefined",
+      "startDate": "09-05-2019",
+      "endDate": "09-05-2019",
+      "totalAmount": "1308",
+      "currency": "USD"
+    },
+    {
+      "id": "ohcQPKwLI",
+      "listingId": "26",
+      "bookingUserId": "undefined",
+      "startDate": "09-05-2019",
+      "endDate": "09-05-2019",
+      "totalAmount": "1308",
+      "currency": "USD"
     }
   ]
 }

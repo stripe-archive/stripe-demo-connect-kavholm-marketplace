@@ -24,7 +24,7 @@ class BookingModal extends Component {
     let bookingData = this.state;
 
     try {
-      let req = await API.makeRequest('post', `/api/booking/new`, bookingData);
+      let req = await API.makeRequest('post', `/api/bookings/new`, bookingData);
 
       if (!req) {
       }

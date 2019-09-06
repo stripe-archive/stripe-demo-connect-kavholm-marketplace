@@ -18,11 +18,11 @@ export default async (req, res) => {
     // Step 1: Create new booking
     const bookingObject = {
       id: shortid.generate(),
-      listingId: listingId,
-      bookingUserId: authenticatedUserId,
+      listingId: String(listingId),
+      bookingUserId: String(authenticatedUserId),
       startDate: startDate,
       endDate: endDate,
-      totalAmount: totalAmount,
+      totalAmount: String(totalAmount),
       currency: currency,
     };
 

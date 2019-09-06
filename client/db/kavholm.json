@@ -5,10 +5,7 @@
       "fullName": "Kenneth Auchenberg",
       "email": "kenneth@auchenberg.dk",
       "password": "$2b$10$7lkRkQfWiiBX8t7B9HGffuuNUd7wE8PipGCq3Bqh4lFbqNfvc9Ynu",
-      "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400",
-      "stripe": {
-        "stripeUserId": "acct_1FF37HDI58Lugws9"
-      }
+      "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400"
     },
     {
       "userId": "IYxzqecwL",

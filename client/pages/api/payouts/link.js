@@ -1,8 +1,7 @@
-import config from '../../../helpers/config';
 import storage from '../../../helpers/storage';
 
 import {validateToken} from '../../../utils/authToken';
-const stripe = require('stripe')(config.stripe.secretKey);
+import stripe from '../../../helpers/stripe';
 
 export default async (req, res) => {
   if (!('authorization' in req.headers)) {

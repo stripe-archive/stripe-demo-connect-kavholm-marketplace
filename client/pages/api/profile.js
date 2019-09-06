@@ -1,10 +1,5 @@
-import fetch from 'isomorphic-unfetch';
-import config from '../../helpers/config';
 import storage from '../../helpers/storage';
-import gravatar from 'gravatar';
-
 import {validateToken} from '../../utils/authToken';
-const stripe = require('stripe')(config.stripe.secretKey);
 
 export default async (req, res) => {
   if (!('authorization' in req.headers)) {

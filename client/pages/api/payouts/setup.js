@@ -28,10 +28,19 @@ export default async (req, res) => {
   try {
     const {code} = req.body;
 
+    let clientId =
+      process.env.NODE_ENV === 'production'
+        ? config.stripe.live.clientId
+        : config.stripe.test.clientId;
+    let secretKey =
+      process.env.NODE_ENV === 'production'
+        ? config.stripe.live.secretKey
+        : config.stripe.test.secretKey;
+
     let params = {
       grant_type: 'authorization_code',
-      client_id: config.stripe.clientId,
-      client_secret: config.stripe.secretKey,
+      client_id: clientId,
+      client_secret: secretKey,
       code: code,
     };
 
@@ -61,8 +70,6 @@ export default async (req, res) => {
         stripe: stripeObject,
       })
       .write();
-
-    console.log('/api/payouts/setup.2b', userAccount);
 
     return res.status(200).json({status: 'ok'});
   } catch (err) {

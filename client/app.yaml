@@ -2,3 +2,4 @@ runtime: nodejs10
 handlers:
 - url: /.*
   script: auto
+  secure: always

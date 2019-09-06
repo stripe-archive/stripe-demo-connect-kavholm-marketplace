@@ -19,11 +19,12 @@
     "micro-redirect": "^1.0.0",
     "next": "^9.0.4",
     "next-cookies": "^1.1.3",
+    "qs": "^6.8.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-modal": "^3.10.1",
     "react-stripe-elements": "^5.0.0",
     "shortid": "^2.2.14",
-    "stripe": "file:../stripe-node/"
+    "stripe": "^7.8.0"
   }
 }

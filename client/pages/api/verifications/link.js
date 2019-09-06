@@ -1,7 +1,9 @@
 import config from '../../../helpers/stripe';
 
 import {validateToken} from '../../../utils/authToken';
-const stripe = require('stripe')(config.stripe.secretKey);
+const stripe = require('../../../stripe-node/lib/stripe.js')(
+  config.stripe.secretKey,
+);
 
 export default async (req, res) => {
   if (!('authorization' in req.headers)) {

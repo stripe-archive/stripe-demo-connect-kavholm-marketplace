@@ -38,12 +38,8 @@
       "userId": "3K3ppt8mj",
       "fullName": "demoHost1",
       "email": "auchenberg+demohost1@stripe.com",
-      "password": "$2b$10$3dAzmr0hh2dwe0thFPP.ZegArsXqFqTqscph2120UxzpZA0axKmkW",
-      "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400",
-      "stripe": {
-        "stripeUserId": "acct_1FF3gtE28Dxr0eVV"
+      "password": "$2b$10$3dAzmr0hh2dwe0thFPP.ZegArsXqFqTqscph2120UxzpZA0axKmkW"
       }
-    }
   ],
   "listings": [
     {

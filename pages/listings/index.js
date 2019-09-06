@@ -35,6 +35,7 @@ function ListingsList(props) {
     ));
   }
 
+
   return (
     <ul className="listings-list">
       {listItems}

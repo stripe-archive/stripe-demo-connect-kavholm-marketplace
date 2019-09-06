@@ -1,14 +1,28 @@
 import React, {Component} from 'react';
 
-import {PaymentRequestButtonElement, injectStripe} from 'react-stripe-elements';
+import {PaymentRequestButtonElement} from 'react-stripe-elements';
 
 class PaymentRequestForm extends React.Component {
   constructor(props) {
     super(props);
 
-    // For full documentation of the available paymentRequest options, see:
-    // https://stripe.com/docs/stripe.js#the-payment-request-object
-    const paymentRequest = props.stripe.paymentRequest({
+    this.state = {
+      canMakePayment: false,
+    };
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log('this.props.stripe', this.props.stripe);
+
+    if (this.props.stripe === prevProps.stripe) {
+      return;
+    }
+
+    if (!this.props.stripe) {
+      return;
+    }
+
+    const paymentRequest = this.props.stripe.paymentRequest({
       country: 'US',
       currency: 'usd',
       total: {
@@ -22,16 +36,11 @@ class PaymentRequestForm extends React.Component {
       console.log('Received customer information: ', data);
       complete('success');
     });
-    window.a = paymentRequest;
+
     paymentRequest.canMakePayment().then((result) => {
       console.log('result', result);
       this.setState({canMakePayment: !!result});
     });
-
-    this.state = {
-      canMakePayment: false,
-      paymentRequest,
-    };
   }
 
   render() {
@@ -40,8 +49,6 @@ class PaymentRequestForm extends React.Component {
         paymentRequest={this.state.paymentRequest}
         className="PaymentRequestButton"
         style={{
-          // For more details on how to style the Payment Request Button, see:
-          // https://stripe.com/docs/elements/payment-request-button#styling-the-element
           paymentRequestButton: {
             theme: 'light',
             height: '64px',
@@ -51,4 +58,4 @@ class PaymentRequestForm extends React.Component {
     ) : null;
   }
 }
-export default injectStripe(PaymentRequestForm);
+export default PaymentRequestForm;

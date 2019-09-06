@@ -60,10 +60,6 @@ export default class KavholmApp extends App {
 
     let renderProps = {...pageProps, token, isAuthenticated, userProfile};
 
-    return (
-      <Container>
-        <Component {...renderProps} />
-      </Container>
-    );
+    return <Component {...renderProps} />;
   }
 }

@@ -3,7 +3,6 @@ import Link from 'next/link';
 
 import Layout from '../../components/layout';
 import API from '../../helpers/api';
-import dynamic from 'next/dynamic';
 
 import BookingModal from '../../components/bookingModal';
 
@@ -11,8 +10,8 @@ class Listing extends React.Component {
   constructor() {
     super();
     this.state = {
-      isShowingModal: true,
-      isCompleted: true,
+      isShowingModal: false,
+      isCompleted: false,
     };
   }
 
@@ -23,6 +22,12 @@ class Listing extends React.Component {
     };
   }
 
+  componentDidMount() {
+    if (window.location.hash.indexOf('success') > -1) {
+      this.setState({isShowingModal: true, isCompleted: true});
+    }
+  }
+
   handleButtonClick = () => {
     this.setState({
       isCompleted: false,
@@ -30,10 +35,10 @@ class Listing extends React.Component {
     });
   };
 
-  openVerifyFlow = () => {
-    window.open('https://gelato.corp.stripe.com/start/?token=LYDxssvZX217');
-    window.setTimeout(() => this.setState({isCompleted: true}), 1000);
-  };
+  async openVerifyFlow() {
+    let req = await API.makeRequest('get', '/api/verifications/link');
+    window.open(req.url);
+  }
 
   render() {
     console.log('Listing.render', this.props.token);

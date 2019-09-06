@@ -29,7 +29,6 @@ class ProfilePayouts extends React.Component {
 
     return (
       <Layout
-        width="full"
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
       >

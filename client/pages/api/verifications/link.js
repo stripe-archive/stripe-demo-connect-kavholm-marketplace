@@ -1,4 +1,4 @@
-import config from '../../../helpers/stripe';
+import config from '../../../helpers/config';
 
 import {validateToken} from '../../../utils/authToken';
 const stripe = require('stripe')(config.stripe.secretKey);

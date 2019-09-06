@@ -1,6 +1,6 @@
 const redirect = require('micro-redirect');
 
-import config from '../../../helpers/stripe';
+import config from '../../../helpers/config';
 import getHost from '../../../utils/get-host';
 import {validateToken} from '../../../utils/authToken';
 import storage from '../../../helpers/storage';

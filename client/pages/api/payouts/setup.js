@@ -1,6 +1,6 @@
 const redirect = require('micro-redirect');
 import fetch from 'isomorphic-unfetch';
-import config from '../../../helpers/stripe';
+import config from '../../../helpers/config';
 import storage from '../../../helpers/storage';
 
 import {validateToken} from '../../../utils/authToken';

@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-unfetch';
-import config from '../../helpers/stripe';
+import config from '../../helpers/config';
 import storage from '../../helpers/storage';
 import gravatar from 'gravatar';
 

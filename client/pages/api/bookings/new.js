@@ -1,5 +1,5 @@
 import storage from '../../../helpers/storage';
-import config from '../../../helpers/stripe';
+import config from '../../../helpers/config';
 import {validateToken} from '../../../utils/authToken';
 import shortid from 'shortid';
 

@@ -24,10 +24,8 @@ export default async (req, res) => {
       let userAccount = storage
         .get('users')
         .find({userId: userId})
+        .pick('userId', 'avatar', 'fullName', 'email', 'stripe')
         .value();
-
-      userAccount.avatar = gravatar.url(userAccount.email, {s: '400'});
-
       return res.status(200).json(userAccount);
     } catch (err) {
       return res.status(400).json(err);

@@ -1,12 +1,11 @@
 import bcrypt from 'bcrypt';
 import shortid from 'shortid';
 import storage from '../../../helpers/storage';
-
+import gravatar from 'gravatar';
 import {generateToken} from '../../../utils/authToken';
 
 export default async (req, res) => {
   const {fullname, email, password} = req.body;
-  console.log('userinfo', email, fullname, password);
 
   let hashedPassword = await bcrypt.hash(password, 10);
   let normalizedEmail = email.toLowerCase();
@@ -16,6 +15,7 @@ export default async (req, res) => {
     fullName: fullname,
     email: normalizedEmail,
     password: hashedPassword,
+    avatar: gravatar.url(normalizedEmail, {s: '400'}),
   };
 
   await storage

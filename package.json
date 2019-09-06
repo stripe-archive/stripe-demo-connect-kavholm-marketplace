@@ -3,9 +3,13 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "gcp-build": "next build",
+    "deploy": "gcloud app deploy --quiet",
     "start": "next start -p $PORT"
   },
   "dependencies": {
+    "@google-cloud/storage": "^3.2.1",
+    "babel-polyfill": "^6.26.0",
     "bcrypt": "^3.0.6",
     "gravatar": "^1.8.0",
     "isomorphic-unfetch": "^3.0.0",

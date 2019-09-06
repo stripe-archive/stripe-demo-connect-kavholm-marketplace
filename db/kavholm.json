@@ -38,11 +38,8 @@
       "userId": "3K3ppt8mj",
       "fullName": "demoHost1",
       "email": "auchenberg+demohost1@stripe.com",
-      "password": "$2b$10$3dAzmr0hh2dwe0thFPP.ZegArsXqFqTqscph2120UxzpZA0axKmkW",
-      "stripe": {
-        "stripeUserId": "acct_1FF3gtE28Dxr0eVV"
+      "password": "$2b$10$3dAzmr0hh2dwe0thFPP.ZegArsXqFqTqscph2120UxzpZA0axKmkW"
       }
-    }
   ],
   "listings": [
     {
@@ -59,9 +56,10 @@
     },
     {
       "id": "26",
-      "title": "",
+      "title": "Two-Story Loft In Old Print Shop",
       "source": "",
-      "image": "static/apartment.png"
+      "image": "static/apartment.png",
+      "owner": "Igj-hMfQp"
     },
     {
       "id": "11",
@@ -112,10 +110,21 @@
       "image": "https://images.unsplash.com/photo-1554094830-addc7e887420?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80"
     },
     {
-      "id": "25",
+      "id": "27",
       "title": "",
       "source": "https://unsplash.com/photos/V7HWR5o9BeY",
       "image": "https://images.unsplash.com/photo-1539437829697-1b4ed5aebd19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "1",
+      "listingId": "26",
+      "bookingUserId": "3K3ppt8mj",
+      "startDate": "09-05-2019",
+      "endDate": "09-05-2019",
+      "totalPrice": "1308",
+      "currency": "USD"
     }
   ]
 }

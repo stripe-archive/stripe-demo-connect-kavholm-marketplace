@@ -1,7 +1,6 @@
 import config from '../../../helpers/config';
 
 import {validateToken} from '../../../utils/authToken';
-const stripe = require('stripe')(config.stripe.secretKey);
 
 export default async (req, res) => {
   if (!('authorization' in req.headers)) {
@@ -19,6 +18,8 @@ export default async (req, res) => {
   let authenticatedUserId = decodedToken.userId;
 
   try {
+    // Always use TEST keys for Gelato test mode
+    const stripe = require('stripe')(config.stripe.test.secretKey);
     let baseUrl = req.body.baseUrl;
     // TODO Don't send this url along but use a configuration instead.
     const verificationIntent = await stripe.verificationIntents.create({

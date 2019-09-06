@@ -24,6 +24,6 @@
     "react-modal": "^3.10.1",
     "react-stripe-elements": "^5.0.0",
     "shortid": "^2.2.14",
-    "stripe": "https://git.corp.stripe.com/ylukem/stripe-node.git"
+    "stripe": "file:../stripe-node/"
   }
 }

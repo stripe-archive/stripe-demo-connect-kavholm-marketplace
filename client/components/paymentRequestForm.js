@@ -8,17 +8,20 @@ class PaymentRequestForm extends React.Component {
 
     this.state = {
       canMakePayment: false,
+      hasInitialized: false,
     };
   }
 
-  componentDidUpdate(prevProps) {
-    console.log('this.props.stripe', this.props.stripe);
-
-    if (this.props.stripe === prevProps.stripe) {
+  async componentDidUpdate(prevProps) {
+    if (!this.props.stripe) {
       return;
     }
 
-    if (!this.props.stripe) {
+    if (this.state.hasInitialized) {
+      return;
+    }
+
+    if (this.state.hasInitialized && this.props.stripe === prevProps.stripe) {
       return;
     }
 
@@ -37,9 +40,11 @@ class PaymentRequestForm extends React.Component {
       complete('success');
     });
 
-    paymentRequest.canMakePayment().then((result) => {
-      console.log('result', result);
-      this.setState({canMakePayment: !!result});
+    let canMakePayment = await paymentRequest.canMakePayment();
+    console.log('PaymentRequestForm.canMakePayment', canMakePayment);
+    this.setState({
+      canMakePayment: !!canMakePayment,
+      hasInitialized: true,
     });
   }
 

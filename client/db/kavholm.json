@@ -140,64 +140,13 @@
       "currency": "USD"
     },
     {
-      "id": "WFPD9x_YB",
+      "id": "gg49d47pc",
       "listingId": "26",
-      "bookingUserId": "undefined",
-      "startDate": "09-05-2019",
-      "endDate": "09-05-2019",
-      "totalAmount": "undefined",
-      "currency": "usd"
-    },
-    {
-      "id": "fkfFswV0C",
-      "listingId": "26",
-      "bookingUserId": "undefined",
-      "startDate": "09-05-2019",
-      "endDate": "09-05-2019",
-      "totalAmount": "undefined",
-      "currency": "usd"
-    },
-    {
-      "id": "lqAAQONBz",
-      "listingId": "26",
-      "bookingUserId": "undefined",
-      "startDate": "09-05-2019",
-      "endDate": "09-05-2019",
-      "totalAmount": "undefined",
-      "currency": "usd"
-    },
-    {
-      "id": "abPqVjjzF",
-      "listingId": "26",
-      "bookingUserId": "undefined",
+      "bookingUserId": "Igj-hMfQp",
       "startDate": "09-05-2019",
       "endDate": "09-05-2019",
       "totalAmount": "100",
       "currency": "usd"
-    },
-    {
-      "id": "KmQpboTzV",
-      "listingId": "26",
-      "bookingUserId": "undefined",
-      "startDate": "09-05-2019",
-      "endDate": "09-05-2019",
-      "totalAmount": "100",
-      "currency": "usd"
-    },
-    {
-      "id": "DE7EvSX-Y",
-      "listingId": "26",
-      "bookingUserId": "undefined",
-      "startDate": "09-05-2019",
-      "endDate": "09-05-2019",
-      "totalAmount": "100",
-      "currency": "usd"
-    },
-    {
-      "id": "zrGMvdPCW",
-      "listingId": "undefined",
-      "bookingUserId": "undefined",
-      "totalAmount": "undefined"
     }
   ]
 }

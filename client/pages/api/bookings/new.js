@@ -15,7 +15,15 @@ export default async (req, res) => {
     let authenticatedUserId = decodedToken.userId;
 
     try {
-      let {listingId, totalAmount, currency, endDate, startDate} = req.body;
+      let {
+        listingId,
+        totalAmount,
+        currency,
+        endDate,
+        startDate,
+        chargeToken,
+      } = req.body;
+
       // Step 1: Create new booking
       const bookingObject = {
         id: shortid.generate(),
@@ -39,14 +47,28 @@ export default async (req, res) => {
         currency: currency,
       };
 
-      const paymentIntent = await stripe.paymentIntents.create(payParams);
+      let response = {};
 
-      const reponse = {
-        ...bookingObject,
-        paymentRequestSecret: paymentIntent.client_secret,
-      };
+      if (chargeToken) {
+        // Apple Pay aka Web Payment Request is using charges.
+        const paymentCharge = await stripe.charges.create({
+          amount: totalAmount,
+          currency: currency,
+          description: 'Kavholm',
+          source: chargeToken,
+        });
+        response = {
+          ...bookingObject,
+        };
+      } else {
+        const paymentIntent = await stripe.paymentIntents.create(payParams);
+        response = {
+          ...bookingObject,
+          paymentRequestSecret: paymentIntent.client_secret,
+        };
+      }
 
-      return res.status(200).json(reponse);
+      return res.status(200).json(response);
     } catch (err) {
       return res.status(400).json(err);
     }

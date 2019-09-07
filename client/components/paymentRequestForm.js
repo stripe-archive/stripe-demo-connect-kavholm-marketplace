@@ -27,17 +27,37 @@ class PaymentRequestForm extends React.Component {
 
     const paymentRequest = this.props.stripe.paymentRequest({
       country: 'US',
-      currency: 'usd',
+      currency: this.props.currency,
       total: {
         label: 'Total',
-        amount: 1,
+        amount: this.props.amount,
       },
     });
 
-    paymentRequest.on('token', ({complete, token, ...data}) => {
+    paymentRequest.on('token', async ({complete, token}) => {
       console.log('Received Stripe token: ', token);
-      console.log('Received customer information: ', data);
-      complete('success');
+
+      let bookingData = {
+        listingId: 26,
+        currency: this.props.currency,
+        totalAmount: this.props.currency,
+        startDate: '09-05-2019',
+        endDate: '09-05-2019',
+        chargeToken: token,
+      };
+
+      try {
+        let req = await API.makeRequest(
+          'post',
+          `/api/bookings/new`,
+          bookingData,
+        );
+        let bookingId = req.id;
+        redirect(`/bookings/${bookingId}`);
+        complete('success');
+      } catch (err) {
+        console.log('err', err);
+      }
     });
 
     let canMakePayment = await paymentRequest.canMakePayment();
@@ -51,16 +71,29 @@ class PaymentRequestForm extends React.Component {
 
   render() {
     return this.state.canMakePayment ? (
-      <PaymentRequestButtonElement
-        paymentRequest={this.state.paymentRequest}
-        className="PaymentRequestButton"
-        style={{
-          paymentRequestButton: {
-            theme: 'light',
-            height: '64px',
-          },
-        }}
-      />
+      <>
+        <PaymentRequestButtonElement
+          paymentRequest={this.state.paymentRequest}
+          className="PaymentRequestButton"
+          style={{
+            paymentRequestButton: {
+              theme: 'dark',
+              height: '64px',
+            },
+          }}
+        />
+        <p className="tip-text">or pay with card</p>
+        <style jsx>{`
+          .tip-text {
+            color: rgba(0, 0, 0, 0.5);
+            font-size: 14px;
+            font-weight: normal;
+            letter-spacing: -0.15px;
+            text-align: center;
+            margin: 20px 0;
+          }
+        `}</style>
+      </>
     ) : null;
   }
 }

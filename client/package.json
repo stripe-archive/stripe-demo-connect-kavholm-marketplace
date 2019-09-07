@@ -12,6 +12,7 @@
     "@google-cloud/storage": "^3.2.1",
     "babel-polyfill": "^6.26.0",
     "bcrypt": "^3.0.6",
+    "devcert": "^1.0.0",
     "express": "^4.17.1",
     "gravatar": "^1.8.0",
     "isomorphic-unfetch": "^3.0.0",
@@ -26,9 +27,9 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-modal": "^3.10.1",
+    "react-number-format": "^4.2.0",
     "react-stripe-elements": "^5.0.0",
     "shortid": "^2.2.14",
-    "stripe": "file:./packages/stripe-node",
-    "devcert": "^1.0.0"
+    "stripe": "file:./packages/stripe-node"
   }
 }

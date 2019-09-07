@@ -4,7 +4,8 @@ import Link from 'next/link';
 import Layout from '../../components/layout';
 import API from '../../helpers/api';
 
-import BookingModal from '../../components/bookingModal';
+import BookingModalWrapper from '../../components/bookingModalWrapper';
+import NumberFormat from 'react-number-format';
 
 class Listing extends React.Component {
   constructor() {
@@ -12,6 +13,7 @@ class Listing extends React.Component {
     this.state = {
       isShowingModal: false,
       isCompleted: false,
+      amount: 1, // TODO update amount to 1308
     };
   }
 
@@ -58,11 +60,12 @@ class Listing extends React.Component {
         userProfile={this.props.userProfile}
       >
         <div className="listings">
-          <BookingModal
+          <BookingModalWrapper
             isShown={this.state.isShowingModal}
             toggleModal={this.handleButtonClick}
             openVerifyFlow={this.openVerifyFlow}
             isCompleted={this.state.isCompleted}
+            amount={this.state.amount}
           />
           <div className="content">
             <div className="pane-images">
@@ -105,7 +108,15 @@ class Listing extends React.Component {
               <hr />
               <ul className="lineItems lineItemsTotal">
                 <li>
-                  Total <span className="lineItemPrice">$1,308</span>
+                  Total{' '}
+                  <span className="lineItemPrice">
+                    <NumberFormat
+                      value={this.state.amount}
+                      displayType={'text'}
+                      thousandSeparator={true}
+                      prefix={'$'}
+                    />
+                  </span>
                 </li>
               </ul>
               <button

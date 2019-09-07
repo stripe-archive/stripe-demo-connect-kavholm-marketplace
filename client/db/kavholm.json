@@ -129,6 +129,15 @@
       "endDate": "09-05-2019",
       "totalAmount": "1308",
       "currency": "USD"
+    },
+    {
+      "id": "OPGlw6tku",
+      "listingId": "26",
+      "bookingUserId": "Igj-hMfQp",
+      "startDate": "09-05-2019",
+      "endDate": "09-05-2019",
+      "totalAmount": "100",
+      "currency": "USD"
     }
   ]
 }

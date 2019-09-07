@@ -73,19 +73,24 @@ class PaymentRequestForm extends React.Component {
   }
 
   render() {
-    return this.state.canMakePayment ? (
+    return (
       <div className="payment-request-form">
-        <PaymentRequestButtonElement
-          paymentRequest={this.state.paymentRequest}
-          className="PaymentRequestButton"
-          style={{
-            paymentRequestButton: {
-              theme: 'dark',
-              height: '44px',
-            },
-          }}
-        />
-        <p className="tip-text">or pay with card</p>
+        {this.state.canMakePayment && (
+          <>
+            <PaymentRequestButtonElement
+              paymentRequest={this.state.paymentRequest}
+              className="PaymentRequestButton"
+              style={{
+                paymentRequestButton: {
+                  theme: 'dark',
+                  height: '44px',
+                },
+              }}
+            />
+            <p className="tip-text">or pay with card</p>
+          </>
+        )}
+
         <style jsx>{`
           .payment-request-form {
             height: 115px;
@@ -100,7 +105,7 @@ class PaymentRequestForm extends React.Component {
           }
         `}</style>
       </div>
-    ) : null;
+    );
   }
 }
 export default PaymentRequestForm;

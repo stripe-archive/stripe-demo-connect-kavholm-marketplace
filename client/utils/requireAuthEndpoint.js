@@ -11,8 +11,7 @@ let requireAuthEndpoint = (fn) => {
     }
 
     try {
-      const {token} = JSON.parse(bearerToken);
-      // const token = bearerToken.replace('Bearer ', '');
+      const token = bearerToken.replace('Bearer ', '');
       let decodedToken = validateToken(token);
       req.authToken = decodedToken;
     } catch (err) {

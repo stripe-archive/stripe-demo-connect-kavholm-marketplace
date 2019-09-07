@@ -49,9 +49,7 @@ class Client {
         credentials: 'include',
         headers: {
           'content-type': method == 'post' ? 'application/json' : '',
-          Authorization: JSON.stringify({
-            token: this.token,
-          }),
+          Authorization: `Bearer ${this.token}`,
         },
         method: method,
         body: method == 'post' ? JSON.stringify(requestData) : null,

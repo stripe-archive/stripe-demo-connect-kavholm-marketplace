@@ -44,7 +44,7 @@ class PaymentRequestForm extends React.Component {
         totalAmount: this.props.amount,
         startDate: '09-05-2019',
         endDate: '09-05-2019',
-        chargeToken: token,
+        chargeToken: token.id,
       };
 
       try {

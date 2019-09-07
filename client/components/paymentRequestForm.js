@@ -86,7 +86,7 @@ class PaymentRequestForm extends React.Component {
         <p className="tip-text">or pay with card</p>
         <style jsx>{`
           .payment-request-form {
-            height: 44px;
+            height: 115px;
           }
           .tip-text {
             color: rgba(0, 0, 0, 0.5);

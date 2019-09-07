@@ -26,7 +26,7 @@ class BookingPayment extends Component {
         isProcessing: true,
       });
 
-      let bookingData = this.state.booking;
+      let bookingData = this.props.booking;
       let req = await API.makeRequest('post', `/api/bookings/new`, bookingData);
 
       let paymentRequestSecret = req.paymentRequestSecret;

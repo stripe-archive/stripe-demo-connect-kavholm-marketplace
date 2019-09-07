@@ -14,6 +14,11 @@ class BookingModalWrapper extends Component {
   componentDidMount() {
     // (componentDidMount only fires in browser/DOM environment)
     let stripePublicKey = getConfig().publicRuntimeConfig.stripe.publicKey;
+
+    if (!window.Stripe) {
+      return;
+    }
+
     this.setState({
       stripe: window.Stripe(stripePublicKey),
     });

@@ -9,11 +9,6 @@ class ProfilePayouts extends React.Component {
     super();
   }
 
-  async handleDashboardLink() {
-    let req = await API.makeRequest('get', '/api/payouts/link');
-    window.open(req.url);
-  }
-
   render() {
     let hasPayoutSetup =
       this.props.userProfile &&

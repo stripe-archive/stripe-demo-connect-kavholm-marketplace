@@ -55,10 +55,13 @@ class Dashboard extends React.Component {
       }
     }
 
+    let userBalance = await API.makeRequest('get', '/api/profile/balance');
+
     return {
       profile: userProfile,
       userListings: userListings,
       userBookings: userBookings,
+      userBalance: userBalance,
     };
   }
 
@@ -69,10 +72,26 @@ class Dashboard extends React.Component {
     }
   }
 
+  async handleDashboardLink() {
+    let req = await API.makeRequest('get', '/api/payouts/link');
+    window.open(req.url);
+  }
+
   render() {
     let profile = this.props ? this.props.profile : {};
     let avatarUrl = profile ? profile.avatar : '/static/avatar.png';
     let showListingTip = !this.props.userListings;
+    let formattedBalance = '';
+
+    if (this.props.userBalance && this.props.userBalance) {
+      const locale = new Intl.NumberFormat().resolvedOptions().locale;
+      const formatter = new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency: this.props.userBalance.currency,
+      });
+
+      formattedBalance = formatter.format(this.props.userBalance.amount / 100);
+    }
 
     return (
       <Layout
@@ -82,7 +101,7 @@ class Dashboard extends React.Component {
       >
         <div className="dashboard ">
           <div className="row">
-            <div className="col-12">
+            <div className="col-8">
               <div className="media user-details">
                 <img src={avatarUrl} height="66" className="mr-3 avatar" />
                 <div className="media-body">
@@ -91,6 +110,17 @@ class Dashboard extends React.Component {
                     <p className="text-secondary">{profile && profile.email}</p>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div className="col-4">
+              <div className="align-middle stripe-dashboard">
+                <p className="label text-secondary">Balance</p>
+                <p className="balance">
+                  {formattedBalance}{' '}
+                  <a href="#" onClick={this.handleDashboardLink}>
+                    View in Stripe Dashboard ↗
+                  </a>
+                </p>
               </div>
             </div>
           </div>
@@ -131,7 +161,7 @@ class Dashboard extends React.Component {
           }
 
           .user-details {
-            font-size; 14px;
+            font-size: 14px;
           }
 
           .user-details-body {
@@ -144,6 +174,28 @@ class Dashboard extends React.Component {
           }
 
           .user-details p {
+            font-size: 12px;
+          }
+
+          .stripe-dashboard {
+            font-size: 12px;
+            padding-top: 4px;
+          }
+
+          .stripe-dashboard .label {
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+          }
+
+          .stripe-dashboard .balance {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            line-height: 1;
+          }
+
+          .stripe-dashboard a {
             font-size: 12px;
           }
 

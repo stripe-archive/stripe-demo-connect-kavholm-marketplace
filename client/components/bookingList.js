@@ -1,11 +1,7 @@
+import Moment from 'react-moment';
+
 function BookingsList(props) {
   const list = props.list || [];
-
-  //   if (list.length < 4) {
-  //     while (list.length < 4) {
-  //       list.push({id: Math.random()});
-  //     }
-  //   }
 
   let listItems = [];
 
@@ -16,7 +12,9 @@ function BookingsList(props) {
         <div className="media-body">
           <div className="align-middle">
             <p className="booking-date">
-              {i.startDate} - {i.endDate}
+              <Moment format="MMM DD">{i.startDate}</Moment>
+              {' - '}
+              <Moment format="MMM DD">{i.endDate}</Moment>
             </p>
             <p>
               <strong>{i.user.fullName}</strong>

@@ -21,7 +21,7 @@ export default requireAuthEndpoint(async (req, res) => {
     const bookingObject = {
       id: shortid.generate(),
       listingId: String(listingId),
-      bookingUserId: String(authenticatedUserId),
+      bookingUserId: authenticatedUserId,
       startDate: startDate,
       endDate: endDate,
       totalAmount: String(amount),

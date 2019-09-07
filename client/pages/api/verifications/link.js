@@ -29,7 +29,7 @@ export default async (req, res) => {
       url: verificationIntent.next_action.redirect_to_url,
     });
   } catch (err) {
-    console.log('verifiations.link.err', err);
+    console.log('verifications.link.err', err);
     return res.status(400).json(err);
   }
 };

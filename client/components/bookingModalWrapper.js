@@ -25,25 +25,10 @@ class BookingModalWrapper extends Component {
   }
 
   render() {
-    let {
-      amount,
-      isShown,
-      toggleModal,
-      openVerifyFlow,
-      isCompleted,
-      handleButtonClick,
-    } = this.props;
-
     return (
       <StripeProvider stripe={this.state.stripe}>
         <Elements>
-          <BookingModal
-            isShown={isShown}
-            toggleModal={handleButtonClick}
-            openVerifyFlow={openVerifyFlow}
-            isCompleted={isCompleted}
-            amount={amount}
-          />
+          <BookingModal {...this.props} />
         </Elements>
       </StripeProvider>
     );

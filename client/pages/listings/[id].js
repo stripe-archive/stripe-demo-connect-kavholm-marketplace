@@ -7,12 +7,15 @@ import API from '../../helpers/api';
 import BookingModalWrapper from '../../components/bookingModalWrapper';
 import NumberFormat from 'react-number-format';
 
+import Router from 'next/router';
+
 class Listing extends React.Component {
   constructor() {
     super();
     this.state = {
-      isShowingModal: false,
-      isCompleted: false,
+      isBooking: false,
+      isBookingConfirmed: false,
+      isUserVerified: false,
       amount: 100, // TODO update amount to 1308
     };
   }
@@ -25,19 +28,32 @@ class Listing extends React.Component {
   }
 
   componentDidMount() {
-    if (window.location.hash.indexOf('success') > -1) {
-      this.setState({isShowingModal: true, isCompleted: true});
+    if (Router.query.action && Router.query.action == 'booking') {
+      this.setState({
+        isBooking: true,
+      });
+    }
+
+    if (Router.query.verified && Router.query.verified == 'true') {
+      this.setState({
+        isUserVerified: true,
+      });
     }
   }
 
-  handleButtonClick = () => {
+  handleBookingStartClick = () => {
     this.setState({
-      isCompleted: false,
-      isShowingModal: !this.state.isShowingModal,
+      isBooking: true,
     });
   };
 
-  async openVerifyFlow() {
+  onBookingConfirmed = () => {
+    this.setState({
+      isBookingConfirmed: true,
+    });
+  };
+
+  async startUserVerification() {
     try {
       let req = await API.makeRequest('post', '/api/verifications/link', {
         baseUrl: window.location.href,
@@ -51,9 +67,6 @@ class Listing extends React.Component {
   }
 
   render() {
-    console.log('Listing.render', this.props.token);
-    API.setToken(this.props.token); // TODO Find a way to automate this
-
     return (
       <Layout
         isAuthenticated={this.props.isAuthenticated}
@@ -61,12 +74,14 @@ class Listing extends React.Component {
       >
         <div className="listings">
           <BookingModalWrapper
-            isShown={this.state.isShowingModal}
-            toggleModal={this.handleButtonClick}
-            openVerifyFlow={this.openVerifyFlow}
-            isCompleted={this.state.isCompleted}
+            isShown={this.state.isBooking}
+            startUserVerification={this.startUserVerification}
+            onBookingConfirmed={this.onBookingConfirmed}
+            isUserVerified={this.state.isUserVerified}
+            isBookingConfirmed={this.state.isBookingConfirmed}
             amount={this.state.amount}
           />
+
           <div className="content">
             <div className="pane-images">
               <img src="/static/place images.png" />
@@ -121,7 +136,7 @@ class Listing extends React.Component {
               </ul>
               <button
                 className="btn btn-primary"
-                onClick={this.handleButtonClick}
+                onClick={this.handleBookingStartClick}
                 disabled={!this.props.isAuthenticated}
               >
                 {this.props.isAuthenticated

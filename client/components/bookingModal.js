@@ -3,8 +3,9 @@ import Modal from 'react-modal';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import PaymentRequestForm from './paymentRequestForm';
 import API from '../helpers/api';
-import {redirect} from '../utils/redirect';
 import NumberFormat from 'react-number-format';
+
+import BookingConfirmedModal from './bookingConfirmedModal';
 
 Modal.setAppElement('.app');
 
@@ -27,6 +28,7 @@ class BookingModal extends Component {
     event.preventDefault();
 
     let bookingData = this.state;
+    let onBookingConfirmed = this.props.onBookingConfirmed;
 
     try {
       this.setState({
@@ -36,7 +38,6 @@ class BookingModal extends Component {
       let req = await API.makeRequest('post', `/api/bookings/new`, bookingData);
 
       let paymentRequestSecret = req.paymentRequestSecret;
-      let bookingId = req.id;
 
       this.props.stripe
         .handleCardPayment(paymentRequestSecret)
@@ -47,7 +48,7 @@ class BookingModal extends Component {
             });
             console.log('[error]', payload.error);
           } else {
-            redirect(`/bookings/${bookingId}`);
+            onBookingConfirmed && onBookingConfirmed(req);
           }
         });
     } catch (err) {
@@ -57,7 +58,13 @@ class BookingModal extends Component {
   }
 
   render() {
-    let {isShown, toggleModal, openVerifyFlow, isCompleted} = this.props;
+    let {
+      isShown,
+      toggleModal,
+      startUserVerification,
+      isUserVerified,
+      isBookingConfirmed,
+    } = this.props;
 
     var style = {
       base: {
@@ -99,7 +106,7 @@ class BookingModal extends Component {
         }}
       >
         <div className="content">
-          {!isCompleted && (
+          {!isUserVerified && !isBookingConfirmed && (
             <>
               <img src="/static/person.svg" />
               <h1>To continue booking, we’ll need to verify your ID.</h1>
@@ -107,14 +114,17 @@ class BookingModal extends Component {
                 Your host requires a verified government-issued ID to complete
                 the booking. This will take only a minute.
               </p>
-              <button onClick={openVerifyFlow}>Verify your identity</button>
+              <button onClick={startUserVerification}>
+                Verify your identity
+              </button>
               <p className="footer">
                 You’ll be redirected to Stripe to complete the verification
                 process.
               </p>
             </>
           )}
-          {isCompleted && (
+
+          {isUserVerified && !isBookingConfirmed && (
             <div className="completed">
               <img src="/static/confirmed.svg" width="50" />
               <h1>Your ID has been verified.</h1>
@@ -155,6 +165,8 @@ class BookingModal extends Component {
               </form>
             </div>
           )}
+
+          {isUserVerified && isBookingConfirmed && <BookingConfirmedModal />}
         </div>
         <style jsx>{`
           img {

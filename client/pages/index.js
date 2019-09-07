@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import Modal from '../components/modal';
 import Layout from '../components/layout';
 
 class Home extends React.Component {

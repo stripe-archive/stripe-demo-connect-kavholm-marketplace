@@ -71,6 +71,7 @@ class Listing extends React.Component {
       <Layout
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
+        title={this.props.listing.title}
       >
         <div className="listings">
           <BookingModalWrapper

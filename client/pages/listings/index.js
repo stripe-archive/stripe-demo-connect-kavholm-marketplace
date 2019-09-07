@@ -71,6 +71,7 @@ class Listings extends React.Component {
       <Layout
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
+        title="Listings"
       >
         <div className="listings">
           <hr className="bg-light" />

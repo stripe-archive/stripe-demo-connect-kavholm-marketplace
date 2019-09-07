@@ -30,6 +30,7 @@ class Profile extends React.Component {
       <Layout
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
+        title="Profile"
       >
         <div className="profile">
           <div className="row">

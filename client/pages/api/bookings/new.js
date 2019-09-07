@@ -41,12 +41,6 @@ export default async (req, res) => {
         .write();
 
       // Step 2: Make Payment Request to Stripe
-      let payParams = {
-        payment_method_types: ['card'],
-        amount: totalAmount,
-        currency: currency,
-      };
-
       let response = {};
 
       if (chargeToken) {
@@ -61,6 +55,12 @@ export default async (req, res) => {
           ...bookingObject,
         };
       } else {
+        let payParams = {
+          payment_method_types: ['card'],
+          amount: totalAmount,
+          currency: currency,
+        };
+
         const paymentIntent = await stripe.paymentIntents.create(payParams);
         response = {
           ...bookingObject,

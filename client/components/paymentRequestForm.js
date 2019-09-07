@@ -41,7 +41,7 @@ class PaymentRequestForm extends React.Component {
       let bookingData = {
         listingId: 26,
         currency: this.props.currency,
-        totalAmount: this.props.currency,
+        totalAmount: this.props.amount,
         startDate: '09-05-2019',
         endDate: '09-05-2019',
         chargeToken: token,

@@ -22,6 +22,7 @@
     "micro-redirect": "^1.0.0",
     "next": "^9.0.4",
     "next-cookies": "^1.1.3",
+    "nprogress": "^0.2.0",
     "qs": "^6.8.0",
     "querystring": "^0.2.0",
     "react": "^16.9.0",

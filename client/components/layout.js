@@ -1,10 +1,12 @@
 import React from 'react';
 import Head from '../components/head';
 import Nav from '../components/nav';
+import NProgress from '../components/nprogress';
 
 const Layout = (props) => (
   <>
     <Head title={props.title || 'Home'} />
+    <NProgress />
     <Nav
       isAuthenticated={props.isAuthenticated}
       userProfile={props.userProfile}

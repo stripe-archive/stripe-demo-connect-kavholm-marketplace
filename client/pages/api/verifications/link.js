@@ -8,8 +8,8 @@ export default requireAuthEndpoint(async (req, res) => {
     // TODO Don't send this url along but use a configuration instead.
     let baseUrl = req.body.baseUrl;
     const verificationIntent = await stripe.verificationIntents.create({
-      return_url: `${baseUrl}#success`,
-      cancel_url: `${baseUrl}#faliure`,
+      return_url: `${baseUrl}?action=booking&verified=true`,
+      cancel_url: `${baseUrl}?action=booking&verified=false`,
       requested_verifications: ['identity_document'],
     });
 

@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
-import {CardElement, injectStripe} from 'react-stripe-elements';
-import PaymentRequestForm from './paymentRequestForm';
-import API from '../helpers/api';
-import NumberFormat from 'react-number-format';
 
 import BookingConfirmedModal from './bookingConfirmedModal';
+import BookingPayment from './BookingPayment';
 
 Modal.setAppElement('.app');
 
@@ -13,48 +10,15 @@ class BookingModal extends Component {
   constructor(props) {
     super();
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-
     this.state = {
-      listingId: 26,
-      currency: 'usd',
-      amount: props.amount,
-      startDate: '09-05-2019',
-      endDate: '09-05-2019',
-      isProcessing: false,
+      booking: {
+        currency: 'usd',
+        amount: props.amount,
+        listingId: 26,
+        startDate: '09-05-2019',
+        endDate: '09-05-2019',
+      },
     };
-  }
-  async handleSubmit(event) {
-    event.preventDefault();
-
-    let bookingData = this.state;
-    let onBookingConfirmed = this.props.onBookingConfirmed;
-
-    try {
-      this.setState({
-        isProcessing: true,
-      });
-
-      let req = await API.makeRequest('post', `/api/bookings/new`, bookingData);
-
-      let paymentRequestSecret = req.paymentRequestSecret;
-
-      this.props.stripe
-        .handleCardPayment(paymentRequestSecret)
-        .then((payload) => {
-          if (payload.error) {
-            this.setState({
-              error: `Payment failed: ${payload.error.message}`,
-            });
-            console.log('[error]', payload.error);
-          } else {
-            onBookingConfirmed && onBookingConfirmed(req);
-          }
-        });
-    } catch (err) {
-      console.log('Booking failed.', err);
-      this.setState({error: err.message});
-    }
   }
 
   render() {
@@ -133,36 +97,11 @@ class BookingModal extends Component {
               <br />
               <br />
 
-              <PaymentRequestForm
+              <BookingPayment
                 stripe={this.props.stripe}
-                amount={this.state.amount}
-                currency={this.state.currency}
+                booking={this.state.booking}
+                onBookingConfirmed={this.props.onBookingConfirmed}
               />
-
-              <form onSubmit={this.handleSubmit}>
-                <div className="card-info">
-                  <CardElement
-                    style={{base: {fontSize: '18px', width: '100%'}}}
-                  />
-                </div>
-                <button
-                  className="btn btn-primary"
-                  type="submit"
-                  disabled={this.state.isProcessing}
-                >
-                  {this.state.isProcessing ? (
-                    'Processing…'
-                  ) : (
-                    <NumberFormat
-                      value={this.state.amount / 100}
-                      displayType={'text'}
-                      thousandSeparator={true}
-                      prefix={'$'}
-                      renderText={(value) => <>Pay {value}</>}
-                    />
-                  )}
-                </button>
-              </form>
             </div>
           )}
 
@@ -231,4 +170,4 @@ class BookingModal extends Component {
     );
   }
 }
-export default injectStripe(BookingModal);
+export default BookingModal;

@@ -29,8 +29,8 @@ class PaymentRequestForm extends React.Component {
       country: 'US',
       currency: 'usd',
       total: {
-        label: 'Demo total',
-        amount: 1000,
+        label: 'Total',
+        amount: 1,
       },
     });
 

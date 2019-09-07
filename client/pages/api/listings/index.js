@@ -1,4 +1,4 @@
-import storage from '../../helpers/storage';
+import storage from '../../../helpers/storage';
 
 export default async (req, res) => {
   // 1) Get listings and return

@@ -13,7 +13,7 @@ class Listing extends React.Component {
     this.state = {
       isShowingModal: false,
       isCompleted: false,
-      amount: 1, // TODO update amount to 1308
+      amount: 100, // TODO update amount to 1308
     };
   }
 
@@ -111,7 +111,7 @@ class Listing extends React.Component {
                   Total{' '}
                   <span className="lineItemPrice">
                     <NumberFormat
-                      value={this.state.amount}
+                      value={this.state.amount / 100}
                       displayType={'text'}
                       thousandSeparator={true}
                       prefix={'$'}

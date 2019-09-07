@@ -144,7 +144,7 @@ class BookingModal extends Component {
                     'Processing…'
                   ) : (
                     <NumberFormat
-                      value={this.state.amount}
+                      value={this.state.amount / 100}
                       displayType={'text'}
                       thousandSeparator={true}
                       prefix={'$'}

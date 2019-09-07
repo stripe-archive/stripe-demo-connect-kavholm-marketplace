@@ -31,10 +31,15 @@ export default class KavholmApp extends App {
       appContext,
     );
 
-    API.setToken(token);
+    if (token) {
+      API.setToken(token);
+    }
     API.setContext(appContext.ctx);
 
-    let userProfile = await API.makeRequest('get', '/api/profile');
+    let userProfile;
+    if (token) {
+      userProfile = await API.makeRequest('get', '/api/profile');
+    }
 
     if (appContext.router) {
       console.log(`${appContext.router.route}.getInitialProps`);

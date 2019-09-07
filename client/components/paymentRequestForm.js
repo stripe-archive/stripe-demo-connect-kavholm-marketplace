@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import {PaymentRequestButtonElement} from 'react-stripe-elements';
+import API from '../helpers/api';
 
 class PaymentRequestForm extends React.Component {
   constructor(props) {

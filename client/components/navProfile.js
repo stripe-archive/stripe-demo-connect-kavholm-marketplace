@@ -58,11 +58,6 @@ class NavProfile extends React.Component {
               <a className="btn">Login</a>
             </Link>
           </li>
-          <li className="nav-item">
-            <Link href="/host">
-              <a className="btn btn-primary">Host a home</a>
-            </Link>
-          </li>
         </>
       );
     }

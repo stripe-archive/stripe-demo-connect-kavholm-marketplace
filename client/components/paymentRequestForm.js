@@ -45,6 +45,7 @@ class PaymentRequestForm extends React.Component {
     this.setState({
       canMakePayment: !!canMakePayment,
       hasInitialized: true,
+      paymentRequest: paymentRequest,
     });
   }
 

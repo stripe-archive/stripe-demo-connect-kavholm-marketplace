@@ -4,6 +4,7 @@ import {CardElement, injectStripe} from 'react-stripe-elements';
 import PaymentRequestForm from './paymentRequestForm';
 import API from '../helpers/api';
 import {redirect} from '../utils/redirect';
+import NumberFormat from 'react-number-format';
 
 class BookingModal extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class BookingModal extends Component {
     this.state = {
       listingId: 26,
       currency: 'USD',
-      totalAmount: props.amount,
+      amount: props.amount,
       startDate: '09-05-2019',
       endDate: '09-05-2019',
       isProcessing: false,
@@ -122,7 +123,7 @@ class BookingModal extends Component {
                 <br />
                 <PaymentRequestForm
                   stripe={this.props.stripe}
-                  amount={this.state.totalAmount}
+                  amount={this.state.amount}
                   currency={this.state.currency}
                 />
 
@@ -136,7 +137,17 @@ class BookingModal extends Component {
                   type="submit"
                   disabled={this.state.isProcessing}
                 >
-                  {this.state.isProcessing ? 'Processing…' : 'Pay $1,308'}
+                  {this.state.isProcessing ? (
+                    'Processing…'
+                  ) : (
+                    <NumberFormat
+                      value={this.state.amount}
+                      displayType={'text'}
+                      thousandSeparator={true}
+                      prefix={'$'}
+                      renderText={(value) => <>Pay {value}</>}
+                    />
+                  )}
                 </button>
               </form>
             </div>

@@ -78,7 +78,7 @@ class PaymentRequestForm extends React.Component {
           style={{
             paymentRequestButton: {
               theme: 'dark',
-              height: '64px',
+              height: '44px',
             },
           }}
         />

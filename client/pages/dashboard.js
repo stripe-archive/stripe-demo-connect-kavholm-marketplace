@@ -7,7 +7,6 @@ import ListingsBookingsList from '../components/bookingList';
 import DashboardListingsList from '../components/dashboardListingsList';
 import NewListingButton from '../components/newListingButton';
 
-
 class Dashboard extends React.Component {
   constructor(props) {
     super();
@@ -79,6 +78,7 @@ class Dashboard extends React.Component {
       <Layout
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
+        title="Dashboard"
       >
         <div className="dashboard ">
           <div className="row">

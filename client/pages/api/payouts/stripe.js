@@ -1,27 +1,17 @@
 import config from '../../../helpers/config';
 import getHost from '../../../utils/get-host';
-import {validateToken} from '../../../utils/authToken';
 import storage from '../../../helpers/storage';
 const querystring = require('querystring');
 
-export default async (req, res) => {
-  if (!('authorization' in req.headers)) {
-    return res.status(401).send('Authorization header missing');
-  }
-  const auth = await req.headers.authorization;
-  const {token} = JSON.parse(auth);
-  const decodedToken = validateToken(token);
+import requireAuthEndpoint from '../../../utils/requireAuthEndpoint';
 
-  if (!decodedToken) {
-    return res.status(400).json({message: 'invalid token'});
-  }
-
-  let userId = decodedToken.userId;
+export default requireAuthEndpoint(async (req, res) => {
+  let authenticatedUserId = req.authToken.userId;
 
   try {
     let userAccount = storage
       .get('users')
-      .find({userId: userId})
+      .find({userId: authenticatedUserId})
       .value();
 
     let clientId =
@@ -61,4 +51,4 @@ export default async (req, res) => {
   } catch (err) {
     return res.status(400).json(err);
   }
-};
+});

@@ -3,22 +3,10 @@ import fetch from 'isomorphic-unfetch';
 import config from '../../../helpers/config';
 import storage from '../../../helpers/storage';
 
-import {validateToken} from '../../../utils/authToken';
+import requireAuthEndpoint from '../../../utils/requireAuthEndpoint';
 
-export default async (req, res) => {
-  if (!('authorization' in req.headers)) {
-    return res.status(401).send('Authorization header missing');
-  }
-  const auth = await req.headers.authorization;
-  const {token} = JSON.parse(auth);
-
-  const decodedToken = validateToken(token);
-
-  if (!decodedToken) {
-    return res.status(400).json({message: 'invalid token'});
-  }
-
-  let userId = decodedToken.userId;
+export default requireAuthEndpoint(async (req, res) => {
+  let authenticatedUserId = req.authToken.userId;
 
   // 1) Post the authorization code to Stripe to complete the Express onboarding flow
   let url = 'https://connect.stripe.com/oauth/token';
@@ -65,7 +53,7 @@ export default async (req, res) => {
 
     let userAccount = storage
       .get('users')
-      .find({userId: userId})
+      .find({userId: authenticatedUserId})
       .assign({
         stripe: stripeObject,
       })
@@ -76,4 +64,4 @@ export default async (req, res) => {
     console.log('setup error', err);
     return res.status(400).json(err);
   }
-};
+});

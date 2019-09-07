@@ -1,30 +1,17 @@
 import storage from '../../../helpers/storage';
-
-import {validateToken} from '../../../utils/authToken';
 import stripe from '../../../helpers/stripe';
 
-export default async (req, res) => {
-  if (!('authorization' in req.headers)) {
-    return res.status(401).send('Authorization header missing');
-  }
-  const auth = await req.headers.authorization;
-  const {token} = JSON.parse(auth);
+import requireAuthEndpoint from '../../../utils/requireAuthEndpoint';
 
-  const decodedToken = validateToken(token);
+export default requireAuthEndpoint(async (req, res) => {
+  let authenticatedUserId = req.authToken.userId;
 
-  if (!decodedToken) {
-    return res.status(400).json({message: 'invalid token'});
-  }
-
-  let userId = decodedToken.userId;
   try {
     // 1) Get User
     let userAccount = storage
       .get('users')
-      .find({userId: userId})
+      .find({userId: authenticatedUserId})
       .value();
-
-    console.log('userAccount', userAccount);
 
     if (!userAccount.stripe) {
       throw new Error('No stripe account found');
@@ -40,4 +27,4 @@ export default async (req, res) => {
     console.log('accountLink.err', err);
     return res.status(400).json(err);
   }
-};
+});

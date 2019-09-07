@@ -1,20 +1,8 @@
 import stripe from '../../../helpers/stripe';
-import {validateToken} from '../../../utils/authToken';
+import requireAuthEndpoint from '../../../utils/requireAuthEndpoint';
 
-export default async (req, res) => {
-  if (!('authorization' in req.headers)) {
-    return res.status(401).send('Authorization header missing');
-  }
-  const auth = await req.headers.authorization;
-  const {token} = JSON.parse(auth);
-
-  const decodedToken = validateToken(token);
-
-  if (!decodedToken) {
-    return res.status(400).json({message: 'invalid token'});
-  }
-
-  let authenticatedUserId = decodedToken.userId;
+export default requireAuthEndpoint(async (req, res) => {
+  let authenticatedUserId = req.authToken.userId;
 
   try {
     // TODO Don't send this url along but use a configuration instead.
@@ -32,4 +20,4 @@ export default async (req, res) => {
     console.log('verifications.link.err', err);
     return res.status(400).json(err);
   }
-};
+});

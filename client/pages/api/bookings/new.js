@@ -10,21 +10,21 @@ export default requireAuthEndpoint(async (req, res) => {
   try {
     let {
       listingId,
-      totalAmount,
+      amount,
       currency,
       endDate,
       startDate,
       chargeToken,
     } = req.body;
 
-    // Step 1: Create new booking
+    // Step 1: Create new booking in Kavholm
     const bookingObject = {
       id: shortid.generate(),
       listingId: String(listingId),
       bookingUserId: String(authenticatedUserId),
       startDate: startDate,
       endDate: endDate,
-      totalAmount: String(totalAmount),
+      totalAmount: String(amount),
       currency: currency,
     };
 
@@ -34,32 +34,49 @@ export default requireAuthEndpoint(async (req, res) => {
       .write();
 
     // Step 2: Make Payment Request to Stripe
-    let response = {};
+    let response = {...bookingObject};
 
     if (chargeToken) {
       // Apple Pay aka Web Payment Request is using charges.
       const paymentCharge = await stripe.charges.create({
-        amount: totalAmount,
+        amount: amount,
         currency: currency,
         description: 'Kavholm',
         source: chargeToken,
       });
-      response = {
-        ...bookingObject,
-      };
     } else {
       let payParams = {
         payment_method_types: ['card'],
-        amount: totalAmount,
+        amount: amount,
         currency: currency,
       };
 
       const paymentIntent = await stripe.paymentIntents.create(payParams);
       response = {
-        ...bookingObject,
+        ...response,
         paymentRequestSecret: paymentIntent.client_secret,
       };
     }
+
+    // Step 3: Make transfer to the host account on Stripe
+    let listing = storage
+      .get('listings')
+      .find({id: String(listingId)})
+      .value();
+
+    let listingHostUser = storage
+      .get('users')
+      .find({userId: listing.owner})
+      .pick('stripe')
+      .value();
+
+    let listingHostUserStripeUserId = listingHostUser.stripe.stripeUserId;
+
+    await stripe.transfers.create({
+      currency: currency,
+      destination: listingHostUserStripeUserId,
+      amount: amount,
+    });
 
     return res.status(200).json(response);
   } catch (err) {

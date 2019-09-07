@@ -2,7 +2,7 @@ import fetch from 'isomorphic-unfetch';
 
 class Client {
   constructor() {
-    this.token = '<empty>';
+    this.token = '';
     this.context = null;
     this.protocol = 'http:';
     this.port = null;
@@ -49,7 +49,7 @@ class Client {
         credentials: 'include',
         headers: {
           'content-type': method == 'post' ? 'application/json' : '',
-          Authorization: `Bearer ${this.token}`,
+          Authorization: this.token ? `Bearer ${this.token}` : '',
         },
         method: method,
         body: method == 'post' ? JSON.stringify(requestData) : null,

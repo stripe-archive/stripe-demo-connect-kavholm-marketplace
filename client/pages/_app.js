@@ -3,17 +3,16 @@ import App, {Container} from 'next/app';
 import API from '../helpers/api';
 import nextCookie from 'next-cookies';
 import Layout from '../components/layout';
+import cookie from 'js-cookie';
 
 export default class KavholmApp extends App {
-  state = {
-    user: null,
-  };
-
-  static async getAuthenticationState(appContext) {
+  static getAuthenticationState(appContext) {
     let token = '';
 
     if (appContext && appContext.ctx) {
       token = nextCookie(appContext.ctx)['token'];
+    } else {
+      token = cookie.get('token');
     }
 
     const isAuthenticated = token !== undefined;
@@ -25,16 +24,14 @@ export default class KavholmApp extends App {
   }
 
   static async getInitialProps(appContext) {
+    console.log('*****************************');
     console.log('KavholmApp.getInitialProps');
 
-    let {token, isAuthenticated} = await this.getAuthenticationState(
-      appContext,
-    );
+    let {token, isAuthenticated} = this.getAuthenticationState(appContext);
 
-    if (token) {
-      API.setToken(token);
-    }
+    // Ensure API is set for server-side-side
     API.setContext(appContext.ctx);
+    API.setToken(token);
 
     let userProfile;
     if (token) {
@@ -61,7 +58,10 @@ export default class KavholmApp extends App {
       userProfile,
     } = this.props;
 
-    // console.log('KavholmApp.render', this.props);
+    if (token) {
+      // Ensure token is set for client-side
+      API.setToken(token);
+    }
 
     let renderProps = {...pageProps, token, isAuthenticated, userProfile};
 

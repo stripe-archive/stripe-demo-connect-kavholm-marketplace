@@ -9,12 +9,6 @@ class ProfilePayouts extends React.Component {
     super();
   }
 
-  static async getInitialProps(context) {
-    return {
-      profile: await API.makeRequest('get', '/api/profile'),
-    };
-  }
-
   async handleDashboardLink() {
     let req = await API.makeRequest('get', '/api/payouts/link');
     window.open(req.url);
@@ -22,10 +16,9 @@ class ProfilePayouts extends React.Component {
 
   render() {
     let hasPayoutSetup =
-      this.props.profile.stripe != null &&
-      this.props.profile.stripe.stripeUserId;
-
-    API.setToken(this.props.token); // TODO Find a way to automate this
+      this.props.userProfile &&
+      this.props.userProfile.stripe != null &&
+      this.props.userProfile.stripe.stripeUserId;
 
     return (
       <Layout

@@ -2,6 +2,7 @@
   "name": "create-next-example-app",
   "scripts": {
     "dev": "next",
+    "dev-https": "NODE_TLS_REJECT_UNAUTHORIZED=0 node server.js",
     "build": "next build",
     "gcp-build": "next build",
     "deploy": "gcloud app deploy --quiet",

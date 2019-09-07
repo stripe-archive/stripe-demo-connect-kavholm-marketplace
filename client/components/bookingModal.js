@@ -6,6 +6,8 @@ import API from '../helpers/api';
 import {redirect} from '../utils/redirect';
 import NumberFormat from 'react-number-format';
 
+Modal.setAppElement('.app');
+
 class BookingModal extends Component {
   constructor(props) {
     super();
@@ -14,7 +16,7 @@ class BookingModal extends Component {
 
     this.state = {
       listingId: 26,
-      currency: 'USD',
+      currency: 'usd',
       amount: props.amount,
       startDate: '09-05-2019',
       endDate: '09-05-2019',
@@ -118,15 +120,16 @@ class BookingModal extends Component {
               <h1>Your ID has been verified.</h1>
               <h1>Pay now to finalize booking.</h1>
 
-              <form onSubmit={this.handleSubmit}>
-                <br />
-                <br />
-                <PaymentRequestForm
-                  stripe={this.props.stripe}
-                  amount={this.state.amount}
-                  currency={this.state.currency}
-                />
+              <br />
+              <br />
 
+              <PaymentRequestForm
+                stripe={this.props.stripe}
+                amount={this.state.amount}
+                currency={this.state.currency}
+              />
+
+              <form onSubmit={this.handleSubmit}>
                 <div className="card-info">
                   <CardElement
                     style={{base: {fontSize: '18px', width: '100%'}}}

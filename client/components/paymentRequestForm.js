@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import {PaymentRequestButtonElement} from 'react-stripe-elements';
 import API from '../helpers/api';
+import {redirect} from '../utils/redirect';
 
 class PaymentRequestForm extends React.Component {
   constructor(props) {
@@ -48,6 +49,8 @@ class PaymentRequestForm extends React.Component {
       };
 
       try {
+        complete('success');
+
         let req = await API.makeRequest(
           'post',
           `/api/bookings/new`,
@@ -55,7 +58,6 @@ class PaymentRequestForm extends React.Component {
         );
         let bookingId = req.id;
         redirect(`/bookings/${bookingId}`);
-        complete('success');
       } catch (err) {
         console.log('err', err);
       }

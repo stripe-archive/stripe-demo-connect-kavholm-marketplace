@@ -50,7 +50,7 @@ class BookingPayment extends Component {
   }
 
   render() {
-    let {amount, currency} = this.props.booking;
+    let {amount, currency, onBookingConfirmed} = this.props.booking;
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -58,6 +58,7 @@ class BookingPayment extends Component {
           stripe={this.props.stripe}
           amount={amount}
           currency={currency}
+          onBookingConfirmed={onBookingConfirmed}
         />
 
         <div className="card-info">

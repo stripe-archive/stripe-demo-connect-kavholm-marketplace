@@ -39,6 +39,8 @@ class PaymentRequestForm extends React.Component {
     paymentRequest.on('token', async ({complete, token}) => {
       console.log('Received Stripe token: ', token);
 
+      let onBookingConfirmed = this.props.onBookingConfirmed;
+
       let bookingData = {
         listingId: 26,
         currency: this.props.currency,
@@ -56,8 +58,7 @@ class PaymentRequestForm extends React.Component {
           `/api/bookings/new`,
           bookingData,
         );
-        let bookingId = req.id;
-        redirect(`/bookings/${bookingId}`);
+        onBookingConfirmed && onBookingConfirmed(req);
       } catch (err) {
         console.log('err', err);
       }

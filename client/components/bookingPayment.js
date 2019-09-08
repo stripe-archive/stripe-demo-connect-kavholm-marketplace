@@ -50,7 +50,8 @@ class BookingPayment extends Component {
   }
 
   render() {
-    let {amount, currency, onBookingConfirmed} = this.props.booking;
+    let {amount, currency} = this.props.booking;
+    let onBookingConfirmed = this.props.onBookingConfirmed;
 
     return (
       <form onSubmit={this.handleSubmit}>

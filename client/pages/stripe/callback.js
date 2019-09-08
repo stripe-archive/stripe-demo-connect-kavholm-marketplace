@@ -10,11 +10,8 @@ class AuthStripeCallback extends React.Component {
     let req = await API.makeRequest('post', `/api/payouts/setup`, {
       code: code,
     });
-    return {};
-  }
 
-  componentDidMount() {
-    redirect('/dashboard');
+    return redirect('/dashboard', context);
   }
 
   render() {

@@ -2,7 +2,8 @@
   "users": [
     {
       "userId": "Igj-hMfQp",
-      "fullName": "Kenneth Auchenberg",
+      "firstName": "Kenneth",
+      "lastName": "Auchenberg",
       "email": "kenneth@auchenberg.dk",
       "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
       "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400",
@@ -11,38 +12,12 @@
       }
     },
     {
-      "userId": "IYxzqecwL",
-      "fullName": "Kenneth Auchenberg",
-      "email": "kenneth@auchenberg.dk",
-      "password": "$2b$10$/RYsRovrfkS.YlpoRuIlMed.fqi4s.6//OuFwLlJUejwPJlN657ga"
-    },
-    {
-      "userId": "5vH_-491a",
-      "fullName": "Kenneth Auchenberg",
-      "email": "kenneth@auchenberg.dk",
-      "password": "$2b$10$iMMCCRIOLgdBPK1jouAgd.Pzy2DJugm0E8fYnRyVmwNkWZ4tUNgRy"
-    },
-    {
-      "userId": "ueReZujLl",
-      "fullName": "Kenneth Auchenberg",
-      "email": "kenneth@auchenberg.ie",
-      "password": "$2b$10$eDo/9E4Fm9uzLPqfpUVNsOVB8vgiR7qFwdIcX/mtY6.hG1uzLqs22"
-    },
-    {
-      "userId": "6BuJj5NWF",
-      "fullName": "Kenneth Auchenberg",
-      "email": "kenneth@auchenberg.dk",
-      "password": "$2b$10$TyU41LlxCTLyctElX3fjPe/8YYO63bH9irwad/xrY5LAL.qnkqCaa"
-    },
-    {
-      "userId": "3K3ppt8mj",
-      "fullName": "demoHost1",
-      "email": "auchenberg+demohost1@stripe.com",
-      "password": "$2b$10$3dAzmr0hh2dwe0thFPP.ZegArsXqFqTqscph2120UxzpZA0axKmkW",
-      "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400",
-      "stripe": {
-        "stripeUserId": "acct_1FF3gtE28Dxr0eVV"
-      }
+      "userId": "MHZ8QxjRe",
+      "firstName": "Demo",
+      "lastName": "Host",
+      "email": "demohost@stripe.com",
+      "password": "$2b$10$poVqbkZW2zDK/sScp1W4SOr6ktHohEZkaTwyxTs0V4Li646uVAnja",
+      "avatar": "//www.gravatar.com/avatar/71cb952707f2bb506e43fea4c527d17e?s=400"
     }
   ],
   "listings": [
@@ -121,15 +96,6 @@
     }
   ],
   "bookings": [
-    {
-      "id": "1",
-      "listingId": "26",
-      "bookingUserId": "3K3ppt8mj",
-      "startDate": "09-05-2019",
-      "endDate": "09-05-2019",
-      "totalAmount": "1308",
-      "currency": "USD"
-    },
     {
       "id": "OPGlw6tku",
       "listingId": "26",

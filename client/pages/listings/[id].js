@@ -1,13 +1,11 @@
 import React from 'react';
-import Link from 'next/link';
+import Router from 'next/router';
 
 import Layout from '../../components/layout';
 import API from '../../helpers/api';
 
 import BookingModalWrapper from '../../components/bookingModalWrapper';
 import NumberFormat from 'react-number-format';
-
-import Router from 'next/router';
 
 class Listing extends React.Component {
   constructor() {
@@ -53,18 +51,19 @@ class Listing extends React.Component {
     });
   };
 
-  async startUserVerification() {
+  startUserVerification = async () => {
     try {
       let req = await API.makeRequest('post', '/api/verifications/link', {
-        baseUrl: window.location.href,
+        listingId: this.props.listing.id,
       });
+
       if (req && req.url) {
         window.location.href = req.url;
       }
     } catch (err) {
       alert('Verification intent failed', err);
     }
-  }
+  };
 
   render() {
     return (

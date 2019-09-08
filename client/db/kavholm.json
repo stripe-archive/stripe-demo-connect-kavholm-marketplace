@@ -12,7 +12,7 @@
   "listings": [
     {
       "id": "10",
-      "title": "West Los Angeles, Los Angeles, United States",
+      "title": "West Los Angeles, United States",
       "source": "https://unsplash.com/photos/AutCiGUz8D4",
       "image": "https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80"
     },
@@ -31,13 +31,13 @@
     },
     {
       "id": "11",
-      "title": "Los Angeles, United States",
+      "title": "Mexico City, Mexico",
       "source": "https://unsplash.com/photos/ear8VOL7x8k",
       "image": "https://images.unsplash.com/photo-1537304119-36263d2db05b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1575&q=80"
     },
     {
       "id": "6",
-      "title": "",
+      "title": "Copenhagen, Demmark",
       "source": "https://unsplash.com/photos/leDo7IX1ycM",
       "image": "https://images.unsplash.com/photo-1549488497-256795402cc0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80"
     },
@@ -49,13 +49,13 @@
     },
     {
       "id": "15",
-      "title": "Oslo, Norway",
+      "title": "Home in Oslo, Norway",
       "source": "https://unsplash.com/photos/5i0GnoTTjSE",
       "image": "https://images.unsplash.com/photo-1481277542470-605612bd2d61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2590&q=80"
     },
     {
       "id": "18",
-      "title": "Spain",
+      "title": "Mallorca, Spain",
       "source": "https://unsplash.com/photos/4ojhpgKpS68",
       "image": "https://images.unsplash.com/photo-1523217582562-09d0def993a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=2200&q=80"
     },
@@ -79,7 +79,7 @@
     },
     {
       "id": "27",
-      "title": "",
+      "title": "Utah dessert, United States",
       "source": "https://unsplash.com/photos/V7HWR5o9BeY",
       "image": "https://images.unsplash.com/photo-1539437829697-1b4ed5aebd19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80"
     }

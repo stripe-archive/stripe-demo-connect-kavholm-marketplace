@@ -13,10 +13,6 @@ export default requireAuthEndpoint(async (req, res) => {
       .find({userId: authenticatedUserId})
       .value();
 
-    let userEmail = userAccount.email;
-    let userFirstName = userAccount.firstName;
-    let userLastName = userAccount.lastName;
-
     let listingId = req.body.listingId;
 
     let baseUrl = getHost(req) + `/listings/${listingId}`;
@@ -27,9 +23,7 @@ export default requireAuthEndpoint(async (req, res) => {
       return_url: returnUrl,
       cancel_url: cancelUrl,
       requested_verifications: ['identity_document'],
-      'person_data[email]': userEmail,
-      'person_data[first_name]': userFirstName,
-      'person_data[last_name]': userLastName,
+      'person_data[email]': userAccount.email,
     });
 
     return res.status(200).json({

@@ -14,7 +14,7 @@ class Listing extends React.Component {
       isBooking: false,
       isBookingConfirmed: false,
       isUserVerified: false,
-      amount: 100, // TODO update amount to 1308
+      amount: process.env.NODE_ENV === 'production' ? 130800 : 100,
     };
   }
 
@@ -83,78 +83,99 @@ class Listing extends React.Component {
           />
 
           <div className="content">
-            <div className="pane-images">
-              <img src="/static/place images.png" />
-              <div className="image-footer">
-                <div>See more photos</div>
-                <div className="widgets">
-                  <div style={{marginRight: '12px'}}>
-                    <img src="/static/share.svg" /> Share
+            <div className="row">
+              <div className="col-8 pane-images">
+                <img src={this.props.listing.image} className="image-main" />
+
+                <div className="row">
+                  <div className="col-6">
+                    <img
+                      src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-1.2.1&auto=format&fit=crop&w=3453&q=80"
+                      className="image-small"
+                    />
                   </div>
-                  <div>
-                    <img src="/static/save.svg" /> Save
+                  <div className="col-6">
+                    <img
+                      src="https://images.unsplash.com/photo-1521783988139-89397d761dce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2450&q=80"
+                      className="image-small"
+                    />
+                  </div>
+                </div>
+
+                <div className="image-footer">
+                  <div>See more photos</div>
+                  <div className="widgets">
+                    <div style={{marginRight: '12px'}}>
+                      <img src="/static/share.svg" /> Share
+                    </div>
+                    <div>
+                      <img src="/static/save.svg" /> Save
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="pane-info">
-              <h1>{this.props.listing.title}</h1>
-              <p className="bookingInfo">
-                3 guests · 1 bedroom · 1 bed · 2 baths
-              </p>
-              <div className="priceInfo">
-                <span className="price">$174 </span>/ night
-                <img src="/static/stars.svg" />
-              </div>
-              <hr />
-              <ul className="lineItems">
-                {[
-                  {item: '$174 x 7 nights', amount: '$1,218'},
-                  {item: 'Cleaning fee', amount: '$33'},
-                  {item: 'Service fee', amount: '$47'},
-                  {item: 'Occupancy taxes and fees', amount: '$10'},
-                ].map(({item, amount}) => (
-                  <li key={item}>
-                    {item}
-                    <span className="lineItemPrice">{amount}</span>
-                  </li>
-                ))}
-              </ul>
-              <hr />
-              <ul className="lineItems lineItemsTotal">
-                <li>
-                  Total{' '}
-                  <span className="lineItemPrice">
-                    <NumberFormat
-                      value={this.state.amount / 100}
-                      displayType={'text'}
-                      thousandSeparator={true}
-                      prefix={'$'}
-                    />
-                  </span>
-                </li>
-              </ul>
-              <button
-                className="btn btn-primary"
-                onClick={this.handleBookingStartClick}
-                disabled={!this.props.isAuthenticated}
-              >
-                {this.props.isAuthenticated
-                  ? 'Book now'
-                  : 'Please login before booking'}
-              </button>
 
-              <div className="media host">
-                <img
-                  src="/static/host.png"
-                  width="36"
-                  className="mr-3 avatar"
-                />
-                <div className="media-body">
-                  <p>
-                    Your host requires a verified government ID to complete
-                    booking.
+              <div className="col-4 pane-info">
+                <div className="booking-info">
+                  <h1>{this.props.listing.title}</h1>
+                  <p className="bookingInfo">
+                    3 guests · 1 bedroom · 1 bed · 2 baths
                   </p>
+                  <div className="priceInfo">
+                    <span className="price">$174 </span>/ night
+                    <img className="stars" src="/static/stars.svg" />
+                  </div>
+                  <hr />
+                  <ul className="lineItems">
+                    {[
+                      {item: '$174 x 7 nights', amount: '$1,218'},
+                      {item: 'Cleaning fee', amount: '$33'},
+                      {item: 'Service fee', amount: '$47'},
+                      {item: 'Occupancy taxes and fees', amount: '$10'},
+                    ].map(({item, amount}) => (
+                      <li key={item}>
+                        {item}
+                        <span className="lineItemPrice">{amount}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <hr />
+                  <ul className="lineItems lineItemsTotal">
+                    <li>
+                      Total{' '}
+                      <span className="lineItemPrice">
+                        <NumberFormat
+                          value={this.state.amount / 100}
+                          displayType={'text'}
+                          thousandSeparator={true}
+                          prefix={'$'}
+                        />
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <button
+                  className="btn btn-primary btn-book"
+                  onClick={this.handleBookingStartClick}
+                  disabled={!this.props.isAuthenticated}
+                >
+                  {this.props.isAuthenticated
+                    ? 'Book now'
+                    : 'Please login before booking'}
+                </button>
+
+                <div className="media host">
+                  <img
+                    src="/static/host.png"
+                    width="36"
+                    className="mr-3 avatar"
+                  />
+                  <div className="media-body">
+                    <p>
+                      Your host requires a verified government ID to complete
+                      booking.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -209,6 +230,7 @@ class Listing extends React.Component {
               letter-spacing: 0.3px;
             }
             .priceInfo {
+              display: flex;
               font-size: 14px;
               letter-spacing: -0.15px;
               margin-top: 30px;
@@ -218,6 +240,7 @@ class Listing extends React.Component {
               font-size: 24px;
               font-weight: 500;
               color: #373737;
+              padding-right: 5px;
             }
             .priceInfo img {
               padding-left: 30px;
@@ -270,20 +293,49 @@ class Listing extends React.Component {
 
             .content {
               color: #676767;
-              display: flex;
-              flex-direction: row;
-              align-items: center;
             }
+
             h1 {
-              max-width: 300px;
               color: #373737;
               font-weight: 600;
             }
-            .pane-images {
-              padding-right: 120px;
+
+            .image-main {
+              width: 100%;
+              margin-bottom: 30px;
+              border-radius: 6px;
+
+              border-radius: 6px;
+              height: 100%;
+              object-fit: cover;
+              object-position: bottom;
+
+              max-height: 466px;
             }
-            .pane-info {
-              width: 375px;
+
+            .image-small {
+              width: 100%;
+              border-radius: 6px;
+              border-radius: 6px;
+              height: 250px;
+              object-fit: cover;
+              object-position: bottom;
+            }
+
+            .btn-book {
+              margin-top: 34px;
+            }
+
+            .stars {
+              align-self: center;
+            }
+
+            .pane-images {
+              padding-bottom: 50px;
+            }
+
+            .booking-info {
+              min-height: 462px;
             }
           `}</style>
         </div>

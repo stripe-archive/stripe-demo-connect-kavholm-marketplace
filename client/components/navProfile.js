@@ -38,9 +38,6 @@ class NavProfile extends React.Component {
             <Link href="/dashboard">
               <a className="dropdown-item">Dashboard</a>
             </Link>
-            <Link href="/profile/payouts">
-              <a className="dropdown-item">Payouts</a>
-            </Link>
             <Link href="/profile">
               <a className="dropdown-item">Profile</a>
             </Link>

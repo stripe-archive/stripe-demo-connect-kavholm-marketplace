@@ -24,6 +24,8 @@ export default requireAuthEndpoint(async (req, res) => {
       cancel_url: cancelUrl,
       requested_verifications: ['identity_document'],
       'person_data[email]': userAccount.email,
+      'person_data[first_name]': userAccount.firstName,
+      'person_data[last_name]': userAccount.lastName,
     });
 
     return res.status(200).json({

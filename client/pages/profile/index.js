@@ -24,6 +24,11 @@ class Profile extends React.Component {
     }
   }
 
+  disconnectStripeAccount = async () => {
+    let req = await API.makeRequest('post', '/api/profile/disconnect_stripe');
+    redirect('/dashboard');
+  };
+
   render() {
     let profile = this.props ? this.props.profile : {};
     let avatarUrl = profile ? profile.avatar : '/static/avatar.png';
@@ -44,6 +49,18 @@ class Profile extends React.Component {
           <pre className="profile-details bg-light">
             <code>{JSON.stringify(profile, null, 2)}</code>
           </pre>
+
+          {profile.stripe && (
+            <>
+              <h4>Integrations</h4>
+              <button
+                className="btn btn-secondary"
+                onClick={this.disconnectStripeAccount}
+              >
+                Disconnect Stripe account
+              </button>
+            </>
+          )}
         </div>
         <style jsx>{`
           .profile h4 {

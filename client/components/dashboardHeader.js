@@ -1,8 +1,4 @@
 import React, {Component} from 'react';
-import BookingModal from './bookingModal';
-import {Elements, StripeProvider, injectStripe} from 'react-stripe-elements';
-import getConfig from 'next/config';
-
 import API from '../helpers/api';
 
 class DashboardHeader extends Component {

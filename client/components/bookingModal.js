@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Modal from 'react-modal';
 
 import BookingConfirmedModal from './bookingConfirmedModal';
-import BookingPayment from './BookingPayment';
+import BookingPayment from './bookingPayment';
 
 Modal.setAppElement('.app');
 

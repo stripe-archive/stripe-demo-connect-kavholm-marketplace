@@ -28,6 +28,7 @@ function DashboardListingsList(props) {
 
             border: 0;
             background: #f6f6f6;
+            border-radius: 6px;
           }
 
           .listing-item h3 {
@@ -50,7 +51,8 @@ function DashboardListingsList(props) {
             object-fit: cover;
             object-position: bottom;
             border: 0;
-            filter: brightness(0.8);
+            filter: brightness(0.7);
+            border-radius: 6px;
           }
         `}</style>
       </li>

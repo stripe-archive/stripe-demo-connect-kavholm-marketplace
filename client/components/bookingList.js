@@ -10,28 +10,29 @@ function BookingsList(props) {
       <li className="booking-list-item media" key={i.id}>
         <img src={i.user.avatar} height="30" className="mr-3 avatar" />
         <div className="media-body">
-          <div className="align-middle">
-            <p className="booking-date">
-              <Moment format="MMM DD">{i.startDate}</Moment>
-              {' - '}
-              <Moment format="MMM DD">{i.endDate}</Moment>
-            </p>
-            <p>
-              <strong>{i.user.fullName}</strong>
-            </p>
-          </div>
+          <p className="booking-date">
+            <Moment format="MMM DD">{i.startDate}</Moment>
+            {' — '}
+            <Moment format="MMM DD">{i.endDate}</Moment>
+          </p>
+          <p>
+            <strong>{i.user.fullName}</strong>
+          </p>
         </div>
-        <div className="align-middle">
-          <div className="verified">✔ Verified</div>
-        </div>
+
+        <div className="verified">✔ Verified</div>
         <style jsx>{`
           .booking-list-item {
-            padding: 10px;
+            padding: 10px 15px;
             margin-bottom: 10px;
 
             background: rgb(255, 255, 255);
             border-radius: 6px;
             border: 1px solid rgb(229, 229, 229);
+          }
+
+          .booking-list-item .avatar {
+            align-self: center;
           }
 
           .booking-list-item p {
@@ -50,6 +51,7 @@ function BookingsList(props) {
             font-size: 14px;
             font-weight: 500;
             letter-spacing: -0.15px;
+            align-self: center;
 
             height: 100%;
           }

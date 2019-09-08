@@ -73,8 +73,14 @@ class PaymentRequestForm extends React.Component {
   }
 
   render() {
+    let className = ['payment-request-form'];
+
+    if (this.state.canMakePayment) {
+      className.push('ready');
+    }
+
     return (
-      <div className="payment-request-form">
+      <div className={className.join(' ')}>
         {this.state.canMakePayment && (
           <>
             <PaymentRequestButtonElement
@@ -93,8 +99,14 @@ class PaymentRequestForm extends React.Component {
 
         <style jsx>{`
           .payment-request-form {
-            height: 115px;
+            max-height: 0px;
+            transition: max-height 0.15s ease-out;
           }
+
+          .ready {
+            max-height: 115px;
+          }
+
           .tip-text {
             color: rgba(0, 0, 0, 0.5);
             font-size: 14px;

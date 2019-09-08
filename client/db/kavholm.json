@@ -6,18 +6,7 @@
       "lastName": "Auchenberg",
       "email": "kenneth@auchenberg.dk",
       "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
-      "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400",
-      "stripe": {
-        "stripeUserId": "acct_1FFoCuKA9QA7nlTS"
-      }
-    },
-    {
-      "userId": "MHZ8QxjRe",
-      "firstName": "Demo",
-      "lastName": "Host",
-      "email": "demohost@stripe.com",
-      "password": "$2b$10$poVqbkZW2zDK/sScp1W4SOr6ktHohEZkaTwyxTs0V4Li646uVAnja",
-      "avatar": "//www.gravatar.com/avatar/71cb952707f2bb506e43fea4c527d17e?s=400"
+      "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400"
     }
   ],
   "listings": [

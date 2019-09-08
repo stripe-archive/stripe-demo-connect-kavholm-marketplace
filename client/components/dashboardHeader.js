@@ -48,13 +48,17 @@ class DashboardHeader extends Component {
           </div>
           <div className="col-4">
             <div className="align-middle stripe-dashboard">
-              <p className="label text-secondary">Balance</p>
-              <p className="balance">
-                {formattedBalance}{' '}
-                <a href="#" onClick={this.handleDashboardLink}>
-                  View in Stripe Dashboard ↗
-                </a>
-              </p>
+              {formattedBalance && (
+                <>
+                  <p className="label text-secondary">Balance</p>
+                  <p className="balance">
+                    {formattedBalance}{' '}
+                    <a href="#" onClick={this.handleDashboardLink}>
+                      View in Stripe Dashboard ↗
+                    </a>
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>

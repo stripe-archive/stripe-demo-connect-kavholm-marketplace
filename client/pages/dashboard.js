@@ -51,7 +51,7 @@ class Dashboard extends React.Component {
     if (userProfile) {
       // Redirect to /profile/payouts to setup payouts.
       if (!userProfile.stripe) {
-        redirect('/profile/payouts', context);
+        return redirect('/profile/payouts', context);
       }
     }
 

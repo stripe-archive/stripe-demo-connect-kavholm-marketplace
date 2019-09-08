@@ -1,0 +1,87 @@
+{
+  "name": "react-moment",
+  "description": "React component for the moment date library.",
+  "version": "0.9.2",
+  "author": {
+    "name": "Sean Hickey",
+    "web": "http://headzoo.io"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-stage-2": "^7.0.0",
+    "@babel/register": "^7.4.0",
+    "@storybook/addon-actions": "^5.0.6",
+    "@storybook/addon-knobs": "^5.0.6",
+    "@storybook/addon-options": "^5.0.6",
+    "@storybook/addons": "^5.0.6",
+    "@storybook/react": "^5.0.6",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.7.1",
+    "babel-loader": "^8.0.5",
+    "coveralls": "^3.0.3",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-import-resolver-babel-module": "^5.0.1",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "express": "^4.16.4",
+    "istanbul": "^0.4.5",
+    "istanbul-api": "^2.1.4",
+    "istanbul-reports": "^2.2.2",
+    "jest": "^24.7.1",
+    "json-loader": "^0.5.4",
+    "moment": "^2.24.0",
+    "moment-duration-format": "^2.2.2",
+    "moment-timezone": "^0.5.23",
+    "prop-types": "^15.7.2",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "rimraf": "^2.6.3",
+    "storybook-addon-jsx": "^7.1.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "jest": {
+    "testRegex": "/tests/.*",
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "modulePathIgnorePatterns": [
+      "/tests/ssr"
+    ]
+  },
+  "keywords": [
+    "date",
+    "moment",
+    "react",
+    "react-component",
+    "time"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "peerDependencies": {
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
+    "react": "^15.6.0 || ^16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/headzoo/react-moment.git"
+  },
+  "scripts": {
+    "build": "npm run clean && webpack -p",
+    "clean": "rimraf ./dist/index.js",
+    "test": "export TZ=America/New_York; jest --coverage",
+    "travis-test": "npm run test && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "lint": "eslint ./src --cache --cache-location=.cache/eslint --ext .js,.jsx",
+    "lint:fix": "npm run lint -- --fix",
+    "storybook:dev": "start-storybook -p 6006",
+    "storybook:build": "build-storybook -o stories/build"
+  },
+  "types": "dist/index.d.ts"
+}

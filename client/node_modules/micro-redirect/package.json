@@ -1,0 +1,32 @@
+{
+  "name": "micro-redirect",
+  "version": "1.0.0",
+  "description": "A redirect function for Zeit's [micro]",
+  "main": "index.js",
+  "keywords": [
+    "micro",
+    "service",
+    "redirect"
+  ],
+  "author": {
+    "name": "Tim Reynolds",
+    "email": "tim@timothyreynolds.co.uk"
+  },
+  "license": "MIT",
+  "scripts": {
+    "precommit": "npm run lint",
+    "lint": "xo",
+    "test": "npm run lint && jest"
+  },
+  "xo": {
+    "esnext": true,
+    "space": true,
+    "envs": ["jest"]
+  },
+  "devDependencies": {
+    "husky": "^0.13.2",
+    "jest": "^19.0.2",
+    "xo": "^0.17.1"
+  },
+  "dependencies": {}
+}

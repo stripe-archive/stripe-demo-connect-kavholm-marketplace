@@ -143,12 +143,19 @@ class Listing extends React.Component {
                   ? 'Book now'
                   : 'Please login before booking'}
               </button>
-              <div className="host">
-                <img src="/static/host.png" width="36" />
-                <p>
-                  Your host requires a verified government ID to complete
-                  booking.
-                </p>
+
+              <div className="media host">
+                <img
+                  src="/static/host.png"
+                  width="36"
+                  className="mr-3 avatar"
+                />
+                <div className="media-body">
+                  <p>
+                    Your host requires a verified government ID to complete
+                    booking.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -239,21 +246,28 @@ class Listing extends React.Component {
               border: 0;
               border-top: 1px solid #d6d6d6;
             }
+
             .host {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
               margin-top: 15px;
             }
+
             .host img {
               margin-right: 15px;
+              align-self: center;
             }
-            .host p {
+
+            .host .media-body {
               font-size: 14px;
               letter-spacing: -0.1px;
-              width: 240px;
               color: #676767;
             }
+
+            .host .media-body p {
+              font-weight: normal;
+              text-decoration: none;
+              margin: 0;
+            }
+
             .content {
               color: #676767;
               display: flex;

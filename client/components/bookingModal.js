@@ -15,8 +15,8 @@ class BookingModal extends Component {
         currency: 'usd',
         amount: props.amount,
         listingId: 26,
-        startDate: '09-05-2019',
-        endDate: '09-05-2019',
+        startDate: '09/05/2019',
+        endDate: '09/05/2019',
       },
     };
   }

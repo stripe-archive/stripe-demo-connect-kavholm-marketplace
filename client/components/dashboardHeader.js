@@ -42,8 +42,10 @@ class DashboardHeader extends Component {
               <img src={avatarUrl} className="mr-3 avatar" />
               <div className="media-body">
                 <div className="user-details-body align-middle">
-                  <h5 className="mt-0">{profile && profile.fullName}</h5>
-                  <p className="text-secondary">{profile && profile.email}</p>
+                  <h5 className="mt-0">
+                    {profile.firstName + ' ' + profile.lastName}
+                  </h5>
+                  <p className="text-secondary">{profile.email}</p>
                 </div>
               </div>
             </div>

@@ -16,7 +16,7 @@ function BookingsList(props) {
             <Moment format="MMM DD">{i.endDate}</Moment>
           </p>
           <p>
-            <strong>{i.user.fullName}</strong>
+            <strong>{i.user.firstName + ' ' + i.user.lastName}</strong>
           </p>
         </div>
 

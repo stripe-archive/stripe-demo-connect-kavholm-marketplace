@@ -5,14 +5,15 @@ import gravatar from 'gravatar';
 import {generateToken} from '../../../utils/authToken';
 
 export default async (req, res) => {
-  const {fullname, email, password} = req.body;
+  const {firstName, lastName, email, password} = req.body;
 
   let hashedPassword = await bcrypt.hash(password, 10);
   let normalizedEmail = email.toLowerCase();
 
   const userObject = {
     userId: shortid.generate(),
-    fullName: fullname,
+    firstName: firstName,
+    lastName: lastName,
     email: normalizedEmail,
     password: hashedPassword,
     avatar: gravatar.url(normalizedEmail, {s: '400'}),

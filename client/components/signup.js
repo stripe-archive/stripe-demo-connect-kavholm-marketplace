@@ -9,8 +9,9 @@ class SignupForm extends Component {
     super(props);
 
     this.state = {
-      fullname: 'demoHost1',
-      email: 'auchenberg+demoHost1@stripe.com',
+      firstName: 'Demo',
+      lastName: 'Host',
+      email: 'demoHost@stripe.com',
       password: 'test',
       error: '',
     };
@@ -45,12 +46,21 @@ class SignupForm extends Component {
       <>
         <div className="signup-form">
           <form onSubmit={this.handleSubmit}>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">First name</label>
             <input
               type="text"
-              id="fullname"
-              name="fullname"
-              value={this.state.fullname}
+              id="firstName"
+              name="firstName"
+              value={this.state.firstName}
+              onChange={this.handleChange}
+            />
+
+            <label htmlFor="name">Last name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              value={this.state.lastName}
               onChange={this.handleChange}
             />
 

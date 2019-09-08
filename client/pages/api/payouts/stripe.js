@@ -21,11 +21,8 @@ export default requireAuthEndpoint(async (req, res) => {
 
     // Pass UserAccount info along to Stripe
     let userEmail = userAccount.email;
-    let userNameParts = userAccount.fullName
-      ? userAccount.fullName.split(' ')
-      : [];
-    let userFirstName = userNameParts.length ? userNameParts[0] : '';
-    let userLastName = userNameParts.length ? userNameParts[1] : '';
+    let userFirstName = userAccount.firstName;
+    let userLastName = userAccount.lastName;
 
     const redirect_uri = getHost(req) + '/stripe/callback';
 

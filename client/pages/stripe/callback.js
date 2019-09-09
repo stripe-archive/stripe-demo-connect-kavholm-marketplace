@@ -1,27 +1,35 @@
 import React from 'react';
+import Router from 'next/router';
 
-import Layout from '../../components/layout';
 import {redirect} from '../../utils/redirect';
 import API from '../../helpers/api';
 
 class AuthStripeCallback extends React.Component {
-  static async getInitialProps(context) {
-    let code = context.query.code;
+  static async getInitialProps() {
+    return {};
+  }
 
+  async finalize() {
+    let code = Router.router.query.code;
+
+    console.log('code', code);
     try {
       let req = await API.makeRequest('post', `/api/payouts/setup`, {
         code: code,
       });
 
-      if (req.status === 'ok') {
-        return redirect('/dashboard', context);
+      if (req && req.status === 'ok') {
+        return redirect('/dashboard');
+      } else {
+        console.log('req', req);
       }
     } catch (err) {
       console.log('AuthStripeCallback.error', err);
-      console.log('AuthStripeCallback.error.code', code);
     }
+  }
 
-    return {};
+  componentDidMount() {
+    this.finalize();
   }
 
   render() {

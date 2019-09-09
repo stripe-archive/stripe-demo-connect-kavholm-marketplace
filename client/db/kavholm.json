@@ -4,7 +4,23 @@
       "userId": "Igj-hMfQp",
       "firstName": "Kenneth",
       "lastName": "Auchenberg",
-      "email": "kenneth@auchenberg.dk",
+      "email": "auchenberg@stripe.com",
+      "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
+      "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400"
+    },
+    {
+      "userId": "Igj-hMfQa",
+      "firstName": "Romain",
+      "lastName": "Huet",
+      "email": "romain@stripe.com",
+      "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
+      "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400"
+    },
+    {
+      "userId": "Igj-hMfQb",
+      "firstName": "Laura",
+      "lastName": "Willson",
+      "email": "willson@stripe.com",
       "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
       "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400"
     }

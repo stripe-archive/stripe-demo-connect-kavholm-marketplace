@@ -11,7 +11,14 @@ class Login extends React.Component {
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
       >
-        <LoginComponent />
+        <div className="login-page">
+          <LoginComponent />
+        </div>
+        <style jsx>{`
+          .login-page {
+            padding-top: 100px;
+          }
+        `}</style>
       </Layout>
     );
   }

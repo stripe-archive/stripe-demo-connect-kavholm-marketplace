@@ -67,7 +67,7 @@ class Client {
         throw new Error(response.statusText);
       }
     } catch (err) {
-      console.log('APIclient.makeRequest.error', err);
+      console.error('APIclient.makeRequest.error', err);
       // throw new Error(err);
     }
   }

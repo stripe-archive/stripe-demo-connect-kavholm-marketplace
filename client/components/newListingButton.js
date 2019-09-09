@@ -42,6 +42,7 @@ function NewListingButton(props) {
             padding: 20px;
             border-radius: 10px;
             width: 400px;
+            z-index: 10;
           }
 
           .btn-new-listing {

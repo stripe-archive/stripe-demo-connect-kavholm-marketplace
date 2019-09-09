@@ -74,7 +74,7 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    let showListingTip = !this.props.userListings;
+    let showListingTip = this.props.userListings.length === 0;
 
     return (
       <Layout

@@ -31,12 +31,26 @@ const Layout = (props) => (
         font-size: 16px;
       }
 
+      :global(html) {
+        height: 100%;
+      }
+
+      :global(body) {
+        height: 100%;
+      }
+
+      :global(#__next) {
+        height: 100%;
+        overflow: auto;
+      }
+
       :global(.btn-primary) {
         background: #0055ff;
       }
 
       .app {
         overflow: hidden;
+        min-height: calc(100% - 125px);
       }
     `}</style>
   </>

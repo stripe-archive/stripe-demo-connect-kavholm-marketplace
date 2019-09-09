@@ -89,6 +89,7 @@ class Nav extends React.Component {
               padding: 0 10px 0 30px;
               font-size: 14px;
               appearance: none;
+              color: #757575;
             }
 
             .booking-form .search {

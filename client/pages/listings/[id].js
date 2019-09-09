@@ -119,7 +119,7 @@ class Listing extends React.Component {
                 <div className="booking-info">
                   <h1>{this.props.listing.title}</h1>
                   <p className="bookingInfo">
-                    3 guests · 2 bedroom · 2 bed · 2 baths
+                    3 guests · 2 bedrooms · 2 beds · 1 bath
                   </p>
                   <div className="priceInfo">
                     <span className="price">$174 </span>/ night

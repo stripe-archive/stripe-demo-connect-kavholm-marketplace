@@ -13,7 +13,7 @@ class Home extends React.Component {
         <div className="home">
           <div className="splash-image">
             <div className="popover">
-              <h1>Book unique places to stay and things to do.</h1>
+              <h1>Book unique places to stay around the globe.</h1>
 
               <img src="/static/booking_form.png" className="booking-form" />
 

@@ -3,6 +3,7 @@ import Router from 'next/router';
 
 import {redirect} from '../../utils/redirect';
 import API from '../../helpers/api';
+import Layout from '../../components/layout';
 
 class AuthStripeCallback extends React.Component {
   static async getInitialProps() {
@@ -33,7 +34,27 @@ class AuthStripeCallback extends React.Component {
   }
 
   render() {
-    return <></>;
+    return (
+      <Layout
+        isAuthenticated={this.props.isAuthenticated}
+        userProfile={this.props.userProfile}
+        title="Dashboard"
+      >
+        <div className="">
+          <img src="/static/loader.svg" className="loader" />
+        </div>
+
+        <style jsx>{`
+          .loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -19px;
+            margin-top: -19px;
+          }
+        `}</style>
+      </Layout>
+    );
   }
 }
 

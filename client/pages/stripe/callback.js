@@ -17,19 +17,15 @@ class AuthStripeCallback extends React.Component {
         return redirect('/dashboard', context);
       }
     } catch (err) {
-      console.log('AuthStripeCallback.error', req, err);
+      console.log('AuthStripeCallback.error', err);
+      console.log('AuthStripeCallback.error.code', code);
     }
 
     return {};
   }
 
   render() {
-    return (
-      <Layout
-        isAuthenticated={this.props.isAuthenticated}
-        userProfile={this.props.userProfile}
-      />
-    );
+    return <></>;
   }
 }
 

@@ -4,7 +4,7 @@ import storage from '../../../helpers/storage';
 
 import requireAuthEndpoint from '../../../utils/requireAuthEndpoint';
 
-let makeStripeRequest = async (code) => {
+let makeStripeConnectRequest = async (code) => {
   let clientId =
     process.env.NODE_ENV === 'production'
       ? config.stripe.live.clientId
@@ -32,40 +32,43 @@ let makeStripeRequest = async (code) => {
   }).then((res) => res.json());
 };
 
+let updateUserAccount = async (authenticatedUserId, stripeUserId) => {
+  try {
+    let stripeObject = {
+      stripeUserId: stripeUserId,
+    };
+
+    storage
+      .get('users')
+      .find({userId: authenticatedUserId})
+      .assign({
+        stripe: stripeObject,
+      })
+      .write();
+  } catch (err) {
+    throw new Error('StripeSetup.update.user.failed', err);
+  }
+};
+
 export default requireAuthEndpoint(async (req, res) => {
   let authenticatedUserId = req.authToken.userId;
-
-  // 1) Post the authorization code to Stripe to complete the Express onboarding flow
 
   try {
     const {code} = req.body;
 
-    let stripeRequest = await makeStripeRequest(code);
-    console.log('stripeRequest', stripeRequest);
+    // 1) Post the authorization code to Stripe to complete the Express onboarding flow
+    let stripeConnectRequest = await makeStripeConnectRequest(code);
+    console.log('stripeConnectRequest', stripeConnectRequest);
 
     // 2) Update User account with StripeUserId
-    let stripeUserId = stripeRequest.stripe_user_id;
+    let stripeUserId = stripeConnectRequest.stripe_user_id;
 
     if (!stripeUserId) {
       console.log('StripeSetup.abort.no.stripeUserId');
       return;
     }
 
-    try {
-      let stripeObject = {
-        stripeUserId: stripeUserId,
-      };
-
-      storage
-        .get('users')
-        .find({userId: authenticatedUserId})
-        .assign({
-          stripe: stripeObject,
-        })
-        .write();
-    } catch (err) {
-      throw new Error('StripeSetup.update.user.failed', err);
-    }
+    await updateUserAccount(authenticatedUserId, stripeUserId);
 
     return res.status(200).json({status: 'ok'});
   } catch (err) {

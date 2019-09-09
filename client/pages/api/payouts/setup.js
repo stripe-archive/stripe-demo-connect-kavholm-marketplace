@@ -41,11 +41,15 @@ export default requireAuthEndpoint(async (req, res) => {
     const {code} = req.body;
 
     let stripeRequest = await makeStripeRequest(code);
-
     console.log('stripeRequest', stripeRequest);
 
     // 2) Update User account with StripeUserId
     let stripeUserId = stripeRequest.stripe_user_id;
+
+    if (!stripeUserId) {
+      console.log('StripeSetup.abort.no.stripeUserId');
+      return;
+    }
 
     try {
       let stripeObject = {

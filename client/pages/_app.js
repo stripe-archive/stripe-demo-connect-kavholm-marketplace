@@ -25,7 +25,8 @@ export default class KavholmApp extends App {
 
   static async getInitialProps(appContext) {
     console.log('*****************************');
-    console.log('KavholmApp.getInitialProps');
+    console.log('KavholmApp.app.getInitialProps');
+    console.log('*****************************');
 
     let {token, isAuthenticated} = this.getAuthenticationState(appContext);
 
@@ -39,7 +40,9 @@ export default class KavholmApp extends App {
     }
 
     if (appContext.router) {
-      console.log(`${appContext.router.route}.getInitialProps`);
+      console.log('*****************************');
+      console.log(`REQ: ${appContext.router.route}`);
+      console.log('*****************************');
     }
 
     let appProps = await App.getInitialProps(appContext);

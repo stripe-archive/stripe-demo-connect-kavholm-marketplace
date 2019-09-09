@@ -70,6 +70,11 @@ export default requireAuthEndpoint(async (req, res) => {
       .pick('stripe')
       .value();
 
+    if (!listingHostUser.stripe) {
+      throw new Error('No stripe account found for Host');
+      return;
+    }
+
     let listingHostUserStripeUserId = listingHostUser.stripe.stripeUserId;
 
     await stripe.transfers.create({
@@ -80,6 +85,9 @@ export default requireAuthEndpoint(async (req, res) => {
 
     return res.status(200).json(response);
   } catch (err) {
-    return res.status(400).json(err);
+    console.log('err', err);
+    return res.status(400).json({
+      error: err,
+    });
   }
 });

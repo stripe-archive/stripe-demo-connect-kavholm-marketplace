@@ -85,13 +85,20 @@ function ListingsBookingsList(props) {
       <div className="booking-list-sub" key={l.title}>
         <h6 className="title">{l.title}</h6>
 
-        <BookingsList list={l.bookings} />
+        {l.bookings && <BookingsList list={l.bookings} />}
+        {l.bookings && l.bookings.length === 0 && (
+          <span className="empty-text">No bookings yet...</span>
+        )}
 
         <style jsx>{`
           .title {
             font-size: 17px;
             font-weight: bold;
             margin-bottom: 20px;
+          }
+
+          .empty-text {
+            font-size: 14px;
           }
         `}</style>
       </div>

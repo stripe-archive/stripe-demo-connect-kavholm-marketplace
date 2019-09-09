@@ -41,7 +41,7 @@ class DashboardHeader extends Component {
                   <h5 className="mt-0">
                     {profile.firstName + ' ' + profile.lastName}
                   </h5>
-                  <p className="text-secondary">{profile.email}</p>
+                  <p className="text-secondary">laura.willson@stripe.com</p>
                 </div>
               </div>
             </div>

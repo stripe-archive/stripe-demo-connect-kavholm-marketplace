@@ -58,9 +58,11 @@ class Client {
       if (response.ok) {
         return await response.json();
       } else {
+        let body = await response.json();
         console.log(
           'APIclient.makeRequest.response.notOkay',
           response.statusText,
+          body,
         );
         throw new Error(response.statusText);
       }

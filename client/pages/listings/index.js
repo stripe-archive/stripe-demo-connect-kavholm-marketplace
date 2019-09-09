@@ -75,8 +75,6 @@ class Listings extends React.Component {
         title="Listings"
       >
         <div className="listings">
-          <hr className="bg-light" />
-
           <ListingsList listings={this.props.listings} />
 
           <style jsx>{`

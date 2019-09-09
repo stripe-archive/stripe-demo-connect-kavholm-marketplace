@@ -14,7 +14,7 @@ class Listing extends React.Component {
       isBooking: false,
       isBookingConfirmed: false,
       isUserVerified: false,
-      amount: process.env.NODE_ENV === 'production' ? 130800 : 100,
+      amount: process.env.NODE_ENV === 'production' ? 78600 : 100,
     };
   }
 
@@ -128,7 +128,7 @@ class Listing extends React.Component {
                   <hr />
                   <ul className="lineItems">
                     {[
-                      {item: '$174 x 7 nights', amount: '$1,218'},
+                      {item: '$174 x 4 nights', amount: '$696'},
                       {item: 'Cleaning fee', amount: '$33'},
                       {item: 'Service fee', amount: '$47'},
                       {item: 'Occupancy taxes and fees', amount: '$10'},
@@ -289,6 +289,7 @@ class Listing extends React.Component {
               font-weight: normal;
               text-decoration: none;
               margin: 0;
+              line-height: 22px;
             }
 
             .content {

@@ -17,9 +17,6 @@ export default requireAuthEndpoint(async (req, res) => {
       chargeToken,
     } = req.body;
 
-    // TODO: REMOVE THIS HACK TO GET AROUND ISSUING LIMITS
-    amount = amount / 100;
-
     // Step 1: Create new booking in Kavholm
     const bookingObject = {
       id: shortid.generate(),
@@ -42,7 +39,7 @@ export default requireAuthEndpoint(async (req, res) => {
     if (chargeToken) {
       // Apple Pay aka Web Payment Request is using charges.
       const paymentCharge = await stripe.charges.create({
-        amount: amount,
+        amount: amount / 100,
         currency: currency,
         description: 'Kavholm',
         source: chargeToken,
@@ -50,7 +47,7 @@ export default requireAuthEndpoint(async (req, res) => {
     } else {
       let payParams = {
         payment_method_types: ['card'],
-        amount: amount,
+        amount: amount / 100,
         currency: currency,
       };
 
@@ -76,9 +73,9 @@ export default requireAuthEndpoint(async (req, res) => {
     let listingHostUserStripeUserId = listingHostUser.stripe.stripeUserId;
 
     await stripe.transfers.create({
+      amount: amount,
       currency: currency,
       destination: listingHostUserStripeUserId,
-      amount: amount,
     });
 
     return res.status(200).json(response);

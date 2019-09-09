@@ -16,10 +16,10 @@ class Home extends React.Component {
             <div className="popover">
               <h1>Book unique places to stay around the globe.</h1>
 
-              <img src="/static/booking_form.png" className="booking-form" />
+              <img src="/static/booking-form.png" className="booking-form" />
 
               <Link href="/listings">
-                <a className="btn btn-primary">Show listings</a>
+                <a className="btn btn-primary">Search homes</a>
               </Link>
             </div>
           </div>
@@ -33,6 +33,13 @@ class Home extends React.Component {
             left: 0;
             right: 0;
             bottom: 0;
+          }
+
+          h1 {
+            font-size: 27px;
+            font-weight: 600;
+            color: #202020;
+            width: 70%;
           }
 
           .splash-image {
@@ -56,6 +63,11 @@ class Home extends React.Component {
 
             width: 500px;
             max-width: 500px;
+            background: #ffffff;
+            border: 0;
+            box-shadow: 0 15px 35px 0 rgba(50, 50, 93, 0.1),
+              0 5px 15px 0 rgba(0, 0, 0, 0.07);
+            border-radius: 6px;
           }
 
           .booking-form {

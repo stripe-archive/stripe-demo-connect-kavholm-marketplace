@@ -27,9 +27,11 @@ function NewListingButton(props) {
 
           .overlay .triangle {
             position: absolute;
-            top: -18px;
-            right: 23px;
+            top: -16px;
+            right: 28px;
             color: #000;
+            transform: scaleY(0.7);
+            font-size: 24px;
           }
 
           .overlay {
@@ -37,17 +39,37 @@ function NewListingButton(props) {
             right: 0;
             top: 40px;
             background: #000;
-            font-size: 14px;
+            font-size: 17px;
+            line-height: 23px;
             color: #fff;
             padding: 20px;
             border-radius: 10px;
             width: 400px;
             z-index: 10;
+            box-shadow: 0 18px 36px 0 rgba(0, 0, 0, 0.15);
+            animation: wiggle 1s infinite;
+            animation-direction: alternate;
+          }
+
+          .overlay strong {
+            font-size: 20px;
+            line-height: 28px;
+            margin-bottom: 2px;
+            display: inline-block;
           }
 
           .btn-new-listing {
             float: right;
             margin-top: -8px;
+          }
+
+          @keyframes wiggle {
+            from {
+              transform: translateY(0px);
+            }
+            to {
+              transform: translateY(4px);
+            }
           }
         `}
       </style>

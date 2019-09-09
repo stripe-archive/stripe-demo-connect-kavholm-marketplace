@@ -33,7 +33,7 @@ class DashboardHeader extends Component {
     return (
       <div className="dashboard-header">
         <div className="row">
-          <div className="col-8">
+          <div className="col-3">
             <div className="media user-details">
               <img src={avatarUrl} className="mr-3 avatar" />
               <div className="media-body">
@@ -50,13 +50,13 @@ class DashboardHeader extends Component {
             <div className="align-middle stripe-dashboard">
               {formattedBalance && (
                 <>
-                  <p className="label text-secondary">Balance</p>
-                  <p className="balance">
-                    {formattedBalance}{' '}
+                  <p className="label text-secondary">
+                    Balance{' '}
                     <a href="#" onClick={this.handleDashboardLink}>
-                      View in Stripe Dashboard ↗
+                      See Payouts ↗
                     </a>
                   </p>
+                  <p className="balance">{formattedBalance} </p>
                 </>
               )}
             </div>
@@ -78,6 +78,7 @@ class DashboardHeader extends Component {
 
           .user-details {
             font-size: 14px;
+            padding-bottom: 12px;
           }
 
           .user-details-body {
@@ -85,12 +86,15 @@ class DashboardHeader extends Component {
           }
 
           .user-details h5 {
-            font-size: 16px;
+            font-size: 22px;
             margin: 0;
+            font-weight: 600;
           }
 
           .user-details p {
-            font-size: 12px;
+            font-size: 14px;
+            margin: 0;
+            transform: translateY(-4px);
           }
 
           .stripe-dashboard {
@@ -99,7 +103,7 @@ class DashboardHeader extends Component {
           }
 
           .stripe-dashboard .label {
-            font-size: 16px;
+            font-size: 14px;
             margin: 0;
             padding: 0;
           }
@@ -107,12 +111,18 @@ class DashboardHeader extends Component {
           .stripe-dashboard .balance {
             margin: 0;
             padding: 0;
-            font-size: 16px;
+            font-size: 22px;
             line-height: 1;
+            font-weight: 600;
           }
 
           .stripe-dashboard a {
-            font-size: 12px;
+            font-weight: 500;
+            padding-left: 6px;
+          }
+
+          .stripe-dashboard a:hover {
+            text-decoration: none;
           }
         `}</style>
       </div>

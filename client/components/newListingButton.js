@@ -8,8 +8,8 @@ function NewListingButton(props) {
           <span className="triangle">▲</span>
           <strong>Time to create your first listing.</strong>
           <br />
-          Your account and payout infromation has been verfied, now add your
-          home to Kavholm
+          Your account and payout information have been verified. You can now
+          add your home to KAVHOLM.
         </div>
       )}
       <a

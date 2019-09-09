@@ -17,17 +17,17 @@ class Home extends React.Component {
               <h1>Book unique places to stay around the globe.</h1>
 
               <img src="/static/booking-form.png" className="booking-form" />
-
-              <Link href="/listings">
-                <a className="btn btn-primary">Search homes</a>
-              </Link>
+              <div className="button-container">
+                <Link href="/listings">
+                  <a className="btn btn-primary">Search homes</a>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
         <style jsx>{`
           .home {
             width: 100%;
-            min-height: 800px;
             position: absolute;
             top: 110px;
             left: 0;
@@ -78,6 +78,11 @@ class Home extends React.Component {
           .booking-form {
             width: 100%;
             margin: 20px 0;
+          }
+
+          .button-container {
+            display: flex;
+            justify-content: flex-end;
           }
         `}</style>
       </Layout>

@@ -22,7 +22,7 @@
       "lastName": "Willson",
       "email": "laura.willson+prod@stripe.com",
       "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
-      "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400"
+      "avatar": "/static/willson.jpg"
     },
     {
       "userId": "Igj-hM",
@@ -30,7 +30,7 @@
       "lastName": "Willson",
       "email": "laura.willson@stripe.com",
       "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
-      "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400"
+      "avatar": "/static/willson.jpg"
     }
   ],
   "listings": [

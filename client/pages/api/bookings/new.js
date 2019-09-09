@@ -17,6 +17,9 @@ export default requireAuthEndpoint(async (req, res) => {
       chargeToken,
     } = req.body;
 
+    // TODO: REMOVE THIS HACK TO GET AROUND ISSUING LIMITS
+    amount = amount / 100;
+
     // Step 1: Create new booking in Kavholm
     const bookingObject = {
       id: shortid.generate(),

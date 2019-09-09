@@ -29,6 +29,11 @@ class BookingPayment extends Component {
       let bookingData = this.props.booking;
       let req = await API.makeRequest('post', `/api/bookings/new`, bookingData);
 
+      if (!req) {
+        throw new Error('Booking failed');
+        return;
+      }
+
       let paymentRequestSecret = req.paymentRequestSecret;
 
       this.props.stripe
@@ -45,6 +50,10 @@ class BookingPayment extends Component {
         });
     } catch (err) {
       console.log('Booking failed.', err);
+      this.setState({
+        isProcessing: false,
+      });
+
       this.setState({error: err.message});
     }
   }

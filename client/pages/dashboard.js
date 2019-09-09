@@ -82,6 +82,7 @@ class Dashboard extends React.Component {
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
         title="Dashboard"
+        hideBooking={true}
       >
         <div className="dashboard ">
           <DashboardHeader

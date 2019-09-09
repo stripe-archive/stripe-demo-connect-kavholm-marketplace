@@ -49,6 +49,7 @@ class PayoutSetup extends Component {
         <style jsx>{`
           .icon {
             margin-bottom: 30px;
+            height: 32px;
           }
 
           .box {
@@ -56,9 +57,18 @@ class PayoutSetup extends Component {
             max-height: 400px;
           }
 
+          h3 {
+            font-weight: 600;
+          }
+
+          p {
+            line-height: 22px;
+          }
+
           .box .btn {
             width: 100%;
             margin-bottom: 20px;
+            margin-top: 16px;
           }
 
           .box .notice {

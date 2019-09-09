@@ -84,7 +84,7 @@ class Listing extends React.Component {
 
           <div className="content">
             <div className="row">
-              <div className="col-8 pane-images">
+              <div className="col-6 pane-images">
                 <img src={this.props.listing.image} className="image-main" />
 
                 <div className="row">
@@ -115,7 +115,7 @@ class Listing extends React.Component {
                 </div>
               </div>
 
-              <div className="col-4 pane-info">
+              <div className="col-6 pane-info">
                 <div className="booking-info">
                   <h1>{this.props.listing.title}</h1>
                   <p className="bookingInfo">
@@ -224,16 +224,27 @@ class Listing extends React.Component {
               cursor: pointer;
             }
 
+            .pane-info {
+              flex: 0 0 520px;
+              padding-left: 88px;
+              justify-content: center;
+              display: flex;
+              flex-direction: column;
+              padding-bottom: 50px;
+            }
+
+            h1 {
+              font-size: 32px;
+            }
+
             .bookingInfo {
               font-size: 17px;
               color: #939393;
-              letter-spacing: 0.3px;
             }
             .priceInfo {
               display: flex;
               font-size: 14px;
               letter-spacing: -0.15px;
-              margin-top: 30px;
               margin-bottom: 30px;
             }
             .priceInfo .price {
@@ -264,6 +275,7 @@ class Listing extends React.Component {
               padding-bottom: 2px;
               display: flex;
               justify-content: space-between;
+              height: 26px;
             }
             hr {
               border: 0;
@@ -281,7 +293,6 @@ class Listing extends React.Component {
 
             .host .media-body {
               font-size: 14px;
-              letter-spacing: -0.1px;
               color: #676767;
             }
 
@@ -289,7 +300,8 @@ class Listing extends React.Component {
               font-weight: normal;
               text-decoration: none;
               margin: 0;
-              line-height: 22px;
+              line-height: 18px;
+              padding-top: 8px;
             }
 
             .content {
@@ -304,10 +316,7 @@ class Listing extends React.Component {
             .image-main {
               width: 100%;
               margin-bottom: 30px;
-              border-radius: 6px;
-
-              border-radius: 6px;
-              height: 100%;
+              height: 50vh;
               object-fit: cover;
               object-position: bottom;
 
@@ -316,15 +325,9 @@ class Listing extends React.Component {
 
             .image-small {
               width: 100%;
-              border-radius: 6px;
-              border-radius: 6px;
-              height: 250px;
+              height: 25vh;
               object-fit: cover;
               object-position: bottom;
-            }
-
-            .btn-book {
-              margin-top: 34px;
             }
 
             .stars {
@@ -333,10 +336,6 @@ class Listing extends React.Component {
 
             .pane-images {
               padding-bottom: 50px;
-            }
-
-            .booking-info {
-              min-height: 462px;
             }
           `}</style>
         </div>

@@ -53,12 +53,9 @@ class BookingModal extends Component {
         onRequestClose={toggleModal}
         style={{
           content: {
-            top: '50%',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
+            position: 'relative',
+            top: 200,
+            margin: '0 auto',
             border: 0,
             width: 480,
             textAlign: 'center',
@@ -91,8 +88,10 @@ class BookingModal extends Component {
           {isUserVerified && !isBookingConfirmed && (
             <div className="completed">
               <img src="/static/confirmed.svg" width="50" />
-              <h1>Your ID has been verified.</h1>
-              <h1>Pay now to finalize booking.</h1>
+              <h1>
+                Your ID has been verified. <br />
+                Pay now to finalize booking.
+              </h1>
 
               <br />
               <br />
@@ -110,6 +109,7 @@ class BookingModal extends Component {
         <style jsx>{`
           img {
             margin-bottom: 25px;
+            height: 44px;
           }
           .content {
             width: 350px;
@@ -125,11 +125,12 @@ class BookingModal extends Component {
             color: #373737;
             margin: 0;
             text-align: center;
+            margin-bottom: 16px;
           }
           p {
             color: #373737;
             font-size: 17px;
-            font-weight: 300;
+            line-height: 23px;
             margin: 0;
           }
           .info {
@@ -141,6 +142,7 @@ class BookingModal extends Component {
           .footer {
             font-size: 14px;
             line-height: 19px;
+            opacity: 0.7;
           }
 
           .completed {

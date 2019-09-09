@@ -9,6 +9,7 @@ class Home extends React.Component {
         width="full"
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
+        hideBooking={true}
       >
         <div className="home">
           <div className="splash-image">

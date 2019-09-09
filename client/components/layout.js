@@ -11,6 +11,7 @@ const Layout = (props) => (
       isAuthenticated={props.isAuthenticated}
       userProfile={props.userProfile}
       width={props.width}
+      hideBooking={props.hideBooking}
     />
     <div
       className={

@@ -26,25 +26,27 @@ class Nav extends React.Component {
               </Link>
             </li>
 
-            <li className="nav-item">
-              <div className="booking-form">
-                <input
-                  type="search"
-                  className="search"
-                  placeholder="Singapore"
-                ></input>
-                <input
-                  type="datepicker"
-                  className="date"
-                  placeholder="Oct 3-7"
-                ></input>
-                <select className="guests dropdown-toggle">
-                  <option>3 guests</option>
-                  <option>2 guests</option>
-                  <option>1 guests</option>
-                </select>
-              </div>
-            </li>
+            {!this.props.hideBooking && (
+              <li className="nav-item">
+                <div className="booking-form">
+                  <input
+                    type="search"
+                    className="search"
+                    placeholder="Singapore"
+                  ></input>
+                  <input
+                    type="datepicker"
+                    className="date"
+                    placeholder="Oct 3-7"
+                  ></input>
+                  <select className="guests dropdown-toggle">
+                    <option>3 guests</option>
+                    <option>2 guests</option>
+                    <option>1 guests</option>
+                  </select>
+                </div>
+              </li>
+            )}
           </ul>
 
           <NavProfile

@@ -8,7 +8,7 @@ export default requireAuthEndpoint(async (req, res) => {
   let authenticatedUserId = req.authToken.userId;
 
   try {
-    let userAccount = storage
+    let account = storage
       .get('users')
       .find({userId: authenticatedUserId})
       .value();
@@ -23,14 +23,15 @@ export default requireAuthEndpoint(async (req, res) => {
       return_url: returnUrl,
       cancel_url: cancelUrl,
       requested_verifications: ['identity_document'],
-      'person_data[email]': userAccount.email,
+      person_data: {
+        email: account.email,
+      },
     });
 
     return res.status(200).json({
       url: verificationIntent.next_action.redirect_to_url,
     });
   } catch (err) {
-    console.log('verifications.link.err', err);
     return res.status(400).json(err);
   }
 });

@@ -23,7 +23,7 @@ let makeStripeConnectRequest = async (code) => {
 
   let url = 'https://connect.stripe.com/oauth/token';
 
-  console.log('StripeSetup', params);
+  console.log('StripeSetup.makeStripeConnectRequest.params', params);
 
   return await fetch(url, {
     method: 'POST',

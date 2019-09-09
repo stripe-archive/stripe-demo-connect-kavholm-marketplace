@@ -102,12 +102,16 @@ class Dashboard extends React.Component {
                 </div>
               </div>
 
-              <DashboardListingsList list={this.props.userListings} />
+              {this.props.userListings && (
+                <DashboardListingsList list={this.props.userListings} />
+              )}
             </div>
 
             <div className="col-4">
               <h4>Recent bookings</h4>
-              <ListingsBookingsList list={this.props.userBookings} />
+              {this.props.userBookings && (
+                <ListingsBookingsList list={this.props.userBookings} />
+              )}
             </div>
           </div>
         </div>

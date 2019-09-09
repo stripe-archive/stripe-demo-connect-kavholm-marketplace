@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 function DashboardListingsList(props) {
-  const list = [...props.list] || [];
+  const list = props.list ? [...props.list] : [];
   if (list.length < 4) {
     while (list.length < 4) {
       list.push({id: Math.random()});

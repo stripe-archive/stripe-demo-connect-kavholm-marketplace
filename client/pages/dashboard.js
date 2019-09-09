@@ -18,7 +18,7 @@ class Dashboard extends React.Component {
     let userListings = await API.makeRequest('get', '/api/profile/listings');
     let userBookings = [];
 
-    if (userListings.length) {
+    if (userListings && userListings.length) {
       let listingBookings = await userListings.map(async (listing) => {
         let bookings = await API.makeRequest(
           'get',

@@ -9,12 +9,15 @@ class AuthStripeCallback extends React.Component {
     let code = context.query.code;
 
     try {
-      await API.makeRequest('post', `/api/payouts/setup`, {
+      let req = await API.makeRequest('post', `/api/payouts/setup`, {
         code: code,
       });
-      // return redirect('/dashboard', context);
+
+      if (req.status === 'ok') {
+        return redirect('/dashboard', context);
+      }
     } catch (err) {
-      console.log('AuthStripeCallback.error', err);
+      console.log('AuthStripeCallback.error', req, err);
     }
 
     return {};

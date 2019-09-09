@@ -55,6 +55,9 @@ class BookingModal extends Component {
           content: {
             position: 'relative',
             top: 200,
+            left: 'auto',
+            right: 'auto',
+            bottom: 'auto',
             margin: '0 auto',
             border: 0,
             width: 480,

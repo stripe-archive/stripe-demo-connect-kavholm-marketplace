@@ -6,7 +6,7 @@ class BookingConfirmedModal extends Component {
     return (
       <div className="content">
         <img src="/static/confirmed.svg" width="50" />
-        <h1>Your're all set.</h1>
+        <h1>You’re all set!</h1>
         <h1>Enjoy your trip in Singapore.</h1>
         <Link href="/listings">
           <button className="btn btn-primary">Book another trip</button>

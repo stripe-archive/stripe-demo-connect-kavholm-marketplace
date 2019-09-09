@@ -5,63 +5,68 @@ import storage from '../../../helpers/storage';
 
 import requireAuthEndpoint from '../../../utils/requireAuthEndpoint';
 
+let makeStripeRequest = async (code) => {
+  let clientId =
+    process.env.NODE_ENV === 'production'
+      ? config.stripe.live.clientId
+      : config.stripe.test.clientId;
+  let secretKey =
+    process.env.NODE_ENV === 'production'
+      ? config.stripe.live.secretKey
+      : config.stripe.test.secretKey;
+
+  let params = {
+    grant_type: 'authorization_code',
+    client_id: clientId,
+    client_secret: secretKey,
+    code: code,
+  };
+
+  let url = 'https://connect.stripe.com/oauth/token';
+
+  console.log('StripeSetup', params);
+
+  return await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(params),
+    headers: {'Content-Type': 'application/json'},
+  }).then((res) => res.json());
+};
+
 export default requireAuthEndpoint(async (req, res) => {
   let authenticatedUserId = req.authToken.userId;
 
   // 1) Post the authorization code to Stripe to complete the Express onboarding flow
-  let url = 'https://connect.stripe.com/oauth/token';
-
-  console.log('/api/payouts/setup.1');
 
   try {
     const {code} = req.body;
 
-    let clientId =
-      process.env.NODE_ENV === 'production'
-        ? config.stripe.live.clientId
-        : config.stripe.test.clientId;
-    let secretKey =
-      process.env.NODE_ENV === 'production'
-        ? config.stripe.live.secretKey
-        : config.stripe.test.secretKey;
+    let stripeRequest = await makeStripeRequest(code);
 
-    let params = {
-      grant_type: 'authorization_code',
-      client_id: clientId,
-      client_secret: secretKey,
-      code: code,
-    };
-
-    const stripeRequest = await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify(params),
-      headers: {'Content-Type': 'application/json'},
-    }).then((res) => res.json());
-
-    console.log('/api/payouts/setup.2');
+    console.log('stripeRequest', stripeRequest);
 
     // 2) Update User account with StripeUserId
     let stripeUserId = stripeRequest.stripe_user_id;
 
-    if (!stripeUserId) {
-      throw new Error('Request to Stripe failed');
+    try {
+      let stripeObject = {
+        stripeUserId: stripeUserId,
+      };
+
+      storage
+        .get('users')
+        .find({userId: authenticatedUserId})
+        .assign({
+          stripe: stripeObject,
+        })
+        .write();
+    } catch (err) {
+      throw new Error('StripeSetup.update.user.failed', err);
     }
-
-    let stripeObject = {
-      stripeUserId: stripeUserId,
-    };
-
-    let userAccount = storage
-      .get('users')
-      .find({userId: authenticatedUserId})
-      .assign({
-        stripe: stripeObject,
-      })
-      .write();
 
     return res.status(200).json({status: 'ok'});
   } catch (err) {
-    console.log('setup error', err);
+    console.log('StripeSetup.error', err);
     return res.status(400).json(err);
   }
 });

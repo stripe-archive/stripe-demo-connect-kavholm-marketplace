@@ -7,11 +7,17 @@ import API from '../../helpers/api';
 class AuthStripeCallback extends React.Component {
   static async getInitialProps(context) {
     let code = context.query.code;
-    let req = await API.makeRequest('post', `/api/payouts/setup`, {
-      code: code,
-    });
 
-    return redirect('/dashboard', context);
+    try {
+      await API.makeRequest('post', `/api/payouts/setup`, {
+        code: code,
+      });
+      // return redirect('/dashboard', context);
+    } catch (err) {
+      console.log('AuthStripeCallback.error', err);
+    }
+
+    return {};
   }
 
   render() {

@@ -1,6 +1,7 @@
 import shortid from 'shortid';
 import storage from '../../../helpers/storage';
 import stripe from '../../../helpers/stripe';
+import logger from '../../../helpers/logger';
 
 import requireAuthEndpoint from '../../../utils/requireAuthEndpoint';
 
@@ -85,7 +86,7 @@ export default requireAuthEndpoint(async (req, res) => {
 
     return res.status(200).json(response);
   } catch (err) {
-    console.log('err', err);
+    logger.log('err', err);
     return res.status(400).json({
       error: err,
     });

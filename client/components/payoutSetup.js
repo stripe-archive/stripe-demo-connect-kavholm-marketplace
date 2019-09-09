@@ -1,5 +1,6 @@
 import {Component} from 'react';
 import API from '../helpers/api';
+import logger from '../helpers/logger';
 
 class PayoutSetup extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class PayoutSetup extends Component {
   }
 
   async handleConnect() {
-    console.log('ProfileStripe.handleConnect');
+    logger.log('ProfileStripe.handleConnect');
     let response = await this.getRedirectInfo();
     let url = response.location;
     if (url) {

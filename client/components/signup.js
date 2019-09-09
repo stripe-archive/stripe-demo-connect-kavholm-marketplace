@@ -3,6 +3,7 @@
 import {Component} from 'react';
 import {handleLogin} from '../utils/auth';
 import API from '../helpers/api';
+import logger from '../helpers/logger';
 
 class SignupForm extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class SignupForm extends Component {
       let req = await API.makeRequest('post', `/api/signup/local`, this.state);
       handleLogin(req.token);
     } catch (err) {
-      console.log('Signup failed.', err);
+      logger.log('Signup failed.', err);
     }
   }
 

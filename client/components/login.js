@@ -2,6 +2,7 @@
 
 import {Component} from 'react';
 import {handleLogin} from '../utils/auth';
+import logger from '../helpers/logger';
 
 class Login extends Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class Login extends Component {
         const {token} = await response.json();
         handleLogin(token);
       } else {
-        console.log('Login failed.');
+        logger.log('Login failed.');
         this.setState({
           error: response.statusText,
         });

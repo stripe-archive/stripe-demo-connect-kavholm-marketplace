@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-unfetch';
+import logger from './logger';
 
 class Client {
   constructor() {
@@ -9,12 +10,12 @@ class Client {
   }
 
   setToken(token) {
-    console.log('APIclient.setToken', token);
+    logger.log('APIclient.setToken', token);
     this.token = token;
   }
 
   setContext(context) {
-    console.log('APIclient.setContext');
+    logger.log('APIclient.setContext');
     this.context = context;
   }
 
@@ -43,7 +44,7 @@ class Client {
     let baseUrl = this.getBaseUrl();
     let requestUrl = baseUrl + url;
 
-    console.log('APIclient.makeRequest.requestUrl', requestUrl, this.token);
+    logger.log('APIclient.makeRequest.requestUrl', requestUrl, this.token);
     try {
       const response = await fetch(requestUrl, {
         credentials: 'include',
@@ -59,7 +60,7 @@ class Client {
         return await response.json();
       } else {
         let body = await response.text();
-        console.log(
+        logger.log(
           'APIclient.makeRequest.response.notOkay',
           response.statusText,
           body,
@@ -67,7 +68,7 @@ class Client {
         throw new Error(response.statusText);
       }
     } catch (err) {
-      console.error('APIclient.makeRequest.error', err);
+      logger.log('APIclient.makeRequest.error', err);
       // throw new Error(err);
     }
   }

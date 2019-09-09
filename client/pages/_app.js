@@ -1,6 +1,7 @@
 import React from 'react';
 import App, {Container} from 'next/app';
 import API from '../helpers/api';
+import logger from '../helpers/logger';
 import nextCookie from 'next-cookies';
 import Layout from '../components/layout';
 import cookie from 'js-cookie';
@@ -24,9 +25,9 @@ export default class KavholmApp extends App {
   }
 
   static async getInitialProps(appContext) {
-    console.log('*****************************');
-    console.log('KavholmApp.app.getInitialProps');
-    console.log('*****************************');
+    logger.log('*****************************');
+    logger.log('KavholmApp.app.ready');
+    logger.log('*****************************');
 
     let {token, isAuthenticated} = this.getAuthenticationState(appContext);
 
@@ -40,9 +41,9 @@ export default class KavholmApp extends App {
     }
 
     if (appContext.router) {
-      console.log('*****************************');
-      console.log(`REQ: ${appContext.router.route}`);
-      console.log('*****************************');
+      logger.log('*****************************');
+      logger.log(`REQ: ${appContext.router.route}`);
+      logger.log('*****************************');
     }
 
     let appProps = await App.getInitialProps(appContext);

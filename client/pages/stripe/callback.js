@@ -3,6 +3,8 @@ import Router from 'next/router';
 
 import {redirect} from '../../utils/redirect';
 import API from '../../helpers/api';
+import logger from '../../helpers/logger';
+
 import Layout from '../../components/layout';
 
 class AuthStripeCallback extends React.Component {
@@ -13,7 +15,7 @@ class AuthStripeCallback extends React.Component {
   async finalize() {
     let code = Router.router.query.code;
 
-    console.log('code', code);
+    logger.log('code', code);
     try {
       let req = await API.makeRequest('post', `/api/payouts/setup`, {
         code: code,
@@ -22,10 +24,10 @@ class AuthStripeCallback extends React.Component {
       if (req && req.status === 'ok') {
         return redirect('/dashboard');
       } else {
-        console.log('req', req);
+        logger.log('req', req);
       }
     } catch (err) {
-      console.log('AuthStripeCallback.error', err);
+      logger.log('AuthStripeCallback.error', err);
     }
   }
 

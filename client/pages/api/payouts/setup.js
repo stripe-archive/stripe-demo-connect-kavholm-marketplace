@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-unfetch';
 import config from '../../../helpers/config';
 import storage from '../../../helpers/storage';
+import logger from '../../../helpers/logger';
 
 import requireAuthEndpoint from '../../../utils/requireAuthEndpoint';
 
@@ -23,7 +24,7 @@ let makeStripeConnectRequest = async (code) => {
 
   let url = 'https://connect.stripe.com/oauth/token';
 
-  console.log('StripeSetup.makeStripeConnectRequest.params', params);
+  logger.log('StripeSetup.makeStripeConnectRequest.params', params);
 
   return await fetch(url, {
     method: 'POST',
@@ -32,7 +33,7 @@ let makeStripeConnectRequest = async (code) => {
   })
     .then((res) => res.json())
     .catch((err) => {
-      console.log('StripeSetup.makeStripeConnectRequest.error', err);
+      logger.log('StripeSetup.makeStripeConnectRequest.error', err);
     });
 };
 
@@ -63,7 +64,7 @@ export default requireAuthEndpoint(async (req, res) => {
     let stripeUserId = stripeConnectRequest.stripe_user_id;
 
     if (!stripeUserId) {
-      console.log('StripeSetup.abort.no.stripeUserId');
+      logger.log('StripeSetup.abort.no.stripeUserId');
       return res.status(400).json({msg: 'Connect request to Stripe failed'});
     }
 
@@ -71,7 +72,7 @@ export default requireAuthEndpoint(async (req, res) => {
 
     return res.status(200).json({status: 'ok'});
   } catch (err) {
-    console.log('StripeSetup.error', err);
+    logger.log('StripeSetup.error', err);
     return res.status(400).json(err);
   }
 });

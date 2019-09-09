@@ -5,6 +5,7 @@ import {CardElement, injectStripe} from 'react-stripe-elements';
 import PaymentRequestForm from './paymentRequestForm';
 import NumberFormat from 'react-number-format';
 import API from '../helpers/api';
+import logger from '../helpers/logger';
 
 class BookingPayment extends Component {
   constructor() {
@@ -40,7 +41,7 @@ class BookingPayment extends Component {
         .handleCardPayment(paymentRequestSecret)
         .then((payload) => {
           if (payload.error) {
-            console.log('Booking failed.', payload.error);
+            logger.log('Booking failed.', payload.error);
             this.setState({
               error: `Payment failed: ${payload.error.message}`,
             });
@@ -49,7 +50,7 @@ class BookingPayment extends Component {
           }
         });
     } catch (err) {
-      console.log('Booking failed.', err);
+      logger.log('Booking failed.', err);
       this.setState({
         isProcessing: false,
       });

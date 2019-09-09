@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {PaymentRequestButtonElement} from 'react-stripe-elements';
 import API from '../helpers/api';
 import {redirect} from '../utils/redirect';
+import logger from '../helpers/logger';
 
 class PaymentRequestForm extends React.Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class PaymentRequestForm extends React.Component {
     });
 
     paymentRequest.on('token', async ({complete, token}) => {
-      console.log('Received Stripe token: ', token);
+      logger.log('Received Stripe token: ', token);
 
       let onBookingConfirmed = this.props.onBookingConfirmed;
 
@@ -60,12 +61,12 @@ class PaymentRequestForm extends React.Component {
         );
         onBookingConfirmed && onBookingConfirmed(req);
       } catch (err) {
-        console.log('err', err);
+        logger.log('err', err);
       }
     });
 
     let canMakePayment = await paymentRequest.canMakePayment();
-    console.log('PaymentRequestForm.canMakePayment', canMakePayment);
+    logger.log('PaymentRequestForm.canMakePayment', canMakePayment);
     this.setState({
       canMakePayment: !!canMakePayment,
       hasInitialized: true,

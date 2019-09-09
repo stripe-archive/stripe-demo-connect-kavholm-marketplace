@@ -1,5 +1,6 @@
 import storage from '../../../helpers/storage';
 import stripe from '../../../helpers/stripe';
+import logger from '../../../helpers/logger';
 
 import requireAuthEndpoint from '../../../utils/requireAuthEndpoint';
 
@@ -29,7 +30,7 @@ export default requireAuthEndpoint(async (req, res) => {
     // 3) Return url
     return res.status(200).json(availableBalance);
   } catch (err) {
-    console.log('balance.err', err);
+    logger.log('balance.err', err);
     return res.status(400).json(err);
   }
 });

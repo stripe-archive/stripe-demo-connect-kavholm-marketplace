@@ -46,8 +46,8 @@ class PaymentRequestForm extends React.Component {
         listingId: 26,
         currency: this.props.currency,
         amount: this.props.amount,
-        startDate: '09/05/2019',
-        endDate: '09/05/2019',
+        startDate: '10/03/2019',
+        endDate: '10/07/2019',
         chargeToken: token.id,
       };
 

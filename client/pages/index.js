@@ -6,21 +6,22 @@ class Home extends React.Component {
   render() {
     return (
       <Layout
-        width="full"
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
         hideBooking={true}
       >
         <div className="home">
           <div className="splash-image">
-            <div className="popover">
-              <h1>Book unique places to stay around the globe.</h1>
+            <div className="container">
+              <div className="popover">
+                <h1>Book unique places to stay around the globe.</h1>
 
-              <img src="/static/booking-form.png" className="booking-form" />
-              <div className="button-container">
-                <Link href="/listings">
-                  <a className="btn btn-primary">Search homes</a>
-                </Link>
+                <img src="/static/booking-form.png" className="booking-form" />
+                <div className="button-container">
+                  <Link href="/listings">
+                    <a className="btn btn-primary">Search homes</a>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -51,8 +52,8 @@ class Home extends React.Component {
 
             background: linear-gradient(
                 0deg,
-                rgba(255, 255, 255, 0) 46%,
-                #ffffff 91%
+                rgba(255, 255, 255, 0) 50%,
+                #ffffff 100%
               ),
               url(https://images.unsplash.com/photo-1542349301445-c5f6ec562729?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2830&q=80)
                 no-repeat;
@@ -61,11 +62,9 @@ class Home extends React.Component {
           }
 
           .popover {
-            position: absolute;
-            top: 100px;
-            left: 50px;
             padding: 40px;
-
+            position: relative;
+            top: 15vh;
             width: 500px;
             max-width: 500px;
             background: #ffffff;

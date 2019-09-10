@@ -55,7 +55,7 @@ class Home extends React.Component {
                 rgba(255, 255, 255, 0) 50%,
                 #ffffff 100%
               ),
-              url(https://images.unsplash.com/photo-1542349301445-c5f6ec562729?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2830&q=80)
+              url(https://images.unsplash.com/photo-1472148439583-1f4cf81b80e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2978&q=80)
                 no-repeat;
             background-size: cover;
             background-position: center center;

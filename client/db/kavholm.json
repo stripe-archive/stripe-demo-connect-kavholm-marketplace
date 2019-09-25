@@ -6,7 +6,10 @@
       "lastName": "Auchenberg",
       "email": "auchenberg@stripe.com",
       "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
-      "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400"
+      "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400",
+      "stripe": {
+        "stripeUserId": "acct_1FGc0NBPQbvL9CY0"
+      }
     },
     {
       "userId": "Igj-hMfQa",
@@ -22,15 +25,48 @@
       "lastName": "Willson",
       "email": "laura.willson+prod@stripe.com",
       "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
-      "avatar": "/static/willson.jpg"
+      "avatar": "/static/willson.jpg",
+      "stripe": {
+        "stripeUserId": "acct_1FGgKgCQ6linlupO"
+      }
     },
     {
       "userId": "Igj-hM",
       "firstName": "Laura",
       "lastName": "Willson",
-      "email": "laura.willson@stripe.com",
+      "email": "willson+kavholm@stripe.com",
       "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
-      "avatar": "/static/willson.jpg"
+      "avatar": "/static/willson.jpg",
+      "stripe": {
+        "stripeUserId": "acct_1FGy5oINcTlPFCFz"
+      }
+    },
+    {
+      "userId": "Kvna4PHff",
+      "firstName": "Jie",
+      "lastName": "Jin",
+      "email": "jie@stripe.com",
+      "password": "$2b$10$AZ0md17RDBydwMLxmWEpZuXkSQXdblVg8aplew0n7bmzX4sYHsfue",
+      "avatar": "//www.gravatar.com/avatar/e3b8e1943a743bb1f6050c977ed56629?s=400",
+      "stripe": {
+        "stripeUserId": "acct_1FLiFnCcbM8KDm2M"
+      }
+    },
+    {
+      "userId": "nTuAOlTxN",
+      "firstName": "Demo",
+      "lastName": "Host",
+      "email": "demohost@stripe.com",
+      "password": "$2b$10$f5FxWp5CKg1K8FUCn20eI.7xjMCgUv4T3apGQxOrb7Xg7tDRxoqu2",
+      "avatar": "//www.gravatar.com/avatar/71cb952707f2bb506e43fea4c527d17e?s=400"
+    },
+    {
+      "userId": "kDhYFFBto",
+      "firstName": "Demo",
+      "lastName": "Host",
+      "email": "demohost@stripe.com",
+      "password": "$2b$10$mxIf0Mo7/DftS5Rf985Qh.2dHly/Qry3zvUe2XfdBtdCCnYLLP73q",
+      "avatar": "//www.gravatar.com/avatar/71cb952707f2bb506e43fea4c527d17e?s=400"
     }
   ],
   "listings": [
@@ -52,7 +88,7 @@
       "title": "Skyline view in Singapore",
       "source": "",
       "image": "https://images.unsplash.com/photo-1533052494972-63e07f31e2a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80",
-      "owner": "Igj-hMfQb"
+      "owner": "Kvna4PHff"
     },
     {
       "id": "11",
@@ -112,21 +148,12 @@
   ],
   "bookings": [
     {
-      "id": "OPGlw6tku",
+      "id": "WOOVcu-TK",
       "listingId": "26",
-      "bookingUserId": "Igj-hMfQp",
-      "startDate": "09/05/2019",
-      "endDate": "09/05/2019",
-      "totalAmount": "100",
-      "currency": "USD"
-    },
-    {
-      "id": "gg49d47pc",
-      "listingId": "26",
-      "bookingUserId": "Igj-hMfQp",
-      "startDate": "09/05/2019",
-      "endDate": "09/05/2019",
-      "totalAmount": "100",
+      "bookingUserId": "Igj-hMfQa",
+      "startDate": "10/03/2019",
+      "endDate": "10/07/2019",
+      "totalAmount": "78600",
       "currency": "usd"
     }
   ]

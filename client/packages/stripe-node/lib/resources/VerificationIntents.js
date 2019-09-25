@@ -4,7 +4,7 @@ const StripeResource = require('../StripeResource');
 const stripeMethod = StripeResource.method;
 
 module.exports = StripeResource.extend({
-  path: 'verification_intents',
+  path: 'identity/verification_intents',
 
   includeBasic: ['create', 'list', 'retrieve', 'update'],
 

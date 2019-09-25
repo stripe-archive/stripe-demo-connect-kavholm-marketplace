@@ -29,6 +29,11 @@ class Profile extends React.Component {
     redirect('/dashboard');
   };
 
+  clearBookings = async () => {
+    let req = await API.makeRequest('post', '/api/profile/clear_bookings');
+    redirect('/dashboard');
+  };
+
   render() {
     let profile = this.props ? this.props.profile : {};
     let avatarUrl = profile ? profile.avatar : '/static/avatar.png';
@@ -61,6 +66,14 @@ class Profile extends React.Component {
               </button>
             </>
           )}
+
+          <br />
+          <br />
+
+          <h4>Admin</h4>
+          <button className="btn btn-secondary" onClick={this.clearBookings}>
+            Clear bookings
+          </button>
         </div>
         <style jsx>{`
           .profile h4 {

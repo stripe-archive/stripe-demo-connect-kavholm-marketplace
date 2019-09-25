@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Layout from '../components/layout';
+import BookingSearchForm from '../components/bookingSearchForm';
 
 class Home extends React.Component {
   render() {
@@ -14,12 +15,13 @@ class Home extends React.Component {
           <div className="splash-image">
             <div className="container">
               <div className="popover">
-                <h1>Book unique places to stay around the globe.</h1>
+                <h1>A global marketplace sample by Stripe.</h1>
 
-                <img src="/static/booking-form.png" className="booking-form" />
+                <BookingSearchForm size="large" />
+
                 <div className="button-container">
                   <Link href="/listings">
-                    <a className="btn btn-primary">Search homes</a>
+                    <a className="btn btn-primary">Show listings</a>
                   </Link>
                 </div>
               </div>
@@ -41,6 +43,7 @@ class Home extends React.Component {
             font-weight: 600;
             color: #202020;
             width: 70%;
+            margin-bottom: 30px;
           }
 
           .splash-image {

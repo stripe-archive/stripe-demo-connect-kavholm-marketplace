@@ -47,7 +47,7 @@
       "lastName": "Jin",
       "email": "jie@stripe.com",
       "password": "$2b$10$AZ0md17RDBydwMLxmWEpZuXkSQXdblVg8aplew0n7bmzX4sYHsfue",
-      "avatar": "//www.gravatar.com/avatar/e3b8e1943a743bb1f6050c977ed56629?s=400",
+      "avatar": "/static/host.jpg",
       "stripe": {
         "stripeUserId": "acct_1FLiFnCcbM8KDm2M"
       }

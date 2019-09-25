@@ -166,7 +166,7 @@ class Listing extends React.Component {
 
                 <div className="media host">
                   <img
-                    src="/static/willson.jpg"
+                    src="/static/host.jpg"
                     width="36"
                     className="mr-3 avatar"
                   />

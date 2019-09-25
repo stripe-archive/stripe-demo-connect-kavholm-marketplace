@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Layout from '../components/layout';
-import BookingSearchForm from '../components/bookingSearchForm';
+import HomeSearchForm from '../components/bookingSearchForm';
 
 class Home extends React.Component {
   render() {
@@ -16,8 +16,6 @@ class Home extends React.Component {
             <div className="container">
               <div className="popover">
                 <h1>A global marketplace sample by Stripe.</h1>
-
-                <BookingSearchForm size="large" />
 
                 <div className="button-container">
                   <Link href="/listings">

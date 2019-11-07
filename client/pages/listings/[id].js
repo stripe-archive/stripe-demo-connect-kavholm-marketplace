@@ -122,16 +122,16 @@ class Listing extends React.Component {
                     3 guests · 2 bedrooms · 2 beds · 1 bath
                   </p>
                   <div className="priceInfo">
-                    <span className="price">$174 </span>/ night
+                    <span className="price">£174 </span>/ night
                     <img className="stars" src="/static/stars.svg" />
                   </div>
                   <hr />
                   <ul className="lineItems">
                     {[
-                      {item: '$174 x 4 nights', amount: '$696'},
-                      {item: 'Cleaning fee', amount: '$33'},
-                      {item: 'Service fee', amount: '$47'},
-                      {item: 'Occupancy taxes and fees', amount: '$10'},
+                      {item: '£174 x 4 nights', amount: '£696'},
+                      {item: 'Cleaning fee', amount: '£33'},
+                      {item: 'Service fee', amount: '£47'},
+                      {item: 'Occupancy taxes and fees', amount: '£10'},
                     ].map(({item, amount}) => (
                       <li key={item}>
                         {item}
@@ -148,7 +148,7 @@ class Listing extends React.Component {
                           value={this.state.amount / 100}
                           displayType={'text'}
                           thousandSeparator={true}
-                          prefix={'$'}
+                          prefix={'£'}
                         />
                       </span>
                     </li>

@@ -12,7 +12,7 @@ class BookingModal extends Component {
 
     this.state = {
       booking: {
-        currency: 'usd',
+        currency: 'gbp',
         amount: props.amount,
         listingId: 26,
         startDate: '10/03/2019',

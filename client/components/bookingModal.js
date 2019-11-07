@@ -91,10 +91,7 @@ class BookingModal extends Component {
           {isUserVerified && !isBookingConfirmed && (
             <div className="completed">
               <img src="/static/confirmed.svg" width="50" />
-              <h1>
-                Your ID has been verified. <br />
-                Pay now to finalize booking.
-              </h1>
+              <h1>Pay now to finalize booking.</h1>
 
               <br />
               <br />

@@ -13,7 +13,7 @@ class Listing extends React.Component {
     this.state = {
       isBooking: false,
       isBookingConfirmed: false,
-      isUserVerified: false,
+      isUserVerified: true,
       amount: process.env.NODE_ENV === 'production' ? 78600 : 100,
     };
   }

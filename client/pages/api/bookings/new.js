@@ -34,7 +34,7 @@ export default requireAuthEndpoint(async (req, res) => {
       .push(bookingObject)
       .write();
 
-    // Step 3: Make transfer to the host account on Stripe
+    // Step 2: Resolve hosts Stripe account id
     let listing = storage
       .get('listings')
       .find({id: String(listingId)})
@@ -53,44 +53,24 @@ export default requireAuthEndpoint(async (req, res) => {
 
     let listingHostUserStripeUserId = listingHostUser.stripe.stripeUserId;
 
-    // Step 2: Make Payment Request to Stripe
+    // Step 3: Make Payment Request to Stripe
     let response = {...bookingObject};
 
-    if (chargeToken) {
-      // Apple Pay aka Web Payment Request is using charges.
-      const paymentCharge = await stripe.charges.create({
+    let payParams = {
+      payment_method_types: ['card'],
+      amount: amount / 100,
+      currency: currency,
+      transfer_data: {
+        destination: listingHostUserStripeUserId,
         amount: amount / 100,
-        currency: currency,
-        description: 'Kavholm',
-        source: chargeToken,
-        transfer_data: {
-          destination: listingHostUserStripeUserId,
-          amount: amount / 100,
-        },
-      });
-    } else {
-      let payParams = {
-        payment_method_types: ['card'],
-        amount: amount / 100,
-        currency: currency,
-        transfer_data: {
-          destination: listingHostUserStripeUserId,
-          amount: amount / 100,
-        },
-      };
+      },
+    };
 
-      const paymentIntent = await stripe.paymentIntents.create(payParams);
-      response = {
-        ...response,
-        paymentRequestSecret: paymentIntent.client_secret,
-      };
-    }
-
-    // await stripe.transfers.create({
-    //   amount: amount / 100,
-    //   currency: 'usd',
-    //   destination: listingHostUserStripeUserId,
-    // });
+    const paymentIntent = await stripe.paymentIntents.create(payParams);
+    response = {
+      ...response,
+      paymentRequestSecret: paymentIntent.client_secret,
+    };
 
     return res.status(200).json(response);
   } catch (err) {

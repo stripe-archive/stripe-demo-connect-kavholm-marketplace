@@ -58,11 +58,11 @@ export default requireAuthEndpoint(async (req, res) => {
 
     let payParams = {
       payment_method_types: ['card'],
-      amount: amount / 100,
+      amount: amount,
       currency: currency,
       transfer_data: {
         destination: listingHostUserStripeUserId,
-        amount: amount / 100,
+        amount: amount,
       },
     };
 

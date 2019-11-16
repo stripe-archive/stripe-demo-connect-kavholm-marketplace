@@ -79,7 +79,7 @@ export default requireAuthEndpoint(async (req, res) => {
     let listingHostUserStripeUserId = listingHostUser.stripe.stripeUserId;
 
     await stripe.transfers.create({
-      amount: amount,
+      amount: amount / 100,
       currency: currency,
       destination: listingHostUserStripeUserId,
     });

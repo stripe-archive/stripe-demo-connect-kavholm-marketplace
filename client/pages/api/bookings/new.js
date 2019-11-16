@@ -34,31 +34,6 @@ export default requireAuthEndpoint(async (req, res) => {
       .push(bookingObject)
       .write();
 
-    // Step 2: Make Payment Request to Stripe
-    let response = {...bookingObject};
-
-    if (chargeToken) {
-      // Apple Pay aka Web Payment Request is using charges.
-      const paymentCharge = await stripe.charges.create({
-        amount: amount / 100,
-        currency: currency,
-        description: 'Kavholm',
-        source: chargeToken,
-      });
-    } else {
-      let payParams = {
-        payment_method_types: ['card'],
-        amount: amount / 100,
-        currency: currency,
-      };
-
-      const paymentIntent = await stripe.paymentIntents.create(payParams);
-      response = {
-        ...response,
-        paymentRequestSecret: paymentIntent.client_secret,
-      };
-    }
-
     // Step 3: Make transfer to the host account on Stripe
     let listing = storage
       .get('listings')
@@ -78,11 +53,40 @@ export default requireAuthEndpoint(async (req, res) => {
 
     let listingHostUserStripeUserId = listingHostUser.stripe.stripeUserId;
 
-    await stripe.transfers.create({
-      amount: amount / 100,
-      currency: 'usd',
-      destination: listingHostUserStripeUserId,
-    });
+    // Step 2: Make Payment Request to Stripe
+    let response = {...bookingObject};
+
+    if (chargeToken) {
+      // Apple Pay aka Web Payment Request is using charges.
+      const paymentCharge = await stripe.charges.create({
+        amount: amount / 100,
+        currency: currency,
+        description: 'Kavholm',
+        source: chargeToken,
+        transfer_data: {
+          destination: listingHostUserStripeUserId,
+          amount: amount / 100,
+        },
+      });
+    } else {
+      let payParams = {
+        payment_method_types: ['card'],
+        amount: amount / 100,
+        currency: currency,
+      };
+
+      const paymentIntent = await stripe.paymentIntents.create(payParams);
+      response = {
+        ...response,
+        paymentRequestSecret: paymentIntent.client_secret,
+      };
+    }
+
+    // await stripe.transfers.create({
+    //   amount: amount / 100,
+    //   currency: 'usd',
+    //   destination: listingHostUserStripeUserId,
+    // });
 
     return res.status(200).json(response);
   } catch (err) {

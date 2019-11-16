@@ -73,6 +73,10 @@ export default requireAuthEndpoint(async (req, res) => {
         payment_method_types: ['card'],
         amount: amount / 100,
         currency: currency,
+        transfer_data: {
+          destination: listingHostUserStripeUserId,
+          amount: amount / 100,
+        },
       };
 
       const paymentIntent = await stripe.paymentIntents.create(payParams);

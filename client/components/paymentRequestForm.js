@@ -37,7 +37,7 @@ class PaymentRequestForm extends React.Component {
       },
     });
 
-    paymentRequest.on('paymentmethod', async function(ev) {
+    paymentRequest.on('paymentmethod', async (ev) => {
       let bookingData = {
         listingId: 26,
         currency: this.props.currency,
@@ -46,6 +46,7 @@ class PaymentRequestForm extends React.Component {
         endDate: '10/07/2019',
       };
 
+      let onBookingConfirmed = this.props.onBookingConfirmed;
       let req = await API.makeRequest('post', `/api/bookings/new`, bookingData);
 
       if (!req) {
@@ -62,28 +63,21 @@ class PaymentRequestForm extends React.Component {
           {payment_method: ev.paymentMethod.id},
           {handleActions: false},
         )
-        .then(function(confirmResult) {
+        .then((confirmResult) => {
           if (confirmResult.error) {
-            // Report to the browser that the payment failed, prompting it to
-            // re-show the payment interface, or show an error message and close
-            // the payment interface.
             ev.complete('fail');
           } else {
-            // Report to the browser that the confirmation was successful, prompting
-            // it to close the browser payment method collection interface.
             ev.complete('success');
             // Let Stripe.js handle the rest of the payment flow.
-            stripe.confirmCardPayment(clientSecret).then(function(result) {
+            stripe.confirmCardPayment(clientSecret).then((result) => {
               if (result.error) {
                 // The payment failed -- ask your customer for a new payment method.
               } else {
-                let onBookingConfirmed = this.props.onBookingConfirmed;
-
                 try {
                   complete('success');
                   onBookingConfirmed && onBookingConfirmed(req);
                 } catch (err) {
-                  logger.log('err', err);
+                  console.log('err', err);
                 }
               }
             });

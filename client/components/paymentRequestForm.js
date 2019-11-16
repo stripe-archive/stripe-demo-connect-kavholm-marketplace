@@ -37,81 +37,81 @@ class PaymentRequestForm extends React.Component {
       },
     });
 
-    paymentRequest.on('paymentmethod', async (ev) => {
-      let bookingData = {
-        listingId: 26,
-        currency: this.props.currency,
-        amount: this.props.amount,
-        startDate: '10/03/2019',
-        endDate: '10/07/2019',
-      };
-
-      let onBookingConfirmed = this.props.onBookingConfirmed;
-      let req = await API.makeRequest('post', `/api/bookings/new`, bookingData);
-
-      if (!req) {
-        throw new Error('Booking failed');
-        return;
-      }
-
-      let paymentRequestSecret = req.paymentRequestSecret;
-
-      // Confirm the PaymentIntent without handling potential next actions (yet).
-      stripe
-        .confirmCardPayment(
-          paymentRequestSecret,
-          {payment_method: ev.paymentMethod.id},
-          {handleActions: false},
-        )
-        .then((confirmResult) => {
-          if (confirmResult.error) {
-            ev.complete('fail');
-          } else {
-            ev.complete('success');
-            // Let Stripe.js handle the rest of the payment flow.
-            stripe.confirmCardPayment(clientSecret).then((result) => {
-              if (result.error) {
-                // The payment failed -- ask your customer for a new payment method.
-              } else {
-                try {
-                  complete('success');
-                  onBookingConfirmed && onBookingConfirmed(req);
-                } catch (err) {
-                  console.log('err', err);
-                }
-              }
-            });
-          }
-        });
-    });
-
-    // paymentRequest.on('token', async ({complete, token}) => {
-    //   logger.log('Received Stripe token: ', token);
-
-    //   let onBookingConfirmed = this.props.onBookingConfirmed;
-
+    // paymentRequest.on('paymentmethod', async (ev) => {
     //   let bookingData = {
     //     listingId: 26,
     //     currency: this.props.currency,
     //     amount: this.props.amount,
     //     startDate: '10/03/2019',
     //     endDate: '10/07/2019',
-    //     chargeToken: token.id,
     //   };
 
-    //   try {
-    //     complete('success');
+    //   let onBookingConfirmed = this.props.onBookingConfirmed;
+    //   let req = await API.makeRequest('post', `/api/bookings/new`, bookingData);
 
-    //     let req = await API.makeRequest(
-    //       'post',
-    //       `/api/bookings/new`,
-    //       bookingData,
-    //     );
-    //     onBookingConfirmed && onBookingConfirmed(req);
-    //   } catch (err) {
-    //     logger.log('err', err);
+    //   if (!req) {
+    //     throw new Error('Booking failed');
+    //     return;
     //   }
+
+    //   let paymentRequestSecret = req.paymentRequestSecret;
+
+    //   // Confirm the PaymentIntent without handling potential next actions (yet).
+    //   stripe
+    //     .confirmCardPayment(
+    //       paymentRequestSecret,
+    //       {payment_method: ev.paymentMethod.id},
+    //       {handleActions: false},
+    //     )
+    //     .then((confirmResult) => {
+    //       if (confirmResult.error) {
+    //         ev.complete('fail');
+    //       } else {
+    //         ev.complete('success');
+    //         // Let Stripe.js handle the rest of the payment flow.
+    //         stripe.confirmCardPayment(clientSecret).then((result) => {
+    //           if (result.error) {
+    //             // The payment failed -- ask your customer for a new payment method.
+    //           } else {
+    //             try {
+    //               complete('success');
+    //               onBookingConfirmed && onBookingConfirmed(req);
+    //             } catch (err) {
+    //               console.log('err', err);
+    //             }
+    //           }
+    //         });
+    //       }
+    //     });
     // });
+
+    paymentRequest.on('token', async ({complete, token}) => {
+      logger.log('Received Stripe token: ', token);
+
+      let onBookingConfirmed = this.props.onBookingConfirmed;
+
+      let bookingData = {
+        listingId: 26,
+        currency: this.props.currency,
+        amount: this.props.amount,
+        startDate: '10/03/2019',
+        endDate: '10/07/2019',
+        chargeToken: token.id,
+      };
+
+      try {
+        complete('success');
+
+        let req = await API.makeRequest(
+          'post',
+          `/api/bookings/new`,
+          bookingData,
+        );
+        onBookingConfirmed && onBookingConfirmed(req);
+      } catch (err) {
+        logger.log('err', err);
+      }
+    });
 
     let canMakePayment = await paymentRequest.canMakePayment();
     logger.log('PaymentRequestForm.canMakePayment', canMakePayment);

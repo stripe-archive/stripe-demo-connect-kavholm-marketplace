@@ -171,10 +171,7 @@ class Listing extends React.Component {
                     className="mr-3 avatar"
                   />
                   <div className="media-body">
-                    <p>
-                      Your host requires a verified government ID to complete
-                      booking.
-                    </p>
+                    <p>Hosted by Jie Jin. Joined in November 2019</p>
                   </div>
                 </div>
               </div>

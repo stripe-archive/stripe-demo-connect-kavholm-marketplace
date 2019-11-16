@@ -80,7 +80,7 @@ export default requireAuthEndpoint(async (req, res) => {
 
     await stripe.transfers.create({
       amount: amount / 100,
-      currency: currency,
+      currency: 'usd',
       destination: listingHostUserStripeUserId,
     });
 

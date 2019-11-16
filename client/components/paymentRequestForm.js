@@ -85,42 +85,42 @@ class PaymentRequestForm extends React.Component {
         });
     });
 
-  //   paymentRequest.on('token', async ({complete, token}) => {
-  //     logger.log('Received Stripe token: ', token);
+    //   paymentRequest.on('token', async ({complete, token}) => {
+    //     logger.log('Received Stripe token: ', token);
 
-  //     let onBookingConfirmed = this.props.onBookingConfirmed;
+    //     let onBookingConfirmed = this.props.onBookingConfirmed;
 
-  //     let bookingData = {
-  //       listingId: 26,
-  //       currency: this.props.currency,
-  //       amount: this.props.amount,
-  //       startDate: '10/03/2019',
-  //       endDate: '10/07/2019',
-  //       chargeToken: token.id,
-  //     };
+    //     let bookingData = {
+    //       listingId: 26,
+    //       currency: this.props.currency,
+    //       amount: this.props.amount,
+    //       startDate: '10/03/2019',
+    //       endDate: '10/07/2019',
+    //       chargeToken: token.id,
+    //     };
 
-  //     try {
-  //       complete('success');
+    //     try {
+    //       complete('success');
 
-  //       let req = await API.makeRequest(
-  //         'post',
-  //         `/api/bookings/new`,
-  //         bookingData,
-  //       );
-  //       onBookingConfirmed && onBookingConfirmed(req);
-  //     } catch (err) {
-  //       logger.log('err', err);
-  //     }
-  //   });
+    //       let req = await API.makeRequest(
+    //         'post',
+    //         `/api/bookings/new`,
+    //         bookingData,
+    //       );
+    //       onBookingConfirmed && onBookingConfirmed(req);
+    //     } catch (err) {
+    //       logger.log('err', err);
+    //     }
+    //   });
 
-  //   let canMakePayment = await paymentRequest.canMakePayment();
-  //   logger.log('PaymentRequestForm.canMakePayment', canMakePayment);
-  //   this.setState({
-  //     canMakePayment: !!canMakePayment,
-  //     hasInitialized: true,
-  //     paymentRequest: paymentRequest,
-  //   });
-  // }
+    //   let canMakePayment = await paymentRequest.canMakePayment();
+    //   logger.log('PaymentRequestForm.canMakePayment', canMakePayment);
+    //   this.setState({
+    //     canMakePayment: !!canMakePayment,
+    //     hasInitialized: true,
+    //     paymentRequest: paymentRequest,
+    //   });
+  }
 
   render() {
     let className = ['payment-request-form'];

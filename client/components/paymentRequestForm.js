@@ -68,21 +68,7 @@ class PaymentRequestForm extends React.Component {
             ev.complete('fail');
           } else {
             ev.complete('success');
-            // Let Stripe.js handle the rest of the payment flow.
-            this.props.stripe
-              .confirmCardPayment(paymentRequestSecret)
-              .then((result) => {
-                if (result.error) {
-                  // The payment failed -- ask your customer for a new payment method.
-                } else {
-                  try {
-                    complete('success');
-                    onBookingConfirmed && onBookingConfirmed(req);
-                  } catch (err) {
-                    console.log('err', err);
-                  }
-                }
-              });
+            onBookingConfirmed && onBookingConfirmed(req);
           }
         });
     });

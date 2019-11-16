@@ -40,7 +40,7 @@ export default requireAuthEndpoint(async (req, res) => {
     if (chargeToken) {
       // Apple Pay aka Web Payment Request is using charges.
       const paymentCharge = await stripe.charges.create({
-        amount: amount / 100,
+        amount: amount,
         currency: currency,
         description: 'Kavholm',
         source: chargeToken,
@@ -48,7 +48,7 @@ export default requireAuthEndpoint(async (req, res) => {
     } else {
       let payParams = {
         payment_method_types: ['card'],
-        amount: amount / 100,
+        amount: amount,
         currency: currency,
       };
 

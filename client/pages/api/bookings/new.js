@@ -56,6 +56,8 @@ export default requireAuthEndpoint(async (req, res) => {
     // Step 3: Make Payment Request to Stripe
     let response = {...bookingObject};
 
+    amount = amount / 100;
+
     let payParams = {
       payment_method_types: ['card'],
       amount: amount,

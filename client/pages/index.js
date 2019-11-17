@@ -17,6 +17,8 @@ class Home extends React.Component {
               <div className="popover">
                 <h1>Book unique places to stay around the globe.</h1>
 
+                <HomeSearchForm size="large" />
+
                 <div className="button-container">
                   <Link href="/listings">
                     <a className="btn btn-primary">Show listings</a>

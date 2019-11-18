@@ -26,6 +26,10 @@ export default requireAuthEndpoint(async (req, res) => {
     });
 
     let availableBalance = stripeReq.available ? stripeReq.available[0] : {};
+    // Demo: Add any pending balance to the available balance because Express only shows the total balance
+    if (stripeReq.pending && stripeReq.pending[0] && stripeReq.pending[0].currency == availableBalance.currency) {
+        availableBalance.amount += stripeReq.pending[0].amount;
+    }
 
     // 3) Return url
     return res.status(200).json(availableBalance);

@@ -7,7 +7,11 @@ function bookingSearchForm(props) {
           : 'booking-search-form'
       }
     >
-      <input type="search" className="search" placeholder="Singapore"></input>
+      <input
+        type="search"
+        className="search"
+        placeholder="New York City"
+      ></input>
       <input type="datepicker" className="date" placeholder="Oct 3-7"></input>
       <select className="guests dropdown-toggle">
         <option>3 guests</option>

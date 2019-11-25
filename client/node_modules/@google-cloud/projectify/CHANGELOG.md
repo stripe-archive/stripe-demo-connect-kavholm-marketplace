@@ -3,6 +3,13 @@
 [npm history][1]
 
 [1]: https://www.npmjs.com/package/@google-cloud/projectify?activeTab=versions
+### [1.0.2](https://www.github.com/googleapis/nodejs-projectify/compare/v1.0.1...v1.0.2) (2019-11-14)
+
+
+### Bug Fixes
+
+* **docs:** add jsdoc-region-tag plugin ([#135](https://www.github.com/googleapis/nodejs-projectify/issues/135)) ([59301e7](https://www.github.com/googleapis/nodejs-projectify/commit/59301e7cfa855add4894dd9c46870e61fffa7413))
+
 ### [1.0.1](https://www.github.com/googleapis/nodejs-projectify/compare/v1.0.0...v1.0.1) (2019-06-26)
 
 

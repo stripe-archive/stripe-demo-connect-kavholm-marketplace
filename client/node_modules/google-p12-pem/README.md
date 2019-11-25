@@ -119,5 +119,3 @@ See [LICENSE](https://github.com/googleapis/google-p12-pem/blob/master/LICENSE)
 [billing]: https://support.google.com/cloud/answer/6293499#enable-billing
 
 [auth]: https://cloud.google.com/docs/authentication/getting-started
-
-<a name="reference"></a>

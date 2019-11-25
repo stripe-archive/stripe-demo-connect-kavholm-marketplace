@@ -10,12 +10,13 @@ class Home extends React.Component {
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
         hideBooking={true}
+        title="Welcome"
       >
         <div className="home">
           <div className="splash-image">
             <div className="container">
               <div className="popover">
-                <h1>Book unique places to stay around the globe.</h1>
+                <h1>A global marketplace sample by Stripe</h1>
 
                 <HomeSearchForm size="large" />
 
@@ -58,8 +59,8 @@ class Home extends React.Component {
                 rgba(255, 255, 255, 0) 50%,
                 #ffffff 100%
               ),
-              url(https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80)
-                no-repeat;
+              url(https://images.unsplash.com/photo-1534430480872-3498386e7856?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80)
+                no-repeat; // Source: https://unsplash.com/photos/wh-7GeXxItI
             background-size: cover;
             background-position: center center;
           }

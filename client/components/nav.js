@@ -33,6 +33,14 @@ class Nav extends React.Component {
             )}
           </ul>
 
+          <ul className="navbar-nav flex-row">
+            <li className="navitem d-flex">
+              <Link href="/">
+                <a className="btn btn-light">Create new listing</a>
+              </Link>
+            </li>
+          </ul>
+
           <NavProfile
             isAuthenticated={this.props.isAuthenticated}
             userProfile={this.props.userProfile}

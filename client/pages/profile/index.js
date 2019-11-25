@@ -55,9 +55,15 @@ class Profile extends React.Component {
             <code>{JSON.stringify(profile, null, 2)}</code>
           </pre>
 
+          <h4>Admin</h4>
+          <button className="btn btn-secondary" onClick={this.clearBookings}>
+            Clear bookings
+          </button>
+
           {profile.stripe && (
             <>
-              <h4>Integrations</h4>
+              <br />
+              <br />
               <button
                 className="btn btn-secondary"
                 onClick={this.disconnectStripeAccount}
@@ -66,14 +72,6 @@ class Profile extends React.Component {
               </button>
             </>
           )}
-
-          <br />
-          <br />
-
-          <h4>Admin</h4>
-          <button className="btn btn-secondary" onClick={this.clearBookings}>
-            Clear bookings
-          </button>
         </div>
         <style jsx>{`
           .profile h4 {

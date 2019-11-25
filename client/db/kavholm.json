@@ -1,31 +1,20 @@
 {
   "users": [
     {
-      "userId": "Igj-hMfQp",
-      "firstName": "Kenneth",
-      "lastName": "Auchenberg",
-      "email": "auchenberg@stripe.com",
-      "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
-      "avatar": "//www.gravatar.com/avatar/49f28eff1d0ddf3564a1b8b1f36a6c12?s=400",
-      "stripe": {
-        "stripeUserId": "acct_1FGc0NBPQbvL9CY0"
-      }
-    },
-    {
       "userId": "Igj-hMfQa",
-      "firstName": "Romain",
-      "lastName": "Huet",
-      "email": "romain@stripe.com",
+      "firstName": "Mr",
+      "lastName": "Renter",
+      "email": "renter@marketplace.com",
       "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
-      "avatar": "//www.gravatar.com/avatar/82b811e83a279e09d7b2006e10cfee6a?s=400"
+      "avatar": "//images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80"
     },
     {
       "userId": "Igj-hMfQb",
-      "firstName": "Laura",
-      "lastName": "Willson",
-      "email": "laura.willson+prod@stripe.com",
+      "firstName": "Miss",
+      "lastName": "Host",
+      "email": "host@marketplace.com",
       "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
-      "avatar": "/static/willson.jpg",
+      "avatar": "//images.unsplash.com/photo-1506863530036-1efeddceb993?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2741&q=80",
       "stripe": {
         "stripeUserId": "acct_1FGgKgCQ6linlupO"
       }
@@ -98,7 +87,7 @@
       "title": "Copenhagen, Demmark",
       "source": "https://unsplash.com/photos/leDo7IX1ycM",
       "image": "https://images.unsplash.com/photo-1549488497-256795402cc0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80",
-      "owner": "Igj-hMfQp"
+      "owner": "Igj-hMfQb"
     },
     {
       "id": "12",

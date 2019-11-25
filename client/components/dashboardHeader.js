@@ -72,7 +72,9 @@ class DashboardHeader extends Component {
 
           .user-details .avatar {
             height: 55px;
+            width: 55px;
             border-radius: 55px;
+            object-fit: cover;
             align-self: center;
           }
 

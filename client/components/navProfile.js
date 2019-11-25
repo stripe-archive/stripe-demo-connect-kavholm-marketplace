@@ -65,6 +65,9 @@ class NavProfile extends React.Component {
         <style jsx>{`
           :global(.avatar) {
             border-radius: 44px;
+            width: 44px;
+            object-fit: cover;
+            height: 44px;
           }
         `}</style>
       </ul>

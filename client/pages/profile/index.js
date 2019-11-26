@@ -43,13 +43,9 @@ class Profile extends React.Component {
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
         title="Profile"
+        hideBooking={true}
       >
         <div className="profile">
-          <DashboardHeader
-            profile={this.props.profile}
-            balance={this.props.balance}
-          />
-
           <h4>Your profile details</h4>
           <pre className="profile-details bg-light">
             <code>{JSON.stringify(profile, null, 2)}</code>

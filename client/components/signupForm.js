@@ -2,14 +2,17 @@
 
 import {Component} from 'react';
 import {handleLogin} from '../utils/auth';
+import API from '../helpers/api';
 import logger from '../helpers/logger';
 
-class Login extends Component {
+class SignupForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: 'renter@marketplace.com',
+      firstName: 'Demo',
+      lastName: 'Host',
+      email: 'demoHost@stripe.com',
       password: 'test',
       error: '',
     };
@@ -30,59 +33,58 @@ class Login extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    const url = `/api/login/token`;
-    const {username, password} = this.state;
 
     try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(this.state),
-      });
-      if (response.ok) {
-        const {token} = await response.json();
-        handleLogin(token);
-      } else {
-        logger.log('Login failed.');
-        this.setState({
-          error: response.statusText,
-        });
-      }
-    } catch (error) {
-      console.error(
-        'You have an error in your code or there are Network issues.',
-        error,
-      );
-      this.setState({
-        error: response.statusText,
-      });
+      let req = await API.makeRequest('post', `/api/signup/local`, this.state);
+      handleLogin(req.token);
+    } catch (err) {
+      logger.log('Signup failed.', err);
     }
   }
 
   render() {
     return (
       <>
-        <div className="login">
+        <div className="signup-form">
           <form onSubmit={this.handleSubmit}>
+            <label htmlFor="name">First name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              value={this.state.firstName}
+              onChange={this.handleChange}
+            />
+
+            <label htmlFor="name">Last name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              value={this.state.lastName}
+              onChange={this.handleChange}
+            />
+
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
               name="email"
-              placeholder="Email"
               value={this.state.email}
               onChange={this.handleChange}
             />
+
+            <label htmlFor="password">password</label>
             <input
               type="password"
               id="password"
               name="password"
-              placeholder="Password"
               value={this.state.password}
               onChange={this.handleChange}
             />
 
             <button type="submit" className="btn btn-primary">
-              Login
+              Signup
             </button>
 
             <p className={`error ${this.state.error && 'show'}`}>
@@ -91,13 +93,13 @@ class Login extends Component {
           </form>
         </div>
         <style jsx>{`
-          .login {
+          .signup-form {
             max-width: 340px;
+            min-width: 300px;
             margin: 0 auto;
             padding: 1rem;
             border: 1px solid #ccc;
             border-radius: 4px;
-            min-width: 300px;
           }
           form {
             display: flex;
@@ -126,4 +128,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default SignupForm;

@@ -50,6 +50,12 @@ class NavProfile extends React.Component {
     } else {
       items = (
         <>
+          <li className="navitem d-flex">
+            <Link href="/signup">
+              <a className="btn">Signup</a>
+            </Link>
+          </li>
+
           <li className="nav-item">
             <Link href="/login">
               <a className="btn">Login</a>

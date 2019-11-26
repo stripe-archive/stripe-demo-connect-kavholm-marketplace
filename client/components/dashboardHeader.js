@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
+import Link from 'next/link';
 import API from '../helpers/api';
 
 class DashboardHeader extends Component {
   constructor() {
     super();
-    this.state = {
-      stripe: null,
-    };
   }
 
   async handleDashboardLink() {
@@ -34,17 +32,19 @@ class DashboardHeader extends Component {
       <div className="dashboard-header">
         <div className="row">
           <div className="col-3">
-            <div className="media user-details">
-              <img src={avatarUrl} className="mr-3 avatar" />
-              <div className="media-body">
-                <div className="user-details-body align-middle">
-                  <h5 className="mt-0">
-                    {profile.firstName + ' ' + profile.lastName}
-                  </h5>
-                  <p className="text-secondary">{profile.email}</p>
+            {profile && (
+              <div className="media user-details">
+                <img src={avatarUrl} className="mr-3 avatar" />
+                <div className="media-body">
+                  <div className="user-details-body align-middle">
+                    <h5 className="mt-0">
+                      {profile.firstName + ' ' + profile.lastName}
+                    </h5>
+                    <p className="text-secondary">{profile.email}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
           <div className="col-4">
             <div className="align-middle stripe-dashboard">
@@ -67,26 +67,28 @@ class DashboardHeader extends Component {
           <div className="col-12">
             <ul className="nav nav-tabs">
               <li className="nav-item">
-                <a
-                  className={
-                    'nav-link ' +
-                    (this.props.dashboardType == 'renter' ? 'active' : '')
-                  }
-                  href="/dashboard"
-                >
-                  Bookings
-                </a>
+                <Link href="/dashboard">
+                  <a
+                    className={
+                      'nav-link ' +
+                      (this.props.dashboardType == 'renter' ? 'active' : '')
+                    }
+                  >
+                    Bookings
+                  </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
-                  className={
-                    'nav-link ' +
-                    (this.props.dashboardType == 'host' ? 'active' : '')
-                  }
-                  href="/dashboard/host"
-                >
-                  Manage listings
-                </a>
+                <Link href="/dashboard/host">
+                  <a
+                    className={
+                      'nav-link ' +
+                      (this.props.dashboardType == 'host' ? 'active' : '')
+                    }
+                  >
+                    Manage listings
+                  </a>
+                </Link>
               </li>
             </ul>
           </div>

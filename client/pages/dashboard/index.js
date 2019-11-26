@@ -5,6 +5,7 @@ import Layout from '../../components/layout';
 import API from '../../helpers/api';
 import DashboardBookingsList from '../../components/dashboardBookingsList';
 import DashboardHeader from '../../components/dashboardHeader';
+import NewButton from '../../components/newButton';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -64,7 +65,22 @@ class Dashboard extends React.Component {
 
           <div className="row">
             <div className="col-12">
-              <h4>Your bookings</h4>
+              <div className="row">
+                <div className="col-8">
+                  <div className="clearfix">
+                    <h4>Your bookings</h4>
+                  </div>
+                </div>
+                <div className="col-4">
+                  <NewButton
+                    showTip={true}
+                    label="Show listings"
+                    link="/listings"
+                    tipTitle="Wanna go somewhere?"
+                    tipBody="Explore the Global Marketplace and go somewhere!"
+                  />
+                </div>
+              </div>
               <DashboardBookingsList list={this.props.userBookings} />
             </div>
           </div>

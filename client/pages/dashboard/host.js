@@ -6,7 +6,7 @@ import API from '../../helpers/api';
 import ListingsBookingsList from '../../components/bookingList';
 import DashboardListingsList from '../../components/dashboardListingsList';
 import DashboardHeader from '../../components/dashboardHeader';
-import NewListingButton from '../../components/newListingButton';
+import NewButton from '../../components/newButton';
 import PayoutSetup from '../../components/payoutSetup';
 
 class Dashboard extends React.Component {
@@ -101,7 +101,13 @@ class Dashboard extends React.Component {
                     </div>
                   </div>
                   <div className="col-4">
-                    <NewListingButton showTip={showListingTip} />
+                    <NewButton
+                      showTip={showListingTip}
+                      label="New"
+                      link="/listings/new"
+                      tipTitle="Time to create your first listing."
+                      tipBody="You can now add your home to Global Marketplace."
+                    />
                   </div>
                 </div>
 

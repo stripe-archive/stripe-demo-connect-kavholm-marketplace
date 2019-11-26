@@ -1,26 +1,22 @@
-function NewListingButton(props) {
+function NewButton(props) {
   const target = React.createRef();
 
   return (
-    <div className="listing-button">
+    <div className="new-button">
       {props.showTip && (
         <div className="overlay">
           <span className="triangle">▲</span>
-          <strong>Time to create your first listing.</strong>
+          <strong>{props.tipTitle}</strong>
           <br />
-          You can now add your home to Global Marketplace.
+          {props.tipBody}
         </div>
       )}
-      <a
-        ref={target}
-        href="/listings/new"
-        className="btn btn-primary btn-new-listing"
-      >
-        + New
+      <a ref={target} href={props.link} className="btn btn-primary btn-new">
+        + {props.label}
       </a>
       <style jsx>
         {`
-          .listing-button {
+          .new-button {
             position: relative;
           }
 
@@ -57,7 +53,7 @@ function NewListingButton(props) {
             display: inline-block;
           }
 
-          .btn-new-listing {
+          .btn-new {
             float: right;
             margin-top: -8px;
           }
@@ -76,4 +72,4 @@ function NewListingButton(props) {
   );
 }
 
-export default NewListingButton;
+export default NewButton;

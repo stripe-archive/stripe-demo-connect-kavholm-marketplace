@@ -52,7 +52,11 @@ class Dashboard extends React.Component {
             <div className="col-8">
               <h4>Your bookings</h4>
               {this.props.userBookings && (
-                <ListingsBookingsList list={this.props.userBookings} />
+                <pre className="profile-details bg-light">
+                  <code>
+                    {JSON.stringify(this.props.userBookings, null, 2)}
+                  </code>
+                </pre>
               )}
             </div>
           </div>

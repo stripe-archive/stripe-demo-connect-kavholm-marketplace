@@ -31,8 +31,8 @@ class PayoutSetup extends Component {
           <img src="/static/icon-bank.svg" className="icon" />
           <h3>Set up your payouts with Stripe</h3>
           <p>
-            Kavholm partners with Stripe to transfer earnings to your bank
-            account.
+            Global Marketplace partners with Stripe to transfer earnings to your
+            bank account.
           </p>
 
           <a

@@ -74,7 +74,7 @@ class DashboardHeader extends Component {
                   }
                   href="/dashboard"
                 >
-                  Renter
+                  Bookings
                 </a>
               </li>
               <li className="nav-item">
@@ -85,7 +85,7 @@ class DashboardHeader extends Component {
                   }
                   href="/dashboard/host"
                 >
-                  Host
+                  Manage listings
                 </a>
               </li>
             </ul>

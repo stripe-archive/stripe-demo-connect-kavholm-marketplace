@@ -11,7 +11,11 @@ class BookingConfirmation extends React.Component {
   }
 
   static async getInitialProps(context) {
-    return {};
+    let id = context.query.id;
+
+    return {
+      booking: await API.makeRequest('get', `/api/bookings/${id}`),
+    };
   }
 
   render() {
@@ -24,6 +28,10 @@ class BookingConfirmation extends React.Component {
           <hr className="bg-light" />
 
           <h2>Booking Confirmation</h2>
+
+          <pre className="profile-details bg-light">
+            <code>{JSON.stringify(this.props.booking, null, 2)}</code>
+          </pre>
 
           <style jsx>{`
             .listings {

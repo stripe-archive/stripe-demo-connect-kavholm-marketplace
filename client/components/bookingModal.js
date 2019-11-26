@@ -80,7 +80,9 @@ class BookingModal extends Component {
             </div>
           )}
 
-          {isBookingConfirmed && <BookingConfirmedModal />}
+          {isBookingConfirmed && (
+            <BookingConfirmedModal bookingId={this.props.bookingId} />
+          )}
         </div>
         <style jsx>{`
           img {

@@ -14,6 +14,7 @@ class Listing extends React.Component {
       isBooking: false,
       isBookingConfirmed: false,
       amount: 78600,
+      bookingId: null,
     };
   }
 
@@ -49,8 +50,9 @@ class Listing extends React.Component {
     });
   };
 
-  onBookingConfirmed = () => {
+  onBookingConfirmed = (bookingId) => {
     this.setState({
+      bookingId: bookingId,
       isBookingConfirmed: true,
     });
   };
@@ -68,6 +70,7 @@ class Listing extends React.Component {
             onBookingConfirmed={this.onBookingConfirmed}
             isBookingConfirmed={this.state.isBookingConfirmed}
             amount={this.state.amount}
+            bookingId={this.state.bookingId}
           />
 
           <div className="content">

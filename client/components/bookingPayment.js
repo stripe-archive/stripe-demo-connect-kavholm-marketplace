@@ -46,7 +46,7 @@ class BookingPayment extends Component {
               error: `Payment failed: ${payload.error.message}`,
             });
           } else {
-            onBookingConfirmed && onBookingConfirmed(req);
+            onBookingConfirmed && onBookingConfirmed(req.id);
           }
         });
     } catch (err) {

@@ -68,7 +68,7 @@ class PaymentRequestForm extends React.Component {
             ev.complete('fail');
           } else {
             ev.complete('success');
-            onBookingConfirmed && onBookingConfirmed(req);
+            onBookingConfirmed && onBookingConfirmed(req.id);
           }
         });
     });

@@ -15,7 +15,7 @@ class Dashboard extends React.Component {
 
   static async getInitialProps(context) {
     let userProfile = await API.makeRequest('get', '/api/profile');
-    let userBookings = await API.makeRequest('get', '/api/bookings/');
+    let userBookings = await API.makeRequest('get', '/api/bookings');
 
     return {
       profile: userProfile,

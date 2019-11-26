@@ -87,7 +87,7 @@ class BookingPayment extends Component {
               value={amount / 100}
               displayType={'text'}
               thousandSeparator={true}
-              prefix={'£'}
+              prefix={'$'}
               renderText={(value) => <>Pay {value}</>}
             />
           )}

@@ -13,15 +13,25 @@ class Listing extends React.Component {
     this.state = {
       isBooking: false,
       isBookingConfirmed: false,
-      isUserVerified: true,
-      amount: process.env.NODE_ENV === 'production' ? 78600 : 100,
+      amount: 78600,
     };
   }
 
   static async getInitialProps(context) {
     let id = context.query.id;
+    let listing = await API.makeRequest('get', `/api/listings/${id}`);
+    let listingOwner;
+
+    if (listing.owner) {
+      listingOwner = await API.makeRequest(
+        'get',
+        `/api/users/userInfo?id=${listing.owner}`,
+      );
+    }
+
     return {
-      listing: await API.makeRequest('get', `/api/listings/${id}`),
+      listing: listing,
+      listingOwner: listingOwner,
     };
   }
 
@@ -29,12 +39,6 @@ class Listing extends React.Component {
     if (Router.query.action && Router.query.action == 'booking') {
       this.setState({
         isBooking: true,
-      });
-    }
-
-    if (Router.query.verified && Router.query.verified == 'true') {
-      this.setState({
-        isUserVerified: true,
       });
     }
   }
@@ -51,20 +55,6 @@ class Listing extends React.Component {
     });
   };
 
-  startUserVerification = async () => {
-    try {
-      let req = await API.makeRequest('post', '/api/verifications/link', {
-        listingId: this.props.listing.id,
-      });
-
-      if (req && req.url) {
-        window.location.href = req.url;
-      }
-    } catch (err) {
-      alert('Verification intent failed', err);
-    }
-  };
-
   render() {
     return (
       <Layout
@@ -75,9 +65,7 @@ class Listing extends React.Component {
         <div className="listings">
           <BookingModalWrapper
             isShown={this.state.isBooking}
-            startUserVerification={this.startUserVerification}
             onBookingConfirmed={this.onBookingConfirmed}
-            isUserVerified={this.state.isUserVerified}
             isBookingConfirmed={this.state.isBookingConfirmed}
             amount={this.state.amount}
           />
@@ -122,16 +110,16 @@ class Listing extends React.Component {
                     3 guests · 2 bedrooms · 2 beds · 1 bath
                   </p>
                   <div className="priceInfo">
-                    <span className="price">£174 </span>/ night
+                    <span className="price">$174 </span>/ night
                     <img className="stars" src="/static/stars.svg" />
                   </div>
                   <hr />
                   <ul className="lineItems">
                     {[
-                      {item: '£174 x 4 nights', amount: '£696'},
-                      {item: 'Cleaning fee', amount: '£33'},
-                      {item: 'Service fee', amount: '£47'},
-                      {item: 'Occupancy taxes and fees', amount: '£10'},
+                      {item: '$174 x 4 nights', amount: '$696'},
+                      {item: 'Cleaning fee', amount: '$33'},
+                      {item: 'Service fee', amount: '$47'},
+                      {item: 'Occupancy taxes and fees', amount: '$10'},
                     ].map(({item, amount}) => (
                       <li key={item}>
                         {item}
@@ -148,7 +136,7 @@ class Listing extends React.Component {
                           value={this.state.amount / 100}
                           displayType={'text'}
                           thousandSeparator={true}
-                          prefix={'£'}
+                          prefix={'$'}
                         />
                       </span>
                     </li>
@@ -164,16 +152,22 @@ class Listing extends React.Component {
                     : 'Please login before booking'}
                 </button>
 
-                <div className="media host">
-                  <img
-                    src="/static/host.jpg"
-                    width="36"
-                    className="mr-3 avatar"
-                  />
-                  <div className="media-body">
-                    <p>Hosted by Jie Jin. Joined in November 2019</p>
+                {this.props.listingOwner && (
+                  <div className="media host">
+                    <img
+                      src={this.props.listingOwner.avatar}
+                      width="36"
+                      className="mr-3 avatar"
+                    />
+                    <div className="media-body">
+                      <p>
+                        Hosted by {this.props.listingOwner.firstName}{' '}
+                        {this.props.listingOwner.lastName}. Joined in November
+                        2019
+                      </p>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>

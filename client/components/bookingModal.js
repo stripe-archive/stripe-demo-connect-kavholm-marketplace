@@ -12,7 +12,7 @@ class BookingModal extends Component {
 
     this.state = {
       booking: {
-        currency: 'gbp',
+        currency: 'usd',
         amount: props.amount,
         listingId: 26,
         startDate: '10/03/2019',
@@ -22,13 +22,7 @@ class BookingModal extends Component {
   }
 
   render() {
-    let {
-      isShown,
-      toggleModal,
-      startUserVerification,
-      isUserVerified,
-      isBookingConfirmed,
-    } = this.props;
+    let {isShown, toggleModal, isBookingConfirmed} = this.props;
 
     var style = {
       base: {
@@ -70,25 +64,7 @@ class BookingModal extends Component {
         }}
       >
         <div className="content">
-          {!isUserVerified && !isBookingConfirmed && (
-            <>
-              <img src="/static/person.svg" />
-              <h1>To continue booking, we’ll need to verify your ID.</h1>
-              <p className="info">
-                Your host requires a verified government-issued ID to complete
-                the booking. This will take only a minute.
-              </p>
-              <button onClick={startUserVerification}>
-                Verify your identity
-              </button>
-              <p className="footer">
-                You’ll be redirected to Stripe to complete the verification
-                process.
-              </p>
-            </>
-          )}
-
-          {isUserVerified && !isBookingConfirmed && (
+          {!isBookingConfirmed && (
             <div className="completed">
               <img src="/static/confirmed.svg" width="50" />
               <h1>Pay now to finalize booking.</h1>
@@ -104,7 +80,7 @@ class BookingModal extends Component {
             </div>
           )}
 
-          {isUserVerified && isBookingConfirmed && <BookingConfirmedModal />}
+          {isBookingConfirmed && <BookingConfirmedModal />}
         </div>
         <style jsx>{`
           img {

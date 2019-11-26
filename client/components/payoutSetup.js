@@ -29,7 +29,7 @@ class PayoutSetup extends Component {
       <>
         <div className="text-center box">
           <img src="/static/icon-bank.svg" className="icon" />
-          <h3>Set up your payouts with Stripe</h3>
+          <h3>Payout setup needed</h3>
           <p>
             Global Marketplace partners with Stripe to transfer earnings to your
             bank account.

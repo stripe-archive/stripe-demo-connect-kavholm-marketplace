@@ -7,20 +7,22 @@ function BookingsList(props) {
 
   if (list) {
     listItems = list.map((i) => (
-      <li className="booking-list-item media" key={i.id}>
-        <img src={i.user.avatar} height="30" className="mr-3 avatar" />
-        <div className="media-body">
-          <p className="booking-date">
-            <Moment format="MMM DD">{i.startDate}</Moment>
-            {' — '}
-            <Moment format="MMM DD">{i.endDate}</Moment>
-          </p>
-          <p>
-            <strong>{i.user.firstName + ' ' + i.user.lastName}</strong>
-          </p>
-        </div>
+      <li className="booking-list-item" key={i.id}>
+        <a className="media" href={'/bookings/' + i.id}>
+          <img src={i.user.avatar} height="30" className="mr-3 avatar" />
+          <div className="media-body">
+            <p className="booking-date">
+              <Moment format="MMM DD">{i.startDate}</Moment>
+              {' — '}
+              <Moment format="MMM DD">{i.endDate}</Moment>
+            </p>
+            <p>
+              <strong>{i.user.firstName + ' ' + i.user.lastName}</strong>
+            </p>
+          </div>
 
-        <div className="verified">✔ Verified</div>
+          <div className="verified">✔ Verified</div>
+        </a>
         <style jsx>{`
           .booking-list-item {
             padding: 10px 15px;
@@ -38,6 +40,10 @@ function BookingsList(props) {
           .booking-list-item p {
             margin: 0;
             line-height: 20px;
+          }
+
+          .booking-list-item a {
+            color: #000;
           }
 
           .booking-list-item .booking-date {

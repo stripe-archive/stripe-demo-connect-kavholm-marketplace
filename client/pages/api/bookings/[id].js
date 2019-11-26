@@ -6,10 +6,12 @@ export default requireAuthEndpoint(async (req, res) => {
   let authenticatedUserId = req.authToken.userId;
   let id = req.query.id;
 
+  // TODO: Decide on permission model
+
   try {
     let bookings = storage
       .get('bookings')
-      .find({id: id, bookingUserId: authenticatedUserId})
+      .find({id: id})
       .value();
 
     return res.status(200).json(bookings);

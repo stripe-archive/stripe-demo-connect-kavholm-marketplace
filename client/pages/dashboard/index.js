@@ -3,10 +3,8 @@ import {redirect} from '../../utils/redirect';
 
 import Layout from '../../components/layout';
 import API from '../../helpers/api';
-import ListingsBookingsList from '../../components/bookingList';
-import DashboardListingsList from '../../components/dashboardListingsList';
+import DashboardBookingsList from '../../components/dashboardBookingsList';
 import DashboardHeader from '../../components/dashboardHeader';
-import NewListingButton from '../../components/newListingButton';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -16,6 +14,22 @@ class Dashboard extends React.Component {
   static async getInitialProps(context) {
     let userProfile = await API.makeRequest('get', '/api/profile');
     let userBookings = await API.makeRequest('get', '/api/bookings');
+
+    if (userBookings && userBookings.length) {
+      let expandedBookings = await userBookings.map(async (booking) => {
+        let listing = await API.makeRequest(
+          'get',
+          `/api/listings/${booking.listingId}`,
+        );
+
+        return {
+          ...booking,
+          listing: listing,
+        };
+      });
+
+      userBookings = await Promise.all(expandedBookings);
+    }
 
     return {
       profile: userProfile,
@@ -49,15 +63,9 @@ class Dashboard extends React.Component {
           />
 
           <div className="row">
-            <div className="col-8">
+            <div className="col-12">
               <h4>Your bookings</h4>
-              {this.props.userBookings && (
-                <pre className="profile-details bg-light">
-                  <code>
-                    {JSON.stringify(this.props.userBookings, null, 2)}
-                  </code>
-                </pre>
-              )}
+              <DashboardBookingsList list={this.props.userBookings} />
             </div>
           </div>
         </div>

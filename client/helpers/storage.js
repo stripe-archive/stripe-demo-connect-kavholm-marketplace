@@ -25,7 +25,7 @@ class Storage {
     this.db = await low(adapter);
 
     // Set some defaults (required if your JSON file is empty)
-    this.db.defaults({users: [], listings: []}).write();
+    this.db.defaults({users: [], listings: [], bookings: []}).write();
   }
 
   set(key, value) {

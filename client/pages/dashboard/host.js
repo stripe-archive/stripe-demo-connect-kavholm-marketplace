@@ -1,12 +1,13 @@
 import React from 'react';
-import {redirect} from '../utils/redirect';
+import {redirect} from '../../utils/redirect';
 
-import Layout from '../components/layout';
-import API from '../helpers/api';
-import ListingsBookingsList from '../components/bookingList';
-import DashboardListingsList from '../components/dashboardListingsList';
-import DashboardHeader from '../components/dashboardHeader';
-import NewListingButton from '../components/newListingButton';
+import Layout from '../../components/layout';
+import API from '../../helpers/api';
+import ListingsBookingsList from '../../components/bookingList';
+import DashboardListingsList from '../../components/dashboardListingsList';
+import DashboardHeader from '../../components/dashboardHeader';
+import NewListingButton from '../../components/newListingButton';
+import PayoutSetup from '../../components/payoutSetup';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -49,13 +50,6 @@ class Dashboard extends React.Component {
       userBookings = await Promise.all(listingBookings);
     }
 
-    if (userProfile) {
-      // Redirect to /profile/payouts to setup payouts.
-      if (!userProfile.stripe) {
-        return redirect('/profile/payouts', context);
-      }
-    }
-
     let userBalance = await API.makeRequest('get', '/api/profile/balance');
 
     return {
@@ -63,6 +57,7 @@ class Dashboard extends React.Component {
       userListings: userListings,
       userBookings: userBookings,
       userBalance: userBalance,
+      dashboardType: 'host',
     };
   }
 
@@ -77,6 +72,11 @@ class Dashboard extends React.Component {
     let showListingTip =
       this.props.userListings && this.props.userListings.length === 0;
 
+    let hasPayoutSetup =
+      this.props.userProfile &&
+      this.props.userProfile.stripe != null &&
+      this.props.userProfile.stripe.stripeUserId;
+
     return (
       <Layout
         isAuthenticated={this.props.isAuthenticated}
@@ -88,33 +88,42 @@ class Dashboard extends React.Component {
           <DashboardHeader
             profile={this.props.profile}
             balance={this.props.userBalance}
+            dashboardType={this.props.dashboardType}
           />
 
-          <div className="row">
-            <div className="col-8">
-              <div className="row">
-                <div className="col-8">
-                  <div className="clearfix">
-                    <h4>Your listings</h4>
+          {hasPayoutSetup ? (
+            <div className="row">
+              <div className="col-8">
+                <div className="row">
+                  <div className="col-8">
+                    <div className="clearfix">
+                      <h4>Your listings</h4>
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <NewListingButton showTip={showListingTip} />
                   </div>
                 </div>
-                <div className="col-4">
-                  <NewListingButton showTip={showListingTip} />
-                </div>
+
+                {this.props.userListings && (
+                  <DashboardListingsList list={this.props.userListings} />
+                )}
               </div>
 
-              {this.props.userListings && (
-                <DashboardListingsList list={this.props.userListings} />
-              )}
+              <div className="col-4">
+                <h4>Recent bookings</h4>
+                {this.props.userBookings && (
+                  <ListingsBookingsList list={this.props.userBookings} />
+                )}
+              </div>
             </div>
-
-            <div className="col-4">
-              <h4>Recent bookings</h4>
-              {this.props.userBookings && (
-                <ListingsBookingsList list={this.props.userBookings} />
-              )}
+          ) : (
+            <div className="row">
+              <div className="wrapper">
+                <PayoutSetup />
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <style jsx>{`
           .dashboard {
@@ -124,6 +133,14 @@ class Dashboard extends React.Component {
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 30px;
+          }
+          .wrapper {
+            width: 100%;
+            height: 600px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
         `}</style>
       </Layout>

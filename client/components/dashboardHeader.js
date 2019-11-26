@@ -63,11 +63,39 @@ class DashboardHeader extends Component {
           </div>
         </div>
 
+        <div className="row">
+          <div className="col-12">
+            <ul className="nav nav-tabs">
+              <li className="nav-item">
+                <a
+                  className={
+                    'nav-link ' +
+                    (this.props.dashboardType == 'renter' ? 'active' : '')
+                  }
+                  href="/dashboard"
+                >
+                  Renter
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className={
+                    'nav-link ' +
+                    (this.props.dashboardType == 'host' ? 'active' : '')
+                  }
+                  href="/dashboard/host"
+                >
+                  Host
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
         <style jsx>{`
           .dashboard-header {
             margin-bottom: 50px;
             padding-bottom: 10px;
-            border-bottom: 1px solid rgb(229, 229, 229);
           }
 
           .user-details .avatar {

@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import Layout from '../../components/layout';
 import API from '../../helpers/api';
+import ListingForm from '../../components/listingForm';
 
 class NewListing extends React.Component {
   constructor(props) {
@@ -23,7 +24,9 @@ class NewListing extends React.Component {
         <div className="listings">
           <hr className="bg-light" />
 
-          <h2>New Listing</h2>
+          <h2>Create new listing</h2>
+
+          <ListingForm />
 
           <style jsx>{`
             .listings {

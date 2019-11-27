@@ -3,56 +3,18 @@
     {
       "userId": "Igj-hMfQa",
       "firstName": "Mr",
-      "lastName": "Renter",
-      "email": "renter@marketplace.com",
+      "lastName": "Buyer",
+      "email": "buyer@global-marketplace.com",
       "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
       "avatar": "//images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80"
     },
     {
       "userId": "Igj-hMfQb",
       "firstName": "Miss",
-      "lastName": "Host",
-      "email": "host@marketplace.com",
+      "lastName": "Seller",
+      "email": "seller@global-marketplace.com",
       "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
       "avatar": "//images.unsplash.com/photo-1506863530036-1efeddceb993?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2741&q=80",
-      "stripe": {
-        "stripeUserId": "acct_1FGgKgCQ6linlupO"
-      }
-    },
-    {
-      "userId": "Igj-hM",
-      "firstName": "Laura",
-      "lastName": "Willson",
-      "email": "willson+kavholm@stripe.com",
-      "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
-      "avatar": "/static/willson.jpg",
-      "stripe": {
-        "stripeUserId": "acct_1FGy5oINcTlPFCFz"
-      }
-    },
-    {
-      "userId": "Kvna4PHff",
-      "firstName": "Jie",
-      "lastName": "Jin",
-      "email": "jie.jin@stripe.com",
-      "password": "$2b$10$AZ0md17RDBydwMLxmWEpZuXkSQXdblVg8aplew0n7bmzX4sYHsfue",
-      "avatar": "/static/host.jpg"
-    },
-    {
-      "userId": "nTuAOlTxN",
-      "firstName": "Demo",
-      "lastName": "Host",
-      "email": "demohost@stripe.com",
-      "password": "$2b$10$f5FxWp5CKg1K8FUCn20eI.7xjMCgUv4T3apGQxOrb7Xg7tDRxoqu2",
-      "avatar": "//www.gravatar.com/avatar/71cb952707f2bb506e43fea4c527d17e?s=400"
-    },
-    {
-      "userId": "kDhYFFBto",
-      "firstName": "Demo",
-      "lastName": "Host",
-      "email": "demohost@stripe.com",
-      "password": "$2b$10$mxIf0Mo7/DftS5Rf985Qh.2dHly/Qry3zvUe2XfdBtdCCnYLLP73q",
-      "avatar": "//www.gravatar.com/avatar/71cb952707f2bb506e43fea4c527d17e?s=400"
     }
   ],
   "listings": [
@@ -131,42 +93,5 @@
       "image": "https://images.unsplash.com/photo-1539437829697-1b4ed5aebd19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80"
     }
   ],
-  "bookings": [
-    {
-      "id": "WOOVcu-TK",
-      "listingId": "26",
-      "bookingUserId": "Igj-hMfQa",
-      "startDate": "10/03/2019",
-      "endDate": "10/07/2019",
-      "totalAmount": "78600",
-      "currency": "gbp"
-    },
-    {
-      "id": "wtHS26_ZM",
-      "listingId": "26",
-      "bookingUserId": "Igj-hMfQa",
-      "startDate": "10/03/2019",
-      "endDate": "10/07/2019",
-      "totalAmount": "100",
-      "currency": "gbp"
-    },
-    {
-      "id": "VJugxc4Sx",
-      "listingId": "26",
-      "bookingUserId": "Igj-hMfQa",
-      "startDate": "10/03/2019",
-      "endDate": "10/07/2019",
-      "totalAmount": "100",
-      "currency": "gbp"
-    },
-    {
-      "id": "pUKdc2H-1",
-      "listingId": "26",
-      "bookingUserId": "Igj-hMfQa",
-      "startDate": "10/03/2019",
-      "endDate": "10/07/2019",
-      "totalAmount": "78600",
-      "currency": "usd"
-    }
-  ]
+  "bookings": []
 }

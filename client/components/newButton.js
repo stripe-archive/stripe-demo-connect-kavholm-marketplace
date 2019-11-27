@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 function NewButton(props) {
   const target = React.createRef();
 
@@ -11,9 +13,11 @@ function NewButton(props) {
           {props.tipBody}
         </div>
       )}
-      <a ref={target} href={props.link} className="btn btn-primary btn-new">
-        + {props.label}
-      </a>
+      <Link href={props.link}>
+        <a ref={target} className="btn btn-primary btn-new">
+          + {props.label}
+        </a>
+      </Link>
       <style jsx>
         {`
           .new-button {

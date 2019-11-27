@@ -25,12 +25,6 @@ class Nav extends React.Component {
                 </a>
               </Link>
             </li>
-
-            {!this.props.hideBooking && (
-              <li className="nav-item">
-                <BookingSearchForm size="small" />
-              </li>
-            )}
           </ul>
 
           <NavProfile

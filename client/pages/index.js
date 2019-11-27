@@ -9,7 +9,6 @@ class Home extends React.Component {
       <Layout
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
-        hideBooking={true}
         title="Welcome"
       >
         <div className="home">

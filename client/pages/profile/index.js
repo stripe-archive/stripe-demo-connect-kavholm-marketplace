@@ -43,7 +43,6 @@ class Profile extends React.Component {
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
         title="Profile"
-        hideBooking={true}
       >
         <div className="profile">
           <h4>Your profile details</h4>

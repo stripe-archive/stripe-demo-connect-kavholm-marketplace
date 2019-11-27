@@ -29,8 +29,8 @@ class Profile extends React.Component {
     redirect('/dashboard');
   };
 
-  clearBookings = async () => {
-    let req = await API.makeRequest('post', '/api/profile/clear_bookings');
+  clearTransactions = async () => {
+    let req = await API.makeRequest('post', '/api/profile/clear_transactions');
     redirect('/dashboard');
   };
 
@@ -51,8 +51,11 @@ class Profile extends React.Component {
           </pre>
 
           <h4>Admin</h4>
-          <button className="btn btn-secondary" onClick={this.clearBookings}>
-            Clear bookings
+          <button
+            className="btn btn-secondary"
+            onClick={this.clearTransactions}
+          >
+            Clear transactions
           </button>
 
           {profile.stripe && (

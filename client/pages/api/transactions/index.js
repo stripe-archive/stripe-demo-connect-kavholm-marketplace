@@ -5,12 +5,12 @@ export default requireAuthEndpoint(async (req, res) => {
   let authenticatedUserId = req.authToken.userId;
 
   try {
-    let bookings = storage
-      .get('bookings')
+    let transactions = storage
+      .get('transactions')
       .filter({bookingUserId: authenticatedUserId})
       .value();
 
-    return res.status(200).json(bookings);
+    return res.status(200).json(transactions);
   } catch (err) {
     return res.status(400).json(err);
   }

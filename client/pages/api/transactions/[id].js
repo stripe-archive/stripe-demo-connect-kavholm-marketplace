@@ -9,12 +9,12 @@ export default requireAuthEndpoint(async (req, res) => {
   // TODO: Decide on permission model
 
   try {
-    let bookings = storage
-      .get('bookings')
+    let transactions = storage
+      .get('transactions')
       .find({id: id})
       .value();
 
-    return res.status(200).json(bookings);
+    return res.status(200).json(transactions);
   } catch (err) {
     return res.status(400).json(err);
   }

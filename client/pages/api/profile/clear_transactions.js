@@ -7,7 +7,7 @@ export default requireAuthEndpoint(async (req, res) => {
 
   try {
     storage
-      .get('bookings')
+      .get('transactions')
       .remove()
       .write();
 

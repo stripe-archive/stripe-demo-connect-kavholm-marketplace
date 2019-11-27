@@ -30,7 +30,7 @@ export default requireAuthEndpoint(async (req, res) => {
     };
 
     storage
-      .get('bookings')
+      .get('transactions')
       .push(bookingObject)
       .write();
 

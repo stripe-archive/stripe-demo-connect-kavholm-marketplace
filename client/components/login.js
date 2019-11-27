@@ -9,7 +9,7 @@ class Login extends Component {
     super(props);
 
     this.state = {
-      email: 'renter@marketplace.com',
+      email: 'seller@marketplace.com',
       password: 'test',
       error: '',
     };

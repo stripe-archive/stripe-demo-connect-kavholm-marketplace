@@ -31,7 +31,7 @@ class DashboardHeader extends Component {
     return (
       <div className="dashboard-header">
         <div className="row">
-          <div className="col-3">
+          <div className="col-4">
             {profile && (
               <div className="media user-details">
                 <img src={avatarUrl} className="mr-3 avatar" />
@@ -74,7 +74,7 @@ class DashboardHeader extends Component {
                       (this.props.dashboardType == 'renter' ? 'active' : '')
                     }
                   >
-                    Bookings
+                    Transactions
                   </a>
                 </Link>
               </li>

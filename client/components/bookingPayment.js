@@ -28,7 +28,11 @@ class BookingPayment extends Component {
       });
 
       let bookingData = this.props.booking;
-      let req = await API.makeRequest('post', `/api/bookings/new`, bookingData);
+      let req = await API.makeRequest(
+        'post',
+        `/api/transactions/new`,
+        bookingData,
+      );
 
       if (!req) {
         throw new Error('Booking failed');

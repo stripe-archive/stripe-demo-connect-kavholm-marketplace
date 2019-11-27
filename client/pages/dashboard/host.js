@@ -23,7 +23,7 @@ class Dashboard extends React.Component {
       let listingBookings = await userListings.map(async (listing) => {
         let bookings = await API.makeRequest(
           'get',
-          `/api/bookings/listing?listingId=${listing.id}`,
+          `/api/transactions/listing?listingId=${listing.id}`,
         );
 
         let bookingsDetailsReqs = await bookings.map(async (booking) => {

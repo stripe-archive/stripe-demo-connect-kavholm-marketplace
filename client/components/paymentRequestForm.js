@@ -47,7 +47,11 @@ class PaymentRequestForm extends React.Component {
       };
 
       let onBookingConfirmed = this.props.onBookingConfirmed;
-      let req = await API.makeRequest('post', `/api/bookings/new`, bookingData);
+      let req = await API.makeRequest(
+        'post',
+        `/api/transactions/new`,
+        bookingData,
+      );
 
       if (!req) {
         throw new Error('Booking failed');

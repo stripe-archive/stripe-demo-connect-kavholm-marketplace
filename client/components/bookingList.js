@@ -8,7 +8,7 @@ function BookingsList(props) {
   if (list) {
     listItems = list.map((i) => (
       <li className="booking-list-item" key={i.id}>
-        <a className="media" href={'/bookings/' + i.id}>
+        <a className="media" href={'/transactions/' + i.id}>
           <img src={i.user.avatar} height="30" className="mr-3 avatar" />
           <div className="media-body">
             <p className="booking-date">

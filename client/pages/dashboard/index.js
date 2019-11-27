@@ -14,7 +14,7 @@ class Dashboard extends React.Component {
 
   static async getInitialProps(context) {
     let userProfile = await API.makeRequest('get', '/api/profile');
-    let userBookings = await API.makeRequest('get', '/api/bookings');
+    let userBookings = await API.makeRequest('get', '/api/transactions');
 
     if (userBookings && userBookings.length) {
       let expandedBookings = await userBookings.map(async (booking) => {
@@ -47,8 +47,8 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    let showListingTip =
-      this.props.userListings && this.props.userListings.length === 0;
+    let showTip =
+      this.props.userBookings && this.props.userBookings.length === 0;
 
     return (
       <Layout
@@ -72,7 +72,7 @@ class Dashboard extends React.Component {
                 </div>
                 <div className="col-4">
                   <NewButton
-                    showTip={true}
+                    showTip={showTip}
                     label="Show listings"
                     link="/listings"
                     tipTitle="No transactions yet?"

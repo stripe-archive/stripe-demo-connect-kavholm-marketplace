@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Layout from '../../components/layout';
 import API from '../../helpers/api';
 
-class BookingConfirmation extends React.Component {
+class TransactionConfirmation extends React.Component {
   constructor(props) {
     super();
   }
@@ -14,7 +14,7 @@ class BookingConfirmation extends React.Component {
     let id = context.query.id;
 
     return {
-      booking: await API.makeRequest('get', `/api/bookings/${id}`),
+      transaction: await API.makeRequest('get', `/api/transactions/${id}`),
     };
   }
 
@@ -27,10 +27,10 @@ class BookingConfirmation extends React.Component {
         <div className="listings">
           <hr className="bg-light" />
 
-          <h2>Booking Confirmation</h2>
+          <h2>Transaction Details</h2>
 
           <pre className="profile-details bg-light">
-            <code>{JSON.stringify(this.props.booking, null, 2)}</code>
+            <code>{JSON.stringify(this.props.transaction, null, 2)}</code>
           </pre>
 
           <style jsx>{`
@@ -44,4 +44,4 @@ class BookingConfirmation extends React.Component {
   }
 }
 
-export default BookingConfirmation;
+export default TransactionConfirmation;

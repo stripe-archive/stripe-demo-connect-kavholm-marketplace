@@ -13,7 +13,7 @@ function DashboardBookingsList(props) {
     listItems = list.map((item) => (
       <li className="listing-item" key={item.id}>
         {item.listing && (
-          <Link href={`/bookings/` + item.id}>
+          <Link href={`/transactions/` + item.id}>
             <a>
               <h4>
                 {item.startDate} - {item.endDate}

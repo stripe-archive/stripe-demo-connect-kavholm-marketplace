@@ -7,8 +7,7 @@ class BookingConfirmedModal extends Component {
       <div className="content">
         <img src="/static/confirmed.svg" width="50" />
         <h1>You’re all set!</h1>
-        <h1>Enjoy your trip in Singapore.</h1>
-        <Link href={'/bookings/' + this.props.bookingId}>
+        <Link href={'/transactions/' + this.props.bookingId}>
           <a className="btn btn-primary">View booking details</a>
         </Link>
 

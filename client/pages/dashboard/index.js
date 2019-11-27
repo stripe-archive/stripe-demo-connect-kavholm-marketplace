@@ -67,7 +67,7 @@ class Dashboard extends React.Component {
               <div className="row">
                 <div className="col-8">
                   <div className="clearfix">
-                    <h4>Your bookings</h4>
+                    <h4>Your transactions</h4>
                   </div>
                 </div>
                 <div className="col-4">
@@ -75,8 +75,8 @@ class Dashboard extends React.Component {
                     showTip={true}
                     label="Show listings"
                     link="/listings"
-                    tipTitle="Wanna go somewhere?"
-                    tipBody="Explore the Global Marketplace and go somewhere!"
+                    tipTitle="No transactions yet?"
+                    tipBody="Explore the listings in Global Marketplace"
                   />
                 </div>
               </div>

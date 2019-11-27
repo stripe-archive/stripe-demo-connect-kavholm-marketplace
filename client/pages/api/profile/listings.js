@@ -7,7 +7,7 @@ export default requireAuthEndpoint(async (req, res) => {
   try {
     let listings = storage
       .get('listings')
-      .filter({owner: authenticatedUserId})
+      .filter({author: authenticatedUserId})
       .value();
 
     return res.status(200).json(listings);

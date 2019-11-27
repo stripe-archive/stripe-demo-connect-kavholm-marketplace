@@ -42,7 +42,7 @@ export default requireAuthEndpoint(async (req, res) => {
 
     let listingHostUser = storage
       .get('users')
-      .find({userId: listing.owner})
+      .find({userId: listing.author})
       .pick('stripe')
       .value();
 

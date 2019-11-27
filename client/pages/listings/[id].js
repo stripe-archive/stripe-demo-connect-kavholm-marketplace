@@ -21,18 +21,18 @@ class Listing extends React.Component {
   static async getInitialProps(context) {
     let id = context.query.id;
     let listing = await API.makeRequest('get', `/api/listings/${id}`);
-    let listingOwner;
+    let listingAuthor;
 
-    if (listing.owner) {
-      listingOwner = await API.makeRequest(
+    if (listing.author) {
+      listingAuthor = await API.makeRequest(
         'get',
-        `/api/users/userInfo?id=${listing.owner}`,
+        `/api/users/userInfo?id=${listing.author}`,
       );
     }
 
     return {
       listing: listing,
-      listingOwner: listingOwner,
+      listingAuthor: listingAuthor,
     };
   }
 

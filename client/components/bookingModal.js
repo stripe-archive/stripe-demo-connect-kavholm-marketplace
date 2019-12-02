@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 
 import BookingConfirmedModal from './bookingConfirmedModal';
 import BookingPayment from './bookingPayment';
+import NumberFormat from 'react-number-format';
 
 Modal.setAppElement('.app');
 
@@ -10,15 +11,7 @@ class BookingModal extends Component {
   constructor(props) {
     super();
 
-    this.state = {
-      booking: {
-        currency: 'usd',
-        amount: props.amount,
-        listingId: 26,
-        startDate: '10/03/2019',
-        endDate: '10/07/2019',
-      },
-    };
+    this.state = {};
   }
 
   render() {
@@ -67,21 +60,30 @@ class BookingModal extends Component {
           {!isBookingConfirmed && (
             <div className="completed">
               <img src="/static/confirmed.svg" width="50" />
-              <h1>Pay now to finalize booking.</h1>
+              <h1>
+                Pay{' '}
+                <NumberFormat
+                  value={this.props.listing.totalAmount / 100}
+                  displayType={'text'}
+                  thousandSeparator={true}
+                  prefix={this.props.listing.price.currency + ' '}
+                />{' '}
+                to buy.
+              </h1>
 
               <br />
               <br />
 
               <BookingPayment
                 stripe={this.props.stripe}
-                booking={this.state.booking}
+                listing={this.props.listing}
                 onBookingConfirmed={this.props.onBookingConfirmed}
               />
             </div>
           )}
 
           {isBookingConfirmed && (
-            <BookingConfirmedModal bookingId={this.props.bookingId} />
+            <BookingConfirmedModal transactionId={this.props.transactionId} />
           )}
         </div>
         <style jsx>{`

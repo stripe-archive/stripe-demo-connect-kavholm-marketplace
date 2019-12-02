@@ -27,11 +27,14 @@ class BookingPayment extends Component {
         isProcessing: true,
       });
 
-      let bookingData = this.props.booking;
+      let transactionParams = {
+        listingId: this.props.listing.id,
+      };
+
       let req = await API.makeRequest(
         'post',
         `/api/transactions/new`,
-        bookingData,
+        transactionParams,
       );
 
       if (!req) {
@@ -64,16 +67,16 @@ class BookingPayment extends Component {
   }
 
   render() {
-    let {amount, currency} = this.props.booking;
-    let onBookingConfirmed = this.props.onBookingConfirmed;
+    let amount = this.props.listing.totalAmount;
+    let currency = this.props.listing.price.currency;
 
     return (
       <form onSubmit={this.handleSubmit}>
         <PaymentRequestForm
           stripe={this.props.stripe}
           amount={amount}
-          currency={currency}
-          onBookingConfirmed={onBookingConfirmed}
+          currency={currency.toLowerCase()}
+          onBookingConfirmed={this.props.onBookingConfirmed}
         />
 
         <div className="card-info">
@@ -91,7 +94,7 @@ class BookingPayment extends Component {
               value={amount / 100}
               displayType={'text'}
               thousandSeparator={true}
-              prefix={'$'}
+              prefix={currency + ' '}
               renderText={(value) => <>Pay {value}</>}
             />
           )}

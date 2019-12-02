@@ -14,7 +14,7 @@ class Listing extends React.Component {
       isBooking: false,
       isBookingConfirmed: false,
       amount: 78600,
-      bookingId: null,
+      transactionId: null,
     };
   }
 
@@ -36,41 +36,21 @@ class Listing extends React.Component {
     };
   }
 
-  componentDidMount() {
-    if (Router.query.action && Router.query.action == 'booking') {
-      this.setState({
-        isBooking: true,
-      });
-    }
-  }
-
   handleBookingStartClick = () => {
     this.setState({
       isBooking: true,
     });
   };
 
-  onBookingConfirmed = (bookingId) => {
+  onBookingConfirmed = (transactionId) => {
     this.setState({
-      bookingId: bookingId,
+      transactionId: transactionId,
       isBookingConfirmed: true,
     });
   };
 
   render() {
-    let lineItems = [
-      {item: 'Listing price', amount: this.props.listing.price.amount},
-      {
-        item: 'Marketplace fees (10%)',
-        amount: Math.ceil(this.props.listing.price.amount * 0.1),
-      },
-    ];
-
-    let totalAmount = lineItems
-      .map((a) => a.amount)
-      .reduce((a, b) => {
-        return a + b;
-      }, 0);
+    let listing = this.props.listing;
 
     return (
       <Layout
@@ -83,8 +63,8 @@ class Listing extends React.Component {
             isShown={this.state.isBooking}
             onBookingConfirmed={this.onBookingConfirmed}
             isBookingConfirmed={this.state.isBookingConfirmed}
-            amount={this.state.amount}
-            bookingId={this.state.bookingId}
+            transactionId={this.state.transactionId}
+            listing={listing}
           />
 
           <div className="content">
@@ -108,7 +88,7 @@ class Listing extends React.Component {
                 </div>
 
                 <div className="image-footer">
-                  <div>See more photos {totalAmount}</div>
+                  <div>See more photos here</div>
                   <div className="widgets">
                     <div style={{marginRight: '12px'}}>
                       <img src="/static/share.svg" /> Share
@@ -122,17 +102,15 @@ class Listing extends React.Component {
 
               <div className="col-6 pane-info">
                 <div className="booking-info">
-                  <h1>{this.props.listing.title}</h1>
-                  <p className="bookingInfo">
-                    {this.props.listing.description}
-                  </p>
+                  <h1>{listing.title}</h1>
+                  <p className="bookingInfo">{listing.description}</p>
                   <div className="priceInfo">
                     <span className="price">
                       <NumberFormat
-                        value={totalAmount / 100}
+                        value={listing.totalAmount / 100}
                         displayType={'text'}
                         thousandSeparator={true}
-                        prefix={this.props.listing.price.currency + ' '}
+                        prefix={listing.price.currency + ' '}
                       />
                     </span>
                     <img className="stars" src="/static/stars.svg" />
@@ -140,7 +118,7 @@ class Listing extends React.Component {
 
                   <hr />
                   <ul className="lineItems">
-                    {lineItems.map((item, index) => (
+                    {listing.lineItems.map((item, index) => (
                       <li key={item.item}>
                         {item.item}
                         <span className="lineItemPrice">
@@ -148,7 +126,7 @@ class Listing extends React.Component {
                             value={item.amount / 100}
                             displayType={'text'}
                             thousandSeparator={true}
-                            prefix={this.props.listing.price.currency + ' '}
+                            prefix={listing.price.currency + ' '}
                           />
                         </span>
                       </li>
@@ -160,10 +138,10 @@ class Listing extends React.Component {
                       Total{' '}
                       <span className="lineItemPrice">
                         <NumberFormat
-                          value={totalAmount / 100}
+                          value={listing.totalAmount / 100}
                           displayType={'text'}
                           thousandSeparator={true}
-                          prefix={this.props.listing.price.currency + ' '}
+                          prefix={listing.price.currency + ' '}
                         />
                       </span>
                     </li>

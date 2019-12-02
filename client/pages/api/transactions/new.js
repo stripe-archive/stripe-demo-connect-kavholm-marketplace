@@ -2,6 +2,7 @@ import shortid from 'shortid';
 import storage from '../../../helpers/storage';
 import stripe from '../../../helpers/stripe';
 import logger from '../../../helpers/logger';
+import API from '../../../helpers/api';
 
 import requireAuthEndpoint from '../../../utils/requireAuthEndpoint';
 
@@ -9,37 +10,29 @@ export default requireAuthEndpoint(async (req, res) => {
   let authenticatedUserId = req.authToken.userId;
 
   try {
-    let {
-      listingId,
-      amount,
-      currency,
-      endDate,
-      startDate,
-      chargeToken,
-    } = req.body;
+    let {listingId} = req.body;
 
-    // Step 1: Create new booking in Kavholm
-    const bookingObject = {
+    // Step 1: Get listing details
+    let listing = await API.makeRequest('get', `/api/listings/${listingId}`);
+
+    // Step 2: Create new transaction
+    let amount = listing.totalAmount;
+    let currency = listing.price.currency;
+
+    const transaction = {
       id: shortid.generate(),
       listingId: String(listingId),
       bookingUserId: authenticatedUserId,
-      startDate: startDate,
-      endDate: endDate,
       totalAmount: String(amount),
       currency: currency,
     };
 
     storage
       .get('transactions')
-      .push(bookingObject)
+      .push(transaction)
       .write();
 
-    // Step 2: Resolve hosts Stripe account id
-    let listing = storage
-      .get('listings')
-      .find({id: String(listingId)})
-      .value();
-
+    // Step 3: Resolve hosts Stripe account id
     let listingHostUser = storage
       .get('users')
       .find({userId: listing.author})
@@ -53,10 +46,9 @@ export default requireAuthEndpoint(async (req, res) => {
 
     let listingHostUserStripeUserId = listingHostUser.stripe.stripeUserId;
 
-    // Step 3: Make Payment Request to Stripe
-    let response = {...bookingObject};
+    // Step 4: Make destination payment on Stripe where funds are taken from card and transferred to the host's Stripe account.
 
-    amount = amount / 100;
+    let response = {...transaction};
 
     let payParams = {
       payment_method_types: ['card'],

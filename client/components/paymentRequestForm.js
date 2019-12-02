@@ -38,19 +38,15 @@ class PaymentRequestForm extends React.Component {
     });
 
     paymentRequest.on('paymentmethod', async (ev) => {
-      let bookingData = {
+      let transactionParams = {
         listingId: 26,
-        currency: this.props.currency,
-        amount: this.props.amount,
-        startDate: '10/03/2019',
-        endDate: '10/07/2019',
       };
 
       let onBookingConfirmed = this.props.onBookingConfirmed;
       let req = await API.makeRequest(
         'post',
         `/api/transactions/new`,
-        bookingData,
+        transactionParams,
       );
 
       if (!req) {

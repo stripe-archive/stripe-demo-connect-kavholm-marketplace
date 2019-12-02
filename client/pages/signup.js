@@ -4,8 +4,6 @@ import SignupForm from '../components/signupForm';
 
 class Signup extends React.Component {
   render() {
-    let signUpLink = '/api/signup/stripe';
-
     return (
       <Layout
         isAuthenticated={this.props.isAuthenticated}

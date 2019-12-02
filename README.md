@@ -1,234 +1,101 @@
-This project was bootstrapped with [Create Next App](https://github.com/segmentio/create-next-app).
+# Global Marketplace using Stripe Connect
 
-Find the most recent version of this guide at [here](https://github.com/segmentio/create-next-app/blob/master/lib/templates/default/README.md). And check out [Next.js repo](https://github.com/zeit/next.js) for the most up-to-date info.
+This sample shows how to build a global marketplace using [Stripe Connect] where customers can sign up and become sellers and sellers. Card payments are accepted using [Payment Intents API](https://stripe.com/docs/payments/payment-intents), [Stripe Elements](https://stripe.com/payments/elements) and [React](https://reactjs.org/).
 
-## Table of Contents
+Sellers are onboarded using [Stripe Connect Express] where they get their own Stripe Accounts and funds accepted from the card payments are routed to their Stripe accounts as a part of each transcations.
 
-- [Questions? Feedback?](#questions-feedback)
-- [Folder Structure](#folder-structure)
-- [Available Scripts](#available-scripts)
-  - [npm run dev](#npm-run-dev)
-  - [npm run build](#npm-run-build)
-  - [npm run start](#npm-run-start)
-- [Using CSS](#using-css)
-- [Adding Components](#adding-components)
-- [Fetching Data](#fetching-data)
-- [Custom Server](#custom-server)
-- [Syntax Highlighting](#syntax-highlighting)
-- [Using the `static` Folder](#using-the-static-folder)
-- [Deploy to Now](#deploy-to-now)
-- [Something Missing?](#something-missing)
+I’ve deployed the upcoming Global Marketplace sample to https://ob4td.sse.codesandbox.io/ which is a pivot of the Kavolm demo for Connect. A more generic marketplace with b
 
-## Questions? Feedback?
 
-Check out [Next.js FAQ & docs](https://github.com/zeit/next.js#faq) or [let us know](https://github.com/segmentio/create-next-app/issues) your feedback.
+See a hosted version of the [demo](https://ob4td.sse.codesandbox.io/ ) in test mode or [fork on codesandbox.io](https://github.com/auchenberg-stripe/stripe-sample-global-marketplace/tree/master/client)
 
-## Folder Structure
+<img src="./demo.png" alt="Preview of recipe" align="center">
 
-After creating an app, it should look something like:
+## Features
+
+This sample consists of a `client` in React and a `server` piece available in 5 common languages.
+
+The client is implemented using `create-react-app` to provide the boilerplate for React. Stripe Elements is integrated using [`react-stripe-elements`](https://github.com/stripe/react-stripe-elements), which is the official React library provided by Stripe.
+
+The server includes [5 server implementations](server/README.md) in Node, Ruby, Python, Java, and PHP in the [/server](/server) directory. We included several RESTful server implementations, each with the same endpoints and logic.
+
+## How to run locally
+
+To run this sample locally you need to start both a local dev server for the `front-end` and another server for the `back-end`.
+
+You will need a Stripe account with its own set of [API keys](https://stripe.com/docs/development#api-keys).
+
+Follow the steps below to run locally.
+
+**1. Clone and configure the sample**
+
+The Stripe CLI is the fastest way to clone and configure a sample to run locally. 
+
+**Using the Stripe CLI**
+
+If you haven't already installed the CLI, follow the [installation steps](https://github.com/stripe/stripe-cli#installation) in the project README. The CLI is useful for cloning samples and locally testing webhooks and Stripe integrations.
+
+In your terminal shell, run the Stripe CLI command to clone the sample:
 
 ```
-.
-├── README.md
-├── components
-│   ├── head.js
-│   └── nav.js
-├── next.config.js
-├── node_modules
-│   ├── [...]
-├── package.json
-├── pages
-│   └── index.js
-├── static
-│   └── favicon.ico
-└── yarn.lock
+stripe samples create react-elements-card-payment
 ```
 
-Routing in Next.js is based on the file system, so `./pages/index.js` maps to the `/` route and
-`./pages/about.js` would map to `/about`.
+The CLI will walk you through picking your integration type, server and client languages, and configuring your .env config file with your Stripe API keys.
 
-The `./static` directory maps to `/static` in the `next` server, so you can put all your
-other static resources like images or compiled CSS in there.
+**Installing and cloning manually**
 
-Out of the box, we get:
+If you do not want to use the Stripe CLI, you can manually clone and configure the sample yourself:
 
-- Automatic transpilation and bundling (with webpack and babel)
-- Hot code reloading
-- Server rendering and indexing of `./pages`
-- Static file serving. `./static/` is mapped to `/static/`
-
-Read more about [Next's Routing](https://github.com/zeit/next.js#routing)
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm run dev`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any errors in the console.
-
-### `npm run build`
-
-Builds the app for production to the `.next` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-### `npm run start`
-
-Starts the application in production mode.
-The application should be compiled with \`next build\` first.
-
-See the section in Next docs about [deployment](https://github.com/zeit/next.js/wiki/Deployment) for more information.
-
-## Using CSS
-
-[`styled-jsx`](https://github.com/zeit/styled-jsx) is bundled with next to provide support for isolated scoped CSS. The aim is to support "shadow CSS" resembling of Web Components, which unfortunately [do not support server-rendering and are JS-only](https://github.com/w3c/webcomponents/issues/71).
-
-```jsx
-export default () => (
-  <div>
-    Hello world
-    <p>scoped!</p>
-    <style jsx>{`
-      p {
-        color: blue;
-      }
-      div {
-        background: red;
-      }
-      @media (max-width: 600px) {
-        div {
-          background: blue;
-        }
-      }
-    `}</style>
-  </div>
-)
+```
+git clone https://github.com/stripe-samples/react-elements-card-payment
 ```
 
-Read more about [Next's CSS features](https://github.com/zeit/next.js#css).
+Copy the .env.example file into a file named .env in the folder of the server you want to use. For example:
 
-## Adding Components
-
-We recommend keeping React components in `./components` and they should look like:
-
-### `./components/simple.js`
-
-```jsx
-const Simple = () => <div>Simple Component</div>
-
-export default Simple // don't forget to export default!
+```
+cp .env.example server/node/.env
 ```
 
-### `./components/complex.js`
+You will need a Stripe account in order to run the demo. Once you set up your account, go to the Stripe [developer dashboard](https://stripe.com/docs/development#api-keys) to find your API keys.
 
-```jsx
-import { Component } from 'react'
-
-class Complex extends Component {
-  state = {
-    text: 'World'
-  }
-
-  render() {
-    const { text } = this.state
-    return <div>Hello {text}</div>
-  }
-}
-
-export default Complex // don't forget to export default!
+```
+STRIPE_PUBLISHABLE_KEY=<replace-with-your-publishable-key>
+STRIPE_SECRET_KEY=<replace-with-your-secret-key>
 ```
 
-## Fetching Data
+`STATIC_DIR` tells the server where to the client files are located and does not need to be modified unless you move the server files.
 
-You can fetch data in `pages` components using `getInitialProps` like this:
 
-### `./pages/stars.js`
+### Running the API server
 
-```jsx
-const Page = props => <div>Next stars: {props.stars}</div>
+1. Go to `/server`
+1. Pick the language you are most comfortable in and follow the instructions in the directory on how to run.
 
-Page.getInitialProps = async ({ req }) => {
-  const res = await fetch('https://api.github.com/repos/zeit/next.js')
-  const json = await res.json()
-  const stars = json.stargazers_count
-  return { stars }
-}
+### Running the React client
 
-export default Page
-```
+1. Go to `/client`
+1. Run `yarn`
+1. Run `yarn start` and your default browser should now open with the front-end being served from `http://localhost:3000/`.
 
-For the initial page load, `getInitialProps` will execute on the server only. `getInitialProps` will only be executed on the client when navigating to a different route via the `Link` component or using the routing APIs.
+### Using the sample app
 
-_Note: `getInitialProps` can **not** be used in children components. Only in `pages`._
+When running both servers, you are now ready to use the app running in [http://localhost:3000](http://localhost:3000).
 
-Read more about [fetching data and the component lifecycle](https://github.com/zeit/next.js#fetching-data-and-component-lifecycle)
+1. Enter your name and card details
+1. Hit "Pay"
+1. 🎉
 
-## Custom Server
+## FAQ
 
-Want to start a new app with a custom server? Run `create-next-app --example customer-server custom-app`
+Q: Why did you pick these frameworks?
 
-Typically you start your next server with `next start`. It's possible, however, to start a server 100% programmatically in order to customize routes, use route patterns, etc
+A: We chose the most minimal framework to convey the key Stripe calls and concepts you need to understand. These demos are meant as an educational tool that helps you roadmap how to integrate Stripe within your own system independent of the framework.
 
-This example makes `/a` resolve to `./pages/b`, and `/b` resolve to `./pages/a`:
+Q: Can you show me how to build X?
 
-```jsx
-const { createServer } = require('http')
-const { parse } = require('url')
-const next = require('next')
+A: We are always looking for new recipe ideas, please email dev-samples@stripe.com with your suggestion!
 
-const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
-const handle = app.getRequestHandler()
+## Author(s)
 
-app.prepare().then(() => {
-  createServer((req, res) => {
-    // Be sure to pass `true` as the second argument to `url.parse`.
-    // This tells it to parse the query portion of the URL.
-    const parsedUrl = parse(req.url, true)
-    const { pathname, query } = parsedUrl
-
-    if (pathname === '/a') {
-      app.render(req, res, '/b', query)
-    } else if (pathname === '/b') {
-      app.render(req, res, '/a', query)
-    } else {
-      handle(req, res, parsedUrl)
-    }
-  }).listen(3000, err => {
-    if (err) throw err
-    console.log('> Ready on http://localhost:3000')
-  })
-})
-```
-
-Then, change your `start` script to `NODE_ENV=production node server.js`.
-
-Read more about [custom server and routing](https://github.com/zeit/next.js#custom-server-and-routing)
-
-## Syntax Highlighting
-
-To configure the syntax highlighting in your favorite text editor, head to the [relevant Babel documentation page](https://babeljs.io/docs/editors) and follow the instructions. Some of the most popular editors are covered.
-
-## Deploy to Now
-
-[now](https://zeit.co/now) offers a zero-configuration single-command deployment.
-
-1.  Install the `now` command-line tool either via the recommended [desktop tool](https://zeit.co/download) or via node with `npm install -g now`.
-
-2.  Run `now` from your project directory. You will see a **now.sh** URL in your output like this:
-
-    ```
-    > Ready! https://your-project-dirname-tpspyhtdtk.now.sh (copied to clipboard)
-    ```
-
-    Paste that URL into your browser when the build is complete, and you will see your deployed app.
-
-You can find more details about [`now` here](https://zeit.co/now).
-
-## Something Missing?
-
-If you have ideas for how we could improve this readme or the project in general, [let us know](https://github.com/segmentio/create-next-app/issues) or [contribute some!](https://github.com/segmentio/create-next-app/edit/master/lib/templates/default/README.md)
+[@auchenberg-stripe](https://twitter.com/auchenberg)

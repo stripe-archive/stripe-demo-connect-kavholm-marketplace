@@ -1,4 +1,4 @@
-const config = require('./helpers/config');
+const env = require('dotenv').config({path: './.env'});
 
 module.exports = {
   target: 'server',
@@ -15,10 +15,7 @@ module.exports = {
   serverRuntimeConfig: {},
   publicRuntimeConfig: {
     stripe: {
-      publicKey:
-        process.env.NODE_ENV === 'production'
-          ? config.stripe.live.publicKey
-          : config.stripe.test.publicKey,
+      publicKey: process.env.STRIPE_PUBLIC_KEY,
     },
   },
 };

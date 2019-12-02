@@ -10,10 +10,10 @@ class SignupForm extends Component {
     super(props);
 
     this.state = {
-      firstName: 'Demo',
-      lastName: 'Host',
-      email: 'demoHost@stripe.com',
-      password: 'test',
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
       error: '',
     };
 
@@ -47,38 +47,38 @@ class SignupForm extends Component {
       <>
         <div className="signup-form">
           <form onSubmit={this.handleSubmit}>
-            <label htmlFor="name">First name</label>
             <input
               type="text"
               id="firstName"
               name="firstName"
+              placeholder="First name"
               value={this.state.firstName}
               onChange={this.handleChange}
             />
 
-            <label htmlFor="name">Last name</label>
             <input
               type="text"
               id="lastName"
               name="lastName"
+              placeholder="Last name"
               value={this.state.lastName}
               onChange={this.handleChange}
             />
 
-            <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
               name="email"
+              placeholder="Email"
               value={this.state.email}
               onChange={this.handleChange}
             />
 
-            <label htmlFor="password">password</label>
             <input
               type="password"
               id="password"
               name="password"
+              placeholder="Password"
               value={this.state.password}
               onChange={this.handleChange}
             />
@@ -97,9 +97,6 @@ class SignupForm extends Component {
             max-width: 340px;
             min-width: 300px;
             margin: 0 auto;
-            padding: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
           }
           form {
             display: flex;

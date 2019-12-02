@@ -9,13 +9,15 @@ class Login extends Component {
     super(props);
 
     this.state = {
-      email: 'seller@global-marketplace.com',
-      password: 'test',
+      email: '',
+      password: '',
       error: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.loginAsBuyer = this.loginAsBuyer.bind(this);
+    this.loginAsSeller = this.loginAsSeller.bind(this);
   }
 
   handleChange(event) {
@@ -25,6 +27,20 @@ class Login extends Component {
 
     this.setState({
       [name]: value,
+    });
+  }
+
+  loginAsBuyer() {
+    this.setState({
+      email: 'buyer@global-marketplace.com',
+      password: 'test',
+    });
+  }
+
+  loginAsSeller() {
+    this.setState({
+      email: 'seller@global-marketplace.com',
+      password: 'test',
     });
   }
 
@@ -85,6 +101,14 @@ class Login extends Component {
               Login
             </button>
 
+            <button className="btn btn-link" onClick={this.loginAsBuyer}>
+              Demo: Login as buyer
+            </button>
+
+            <button className="btn btn-link" onClick={this.loginAsSeller}>
+              Demo: Login as seller
+            </button>
+
             <p className={`error ${this.state.error && 'show'}`}>
               {this.state.error && `Error: ${this.state.error}`}
             </p>
@@ -94,8 +118,6 @@ class Login extends Component {
           .login {
             max-width: 340px;
             margin: 0 auto;
-            padding: 1rem;
-            border: 1px solid #ccc;
             border-radius: 4px;
             min-width: 300px;
           }

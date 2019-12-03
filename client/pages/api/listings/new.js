@@ -9,69 +9,10 @@ export default requireAuthEndpoint(async (req, res) => {
   let authenticatedUserId = req.authToken.userId;
 
   try {
-    let {
-      listingId,
-      amount,
-      currency,
-      endDate,
-      startDate,
-      chargeToken,
-    } = req.body;
+    let {listingId} = req.body;
 
-    // Step 1: Create new booking in Kavholm
-    const bookingObject = {
-      id: shortid.generate(),
-      listingId: String(listingId),
-      bookingUserId: authenticatedUserId,
-      startDate: startDate,
-      endDate: endDate,
-      totalAmount: String(amount),
-      currency: currency,
-    };
-
-    storage
-      .get('transactions')
-      .push(bookingObject)
-      .write();
-
-    // Step 2: Resolve hosts Stripe account id
-    let listing = storage
-      .get('listings')
-      .find({id: String(listingId)})
-      .value();
-
-    let listingHostUser = storage
-      .get('users')
-      .find({userId: listing.author})
-      .pick('stripe')
-      .value();
-
-    if (!listingHostUser.stripe) {
-      throw new Error('No stripe account found for Host');
-      return;
-    }
-
-    let listingHostUserStripeUserId = listingHostUser.stripe.stripeUserId;
-
-    // Step 3: Make Payment Request to Stripe
-    let response = {...bookingObject};
-
-    amount = amount / 100;
-
-    let payParams = {
-      payment_method_types: ['card'],
-      amount: amount,
-      currency: currency,
-      transfer_data: {
-        destination: listingHostUserStripeUserId,
-        amount: amount,
-      },
-    };
-
-    const paymentIntent = await stripe.paymentIntents.create(payParams);
-    response = {
-      ...response,
-      paymentRequestSecret: paymentIntent.client_secret,
+    let response = {
+      msg: 'To be implemented',
     };
 
     return res.status(200).json(response);

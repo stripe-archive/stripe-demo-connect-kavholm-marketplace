@@ -6,7 +6,7 @@ import nextCookie from 'next-cookies';
 import Layout from '../components/layout';
 import cookie from 'js-cookie';
 
-export default class KavholmApp extends App {
+export default class GlobalMarketplaceApp extends App {
   static getAuthenticationState(appContext) {
     let token = '';
 
@@ -26,7 +26,7 @@ export default class KavholmApp extends App {
 
   static async getInitialProps(appContext) {
     logger.log('*****************************');
-    logger.log('KavholmApp.app.ready');
+    logger.log('GlobalMarketplaceApp.app.ready');
     logger.log('*****************************');
 
     let {token, isAuthenticated} = this.getAuthenticationState(appContext);

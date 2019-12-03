@@ -1,11 +1,12 @@
 # Global Marketplace using Stripe Connect
 
-This sample shows how to build a global marketplace using [Stripe Connect] where customers can sign up and become sellers and sellers. Card payments are accepted using [Payment Intents API](https://stripe.com/docs/payments/payment-intents), [Stripe Elements](https://stripe.com/payments/elements) and [React](https://reactjs.org/).
+This sample shows how to build a global marketplace using [Stripe Connect] where customers can sign up and become sellers and sellers of the marketplace. 
+
+Card payments are accepted using [Payment Intents API](https://stripe.com/docs/payments/payment-intents), [Stripe Elements](https://stripe.com/payments/elements) and [React](https://reactjs.org/).
 
 Sellers are onboarded using [Stripe Connect Express] where they get their own Stripe Accounts and funds accepted from the card payments are routed to their Stripe accounts as a part of each transcations.
 
-I’ve deployed the upcoming Global Marketplace sample to https://ob4td.sse.codesandbox.io/ which is a pivot of the Kavolm demo for Connect. A more generic marketplace with b
-
+The marketplace is powered by Next.js and is a full stack sample that contains a React front-end, and a Node.js REST API which exposes a few endpoints for `listings`, `login`, `payouts`, `profile`, `signup`, `transactions`, and `users`
 
 See a hosted version of the [demo](https://ob4td.sse.codesandbox.io/ ) in test mode or [fork on codesandbox.io](https://github.com/auchenberg-stripe/stripe-sample-global-marketplace/tree/master/client)
 

@@ -2,7 +2,6 @@ var path = require('path');
 
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
-const GcloudAdapter = require('./gcp_adaptor');
 
 class Storage {
   constructor() {
@@ -10,17 +9,8 @@ class Storage {
   }
 
   async setup() {
-    let adapter;
-    if (process.env.GOOGLE_CLOUD_PROJECT) {
-      adapter = new GcloudAdapter('kavholm.json', {
-        projectId: process.env.GOOGLE_CLOUD_PROJECT,
-        keyFilename: 'kavholm.json',
-        bucketName: 'kavholm',
-      });
-    } else {
-      this.path = path.resolve('./', 'db', 'database.json');
-      adapter = new FileSync(this.path);
-    }
+    this.path = path.resolve('./', 'db', 'database.json');
+    let adapter = new FileSync(this.path);
 
     this.db = await low(adapter);
 

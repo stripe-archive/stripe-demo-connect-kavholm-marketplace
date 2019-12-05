@@ -81,11 +81,11 @@ STRIPE_SECRET_KEY=<replace-with-your-secret-key>
 
 1. Go to `/client-only/client`
 1. Run `yarn`
-1. Run `yarn start` and your default browser should now open with the front-end being served from `http://localhost:3000/`.
+1. Run `yarn dev` and your default browser should now open with the front-end being served from `http://localhost:3000/`.
 
 ### Using the sample app
 
-When running both servers, you are now ready to use the app running in [http://localhost:3000](http://localhost:3000).
+You are now ready to use the app running in [http://localhost:3000](http://localhost:3000).
 
 1. The marketplace should be available, and if you go to `/login` you should be able to login as both buyers and sellers using the demo buttons.
 1. 🎉

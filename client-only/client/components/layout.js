@@ -1,11 +1,11 @@
-import React from "react";
-import Head from "../components/head";
-import Nav from "../components/nav";
-import NProgress from "../components/nprogress";
+import React from 'react';
+import Head from '../components/head';
+import Nav from '../components/nav';
+import NProgress from '../components/nprogress';
 
-const Layout = props => (
+const Layout = (props) => (
   <>
-    <Head title={props.title || "Home"} />
+    <Head title={props.title || 'Home'} />
     <NProgress />
     <Nav
       isAuthenticated={props.isAuthenticated}
@@ -14,8 +14,8 @@ const Layout = props => (
     />
     <div
       className={
-        "app " +
-        (props.width && props.width == "full" ? "container-fluid" : "container")
+        'app ' +
+        (props.width && props.width == 'full' ? 'container-fluid' : 'container')
       }
     >
       {props.children}
@@ -148,11 +148,10 @@ const Layout = props => (
         border: 1px solid rgb(229, 229, 229);
         border-radius: 8px;
         margin-right: 16px;
-        padding: 0 12px 0 40px;
         display: block;
         margin-bottom: 16px;
         width: 100%;
-        padding: 12px 48px;
+        padding: 12px 12px 12px 48px;
         font-size: 16px;
       }
 

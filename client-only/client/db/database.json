@@ -24,7 +24,8 @@
     {
       "id": "10",
       "author": "Igj-hMfQb",
-      "title": "French Riviera, France",
+      "location": "France",
+      "title": "Modern home on the French Riviera",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
       "source": "https://unsplash.com/photos/AutCiGUz8D4",
       "image": "https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80",
@@ -36,7 +37,8 @@
     {
       "id": "21",
       "author": "Igj-hMfQb",
-      "title": "Peninsula, United States",
+      "location": "United States",
+      "title": "Peninsula",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
       "source": "https://unsplash.com/photos/6DqRIISLZMQ",
       "image": "https://images.unsplash.com/photo-1505081598304-3bee85f930d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2702&q=80",
@@ -48,6 +50,7 @@
     {
       "id": "26",
       "author": "Igj-hMfQb",
+      "location": "Singapore",
       "title": "Skyline view in Singapore",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
       "source": "",
@@ -60,7 +63,8 @@
     {
       "id": "11",
       "author": "Igj-hMfQb",
-      "title": "Mexico City, Mexico",
+      "location": "Mexico",
+      "title": "Sunny studio in Mexico City",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
       "source": "https://unsplash.com/photos/ear8VOL7x8k",
       "image": "https://images.unsplash.com/photo-1537304119-36263d2db05b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1575&q=80",
@@ -72,7 +76,8 @@
     {
       "id": "6",
       "author": "Igj-hMfQb",
-      "title": "Copenhagen, Demmark",
+      "location": "Denmark",
+      "title": "Light-filled loft in Copenhagen",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
       "source": "https://unsplash.com/photos/leDo7IX1ycM",
       "image": "https://images.unsplash.com/photo-1549488497-256795402cc0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80",
@@ -84,7 +89,8 @@
     {
       "id": "12",
       "author": "Igj-hMfQb",
-      "title": "Palm Springs, United States",
+      "location": "United States",
+      "title": "Pasis in Palm Springs",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
       "source": "https://unsplash.com/photos/CIMbOMUewH8",
       "image": "https://images.unsplash.com/photo-1540321975033-2fff3a5a3945?ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80",
@@ -96,7 +102,8 @@
     {
       "id": "15",
       "author": "Igj-hMfQb",
-      "title": "Home in Oslo, Norway",
+      "location": "Norway",
+      "title": "Home in Oslo",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
       "source": "https://unsplash.com/photos/5i0GnoTTjSE",
       "image": "https://images.unsplash.com/photo-1481277542470-605612bd2d61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2590&q=80",
@@ -108,7 +115,8 @@
     {
       "id": "18",
       "author": "Igj-hMfQb",
-      "title": "Mallorca, Spain",
+      "location": "Spain",
+      "title": "Escape in Mallorca",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
       "source": "https://unsplash.com/photos/4ojhpgKpS68",
       "image": "https://images.unsplash.com/photo-1523217582562-09d0def993a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=2200&q=80",
@@ -120,7 +128,8 @@
     {
       "id": "23",
       "author": "Igj-hMfQb",
-      "title": "Santorini, Greece",
+      "location": "Greece",
+      "title": "Heaven in Santorini",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
       "source": "https://unsplash.com/photos/aapSemzfsOk",
       "image": "https://images.unsplash.com/photo-1469796466635-455ede028aca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80",
@@ -132,7 +141,8 @@
     {
       "id": "24",
       "author": "Igj-hMfQb",
-      "title": "Palm Springs, United States",
+      "location": "United States",
+      "title": "Just Palm Springs",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
       "source": "https://unsplash.com/photos/DI5eFSYszy0",
       "image": "https://images.unsplash.com/photo-1556172944-dc52d5ba8016?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2767&q=80",
@@ -144,7 +154,8 @@
     {
       "id": "25",
       "author": "Igj-hMfQb",
-      "title": "Palm Springs, United States",
+      "location": "United States",
+      "title": "More Palm Springs",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
       "source": "https://unsplash.com/photos/PEaAKHpBTzw",
       "image": "https://images.unsplash.com/photo-1554094830-addc7e887420?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80",
@@ -156,7 +167,8 @@
     {
       "id": "27",
       "author": "Igj-hMfQb",
-      "title": "Utah dessert, United States",
+      "location": "United States",
+      "title": "Utah dessert",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
       "source": "https://unsplash.com/photos/V7HWR5o9BeY",
       "image": "https://images.unsplash.com/photo-1539437829697-1b4ed5aebd19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80",

@@ -14,7 +14,15 @@ function ListingsList(props) {
     listItems = listings.map((l) => (
       <li className="listing-item" key={l.id}>
         <Link href={`/listings/` + l.id}>
-          <a>{<img src={l.image} />}</a>
+          <a>
+            <div className="overlay"></div>
+
+            <div className="text">
+              <h3>{l.location}</h3>
+              <h4>{l.title}</h4>
+            </div>
+            {<img src={l.image} />}
+          </a>
         </Link>
         <style jsx>{`
           .listing-item {
@@ -22,7 +30,35 @@ function ListingsList(props) {
 
             border: 0;
             background: #f6f6f6;
+            position: relative;
           }
+
+          .listing-item .text {
+            position: absolute;
+            left: 10px;
+            right: 0;
+            bottom: 10px;
+            padding: 0 10px;
+            color: #fff;
+          }
+
+          .listing-item h3 {
+            font-size: 10px;
+            text-transform: uppercase;
+          }          
+
+          .listing-item h4 {
+            font-size: 14px;
+          }
+
+          .listing-item .overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background rgba(0, 0, 0, 0.3);
+          }          
 
           .listing-item img {
             border-radius: 6px;

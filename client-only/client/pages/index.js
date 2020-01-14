@@ -27,6 +27,23 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
+
+          <div className="annotation">
+            <a className="stripe" href="https://stripe.com">
+              <img src="static/stripe.svg" width="60" />
+            </a>
+            <p>
+              Kavholm is a demo Stripe demo that uses{' '}
+              <a href="https://stripe.com/connect">Connect</a> to build a global
+              marketplace.{' '}
+              <a
+                class="github arrow"
+                href="https://github.com/stripe-samples/connect-kavholm-marketplace"
+              >
+                View on GitHub
+              </a>
+            </p>
+          </div>
         </div>
         <style jsx>{`
           .home {
@@ -58,8 +75,8 @@ class Home extends React.Component {
                 rgba(255, 255, 255, 0) 50%,
                 #ffffff 100%
               ),
-              url(https://images.unsplash.com/photo-1534430480872-3498386e7856?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80)
-                no-repeat; // Source: https://unsplash.com/photos/wh-7GeXxItI
+              url(https://images.unsplash.com/photo-1542349301445-c5f6ec562729?ixlib=rb-1.2.1&auto=format&fit=crop&w=2315&q=80)
+                no-repeat;
             background-size: cover;
             background-position: center center;
           }
@@ -67,7 +84,6 @@ class Home extends React.Component {
           .popover {
             padding: 40px;
             position: relative;
-            top: 15vh;
             width: 500px;
             max-width: 500px;
             background: #ffffff;
@@ -85,6 +101,34 @@ class Home extends React.Component {
           .button-container {
             display: flex;
             justify-content: flex-end;
+          }
+
+          .annotation {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            margin-left: -300px;
+
+             {
+              /* max-width: 700px; */
+            }
+            padding: 0 20px;
+            height: 50px;
+            line-height: 50px;
+
+            border-radius: 50px;
+            background: #fff;
+            text-align: center;
+            font-size: 12px;
+          }
+
+          .annotation img,
+          .annotation p {
+            display: inline-block;
+          }
+
+          .annotation img {
+            margin-right: 10px;
           }
         `}</style>
       </Layout>

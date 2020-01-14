@@ -67,7 +67,7 @@ class Dashboard extends React.Component {
               <div className="row">
                 <div className="col-8">
                   <div className="clearfix">
-                    <h4>Your transactions</h4>
+                    <h4>Your trips</h4>
                   </div>
                 </div>
                 <div className="col-4">

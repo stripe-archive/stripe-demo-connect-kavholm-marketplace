@@ -55,7 +55,7 @@ class Profile extends React.Component {
             className="btn btn-secondary"
             onClick={this.clearTransactions}
           >
-            Clear transactions
+            Clear trips
           </button>
 
           {profile.stripe && (

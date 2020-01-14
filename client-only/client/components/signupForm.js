@@ -1,20 +1,21 @@
 // www/pages/login.js
 
-import { Component } from "react";
-import { handleLogin } from "../utils/auth";
-import API from "../helpers/api";
-import logger from "../helpers/logger";
+import {Component} from 'react';
+import {handleLogin} from '../utils/auth';
+import API from '../helpers/api';
+import logger from '../helpers/logger';
+import Link from 'next/link';
 
 class SignupForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      error: ""
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      error: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -27,7 +28,7 @@ class SignupForm extends Component {
     const value = target.value;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 
@@ -35,10 +36,10 @@ class SignupForm extends Component {
     event.preventDefault();
 
     try {
-      let req = await API.makeRequest("post", `/api/signup/local`, this.state);
+      let req = await API.makeRequest('post', `/api/signup/local`, this.state);
       handleLogin(req.token);
     } catch (err) {
-      logger.log("Signup failed.", err);
+      logger.log('Signup failed.', err);
     }
   }
 
@@ -47,19 +48,17 @@ class SignupForm extends Component {
       <>
         <div className="signup-form">
           <form onSubmit={this.handleSubmit}>
-            <button
-              className="btn btn-secondary btn-half"
-              onClick={this.loginAsBuyer}
-            >
-              Renter demo
-            </button>
+            <Link href="/login">
+              <button className="btn btn-secondary btn-half">
+                Renter demo
+              </button>
+            </Link>
 
-            <button
-              className="btn btn-secondary btn-half right"
-              onClick={this.loginAsSeller}
-            >
-              Owner demo
-            </button>
+            <Link href="/login">
+              <button className="btn btn-secondary btn-half right">
+                Owner demo
+              </button>
+            </Link>
 
             <input
               className="new-section name"
@@ -105,7 +104,7 @@ class SignupForm extends Component {
               Create account
             </button>
 
-            <p className={`error ${this.state.error && "show"}`}>
+            <p className={`error ${this.state.error && 'show'}`}>
               {this.state.error && `Error: ${this.state.error}`}
             </p>
           </form>

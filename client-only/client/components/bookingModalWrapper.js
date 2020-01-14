@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
-import BookingModal from './bookingModal';
-import {Elements, StripeProvider, injectStripe} from 'react-stripe-elements';
-import getConfig from 'next/config';
+import React, { Component } from "react";
+import BookingModal from "./bookingModal";
+import { Elements, StripeProvider, injectStripe } from "react-stripe-elements";
+import getConfig from "next/config";
 
 class BookingModalWrapper extends Component {
   constructor() {
     super();
     this.state = {
-      stripe: null,
+      stripe: null
     };
   }
 
@@ -20,7 +20,7 @@ class BookingModalWrapper extends Component {
     }
 
     this.setState({
-      stripe: window.Stripe(stripePublicKey),
+      stripe: window.Stripe(stripePublicKey)
     });
   }
 

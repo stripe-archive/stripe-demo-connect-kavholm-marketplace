@@ -5,14 +5,14 @@
     <desc>Created with Sketch.</desc>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="logo" transform="translate(0.000000, -4.000000)">
-            <g id="GLOBAL" fill="#303030" font-family="Futura-Bold, Futura" font-size="18.5806452" font-weight="bold">
-                <text id="GLOBAL">
-                    <tspan x="0" y="19">GLOBAL</tspan>
+            <g id="KAVHOLM" fill="#303030" font-family="Futura-Bold, Futura" font-size="18.5806452" font-weight="bold">
+                <text id="KAVHOLM">
+                    <tspan x="0" y="19">KAVHOLM</tspan>
                 </text>
             </g>
-            <g id="MARKETPLACE" transform="translate(85.000000, 0.000000)" fill="#939393" font-family="Futura-Medium, Futura" font-size="18" font-weight="400">
-                <text id="MARKETPLACE">
-                    <tspan x="0" y="19">MARKETPLACE</tspan>
+            <g id="HOMES" transform="translate(85.000000, 0.000000)" fill="#939393" font-family="Futura-Medium, Futura" font-size="18" font-weight="400">
+                <text id="HOMES">
+                    <tspan x="24" y="19">HOMES</tspan>
                 </text>
             </g>
         </g>

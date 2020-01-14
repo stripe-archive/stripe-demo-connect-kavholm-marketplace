@@ -1,16 +1,16 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 function DashboardBookingsList(props) {
   const list = props.list ? [...props.list] : [];
   if (list.length < 6) {
     while (list.length < 6) {
-      list.push({id: Math.random()});
+      list.push({ id: Math.random() });
     }
   }
   let listItems = [];
 
   if (list) {
-    listItems = list.map((item) => (
+    listItems = list.map(item => (
       <li className="listing-item" key={item.id}>
         {item.listing && (
           <Link href={`/transactions/` + item.id}>
@@ -30,7 +30,7 @@ function DashboardBookingsList(props) {
 
             border: 0;
             background: #f6f6f6;
-            border-radius: 6px;
+            border-radius: 4px;
           }
 
           .listing-item h3 {

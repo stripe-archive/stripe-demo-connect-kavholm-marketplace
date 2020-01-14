@@ -1,7 +1,7 @@
-import React from 'react';
-import Link from 'next/link';
-import NavProfile from './navProfile';
-import BookingSearchForm from './bookingSearchForm';
+import React from "react";
+import Link from "next/link";
+import NavProfile from "./navProfile";
+import BookingSearchForm from "./bookingSearchForm";
 
 class Nav extends React.Component {
   constructor(props) {
@@ -10,9 +10,9 @@ class Nav extends React.Component {
 
   render() {
     let className =
-      'app ' + this.props.width && this.props.width == 'full'
-        ? 'container-fluid nav-fullwidth'
-        : 'container';
+      "app " + this.props.width && this.props.width == "full"
+        ? "container-fluid nav-fullwidth"
+        : "container";
 
     return (
       <div className={className}>
@@ -38,7 +38,7 @@ class Nav extends React.Component {
             }
 
             .navbar {
-              margin: 30px 0 30px 0;
+              margin: 32px 0 32px 0;
               padding: 0;
               height: 45px;
             }

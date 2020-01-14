@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import Link from 'next/link';
-import API from '../helpers/api';
+import React, { Component } from "react";
+import Link from "next/link";
+import API from "../helpers/api";
 
 class DashboardHeader extends Component {
   constructor() {
@@ -8,21 +8,21 @@ class DashboardHeader extends Component {
   }
 
   async handleDashboardLink() {
-    let req = await API.makeRequest('get', '/api/payouts/link');
+    let req = await API.makeRequest("get", "/api/payouts/link");
     window.open(req.url);
   }
 
   render() {
-    let {profile} = this.props;
-    let avatarUrl = profile ? profile.avatar : '/static/avatar.png';
+    let { profile } = this.props;
+    let avatarUrl = profile ? profile.avatar : "/static/avatar.png";
 
-    let formattedBalance = '';
+    let formattedBalance = "";
 
     if (this.props.balance && this.props.balance) {
       const locale = new Intl.NumberFormat().resolvedOptions().locale;
       const formatter = new Intl.NumberFormat(locale, {
-        style: 'currency',
-        currency: this.props.balance.currency,
+        style: "currency",
+        currency: this.props.balance.currency
       });
 
       formattedBalance = formatter.format(this.props.balance.amount / 100);
@@ -38,7 +38,7 @@ class DashboardHeader extends Component {
                 <div className="media-body">
                   <div className="user-details-body align-middle">
                     <h5 className="mt-0">
-                      {profile.firstName + ' ' + profile.lastName}
+                      {profile.firstName + " " + profile.lastName}
                     </h5>
                     <p className="text-secondary">{profile.email}</p>
                   </div>
@@ -51,7 +51,7 @@ class DashboardHeader extends Component {
               {formattedBalance && (
                 <>
                   <p className="label text-secondary">
-                    Balance{' '}
+                    Balance{" "}
                     <a href="#" onClick={this.handleDashboardLink}>
                       See Payouts ↗
                     </a>
@@ -70,11 +70,11 @@ class DashboardHeader extends Component {
                 <Link href="/dashboard">
                   <a
                     className={
-                      'nav-link ' +
-                      (this.props.dashboardType == 'renter' ? 'active' : '')
+                      "nav-link " +
+                      (this.props.dashboardType == "renter" ? "active" : "")
                     }
                   >
-                    Transactions
+                    Your trips
                   </a>
                 </Link>
               </li>
@@ -82,11 +82,11 @@ class DashboardHeader extends Component {
                 <Link href="/dashboard/host">
                   <a
                     className={
-                      'nav-link ' +
-                      (this.props.dashboardType == 'host' ? 'active' : '')
+                      "nav-link " +
+                      (this.props.dashboardType == "host" ? "active" : "")
                     }
                   >
-                    Manage listings
+                    Your listings
                   </a>
                 </Link>
               </li>
@@ -96,14 +96,38 @@ class DashboardHeader extends Component {
 
         <style jsx>{`
           .dashboard-header {
-            margin-bottom: 50px;
-            padding-bottom: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 0px;
+          }
+          .nav-tabs {
+            margin: 20px 0;
+            box-sizing: border-box;
           }
 
+          .nav-link {
+            text-align: left;
+            box-sizing: border-box;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 0 8px 8px;
+            margin-right: 24px;
+            color: #484848;
+          }
+
+          .nav-link:hover {
+            border: 1px solid #fff;
+          }
+
+          .nav-link.active {
+            border: #fff;
+            border-bottom: 2px solid #007bff;
+            padding-top: 1px;
+            color: #0055ff;
+          }
           .user-details .avatar {
-            height: 55px;
-            width: 55px;
-            border-radius: 55px;
+            height: 60px;
+            width: 60px;
+            border-radius: 60px;
             object-fit: cover;
             align-self: center;
           }
@@ -118,7 +142,7 @@ class DashboardHeader extends Component {
           }
 
           .user-details h5 {
-            font-size: 22px;
+            font-size: 24px;
             margin: 0;
             font-weight: 600;
           }
@@ -127,6 +151,7 @@ class DashboardHeader extends Component {
             font-size: 14px;
             margin: 0;
             transform: translateY(-4px);
+            margin-top: 4px;
           }
 
           .stripe-dashboard {

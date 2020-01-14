@@ -1,6 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
-import {logout} from '../utils/auth';
+import React from "react";
+import Link from "next/link";
+import { logout } from "../utils/auth";
 
 class NavProfile extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class NavProfile extends React.Component {
     let items;
     let avatarUrl = this.props.userProfile
       ? this.props.userProfile.avatar
-      : '/static/avatar.png';
+      : "/static/avatar.png";
 
     if (this.props.isAuthenticated) {
       items = (
@@ -42,7 +42,7 @@ class NavProfile extends React.Component {
               <a className="dropdown-item">Profile</a>
             </Link>
             <a className="dropdown-item" href="#" onClick={this.handleLogout}>
-              Logout
+              Log out
             </a>
           </div>
         </li>
@@ -52,13 +52,13 @@ class NavProfile extends React.Component {
         <>
           <li className="navitem d-flex">
             <Link href="/signup">
-              <a className="btn">Signup</a>
+              <a className="btn">Create account</a>
             </Link>
           </li>
 
           <li className="nav-item">
             <Link href="/login">
-              <a className="btn">Login</a>
+              <a className="btn">Sign in</a>
             </Link>
           </li>
         </>
@@ -74,6 +74,7 @@ class NavProfile extends React.Component {
             width: 44px;
             object-fit: cover;
             height: 44px;
+            margin-right: 4px;
           }
         `}</style>
       </ul>

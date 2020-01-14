@@ -1,20 +1,20 @@
 // www/pages/login.js
 
-import {Component} from 'react';
-import {handleLogin} from '../utils/auth';
-import API from '../helpers/api';
-import logger from '../helpers/logger';
+import { Component } from "react";
+import { handleLogin } from "../utils/auth";
+import API from "../helpers/api";
+import logger from "../helpers/logger";
 
 class SignupForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      error: '',
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      error: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -27,7 +27,7 @@ class SignupForm extends Component {
     const value = target.value;
 
     this.setState({
-      [name]: value,
+      [name]: value
     });
   }
 
@@ -35,10 +35,10 @@ class SignupForm extends Component {
     event.preventDefault();
 
     try {
-      let req = await API.makeRequest('post', `/api/signup/local`, this.state);
+      let req = await API.makeRequest("post", `/api/signup/local`, this.state);
       handleLogin(req.token);
     } catch (err) {
-      logger.log('Signup failed.', err);
+      logger.log("Signup failed.", err);
     }
   }
 
@@ -47,7 +47,22 @@ class SignupForm extends Component {
       <>
         <div className="signup-form">
           <form onSubmit={this.handleSubmit}>
+            <button
+              className="btn btn-secondary btn-half"
+              onClick={this.loginAsBuyer}
+            >
+              Renter demo
+            </button>
+
+            <button
+              className="btn btn-secondary btn-half right"
+              onClick={this.loginAsSeller}
+            >
+              Owner demo
+            </button>
+
             <input
+              className="new-section name"
               type="text"
               id="firstName"
               name="firstName"
@@ -57,6 +72,7 @@ class SignupForm extends Component {
             />
 
             <input
+              className="name"
               type="text"
               id="lastName"
               name="lastName"
@@ -66,6 +82,7 @@ class SignupForm extends Component {
             />
 
             <input
+              className="email"
               type="email"
               id="email"
               name="email"
@@ -75,6 +92,7 @@ class SignupForm extends Component {
             />
 
             <input
+              className="password"
               type="password"
               id="password"
               name="password"
@@ -83,34 +101,38 @@ class SignupForm extends Component {
               onChange={this.handleChange}
             />
 
-            <button type="submit" className="btn btn-primary">
-              Signup
+            <button type="submit" className="btn btn-primary btn-full">
+              Create account
             </button>
 
-            <p className={`error ${this.state.error && 'show'}`}>
+            <p className={`error ${this.state.error && "show"}`}>
               {this.state.error && `Error: ${this.state.error}`}
             </p>
           </form>
         </div>
         <style jsx>{`
-          .signup-form {
-            max-width: 340px;
-            min-width: 300px;
-            margin: 0 auto;
+          .new-section {
+            margin-top: 16px;
           }
-          form {
-            display: flex;
-            flex-flow: column;
+
+          .email {
+            background: url(../static/email.svg) no-repeat scroll 7px 6px;
+            background-size: 20px 20px;
+            background-position: 16px 14px;
           }
-          label {
-            font-weight: 600;
+
+          .name {
+            background: url(../static/person.svg) no-repeat scroll 7px 6px;
+            background-size: 20px 20px;
+            background-position: 16px 14px;
           }
-          input {
-            padding: 8px;
-            margin: 0.3rem 0 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+
+          .password {
+            background: url(../static/lock.svg) no-repeat scroll 7px 6px;
+            background-size: 20px 20px;
+            background-position: 16px 14px;
           }
+
           .error {
             margin: 0.5rem 0 0;
             display: none;

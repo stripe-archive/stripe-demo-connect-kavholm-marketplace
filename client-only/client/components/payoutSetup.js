@@ -1,6 +1,6 @@
-import {Component} from 'react';
-import API from '../helpers/api';
-import logger from '../helpers/logger';
+import { Component } from "react";
+import API from "../helpers/api";
+import logger from "../helpers/logger";
 
 class PayoutSetup extends Component {
   constructor(props) {
@@ -10,11 +10,11 @@ class PayoutSetup extends Component {
   }
 
   async getRedirectInfo() {
-    return API.makeRequest('post', `/api/payouts/stripe`);
+    return API.makeRequest("post", `/api/payouts/stripe`);
   }
 
   async handleConnect() {
-    logger.log('ProfileStripe.handleConnect');
+    logger.log("ProfileStripe.handleConnect");
     let response = await this.getRedirectInfo();
     let url = response.location;
     if (url) {
@@ -23,16 +23,16 @@ class PayoutSetup extends Component {
   }
 
   render() {
-    let signUpLink = '/api/stripe/connect';
+    let signUpLink = "/api/stripe/connect";
 
     return (
       <>
         <div className="text-center box">
           <img src="/static/icon-bank.svg" className="icon" />
-          <h3>Payout setup needed</h3>
+          <h3>Set up payouts to list on Kavholm</h3>
           <p>
-            Global Marketplace partners with Stripe to transfer earnings to your
-            bank account.
+            Kavholm partners with Stripe to transfer earnings to your bank
+            account.
           </p>
 
           <a
@@ -40,7 +40,7 @@ class PayoutSetup extends Component {
             onClick={this.handleConnect}
             href="#"
           >
-            Set up payments
+            Set up payouts
           </a>
 
           <p className="text-center notice">

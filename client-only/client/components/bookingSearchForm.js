@@ -2,62 +2,50 @@ function bookingSearchForm(props) {
   return (
     <div
       className={
-        props.size && props.size == 'large'
-          ? 'booking-search-form large'
-          : 'booking-search-form'
+        props.size && props.size == "large"
+          ? "booking-search-form large"
+          : "booking-search-form"
       }
     >
-      <input type="search" className="search" placeholder="Category 1"></input>
-      <input
-        type="datepicker"
-        className="date"
-        placeholder="Category 2"
-      ></input>
+      <input type="search" className="search" placeholder="Where to?" />
+      <input type="datepicker" className="date" placeholder="Check in" />
+      <input type="datepicker" className="date right" placeholder="Check out" />
       <select className="guests dropdown-toggle">
-        <option>Category 3</option>
-        <option>Value 1</option>
-        <option>Value 2</option>
+        <option>Guests</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
       </select>
 
       <style jsx>{`
         .booking-search-form input {
-          border: 1px solid rgb(229, 229, 229);
-          border-radius: 6px;
-          margin-right: 15px;
-          padding: 0 10px 0 30px;
-          width: 150px;
-          font-size: 14px;
-        }
-
-        .booking-search-form select {
-          border: 1px solid rgb(229, 229, 229);
-          border-radius: 6px;
-          margin-right: 15px;
-          padding: 0 10px 0 30px;
-          font-size: 14px;
-          appearance: none;
-          color: #757575;
-        }
-
-        .booking-search-form.large input,
-        .booking-search-form.large select {
-          display: block;
-          margin-bottom: 15px;
           width: 100%;
-          padding: 8px 40px;
-          font-size: 20px;
+        }
+
+        .booking-search-form.large .date {
+          width: 48%;
+          margin-right: 16px;
+          display: inline;
+        }
+
+        .booking-search-form.large .date.right {
+          margin-right: 0;
         }
 
         .booking-search-form.large .search,
         .booking-search-form.large .date,
         .booking-search-form.large .guests {
           background-size: 20px 20px;
-          background-position: 10px 14px;
+          background-position: 16px 14px;
         }
 
         .booking-search-form .search {
           background: url(/static/search.svg) no-repeat scroll 7px 6px;
-          width: 200px;
           background-size: 15px 15px;
         }
 

@@ -1,4 +1,5 @@
 import {validateToken} from './authToken';
+import API from './../helpers/api';
 
 let requireAuthEndpoint = (fn) => {
   return (req, res) => {
@@ -8,6 +9,12 @@ let requireAuthEndpoint = (fn) => {
       res.writeHead(401);
       res.end('missing Authorization header');
       return;
+    }
+
+    if (!API.context) {
+      API.setContext({
+        req: req,
+      });
     }
 
     try {

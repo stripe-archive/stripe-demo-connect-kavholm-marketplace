@@ -153,7 +153,7 @@ class Listing extends React.Component {
                   disabled={!this.props.isAuthenticated}
                 >
                   {this.props.isAuthenticated
-                    ? 'Buy now'
+                    ? 'Book now'
                     : 'Please login before buying'}
                 </button>
 

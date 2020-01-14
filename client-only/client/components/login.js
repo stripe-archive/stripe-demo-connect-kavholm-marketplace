@@ -1,17 +1,17 @@
 // www/pages/login.js
 
-import { Component } from "react";
-import { handleLogin } from "../utils/auth";
-import logger from "../helpers/logger";
+import {Component} from 'react';
+import {handleLogin} from '../utils/auth';
+import logger from '../helpers/logger';
 
 class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: "",
-      password: "",
-      error: ""
+      email: '',
+      password: '',
+      error: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -26,51 +26,51 @@ class Login extends Component {
     const value = target.value;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 
   loginAsBuyer() {
     this.setState({
-      email: "buyer@global-marketplace.com",
-      password: "test"
+      email: 'buyer@kavholm.com',
+      password: 'test',
     });
   }
 
   loginAsSeller() {
     this.setState({
-      email: "seller@global-marketplace.com",
-      password: "test"
+      email: 'seller@kavholm.com',
+      password: 'test',
     });
   }
 
   async handleSubmit(event) {
     event.preventDefault();
     const url = `/api/login/token`;
-    const { username, password } = this.state;
+    const {username, password} = this.state;
 
     try {
       const response = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(this.state)
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(this.state),
       });
       if (response.ok) {
-        const { token } = await response.json();
+        const {token} = await response.json();
         handleLogin(token);
       } else {
-        logger.log("Login failed.");
+        logger.log('Login failed.');
         this.setState({
-          error: response.statusText
+          error: response.statusText,
         });
       }
     } catch (error) {
       console.error(
-        "You have an error in your code or there are Network issues.",
-        error
+        'You have an error in your code or there are Network issues.',
+        error,
       );
       this.setState({
-        error: response.statusText
+        error: response.statusText,
       });
     }
   }
@@ -120,7 +120,7 @@ class Login extends Component {
               Sign in
             </button>
 
-            <p className={`error ${this.state.error && "show"}`}>
+            <p className={`error ${this.state.error && 'show'}`}>
               {this.state.error && `Error: ${this.state.error}`}
             </p>
           </form>

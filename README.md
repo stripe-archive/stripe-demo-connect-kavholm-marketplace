@@ -4,7 +4,7 @@ This sample shows how to build a global marketplace using [Stripe Payments](http
 
 The marketplace is generic with the notion of `buyers`, `sellers` and `transactions` for sold goods and the basic workflows are provided showcase how to use Payments and Connect together.
 
-Sellers are onboarded using [Stripe Connect Express](https://stripe.com/connect/express) which gives sellers a Stripe account connected to the marketplace. When funds are accepted by the marketplace via card payments, the funds are routed to the seller's Stripe accounts as a part of each marketplace transaction.
+Sellers are on-boarded using [Stripe Connect Express](https://stripe.com/connect/express) which gives sellers a Stripe account connected to the marketplace. When funds are accepted by the marketplace via card payments, the funds are routed to the seller's Stripe accounts as a part of each marketplace transaction.
 
 See a hosted version of the [demo](https://rp9wf.sse.codesandbox.io/) in test mode or [fork on codesandbox.io](https://codesandbox.io/s/github/auchenberg-stripe/stripe-sample-connect-global-marketplace/tree/master/client-only/client)
 
@@ -44,27 +44,11 @@ Follow the steps below to run locally.
 
 **1. Clone and configure the sample**
 
-The Stripe CLI is the fastest way to clone and configure a sample to run locally.
-
-**Using the Stripe CLI**
-
-If you haven't already installed the CLI, follow the [installation steps](https://github.com/stripe/stripe-cli#installation) in the project README. The CLI is useful for cloning samples and locally testing webhooks and Stripe integrations.
-
-In your terminal shell, run the Stripe CLI command to clone the sample:
-
 ```
-stripe samples create connect-global-marketplace
+git clone git@github.com:stripe-samples/connect-kavholm-marketplace.git
 ```
 
-The CLI will walk you through picking your integration type, server and client languages, and configuring your .env config file with your Stripe API keys.
-
-**Installing and cloning manually**
-
-If you do not want to use the Stripe CLI, you can manually clone and configure the sample yourself:
-
-```
-git clone https://github.com/stripe-samples/connect-global-marketplace
-```
+**2. Setup environment variables**
 
 Copy the .env.example file into a file named .env in the folder of the server you want to use. For example:
 
@@ -79,14 +63,12 @@ STRIPE_PUBLIC_KEY=<replace-with-your-publishable-key>
 STRIPE_SECRET_KEY=<replace-with-your-secret-key>
 ```
 
-1. Go to `/client-only/client`
-1. Run `yarn`
-1. Run `yarn dev` and your default browser should now open with the front-end being served from `http://localhost:3000/`.
-
 ### Using the sample app
 
-You are now ready to use the app running in [http://localhost:3000](http://localhost:3000).
-
+1. Go to `/client-only/client`
+1. Run `yarn`
+1. Run `yarn dev`
+1. You are now ready to use the app running in [http://localhost:3000](http://localhost:3000).
 1. The marketplace should be available, and if you go to `/login` you should be able to login as both buyers and sellers using the demo buttons.
 1. 🎉
 

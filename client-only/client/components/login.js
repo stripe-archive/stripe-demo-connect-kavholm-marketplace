@@ -16,7 +16,7 @@ class Login extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.loginAsBuyer = this.loginAsBuyer.bind(this);
+    this.loginAsRenter = this.loginAsRenter.bind(this);
     this.loginAsSeller = this.loginAsSeller.bind(this);
   }
 
@@ -30,9 +30,9 @@ class Login extends Component {
     });
   }
 
-  loginAsBuyer() {
+  loginAsRenter() {
     this.setState({
-      email: 'buyer@kavholm.com',
+      email: 'renter@kavholm.com',
       password: 'test',
     });
   }
@@ -86,7 +86,7 @@ class Login extends Component {
           <form onSubmit={this.handleSubmit}>
             <button
               className="btn btn-secondary btn-half"
-              onClick={this.loginAsBuyer}
+              onClick={this.loginAsRenter}
             >
               Renter demo
             </button>

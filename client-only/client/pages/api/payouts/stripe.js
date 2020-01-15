@@ -1,8 +1,7 @@
-import config from '../../../helpers/config';
 import getHost from '../../../utils/get-host';
 import storage from '../../../helpers/storage';
 const querystring = require('querystring');
-
+const env = require('dotenv').config({path: './.env'});
 import requireAuthEndpoint from '../../../utils/requireAuthEndpoint';
 
 export default requireAuthEndpoint(async (req, res) => {
@@ -14,10 +13,7 @@ export default requireAuthEndpoint(async (req, res) => {
       .find({userId: authenticatedUserId})
       .value();
 
-    let clientId =
-      process.env.NODE_ENV === 'production'
-        ? config.stripe.live.clientId
-        : config.stripe.test.clientId;
+    let clientId = process.env.STRIPE_CLIENT_ID;
 
     // Pass UserAccount info along to Stripe
     let userEmail = userAccount.email;

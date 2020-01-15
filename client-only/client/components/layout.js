@@ -2,6 +2,7 @@ import React from 'react';
 import Head from '../components/head';
 import Nav from '../components/nav';
 import NProgress from '../components/nprogress';
+import getConfig from 'next/config';
 
 const Layout = (props) => (
   <>
@@ -12,6 +13,19 @@ const Layout = (props) => (
       userProfile={props.userProfile}
       width={props.width}
     />
+
+    <div className="api-warning">
+      <p>
+        {!getConfig().publicRuntimeConfig.stripe.publicKey &&
+          "Looks like don't have your Stripe Environment variables set. Forgot to set process.env.STRIPE_SECRET_KEY?"}
+
+        {getConfig().publicRuntimeConfig.stripe.publicKey &&
+          getConfig().publicRuntimeConfig.stripe.publicKey.indexOf('test') >
+            0 &&
+          'Heads up: Looks like your are using a test-mode Stripe API key. All good?'}
+      </p>
+    </div>
+
     <div
       className={
         'app ' +
@@ -204,6 +218,33 @@ const Layout = (props) => (
       .app {
         overflow: hidden;
         min-height: calc(100% - 125px);
+      }
+
+      .api-warning {
+        position: absolute;
+        top: 30px;
+        left: 50%;
+        z-index: 10;
+        margin-left: -300px;
+        padding: 0 20px;
+        height: 50px;
+        line-height: 50px;
+
+        border-radius: 50px;
+        background: #fdf6c3;
+        text-align: center;
+        font-size: 12px;
+        box-shadow: 0 15px 35px 0 rgba(50, 50, 93, 0.1),
+          0 5px 15px 0 rgba(0, 0, 0, 0.07);
+      }
+
+      .annotation img,
+      .annotation p {
+        display: inline-block;
+      }
+
+      .annotation img {
+        margin-right: 10px;
       }
     `}</style>
   </>

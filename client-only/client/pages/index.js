@@ -108,10 +108,6 @@ class Home extends React.Component {
             bottom: 30px;
             left: 50%;
             margin-left: -300px;
-
-             {
-              /* max-width: 700px; */
-            }
             padding: 0 20px;
             height: 50px;
             line-height: 50px;

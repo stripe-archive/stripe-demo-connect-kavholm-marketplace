@@ -3,7 +3,7 @@
     {
       "userId": "Igj-hMfQa",
       "firstName": "Mr",
-      "lastName": "Buyer",
+      "lastName": "Renter",
       "email": "renter@kavholm.com",
       "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
       "avatar": "//images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80"
@@ -11,19 +11,19 @@
     {
       "userId": "Igj-hMfQb",
       "firstName": "Miss",
-      "lastName": "Seller",
-      "email": "seller@kavholm.com",
+      "lastName": "Owner",
+      "email": "owner@kavholm.com",
       "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
       "avatar": "//images.unsplash.com/photo-1506863530036-1efeddceb993?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2741&q=80",
       "stripe": {
-        "stripeUserId": "acct_1FjEWCI07lRc6j5f"
+        "stripeUserId": "acct_1G1NhsFF94Ecai5Q"
       }
     }
   ],
   "listings": [
     {
       "id": "10",
-      "author": "Igj-hMfQb",
+      "authorId": "Igj-hMfQb",
       "location": "France",
       "title": "Modern home on the French Riviera",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
@@ -36,7 +36,7 @@
     },
     {
       "id": "21",
-      "author": "Igj-hMfQb",
+      "authorId": "Igj-hMfQb",
       "location": "United States",
       "title": "Peninsula",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
@@ -49,7 +49,7 @@
     },
     {
       "id": "26",
-      "author": "Igj-hMfQb",
+      "authorId": "Igj-hMfQb",
       "location": "Singapore",
       "title": "Skyline view in Singapore",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
@@ -62,7 +62,7 @@
     },
     {
       "id": "11",
-      "author": "Igj-hMfQb",
+      "authorId": "Igj-hMfQb",
       "location": "Mexico",
       "title": "Sunny studio in Mexico City",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
@@ -75,7 +75,7 @@
     },
     {
       "id": "6",
-      "author": "Igj-hMfQb",
+      "authorId": "Igj-hMfQb",
       "location": "Denmark",
       "title": "Light-filled loft in Copenhagen",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
@@ -88,7 +88,7 @@
     },
     {
       "id": "12",
-      "author": "Igj-hMfQb",
+      "authorId": "Igj-hMfQb",
       "location": "United States",
       "title": "Pasis in Palm Springs",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
@@ -101,7 +101,7 @@
     },
     {
       "id": "15",
-      "author": "Igj-hMfQb",
+      "authorId": "Igj-hMfQb",
       "location": "Norway",
       "title": "Home in Oslo",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
@@ -114,7 +114,7 @@
     },
     {
       "id": "18",
-      "author": "Igj-hMfQb",
+      "authorId": "Igj-hMfQb",
       "location": "Spain",
       "title": "Escape in Mallorca",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
@@ -127,7 +127,7 @@
     },
     {
       "id": "23",
-      "author": "Igj-hMfQb",
+      "authorId": "Igj-hMfQb",
       "location": "Greece",
       "title": "Heaven in Santorini",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
@@ -140,7 +140,7 @@
     },
     {
       "id": "24",
-      "author": "Igj-hMfQb",
+      "authorId": "Igj-hMfQb",
       "location": "United States",
       "title": "Just Palm Springs",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
@@ -153,7 +153,7 @@
     },
     {
       "id": "25",
-      "author": "Igj-hMfQb",
+      "authorId": "Igj-hMfQb",
       "location": "United States",
       "title": "More Palm Springs",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",
@@ -166,7 +166,7 @@
     },
     {
       "id": "27",
-      "author": "Igj-hMfQb",
+      "authorId": "Igj-hMfQb",
       "location": "United States",
       "title": "Utah dessert",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus, ligula eu eleifend consequat, sem metus dignissim purus, et sodales eros ligula non lacus. Maecenas lacinia nibh at semper efficitur. Fusce tincidunt, mi non tincidunt faucibus, neque velit hendrerit tortor, non fermentum nisi tortor at dui. Fusce porta, metus ut facilisis pellentesque, turpis sapien scelerisque leo, quis lacinia felis lectus rutrum turpis.",

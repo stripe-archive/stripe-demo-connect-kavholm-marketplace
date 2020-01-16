@@ -47,7 +47,7 @@ class BookingModal extends Component {
             bottom: 'auto',
             margin: '0 auto',
             border: 0,
-            width: 480,
+            maxWidth: 480,
             textAlign: 'center',
             paddingTop: '70px',
             paddingBottom: '45px',
@@ -68,7 +68,7 @@ class BookingModal extends Component {
                   thousandSeparator={true}
                   prefix={this.props.listing.price.currency + ' '}
                 />{' '}
-                to buy.
+                to buy
               </h1>
 
               <br />
@@ -106,6 +106,7 @@ class BookingModal extends Component {
             margin: 0;
             text-align: center;
             margin-bottom: 16px;
+            width: 100%;
           }
           p {
             color: #373737;

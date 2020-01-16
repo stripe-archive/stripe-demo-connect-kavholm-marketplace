@@ -9,10 +9,30 @@ export default requireAuthEndpoint(async (req, res) => {
   let authenticatedUserId = req.authToken.userId;
 
   try {
-    let {listingId} = req.body;
+    const {title, location, price, currency, description} = req.body;
+
+    const listingObject = {
+      id: shortid.generate(),
+      author: authenticatedUserId,
+      description: description,
+      title: title,
+      location: location,
+      image:
+        'https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80',
+      price: {
+        amount: price,
+        currency: currency,
+      },
+    };
+
+    await storage
+      .get('listings')
+      .push(listingObject)
+      .write();
 
     let response = {
-      msg: 'To be implemented',
+      status: 'ok',
+      listing: listingObject,
     };
 
     return res.status(200).json(response);

@@ -24,7 +24,7 @@ class NewListing extends React.Component {
         <div className="listings">
           <hr className="bg-light" />
 
-          <h2>Create new listing</h2>
+          <h3>Create new listing</h3>
 
           <ListingForm />
 

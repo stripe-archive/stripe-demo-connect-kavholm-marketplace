@@ -5,10 +5,12 @@ export default async (req, res) => {
   let id = req.query.id;
 
   try {
-    let listing = storage
+    let listingRaw = storage
       .get('listings')
       .find({id: id})
       .value();
+
+    let listing = {...listingRaw};
 
     let lineItems = [
       {item: 'Listing price', amount: listing.price.amount},

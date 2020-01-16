@@ -1,23 +1,21 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 function DashboardBookingsList(props) {
   const list = props.list ? [...props.list] : [];
   if (list.length < 6) {
     while (list.length < 6) {
-      list.push({ id: Math.random() });
+      list.push({id: Math.random()});
     }
   }
   let listItems = [];
 
   if (list) {
-    listItems = list.map(item => (
+    listItems = list.map((item) => (
       <li className="listing-item" key={item.id}>
         {item.listing && (
           <Link href={`/transactions/` + item.id}>
             <a>
-              <h4>
-                {item.startDate} - {item.endDate}
-              </h4>
+              <h4>{item.location}</h4>
               <h3>{item.listing.title}</h3>
               {<img src={item.listing.image} />}
             </a>

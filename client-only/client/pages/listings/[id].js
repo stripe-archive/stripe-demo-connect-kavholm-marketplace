@@ -6,6 +6,7 @@ import API from '../../helpers/api';
 
 import BookingModalWrapper from '../../components/bookingModalWrapper';
 import NumberFormat from 'react-number-format';
+import BookingList from '../../components/bookingList';
 
 class Listing extends React.Component {
   constructor() {
@@ -21,18 +22,14 @@ class Listing extends React.Component {
   static async getInitialProps(context) {
     let id = context.query.id;
     let listing = await API.makeRequest('get', `/api/listings/${id}`);
-    let listingAuthor;
-
-    if (listing.author) {
-      listingAuthor = await API.makeRequest(
-        'get',
-        `/api/users/userInfo?id=${listing.author}`,
-      );
-    }
+    let bookings = await API.makeRequest(
+      'get',
+      `/api/transactions/listing?listingId=${listing.id}`,
+    );
 
     return {
       listing: listing,
-      listingAuthor: listingAuthor,
+      bookings: bookings,
     };
   }
 
@@ -51,6 +48,9 @@ class Listing extends React.Component {
 
   render() {
     let listing = this.props.listing;
+    let isListingOwner =
+      this.props.listing.author &&
+      this.props.listing.author.userId == this.props.userProfile.userId;
 
     return (
       <Layout
@@ -157,19 +157,26 @@ class Listing extends React.Component {
                     : 'Please login before buying'}
                 </button>
 
-                {this.props.listingAuthor && (
+                {this.props.listing.author && (
                   <div className="media host">
                     <img
-                      src={this.props.listingAuthor.avatar}
+                      src={this.props.listing.author.avatar}
                       width="36"
                       className="mr-3 avatar"
                     />
                     <div className="media-body">
                       <p>
-                        Listed by {this.props.listingAuthor.firstName}{' '}
-                        {this.props.listingAuthor.lastName}.
+                        Listed by {this.props.listing.author.firstName}{' '}
+                        {this.props.listing.author.lastName}.
                       </p>
                     </div>
+                  </div>
+                )}
+
+                {isListingOwner && (
+                  <div className="bookings">
+                    <h4>Recent bookings</h4>
+                    <BookingList list={this.props.bookings} />
                   </div>
                 )}
               </div>
@@ -331,6 +338,15 @@ class Listing extends React.Component {
 
             .pane-images {
               padding-bottom: 50px;
+            }
+
+            .bookings {
+              margin-top: 50px;
+            }
+
+            .bookings h4 {
+              color: #000;
+              margin-bottom: 20px;
             }
           `}</style>
         </div>

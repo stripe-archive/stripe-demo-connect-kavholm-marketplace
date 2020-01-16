@@ -1,4 +1,5 @@
 import storage from '../../../helpers/storage';
+import API from '../../../helpers/api';
 
 export default async (req, res) => {
   let id = req.query.id;
@@ -25,6 +26,16 @@ export default async (req, res) => {
 
     listing.lineItems = lineItems;
     listing.totalAmount = totalAmount;
+
+    if (listing.authorId) {
+      try {
+        let author = await API.makeRequest(
+          'get',
+          `/api/users/userInfo?id=${listing.authorId}`,
+        );
+        listing.author = author;
+      } catch {}
+    }
 
     return res.status(200).json(listing);
   } catch (err) {

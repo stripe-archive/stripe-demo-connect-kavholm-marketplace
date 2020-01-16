@@ -9,7 +9,8 @@ function BookingsList(props) {
     listItems = list.map((i) => (
       <li className="booking-list-item" key={i.id}>
         <a className="media" href={'/transactions/' + i.id}>
-          <img src={i.user.avatar} height="30" className="mr-3 avatar" />
+          <img src={i.bookingUser.avatar} height="30" className="mr-3 avatar" />
+
           <div className="media-body">
             <p className="booking-date">
               <Moment format="MMM DD">{i.startDate}</Moment>
@@ -17,7 +18,9 @@ function BookingsList(props) {
               <Moment format="MMM DD">{i.endDate}</Moment>
             </p>
             <p>
-              <strong>{i.user.firstName + ' ' + i.user.lastName}</strong>
+              <strong>
+                {i.bookingUser.firstName + ' ' + i.bookingUser.lastName}
+              </strong>
             </p>
           </div>
 
@@ -81,49 +84,4 @@ function BookingsList(props) {
   );
 }
 
-function ListingsBookingsList(props) {
-  const list = props.list || [];
-
-  let listItems = [];
-
-  if (list) {
-    listItems = list.map((l) => (
-      <div className="booking-list-sub" key={l.title}>
-        <h6 className="title">{l.title}</h6>
-
-        {l.bookings && <BookingsList list={l.bookings} />}
-        {l.bookings && l.bookings.length === 0 && (
-          <span className="empty-text">No bookings yet...</span>
-        )}
-
-        <style jsx>{`
-          .title {
-            font-size: 17px;
-            font-weight: bold;
-            margin-bottom: 20px;
-          }
-
-          .empty-text {
-            font-size: 14px;
-          }
-        `}</style>
-      </div>
-    ));
-  }
-
-  return (
-    <div className="listings-bookings-list">
-      {listItems}
-
-      <style jsx>{`
-        .listings-bookings-list ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-      `}</style>
-    </div>
-  );
-}
-
-export default ListingsBookingsList;
+export default BookingsList;

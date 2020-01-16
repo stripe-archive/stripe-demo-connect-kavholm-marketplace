@@ -73,10 +73,10 @@ class Dashboard extends React.Component {
                 <div className="col-4">
                   <NewButton
                     showTip={showTip}
-                    label="Show listings"
+                    label="Show homes"
                     link="/listings"
-                    tipTitle="No transactions yet?"
-                    tipBody="Explore the listings in Global Marketplace"
+                    tipTitle="No trips booked yet?"
+                    tipBody="Explore the homes in Kavholm's marketplace"
                   />
                 </div>
               </div>

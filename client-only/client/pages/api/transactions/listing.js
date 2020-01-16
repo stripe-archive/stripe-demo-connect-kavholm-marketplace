@@ -1,5 +1,6 @@
 import storage from '../../../helpers/storage';
 import requireAuthEndpoint from '../../../utils/requireAuthEndpoint';
+import API from '../../../helpers/api';
 
 export default requireAuthEndpoint(async (req, res) => {
   let authenticatedUserId = req.authToken.userId;
@@ -12,6 +13,16 @@ export default requireAuthEndpoint(async (req, res) => {
       .get('transactions')
       .filter({listingId: listingId})
       .value();
+
+    transactions.forEach(async (t) => {
+      if (t.bookingUserId) {
+        let bookingUser = await API.makeRequest(
+          'get',
+          `/api/users/userInfo?id=${t.bookingUserId}`,
+        );
+        t.bookingUser = bookingUser;
+      }
+    });
 
     return res.status(200).json(transactions);
   } catch (err) {

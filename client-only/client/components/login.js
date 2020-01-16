@@ -39,7 +39,7 @@ class Login extends Component {
 
   loginAsSeller() {
     this.setState({
-      email: 'seller@kavholm.com',
+      email: 'owner@kavholm.com',
       password: 'test',
     });
   }

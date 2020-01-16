@@ -21,16 +21,34 @@ class NewListing extends React.Component {
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
       >
-        <div className="listings">
-          <hr className="bg-light" />
-
-          <h3>Create new listing</h3>
-
-          <ListingForm />
-
+        <div className="listing-new-page">
+          <div className="splash-image">
+            <div className="container">
+              <div className="box popover">
+                <h3>Create new listing</h3>
+                <ListingForm />
+              </div>
+            </div>
+          </div>
           <style jsx>{`
-            .listings {
-              padding-bottom: 100px;
+            .listing-new-page {
+              width: 100%;
+              position: absolute;
+              top: 110px;
+              left: 0;
+              right: 0;
+              bottom: 0;
+            }
+
+            .splash-image {
+              background: linear-gradient(
+                  0deg,
+                  rgba(255, 255, 255, 0) 50%,
+                  #ffffff 100%
+                ),
+                url(https://images.unsplash.com/photo-1501004745788-4f4cb08ba8bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80)
+                  no-repeat;
+              background-size: cover;
             }
           `}</style>
         </div>

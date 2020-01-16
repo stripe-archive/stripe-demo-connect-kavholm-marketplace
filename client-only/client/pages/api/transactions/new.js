@@ -35,7 +35,7 @@ export default requireAuthEndpoint(async (req, res) => {
     // Step 3: Resolve hosts Stripe account id
     let listingHostUser = storage
       .get('users')
-      .find({userId: listing.author})
+      .find({userId: listing.authorId})
       .pick('stripe')
       .value();
 

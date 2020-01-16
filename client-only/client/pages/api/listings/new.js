@@ -13,7 +13,7 @@ export default requireAuthEndpoint(async (req, res) => {
 
     const listingObject = {
       id: shortid.generate(),
-      author: authenticatedUserId,
+      authorId: authenticatedUserId,
       description: description,
       title: title,
       location: location,

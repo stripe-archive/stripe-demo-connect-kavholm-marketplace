@@ -17,12 +17,12 @@ const Layout = (props) => (
     <div className="api-warning">
       <p>
         {!getConfig().publicRuntimeConfig.stripe.publicKey &&
-          "Looks like don't have your Stripe Environment variables set. Forgot to set process.env.STRIPE_SECRET_KEY?"}
+          "Looks like don't have your Stripe Environment variables set. Forgot to set .env file or process.env.STRIPE_SECRET_KEY?"}
 
         {getConfig().publicRuntimeConfig.stripe.publicKey &&
           getConfig().publicRuntimeConfig.stripe.publicKey.indexOf('test') >
             0 &&
-          'Heads up: Looks like your are using a test-mode Stripe API key. All good?'}
+          'Looks like your are using a test-mode Stripe API key. Is this intentional?'}
       </p>
     </div>
 
@@ -224,9 +224,12 @@ const Layout = (props) => (
       .api-warning {
         position: absolute;
         top: 30px;
-        left: 50%;
+        left: 0;
+        right: 0;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
         z-index: 10;
-        margin-left: -300px;
         padding: 0 20px;
         height: 50px;
         line-height: 50px;

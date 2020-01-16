@@ -38,7 +38,7 @@ class Home extends React.Component {
               demo that uses <a href="https://stripe.com/connect">Connect</a> to
               build a global marketplace.{' '}
               <a
-                class="github arrow"
+                className="github arrow"
                 href="https://github.com/stripe-samples/connect-kavholm-marketplace"
               >
                 View on GitHub

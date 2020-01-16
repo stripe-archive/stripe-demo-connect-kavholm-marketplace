@@ -65,7 +65,6 @@ STRIPE_SECRET_KEY=<replace-with-your-secret-key>
 
 ### Using the sample app
 
-1. Go to `/client-only/client`
 1. Run `yarn`
 1. Run `yarn dev`
 1. You are now ready to use the app running in [http://localhost:3000](http://localhost:3000).

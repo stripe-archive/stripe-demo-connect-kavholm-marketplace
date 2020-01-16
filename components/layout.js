@@ -14,17 +14,14 @@ const Layout = (props) => (
       width={props.width}
     />
 
-    <div className="api-warning">
-      <p>
-        {!getConfig().publicRuntimeConfig.stripe.publicKey &&
-          "Looks like don't have your Stripe Environment variables set. Forgot to set .env file or process.env.STRIPE_SECRET_KEY?"}
-
-        {getConfig().publicRuntimeConfig.stripe.publicKey &&
-          getConfig().publicRuntimeConfig.stripe.publicKey.indexOf('test') >
-            0 &&
-          'Looks like your are using a test-mode Stripe API key. Is this intentional?'}
-      </p>
-    </div>
+    {!getConfig().publicRuntimeConfig.stripe.publicKey && (
+      <div className="api-warning">
+        <p>
+          "Looks like don't have your Stripe Environment variables set. Forgot
+          to set .env file or process.env.STRIPE_SECRET_KEY?"
+        </p>
+      </div>
+    )}
 
     <div
       className={
@@ -223,32 +220,24 @@ const Layout = (props) => (
 
       .api-warning {
         position: absolute;
-        top: 30px;
+        top: 0;
         left: 0;
         right: 0;
-        max-width: 600px;
         margin-left: auto;
         margin-right: auto;
         z-index: 10;
-        padding: 0 20px;
-        height: 50px;
-        line-height: 50px;
+        padding: 2px;
+        min-height: 30px;
 
-        border-radius: 50px;
-        background: #fdf6c3;
+        background: #ffe946;
         text-align: center;
         font-size: 12px;
         box-shadow: 0 15px 35px 0 rgba(50, 50, 93, 0.1),
           0 5px 15px 0 rgba(0, 0, 0, 0.07);
       }
 
-      .annotation img,
-      .annotation p {
-        display: inline-block;
-      }
-
-      .annotation img {
-        margin-right: 10px;
+      .api-warning p {
+        margin: 0;
       }
     `}</style>
   </>

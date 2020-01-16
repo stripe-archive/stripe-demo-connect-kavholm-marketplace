@@ -29,13 +29,14 @@ class Home extends React.Component {
           </div>
 
           <div className="annotation">
-            <a className="stripe" href="https://stripe.com">
-              <img src="static/stripe.svg" width="60" />
-            </a>
             <p>
-              Kavholm is a demo Stripe demo that uses{' '}
-              <a href="https://stripe.com/connect">Connect</a> to build a global
-              marketplace.{' '}
+              <img src="static/stripe.svg" width="60" />
+              Kavholm is a demo{' '}
+              <a className="stripe" href="https://stripe.com">
+                Stripe
+              </a>{' '}
+              demo that uses <a href="https://stripe.com/connect">Connect</a> to
+              build a global marketplace.{' '}
               <a
                 class="github arrow"
                 href="https://github.com/stripe-samples/connect-kavholm-marketplace"
@@ -82,10 +83,10 @@ class Home extends React.Component {
           }
 
           .popover {
-            padding: 40px;
+            padding: 20px;
             position: relative;
-            width: 500px;
-            max-width: 500px;
+            width: 100%;
+
             background: #ffffff;
             border: 0;
             box-shadow: 0 15px 35px 0 rgba(50, 50, 93, 0.1),
@@ -93,6 +94,13 @@ class Home extends React.Component {
             border-radius: 6px;
           }
 
+          @media (min-width: 768px) {
+            .popover {
+              padding: 40px;
+              width: 500px;
+              max-width: 500px;
+            }
+          }
           .booking-form {
             width: 100%;
             margin: 20px 0;
@@ -105,26 +113,37 @@ class Home extends React.Component {
 
           .annotation {
             position: absolute;
-            bottom: 30px;
-            left: 50%;
-            margin-left: -300px;
-            padding: 0 20px;
-            height: 50px;
-            line-height: 50px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            min-height: 50px;
 
-            border-radius: 50px;
             background: #fff;
             text-align: center;
             font-size: 12px;
           }
 
           .annotation img,
+          .annotation a,
           .annotation p {
             display: inline-block;
+            margin: 0;
           }
 
           .annotation img {
             margin-right: 10px;
+          }
+
+          @media (min-width: 768px) {
+            .annotation {
+              max-width: 700px;
+              margin-left: auto;
+              margin-right: auto;
+              bottom: 30px;
+              border-radius: 50px;
+              padding: 10px;
+            }
           }
         `}</style>
       </Layout>

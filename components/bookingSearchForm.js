@@ -2,14 +2,24 @@ function bookingSearchForm(props) {
   return (
     <div
       className={
-        props.size && props.size == "large"
-          ? "booking-search-form large"
-          : "booking-search-form"
+        props.size && props.size == 'large'
+          ? 'booking-search-form large'
+          : 'booking-search-form'
       }
     >
       <input type="search" className="search" placeholder="Where to?" />
-      <input type="datepicker" className="date" placeholder="Check in" />
-      <input type="datepicker" className="date right" placeholder="Check out" />
+      <div className="row">
+        <div className="col-6">
+          <input type="datepicker" className="date" placeholder="Check in" />
+        </div>
+        <div className="col-6">
+          <input
+            type="datepicker"
+            className="date right"
+            placeholder="Check out"
+          />
+        </div>
+      </div>
       <select className="guests dropdown-toggle">
         <option>Guests</option>
         <option>1</option>
@@ -28,13 +38,8 @@ function bookingSearchForm(props) {
         }
 
         .booking-search-form.large .date {
-          width: 48%;
           margin-right: 16px;
           display: inline;
-        }
-
-        .booking-search-form.large .date.right {
-          margin-right: 0;
         }
 
         .booking-search-form.large .search,

@@ -1,4 +1,4 @@
-const env = require('dotenv').config({path: '../../.env'});
+const env = require('dotenv').config({path: './.env'});
 
 module.exports = {
   target: 'server',

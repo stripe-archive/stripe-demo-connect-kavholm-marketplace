@@ -22,7 +22,7 @@ class AuthStripeCallback extends React.Component {
       });
 
       if (req && req.status === 'ok') {
-        return redirect('/dashboard');
+        return redirect('/dashboard/host');
       } else {
         logger.log('req', req);
       }

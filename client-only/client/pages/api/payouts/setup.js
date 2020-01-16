@@ -1,19 +1,14 @@
 import fetch from 'isomorphic-unfetch';
-import config from '../../../helpers/config';
 import storage from '../../../helpers/storage';
 import logger from '../../../helpers/logger';
 
 import requireAuthEndpoint from '../../../utils/requireAuthEndpoint';
 
+const env = require('dotenv').config({path: './.env'});
+
 let makeStripeConnectRequest = async (code) => {
-  let clientId =
-    process.env.NODE_ENV === 'production'
-      ? config.stripe.live.clientId
-      : config.stripe.test.clientId;
-  let secretKey =
-    process.env.NODE_ENV === 'production'
-      ? config.stripe.live.secretKey
-      : config.stripe.test.secretKey;
+  let clientId = process.env.STRIPE_CLIENT_ID;
+  let secretKey = process.env.STRIPE_SECRET_KEY;
 
   let params = {
     grant_type: 'authorization_code',
@@ -60,6 +55,7 @@ export default requireAuthEndpoint(async (req, res) => {
     // 1) Post the authorization code to Stripe to complete the Express onboarding flow
     let stripeConnectRequest = await makeStripeConnectRequest(code);
 
+    console.log('stripeConnectRequest', stripeConnectRequest);
     // 2) Update User account with StripeUserId
     let stripeUserId = stripeConnectRequest.stripe_user_id;
 

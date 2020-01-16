@@ -1,17 +1,17 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-function DashboardListingsList(props) {
+function ListingsList(props) {
   const list = props.list ? [...props.list] : [];
   if (list.length < 4) {
     while (list.length < 4) {
-      list.push({ id: Math.random() });
+      list.push({id: Math.random()});
     }
   }
 
   let listItems = [];
 
   if (list) {
-    listItems = list.map(l => (
+    listItems = list.map((l) => (
       <li className="listing-item" key={l.id}>
         <div className="clip">
           {l.title && (
@@ -19,15 +19,15 @@ function DashboardListingsList(props) {
               <a>
                 {<img src={l.image} />}
                 <div className="overlay" />
-                <h2>{l.title1}</h2>
-                <h3>{l.title2}</h3>
+                <h2>{l.location}</h2>
+                <h3>{l.title}</h3>
               </a>
             </Link>
           )}
         </div>
         <style jsx>{`
           .listing-item {
-            height: 300px;
+            height: 233px;
             border: 0;
             background: #f6f6f6;
             position: relative;
@@ -128,4 +128,4 @@ function DashboardListingsList(props) {
   );
 }
 
-export default DashboardListingsList;
+export default ListingsList;

@@ -3,8 +3,7 @@ import {redirect} from '../../utils/redirect';
 
 import Layout from '../../components/layout';
 import API from '../../helpers/api';
-import ListingsBookingsList from '../../components/bookingList';
-import DashboardListingsList from '../../components/dashboardListingsList';
+import ListingsList from '../../components/listingsList';
 import DashboardHeader from '../../components/dashboardHeader';
 import NewButton from '../../components/newButton';
 import PayoutSetup from '../../components/payoutSetup';
@@ -17,45 +16,11 @@ class Dashboard extends React.Component {
   static async getInitialProps(context) {
     let userProfile = await API.makeRequest('get', '/api/profile');
     let userListings = await API.makeRequest('get', '/api/profile/listings');
-    let userBookings = [];
-
-    if (userListings && userListings.length) {
-      let listingBookings = await userListings.map(async (listing) => {
-        let bookings = await API.makeRequest(
-          'get',
-          `/api/transactions/listing?listingId=${listing.id}`,
-        );
-
-        let bookingsDetailsReqs = await bookings.map(async (booking) => {
-          let user = await API.makeRequest(
-            'get',
-            `/api/users/userInfo?id=${booking.bookingUserId}`,
-          );
-
-          return {
-            ...booking,
-            user,
-          };
-        });
-
-        let bookingDetails = await Promise.all(bookingsDetailsReqs);
-
-        return {
-          id: listing.id,
-          title: listing.title,
-          bookings: bookingDetails,
-        };
-      });
-
-      userBookings = await Promise.all(listingBookings);
-    }
-
     let userBalance = await API.makeRequest('get', '/api/profile/balance');
 
     return {
       profile: userProfile,
       userListings: userListings,
-      userBookings: userBookings,
       userBalance: userBalance,
       dashboardType: 'host',
     };
@@ -92,7 +57,7 @@ class Dashboard extends React.Component {
 
           {hasPayoutSetup ? (
             <div className="row">
-              <div className="col-8">
+              <div className="col-12">
                 <div className="row">
                   <div className="col-8">
                     <div className="clearfix">
@@ -102,23 +67,16 @@ class Dashboard extends React.Component {
                   <div className="col-4">
                     <NewButton
                       showTip={showListingTip}
-                      label="New"
+                      label="New listing"
                       link="/listings/new"
                       tipTitle="Time to create your first listing."
-                      tipBody="You can now add your home to Global Marketplace."
+                      tipBody="You can now add your home to Kavholm"
                     />
                   </div>
                 </div>
 
                 {this.props.userListings && (
-                  <DashboardListingsList list={this.props.userListings} />
-                )}
-              </div>
-
-              <div className="col-4">
-                <h4>Recent bookings</h4>
-                {this.props.userBookings && (
-                  <ListingsBookingsList list={this.props.userBookings} />
+                  <ListingsList list={this.props.userListings} />
                 )}
               </div>
             </div>

@@ -6,17 +6,17 @@ The marketplace is generic with the notion of `buyers`, `sellers` and `transacti
 
 Sellers are on-boarded using [Stripe Connect Express](https://stripe.com/connect/express) which gives sellers a Stripe account connected to the marketplace. When funds are accepted by the marketplace via card payments, the funds are routed to the seller's Stripe accounts as a part of each marketplace transaction.
 
-See a hosted version of the [demo](https://qhsur.sse.codesandbox.io/) in test mode or [fork on codesandbox.io](https://codesandbox.io/s/github/stripe/stripe-demo-connect-kavholm-marketplace)
+See a hosted version of the [demo](https://rsikt.sse.codesandbox.io/) in test mode or [fork on codesandbox.io](https://codesandbox.io/s/github/stripe/stripe-demo-connect-kavholm-marketplace)
 
 <img src="./demo.png" alt="Preview of recipe" align="center">
 
 ## Features
 
-- Users can signup and optionally decide to become sellers by onboarding to Stripe.
+- Users can signup and optionally decide to become sellers by on-boarding to Stripe.
 - Listings can be listed, shown, added, edited and deleted.
 - Bookings can be viewed in detail as transactions.
 - Card payments are accepted by the marketplace and funds are routed to the sellers connected Stripe account.
-- Users can visit their dashboard to get an overview of their listings, transcations and account balances.
+- Users can visit their dashboard to get an overview of their listings, transaction and account balances.
 - Simple admin page for housekeeping.
 
 ## Architecture
@@ -56,11 +56,12 @@ Copy the .env.example file into a file named .env in the folder of the server yo
 cp .env.example .env
 ```
 
-You will need a Stripe account in order to run the demo. Once you set up your account, go to the Stripe [developer dashboard](https://stripe.com/docs/development#api-keys) to find your API keys.
+You will need a Stripe account in order to run the demo. Once you set up your account, go to the Stripe [developer dashboard](https://stripe.com/docs/development#api-keys) to find your API keys (developer settings), and your Connect User Id (Connect setttings).
 
 ```
 STRIPE_PUBLIC_KEY=<replace-with-your-publishable-key>
 STRIPE_SECRET_KEY=<replace-with-your-secret-key>
+STRIPE_CLIENT_ID=<replace-with-your-connect-client-id>
 ```
 
 ### Using the sample app

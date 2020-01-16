@@ -68,8 +68,8 @@ class Listing extends React.Component {
           />
 
           <div className="content">
-            <div className="row">
-              <div className="col-6 pane-images">
+            <div className="row justify-content-between">
+              <div className="col-lg-6 pane-images">
                 <img src={this.props.listing.image} className="image-main" />
 
                 <div className="row">
@@ -100,7 +100,7 @@ class Listing extends React.Component {
                 </div>
               </div>
 
-              <div className="col-6 pane-info">
+              <div className="col-lg-6 pane-info">
                 <div className="booking-info">
                   <h1>{listing.title}</h1>
                   <p className="bookingInfo">{listing.description}</p>
@@ -228,7 +228,6 @@ class Listing extends React.Component {
 
             .pane-info {
               flex: 0 0 520px;
-              padding-left: 88px;
               justify-content: center;
               display: flex;
               flex-direction: column;

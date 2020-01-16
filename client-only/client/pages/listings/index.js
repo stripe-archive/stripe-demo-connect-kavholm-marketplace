@@ -27,7 +27,6 @@ class Listings extends React.Component {
 
           <style jsx>{`
             .listings {
-              padding-bottom: 100px;
             }
           `}</style>
         </div>

@@ -85,9 +85,6 @@ class Dashboard extends React.Component {
           </div>
         </div>
         <style jsx>{`
-          .dashboard {
-            padding-bottom: 100px;
-          }
           .dashboard h4 {
             font-size: 24px;
             font-weight: bold;

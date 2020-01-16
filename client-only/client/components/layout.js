@@ -218,6 +218,7 @@ const Layout = (props) => (
       .app {
         overflow: hidden;
         min-height: calc(100% - 125px);
+        padding-bottom: 20px;
       }
 
       .api-warning {

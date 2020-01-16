@@ -65,8 +65,8 @@ STRIPE_SECRET_KEY=<replace-with-your-secret-key>
 
 ### Using the sample app
 
-1. Run `yarn`
-1. Run `yarn dev`
+1. Run `npm install`
+1. Run `npm run dev`
 1. You are now ready to use the app running in [http://localhost:3000](http://localhost:3000).
 1. The marketplace should be available, and if you go to `/login` you should be able to login as both buyers and sellers using the demo buttons.
 1. 🎉

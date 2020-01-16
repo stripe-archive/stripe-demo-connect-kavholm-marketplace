@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import { logout } from "../utils/auth";
+import React from 'react';
+import Link from 'next/link';
+import {logout} from '../utils/auth';
 
 class NavProfile extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class NavProfile extends React.Component {
     let items;
     let avatarUrl = this.props.userProfile
       ? this.props.userProfile.avatar
-      : "/static/avatar.png";
+      : '/static/avatar.png';
 
     if (this.props.isAuthenticated) {
       items = (
@@ -75,6 +75,11 @@ class NavProfile extends React.Component {
             object-fit: cover;
             height: 44px;
             margin-right: 4px;
+          }
+
+          :global(.dropdown-menu) {
+            position: absolute !important;
+            z-index: 10000;
           }
         `}</style>
       </ul>

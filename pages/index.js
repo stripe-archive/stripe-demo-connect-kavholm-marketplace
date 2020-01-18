@@ -39,7 +39,7 @@ class Home extends React.Component {
               build a global marketplace.{' '}
               <a
                 className="github arrow"
-                href="https://github.com/stripe-samples/connect-kavholm-marketplace"
+                href="https://github.com/stripe/stripe-demo-connect-kavholm-marketplace"
               >
                 View on GitHub
               </a>

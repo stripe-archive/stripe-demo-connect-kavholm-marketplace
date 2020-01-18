@@ -3,9 +3,11 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "gcp-build": "next build",
     "start": "next start -p $PORT"
   },
   "dependencies": {
+    "@google-cloud/storage": "^4.2.0",
     "babel-polyfill": "^6.26.0",
     "bcrypt": "^3.0.6",
     "dotenv": "^8.2.0",

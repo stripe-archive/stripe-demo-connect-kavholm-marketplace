@@ -15,7 +15,7 @@ class Home extends React.Component {
           <div className="splash-image">
             <div className="container">
               <div className="popover">
-                <h1>A global marketplace sample by Stripe</h1>
+                <h1>Book unique places to stay around the globe</h1>
 
                 <HomeSearchForm size="large" />
 
@@ -35,11 +35,15 @@ class Home extends React.Component {
               <a className="stripe" href="https://stripe.com">
                 Stripe
               </a>{' '}
-              demo that uses <a href="https://stripe.com/connect">Connect</a> to
-              build a global marketplace.{' '}
+              that uses{' '}
+              <a href="https://stripe.com/connect" target="_blank">
+                Connect
+              </a>{' '}
+              to build a global marketplace.{' '}
               <a
                 className="github arrow"
                 href="https://github.com/stripe/stripe-demo-connect-kavholm-marketplace"
+                target="_blank"
               >
                 View on GitHub
               </a>

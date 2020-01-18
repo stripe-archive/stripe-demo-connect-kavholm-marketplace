@@ -6,7 +6,7 @@ The marketplace is generic with the notion of `buyers`, `sellers` and `transacti
 
 Sellers are on-boarded using [Stripe Connect Express](https://stripe.com/connect/express) which gives sellers a Stripe account connected to the marketplace. When funds are accepted by the marketplace via card payments, the funds are routed to the seller's Stripe accounts as a part of each marketplace transaction.
 
-See a hosted version of the [demo](https://rsikt.sse.codesandbox.io/) in test mode or [fork on codesandbox.io](https://codesandbox.io/s/github/stripe/stripe-demo-connect-kavholm-marketplace)
+See a hosted version of the [demo](https://kavholm.com/) in test mode or [fork on codesandbox.io](https://codesandbox.io/s/github/stripe/stripe-demo-connect-kavholm-marketplace)
 
 <img src="./demo.png" alt="Preview of recipe" align="center">
 

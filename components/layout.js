@@ -18,15 +18,14 @@ const Layout = (props) => (
       </div>
     )}
 
-    {getConfig().publicRuntimeConfig.stripe.publicKey &&
-      getConfig().publicRuntimeConfig.stripe.publicKey.indexOf('pk') > -1 && (
-        <div className="api-warning">
-          <p>
-            Kavholm is currently in test-mode. Only test cards can be used, and
-            no real transations are processsed.
-          </p>
-        </div>
-      )}
+    {getConfig().publicRuntimeConfig.isTestMode && (
+      <div className="api-warning">
+        <p>
+          Kavholm is currently in test-mode. Only test cards can be used, and no
+          real transations are processsed.
+        </p>
+      </div>
+    )}
 
     <Nav
       isAuthenticated={props.isAuthenticated}

@@ -17,5 +17,8 @@ module.exports = {
     stripe: {
       publicKey: process.env.STRIPE_PUBLIC_KEY,
     },
+    isTestMode:
+      process.env.STRIPE_PUBLIC_KEY &&
+      process.env.STRIPE_PUBLIC_KEY.indexOf('pk') > -1,
   },
 };

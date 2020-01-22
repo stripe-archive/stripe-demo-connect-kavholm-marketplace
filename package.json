@@ -7,6 +7,10 @@
     "gcp-build": "next build",
     "start": "next start -p $PORT"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stripe/stripe-demo-connect-kavholm-marketplace"
+  },  
   "dependencies": {
     "@google-cloud/storage": "^4.2.0",
     "babel-polyfill": "^6.26.0",

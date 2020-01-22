@@ -8,20 +8,31 @@ const Layout = (props) => (
   <>
     <Head title={props.title || 'Home'} />
     <NProgress />
+
+    {!getConfig().publicRuntimeConfig.stripe.publicKey && (
+      <div className="api-warning">
+        <p>
+          Looks like don't have your Stripe Environment variables set. Forgot to
+          set .env file or process.env.STRIPE_SECRET_KEY?
+        </p>
+      </div>
+    )}
+
+    {getConfig().publicRuntimeConfig.stripe.publicKey &&
+      getConfig().publicRuntimeConfig.stripe.publicKey.indexOf('pk') > -1 && (
+        <div className="api-warning">
+          <p>
+            Kavholm is currently in test-mode. Only test cards can be used, and
+            no real transations are processsed.
+          </p>
+        </div>
+      )}
+
     <Nav
       isAuthenticated={props.isAuthenticated}
       userProfile={props.userProfile}
       width={props.width}
     />
-
-    {!getConfig().publicRuntimeConfig.stripe.publicKey && (
-      <div className="api-warning">
-        <p>
-          "Looks like don't have your Stripe Environment variables set. Forgot
-          to set .env file or process.env.STRIPE_SECRET_KEY?"
-        </p>
-      </div>
-    )}
 
     <div
       className={
@@ -166,6 +177,11 @@ const Layout = (props) => (
         font-size: 16px;
       }
 
+      :global(input:focus, select:focus) {
+        outline: none;
+        box-shadow: 0px 0px 5px rgba(0, 103, 244, 1);
+      }
+
       :global(select) {
         border: 1px solid rgb(229, 229, 229);
         border-radius: 8px;
@@ -219,14 +235,10 @@ const Layout = (props) => (
       }
 
       .api-warning {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
         margin-left: auto;
         margin-right: auto;
         z-index: 10;
-        padding: 2px;
+        padding: 5px 10px;
         min-height: 30px;
 
         background: #ffe946;

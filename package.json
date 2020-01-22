@@ -1,5 +1,6 @@
 {
   "name": "stripe-demo-connect-kavholm-marketplace",
+  "license": "MIT",
   "scripts": {
     "dev": "next",
     "build": "next build",

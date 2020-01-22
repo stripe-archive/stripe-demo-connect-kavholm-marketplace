@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Layout from '../../components/layout';
 import API from '../../helpers/api';
 import ListingForm from '../../components/listingForm';
+import getConfig from 'next/config';
 
 class NewListing extends React.Component {
   constructor(props) {
@@ -16,6 +17,8 @@ class NewListing extends React.Component {
   }
 
   render() {
+    let isTestMode = getConfig().publicRuntimeConfig.isTestMode;
+
     return (
       <Layout
         isAuthenticated={this.props.isAuthenticated}
@@ -26,7 +29,14 @@ class NewListing extends React.Component {
             <div className="container">
               <div className="box popover">
                 <h3>Create new listing</h3>
-                <ListingForm />
+
+                {isTestMode && (
+                  <p>
+                    Creating new listings have been disabled as Kavholm runs in
+                    test-mode.
+                  </p>
+                )}
+                {!isTestMode && <ListingForm />}
               </div>
             </div>
           </div>

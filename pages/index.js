@@ -54,7 +54,7 @@ class Home extends React.Component {
           .home {
             width: 100%;
             position: absolute;
-            top: 110px;
+            top: 150px;
             left: 0;
             right: 0;
             bottom: 0;

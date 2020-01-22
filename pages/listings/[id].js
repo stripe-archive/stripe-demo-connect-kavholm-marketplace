@@ -7,6 +7,7 @@ import API from '../../helpers/api';
 import BookingModalWrapper from '../../components/bookingModalWrapper';
 import NumberFormat from 'react-number-format';
 import BookingList from '../../components/bookingList';
+import Link from 'next/link';
 
 class Listing extends React.Component {
   constructor() {
@@ -148,13 +149,23 @@ class Listing extends React.Component {
                     </li>
                   </ul>
                 </div>
-                <button
-                  className="btn btn-primary btn-book"
-                  onClick={this.handleBookingStartClick}
-                  disabled={!this.props.isAuthenticated}
-                >
-                  {this.props.isAuthenticated ? 'Book now' : 'Sign in to book'}
-                </button>
+                {this.props.isAuthenticated && (
+                  <button
+                    className="btn btn-primary btn-book"
+                    onClick={this.handleBookingStartClick}
+                    disabled={!this.props.isAuthenticated}
+                  >
+                    Book now
+                  </button>
+                )}
+
+                {!this.props.isAuthenticated && (
+                  <Link href="/login">
+                    <button className="btn btn-primary btn-book">
+                      Sign in to book
+                    </button>
+                  </Link>
+                )}
 
                 {this.props.listing.author && (
                   <div className="media host">

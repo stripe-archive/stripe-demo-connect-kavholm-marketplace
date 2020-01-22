@@ -68,27 +68,27 @@ class Listing extends React.Component {
           />
 
           <div className="content">
-            <div className="row justify-content-between">
-              <div className="col-12 col-lg-6 pane-images">
+            <div className="row">
+              <div className="col-6 pane-images">
                 <img src={this.props.listing.image} className="image-main" />
 
                 <div className="row">
                   <div className="col-6">
                     <img
-                      src="https://placehold.jp/255x238.png"
+                      src={this.props.listing.image2}
                       className="image-small"
                     />
                   </div>
                   <div className="col-6">
                     <img
-                      src="https://placehold.jp/255x238.png"
+                      src={this.props.listing.image3}
                       className="image-small"
                     />
                   </div>
                 </div>
 
                 <div className="image-footer">
-                  <div>See more photos here</div>
+                  <div>See more photos</div>
                   <div className="widgets">
                     <div style={{marginRight: '12px'}}>
                       <img src="/static/share.svg" /> Share
@@ -100,21 +100,22 @@ class Listing extends React.Component {
                 </div>
               </div>
 
-              <div className="col-12 col-lg-6 pane-info">
+              <div className="col-6 pane-info">
                 <div className="booking-info">
                   <h1>{listing.title}</h1>
-                  <p className="bookingInfo">{listing.description}</p>
+
                   <div className="priceInfo">
                     <span className="price">
                       <NumberFormat
                         value={listing.totalAmount / 100}
                         displayType={'text'}
                         thousandSeparator={true}
-                        prefix={listing.price.currency + ' '}
+                        prefix={listing.price.currency + ''}
                       />
                     </span>
                     <img className="stars" src="/static/stars.svg" />
                   </div>
+                  <p className="supporting-text">{listing.description}</p>
 
                   <hr />
                   <ul className="lineItems">
@@ -126,7 +127,7 @@ class Listing extends React.Component {
                             value={item.amount / 100}
                             displayType={'text'}
                             thousandSeparator={true}
-                            prefix={listing.price.currency + ' '}
+                            prefix={listing.price.currency + ''}
                           />
                         </span>
                       </li>
@@ -141,7 +142,7 @@ class Listing extends React.Component {
                           value={listing.totalAmount / 100}
                           displayType={'text'}
                           thousandSeparator={true}
-                          prefix={listing.price.currency + ' '}
+                          prefix={listing.price.currency + ''}
                         />
                       </span>
                     </li>
@@ -152,9 +153,7 @@ class Listing extends React.Component {
                   onClick={this.handleBookingStartClick}
                   disabled={!this.props.isAuthenticated}
                 >
-                  {this.props.isAuthenticated
-                    ? 'Book now'
-                    : 'Please login before buying'}
+                  {this.props.isAuthenticated ? 'Book now' : 'Sign in to book'}
                 </button>
 
                 {this.props.listing.author && (
@@ -162,12 +161,12 @@ class Listing extends React.Component {
                     <img
                       src={this.props.listing.author.avatar}
                       width="36"
-                      className="mr-3 avatar"
+                      className="mr-3"
                     />
                     <div className="media-body">
                       <p>
                         Listed by {this.props.listing.author.firstName}{' '}
-                        {this.props.listing.author.lastName}.
+                        {this.props.listing.author.lastName}
                       </p>
                     </div>
                   </div>
@@ -210,86 +209,71 @@ class Listing extends React.Component {
               font-weight: bold;
               text-decoration: underline;
             }
-            :global(button) {
-              background-color: #0055ff;
-              color: white;
-              width: 100%;
-              height: 44px;
-              font-weight: 500;
-              font-size: 17px;
-              border-radius: 4px;
-              border: 0;
-            }
-
-            :global(button:hover) {
-              background-color: #0242c3;
-              cursor: pointer;
-            }
 
             .pane-info {
               flex: 0 0 520px;
+              padding-left: 60px;
               justify-content: center;
               display: flex;
               flex-direction: column;
-              padding-bottom: 50px;
+              padding-bottom: 60px;
             }
 
-            h1 {
-              font-size: 32px;
-            }
-
-            .bookingInfo {
-              font-size: 17px;
-              color: #939393;
-            }
             .priceInfo {
               display: flex;
               font-size: 14px;
               letter-spacing: -0.15px;
-              margin-bottom: 30px;
+              margin: 24px 0;
             }
             .priceInfo .price {
-              font-size: 24px;
+              font-size: 20px;
               font-weight: 500;
-              color: #373737;
-              padding-right: 5px;
+              color: #202020;
+              padding-right: 4px;
             }
             .priceInfo img {
-              padding-left: 30px;
+              padding-left: 32px;
             }
             .lineItems {
               list-style-type: none;
               padding: 0;
               font-size: 14px;
-              color: #666666;
-              margin-top: 20px;
-              margin-bottom: 20px;
+              color: #676767;
+              margin: 12px 0 20px;
             }
             .lineItemsTotal {
-              color: #000000;
-              font-size: 17px;
+              color: #202020;
+              font-size: 20px;
               font-weight: 500;
+              margin: 16px 0 40px;
             }
 
             .lineItems li {
-              padding-top: 2px;
-              padding-bottom: 2px;
+              padding-top: 4px;
+              padding-bottom: 4px;
               display: flex;
               justify-content: space-between;
-              height: 26px;
+              height: 24px;
             }
+
             hr {
               border: 0;
-              border-top: 1px solid #d6d6d6;
+              opacity: 0.8;
+              border-top: 1px solid #dee2e6;
+              margin-bottom: 0;
             }
 
             .host {
-              margin-top: 15px;
+              margin-top: 40px;
             }
 
             .host img {
-              margin-right: 15px;
+              margin-right: 8px;
               align-self: center;
+              border-radius: 32px;
+              width: 32px;
+              object-fit: cover;
+              height: 32px;
             }
 
             .host .media-body {
@@ -302,16 +286,11 @@ class Listing extends React.Component {
               text-decoration: none;
               margin: 0;
               line-height: 18px;
-              padding-top: 8px;
+              padding-top: 6px;
             }
 
             .content {
               color: #676767;
-            }
-
-            h1 {
-              color: #373737;
-              font-weight: 600;
             }
 
             .image-main {
@@ -337,15 +316,6 @@ class Listing extends React.Component {
 
             .pane-images {
               padding-bottom: 50px;
-            }
-
-            .bookings {
-              margin-top: 50px;
-            }
-
-            .bookings h4 {
-              color: #000;
-              margin-bottom: 20px;
             }
           `}</style>
         </div>

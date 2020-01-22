@@ -73,13 +73,13 @@ class ListingForm extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="price">Price per night</label>
+              <label htmlFor="price">Price per night (in cents)</label>
               <input
                 className="form-control"
                 type="text"
                 id="price"
                 name="price"
-                placeholder="$0.00 USD"
+                placeholder="10000 USD"
                 value={this.state.price}
                 onChange={this.handleChange}
               />

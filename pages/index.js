@@ -139,6 +139,11 @@ class Home extends React.Component {
             margin-right: 10px;
           }
 
+          .annotation a:link,
+          .annotation a:visited {
+            color: #32325d;
+          }
+
           @media (min-width: 768px) {
             .annotation {
               max-width: 700px;

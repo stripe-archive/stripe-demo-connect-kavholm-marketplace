@@ -9,10 +9,12 @@ export default requireAuthEndpoint(async (req, res) => {
   // TODO: Does the authenticated user have permissions to read transactions for listing?
 
   try {
-    let transactions = storage
+    let transactionsRaw = storage
       .get('transactions')
       .filter({listingId: listingId})
       .value();
+
+    let transactions = {...transactionsRaw};
 
     transactions.forEach(async (t) => {
       if (t.bookingUserId) {

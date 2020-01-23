@@ -69,8 +69,9 @@ export default requireAuthEndpoint(async (req, res) => {
     return res.status(200).json(response);
   } catch (err) {
     console.log('err', err);
-    return res.status(400).json({
-      error: err,
+    return res.status(500).json({
+      status: 'error',
+      message: err.message,
     });
   }
 });

@@ -182,13 +182,6 @@ class Listing extends React.Component {
                     </div>
                   </div>
                 )}
-
-                {isListingOwner && (
-                  <div className="bookings">
-                    <h4>Recent bookings</h4>
-                    <BookingList list={this.props.bookings} />
-                  </div>
-                )}
               </div>
             </div>
           </div>

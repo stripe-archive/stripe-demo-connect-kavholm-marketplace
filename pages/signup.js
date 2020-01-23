@@ -16,8 +16,8 @@ class Signup extends React.Component {
               <div className="box popover">
                 <h1>Create an account</h1>
                 <p className="supporting-text">
-                  Create a new account, or sign in with one of our demo
-                  accounts.
+                  Create a new account, or sign in with one of{' '}
+                  <a href="/login">our demo accounts on login</a>.
                 </p>
                 <SignupForm />
               </div>

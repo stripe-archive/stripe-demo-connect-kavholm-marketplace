@@ -48,18 +48,6 @@ class SignupForm extends Component {
       <>
         <div className="signup-form">
           <form onSubmit={this.handleSubmit}>
-            <Link href="/login">
-              <button className="btn btn-secondary btn-half">
-                Renter demo
-              </button>
-            </Link>
-
-            <Link href="/login">
-              <button className="btn btn-secondary btn-half right">
-                Owner demo
-              </button>
-            </Link>
-
             <input
               className="new-section name"
               type="text"
@@ -68,6 +56,7 @@ class SignupForm extends Component {
               placeholder="First name"
               value={this.state.firstName}
               onChange={this.handleChange}
+              required
             />
 
             <input
@@ -78,6 +67,7 @@ class SignupForm extends Component {
               placeholder="Last name"
               value={this.state.lastName}
               onChange={this.handleChange}
+              required
             />
 
             <input
@@ -88,6 +78,7 @@ class SignupForm extends Component {
               placeholder="Email"
               value={this.state.email}
               onChange={this.handleChange}
+              required
             />
 
             <input
@@ -98,6 +89,7 @@ class SignupForm extends Component {
               placeholder="Password"
               value={this.state.password}
               onChange={this.handleChange}
+              required
             />
 
             <button type="submit" className="btn btn-primary btn-full">

@@ -70,7 +70,7 @@ class Listing extends React.Component {
 
           <div className="content">
             <div className="row">
-              <div className="col-6 pane-images">
+              <div className="col-12 order-2 col-lg-6 order-lg-1 pane-images">
                 <img src={this.props.listing.image} className="image-main" />
 
                 <div className="row">
@@ -101,7 +101,7 @@ class Listing extends React.Component {
                 </div>
               </div>
 
-              <div className="col-6 pane-info">
+              <div className="col-12 order-1 col-lg-6 order-lg-2 pane-info">
                 <div className="booking-info">
                   <h1>{listing.title}</h1>
 
@@ -223,11 +223,16 @@ class Listing extends React.Component {
 
             .pane-info {
               flex: 0 0 520px;
-              padding-left: 60px;
               justify-content: center;
               display: flex;
               flex-direction: column;
               padding-bottom: 60px;
+            }
+
+            @media (min-width: 768px) {
+              .pane-info {
+                padding-left: 60px;
+              }
             }
 
             .priceInfo {

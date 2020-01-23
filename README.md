@@ -54,7 +54,7 @@ The first thing you need to do is to Create a Connect platform. You do that by g
 
 Once you have registered your Connect platform, you can now generate a Connect User Id. You need this together with your Stripe API keys.
 
-**2. Setup Stripe API keys as environment variables**
+**2. Get Stripe API keys and configure environment variables**
 
 Go to the Stripe [developer dashboard](https://dashboard.stripe.com/apikeys) to find your API keys (developer settings), and your Connect User Id (Connect setttings). 
 

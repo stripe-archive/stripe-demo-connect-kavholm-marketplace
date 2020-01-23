@@ -15,24 +15,10 @@ export default requireAuthEndpoint(async (req, res) => {
     // Step 1: Get listing details
     let listing = await API.makeRequest('get', `/api/listings/${listingId}`);
 
-    // Step 2: Create new transaction
     let amount = listing.totalAmount;
     let currency = listing.price.currency;
 
-    const transaction = {
-      id: shortid.generate(),
-      listingId: String(listingId),
-      bookingUserId: authenticatedUserId,
-      totalAmount: String(amount),
-      currency: currency,
-    };
-
-    storage
-      .get('transactions')
-      .push(transaction)
-      .write();
-
-    // Step 3: Resolve hosts Stripe account id
+    // Step 2: Resolve hosts Stripe account id
     let listingHostUser = storage
       .get('users')
       .find({userId: listing.authorId})
@@ -46,9 +32,7 @@ export default requireAuthEndpoint(async (req, res) => {
 
     let listingHostUserStripeUserId = listingHostUser.stripe.stripeUserId;
 
-    // Step 4: Make destination payment on Stripe where funds are taken from card and transferred to the host's Stripe account.
-
-    let response = {...transaction};
+    // Step 3: Make destination payment on Stripe where funds are taken from card and transferred to the host's Stripe account.
 
     let payParams = {
       payment_method_types: ['card'],
@@ -61,14 +45,30 @@ export default requireAuthEndpoint(async (req, res) => {
     };
 
     const paymentIntent = await stripe.paymentIntents.create(payParams);
-    response = {
-      ...response,
+
+    // Step 4: Create new transaction
+    const transaction = {
+      id: shortid.generate(),
+      listingId: String(listingId),
+      bookingUserId: authenticatedUserId,
+      totalAmount: String(amount),
+      currency: currency,
+      paymentId: paymentIntent.id,
+    };
+
+    storage
+      .get('transactions')
+      .push(transaction)
+      .write();
+
+    let response = {
+      ...transaction,
       paymentRequestSecret: paymentIntent.client_secret,
     };
 
     return res.status(200).json(response);
   } catch (err) {
-    logger.log('err', err);
+    console.log('err', err);
     return res.status(400).json({
       error: err,
     });

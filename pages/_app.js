@@ -6,6 +6,8 @@ import nextCookie from 'next-cookies';
 import Layout from '../components/layout';
 import cookie from 'js-cookie';
 
+import 'react-datepicker/dist/react-datepicker.css';
+
 export default class GlobalMarketplaceApp extends App {
   static getAuthenticationState(appContext) {
     let token = '';

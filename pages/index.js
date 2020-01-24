@@ -31,11 +31,11 @@ class Home extends React.Component {
           <div className="annotation">
             <p>
               <img src="static/stripe.svg" width="60" />
-              Kavholm is a demo{' '}
+              Kavholm is a{' '}
               <a className="stripe" href="https://stripe.com">
                 Stripe
               </a>{' '}
-              that uses{' '}
+              demo that uses{' '}
               <a href="https://stripe.com/connect" target="_blank">
                 Connect
               </a>{' '}
@@ -54,7 +54,7 @@ class Home extends React.Component {
           .home {
             width: 100%;
             position: absolute;
-            top: 150px;
+            top: 160px;
             left: 0;
             right: 0;
             bottom: 0;

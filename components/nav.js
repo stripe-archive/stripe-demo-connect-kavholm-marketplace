@@ -1,7 +1,7 @@
-import React from "react";
-import Link from "next/link";
-import NavProfile from "./navProfile";
-import BookingSearchForm from "./bookingSearchForm";
+import React from 'react';
+import Link from 'next/link';
+import NavProfile from './navProfile';
+import BookingSearchForm from './bookingSearchForm';
 
 class Nav extends React.Component {
   constructor(props) {
@@ -10,9 +10,9 @@ class Nav extends React.Component {
 
   render() {
     let className =
-      "app " + this.props.width && this.props.width == "full"
-        ? "container-fluid nav-fullwidth"
-        : "container";
+      'app ' + this.props.width && this.props.width == 'full'
+        ? 'container-fluid nav-fullwidth'
+        : 'container';
 
     return (
       <div className={className}>
@@ -49,7 +49,6 @@ class Nav extends React.Component {
             }
 
             .logo {
-              padding-right: 42px;
               align-self: center;
             }
           `}</style>

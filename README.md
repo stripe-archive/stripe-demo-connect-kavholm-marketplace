@@ -74,12 +74,20 @@ STRIPE_CLIENT_ID=<replace-with-your-connect-client-id>
 
 Save the `.env` file and you should be good.
 
+**3.  Set A Redirect URI for Stripe Onboarding**
+
+Go to your [connect settings](https://dashboard.stripe.com/settings/applications) to add a redirect uri for Stripe to call back to after a seller onboards with Stripe. 
+
+The URI this app users is [http://localhost:3000/stripe/callback](http://localhost:3000/stripe/callback)
+
 ### Using the sample app
 
 1. Run `npm install`
 1. Run `npm run dev`
 1. You are now ready to use the app running in [http://localhost:3000](http://localhost:3000).
-1. The marketplace should be available, and if you go to `/login` you should be able to login as both buyers and sellers using the demo buttons.
+1. The marketplace should be available, and if you go to `/login` you should be able to login as both renters and owners using the demo buttons.
+1. You will need to onboard the owner onto your Stripe Connect Platform. If you log in using the owner demo and go to "Listings" you can enable payments. This will bring you through Stripe's hosted onboarding with Connect. 
+1. Once onboarding is complete you can use the renter demo to see how payments work!
 1. 🎉
 
 ## FAQ

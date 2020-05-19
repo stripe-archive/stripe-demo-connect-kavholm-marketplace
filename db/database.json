@@ -14,7 +14,10 @@
       "lastName": "Owner",
       "email": "owner@kavholm.com",
       "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
-      "avatar": "//images.unsplash.com/photo-1506863530036-1efeddceb993?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2741&q=80"
+      "avatar": "//images.unsplash.com/photo-1506863530036-1efeddceb993?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2741&q=80",
+      "stripe": {
+        "stripeUserId": "acct_1G1Os2APkNRJ6fly"
+      }
     }
   ],
   "listings": [

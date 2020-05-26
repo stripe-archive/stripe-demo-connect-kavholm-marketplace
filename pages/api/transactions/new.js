@@ -40,7 +40,7 @@ export default requireAuthEndpoint(async (req, res) => {
       currency: currency,
       transfer_data: {
         destination: listingHostUserStripeUserId,
-        amount: amount,
+        amount: (amount - Math.ceil(amount * 0.1)),
       },
     };
 

@@ -203,12 +203,5 @@
     }
   ],
   "transactions": [
-    {
-      "id": "K6CbdZzD",
-      "listingId": "10",
-      "bookingUserId": "Igj-hMfQa",
-      "totalAmount": "19140",
-      "currency": "USD"
-    }
   ]
 }

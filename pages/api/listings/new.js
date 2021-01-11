@@ -20,7 +20,7 @@ export default requireAuthEndpoint(async (req, res) => {
       image:
         'https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80',
       price: {
-        amount: price,
+        amount: parseInt(price),
         currency: currency,
       },
     };
